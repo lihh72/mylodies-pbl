@@ -14,6 +14,11 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'cobawarna': '#f5e9d7',
+                secondary: '#F59E0B',
+                'custom-gray': '#6B7280',
+            },
         },
     },
 
