@@ -3,14 +3,14 @@
       @csrf
       <div>
         <label for="email" class="block text-lg font-semibold mb-2">Email</label>
-        <input type="text" id="email" name="email" placeholder="Email"
-          class="w-full rounded-full border-2 border-black p-3 focus:outline-none focus:ring-2 focus:ring-amber-400">
+        <input type="text" id="email" name="email" 
+          class="bg-cobawarna w-full rounded-full border-2 border-black p-3 focus:outline-none focus:ring-2 focus:ring-amber-400">
       </div>
   
       <div>
         <label for="password" class="block text-lg font-semibold mb-2">Password</label>
-        <input type="password" id="password" name="password" placeholder="Password"
-          class="w-full rounded-full border-2 border-black p-3 focus:outline-none focus:ring-2 focus:ring-amber-400">
+        <input type="password" id="password" name="password" 
+          class="bg-cobawarna w-full rounded-full border-2 border-black p-3 focus:outline-none focus:ring-2 focus:ring-amber-400">
         <div class="text-right mt-2">
           <a href="#" class="text-sm text-black underline">forgot your password?</a>
         </div>
