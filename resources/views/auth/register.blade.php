@@ -14,7 +14,7 @@
         <img src="{{ asset('images/logo.png') }}" alt="Logo Rental" class="w-25 mb-1">
 
         <p class="mb-4 text-2xl md:text-3xl font-serif leading-snug text-black">
-            Buat akun
+        Make Your
         </p>
 
       <h1 class="text-4xl md:text-5xl font-serif font-semibold leading-snug text-black">
@@ -22,7 +22,7 @@
       </h1>
 
       <p class="mt-4 text-2xl md:text-3xl font-serif leading-snug text-black">
-        kamu!!<br>
+        Account!!<br>
       </p>
     </div>
 
@@ -32,8 +32,8 @@
         @csrf
 
         <div>
-          <label for="name" class="block text-lg font-semibold mb-2">Nama Lengkap</label>
-          <input type="text" id="name" name="name" placeholder="Nama Lengkap" 
+          <label for="name" class="block text-lg font-semibold mb-2">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Full Name" 
             class="w-full rounded-full border-2 border-black p-3 focus:outline-none focus:ring-2 focus:ring-amber-400">
         </div>
 
@@ -44,25 +44,25 @@
         </div>
 
         <div>
-          <label for="password" class="block text-lg font-semibold mb-2">Kata Sandi</label>
-          <input type="password" id="password" name="password" placeholder="Kata Sandi" 
+          <label for="password" class="block text-lg font-semibold mb-2">Password</label>
+          <input type="password" id="password" name="password" placeholder="Password" 
             class="w-full rounded-full border-2 border-black p-3 focus:outline-none focus:ring-2 focus:ring-amber-400">
         </div>
 
         <button type="button" 
   class="flex items-center justify-center gap-2 bg-neutral-700 hover:bg-neutral-800 text-white font-bold py-3 rounded-full transition duration-200 border-2 border-black">
   <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google" class="w-6 h-6">
-  Daftar dengan Google
+  Sign Up with google
 </button>
 
         <button type="submit" 
           class="bg-amber-200 hover:bg-amber-300 text-black font-semibold rounded-full py-3 transition duration-200 border-2 border-black">
-          Daftar
+          Sign Up
         </button>
 
         <p class="text-center text-sm mt-4">
-          Sudah punya akun? 
-          <a href="{{ route('login') }}" class="text-indigo-600 underline">Masuk</a>
+         Already have an account? 
+          <a href="{{ route('login') }}" class="text-indigo-600 underline">Sign In</a>
         </p>
       </form>
     </div>
