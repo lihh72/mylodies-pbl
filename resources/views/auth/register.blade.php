@@ -13,12 +13,16 @@
     <div class="flex flex-col items-center justify-center text-center mb-8 md:mb-0 md:mr-16">
         <img src="{{ asset('images/logo.png') }}" alt="Logo Rental" class="w-25 mb-1">
 
+        <p class="mb-4 text-2xl md:text-3xl font-serif leading-snug text-black">
+            Buat akun
+        </p>
+
       <h1 class="text-4xl md:text-5xl font-serif font-semibold leading-snug text-black">
-        Daftar Sekarang
+        MyLodies
       </h1>
 
       <p class="mt-4 text-2xl md:text-3xl font-serif leading-snug text-black">
-        dan mulai<br>rental alat musik favoritmu!
+        kamu!!<br>
       </p>
     </div>
 
@@ -44,6 +48,12 @@
           <input type="password" id="password" name="password" placeholder="Kata Sandi" 
             class="w-full rounded-full border-2 border-black p-3 focus:outline-none focus:ring-2 focus:ring-amber-400">
         </div>
+
+        <button type="button" 
+  class="flex items-center justify-center gap-2 bg-neutral-700 hover:bg-neutral-800 text-white font-bold py-3 rounded-full transition duration-200 border-2 border-black">
+  <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google" class="w-6 h-6">
+  Daftar dengan Google
+</button>
 
         <button type="submit" 
           class="bg-amber-200 hover:bg-amber-300 text-black font-semibold rounded-full py-3 transition duration-200 border-2 border-black">
