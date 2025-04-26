@@ -1,3 +1,75 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@plugin "daisyui";
+
+@layer utilities {
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0.98);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out both;
+  }
+  }
+
+  .aurora-glow {
+    position: fixed; /* Memastikan aurora-glow tetap di layar */
+    top: 0;
+    left: 0;
+    right: 0; /* Pastikan aurora-glow mengisi seluruh lebar layar */
+    bottom: 0; /* Pastikan aurora-glow mengisi seluruh tinggi layar */
+    z-index: 0; /* Tempatkan aurora-glow di belakang elemen lainnya */
+    pointer-events: none; /* Pastikan efek aurora tidak menghalangi interaksi dengan elemen lain */
+  }
+  
+  .aurora-glow::before,
+  .aurora-glow::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    border-radius: 9999px;
+    opacity: 0.3;
+  }
+  
+  .aurora-glow::before {
+    box-shadow: 0 0 35vmax 35vmax #facc89; /* pastel peach */
+    animation: hue 6s linear infinite, move1 12s linear infinite;
+  }
+  
+  .aurora-glow::after {
+    box-shadow: 0 0 35vmax 35vmax #eec373; /* soft gold */
+    animation: hue 10s linear infinite, move2 20s linear infinite;
+  }
+  
+  
+  @keyframes hue {
+    0%   { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+  
+  @keyframes move1 {
+    0%   { top: 0vh;   left: 50vw; }
+    25%  { left: 0vw; }
+    50%  { top: 100vh; }
+    75%  { left: 100vw; }
+    100% { top: 0vh;   left: 50vw; }
+  }
+  
+  @keyframes move2 {
+    0%   { top: 50vh;  left: 100vw; }
+    25%  { top: 100vh; }
+    50%  { left: 0vw; }
+    75%  { top: 0vh; }
+    100% { top: 50vh;  left: 100vw; }
+  }
+  
+  
