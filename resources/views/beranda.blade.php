@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,20 +12,26 @@
 <!-- Navbar -->
 <nav class="bg-[#b49875] flex items-center justify-between px-6 py-4">
   <div class="flex items-center">
-    <img src="logo.png" alt="Logo" class="h-8 mr-4">
+    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-8 mr-4">
   </div>
   <ul class="flex space-x-6">
-    <li><a href="#" class="text-black font-bold">Home</a></li>
-    <li><a href="#" class="text-black font-bold">About Us</a></li>
-    <li><a href="#" class="text-black font-bold">Contact</a></li>
+    <li><a href="{{ route('home') }}" class="text-black font-bold">Home</a></li>
+    <li><a href="{{ route('about') }}" class="text-black font-bold">About Us</a></li>
+    <li><a href="{{ route('contact') }}" class="text-black font-bold">Contact</a></li>
   </ul>
-  <a href="#" class="flex items-center border border-black rounded-full px-4 py-1 font-bold hover:bg-black hover:text-white transition">
-    Login →
-  </a>
+  @auth
+    <a href="{{ route('logout') }}" class="flex items-center border border-black rounded-full px-4 py-1 font-bold hover:bg-black hover:text-white transition">
+      Logout →
+    </a>
+  @else
+    <a href="{{ route('login') }}" class="flex items-center border border-black rounded-full px-4 py-1 font-bold hover:bg-black hover:text-white transition">
+      Login →
+    </a>
+  @endauth
 </nav>
 
 <!-- Hero Section -->
-<section class="relative h-[400px] flex flex-col items-center justify-center bg-cover bg-center text-center" style="background-image: url('YOUR_BACKGROUND_IMAGE.jpg');">
+<section class="relative h-[400px] flex flex-col items-center justify-center bg-cover bg-center text-center" style="background-image: url('{{ asset('images/YOUR_BACKGROUND_IMAGE.jpg') }}');">
   <h1 class="text-white text-3xl font-bold">Your stage, your sound</h1>
   <h2 class="text-[#5b4526] text-2xl font-bold mt-2">our support</h2>
 </section>
@@ -35,7 +42,7 @@
     <p>MyLodies<br>Supporting Great<br>Performances with<br>World-Class Equipment</p>
   </div>
   <div>
-    <img src="background.png" alt="Instruments" class="h-48 object-contain">
+    <img src="{{ asset('images/background.png') }}" alt="Instruments" class="h-48 object-contain">
   </div>
 </section>
 
