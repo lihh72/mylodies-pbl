@@ -1,54 +1,25 @@
-<!DOCTYPE html>
-<html lang="id">
+<x-auth title="Daftar Rental Alat Musik">
+    <x-logo>
+        <p class="mb-4 text-2xl md:text-3xl font-serif leading-snug text-black">Make Your</p>
+        <h1 class="text-4xl md:text-5xl font-serif font-semibold leading-snug text-black">MyLodies</h1>
+        <p class="mt-4 text-2xl md:text-3xl font-serif leading-snug text-black">Account!!</p>
+    </x-logo>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Rental Alat Musik</title>
-    @vite('resources/js/app.js')
-</head>
+    <div
+        class="bg-cobawarna/70 backdrop-blur-md border border-white/20 rounded-2xl shadow-lg p-10 w-full md:w-1/2 animate-fade-in-up">
+        <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-6">
+            @csrf
 
-<body class="min-h-screen flex items-center justify-center bg-white">
+            @foreach ([['name', 'text', 'Full Name'], ['email', 'email', 'Email'], ['password', 'password', 'Password'], ['password_confirmation', 'password', 'Confirm Password']] as [$field, $type, $label])
+                <x-input :field="$field" :type="$type" :label="$label" />
+            @endforeach
 
-    <div class="flex flex-col md:flex-row items-center justify-center w-full max-w-6xl p-8">
-        <x-logo>
-            <p class="mb-4 text-2xl md:text-3xl font-serif leading-snug text-black">Make Your</p>
-            <h1 class="text-4xl md:text-5xl font-serif font-semibold leading-snug text-black">MyLodies</h1>
-            <p class="mt-4 text-2xl md:text-3xl font-serif leading-snug text-black">Account!!</p>
-        </x-logo>
-
-        <!-- Form Register -->
-        <div class="bg-cobawarna rounded-2xl shadow-lg p-10 w-full md:w-1/2">
-            <form action="{{ route('register') }}" method="POST" class="flex flex-col gap-6">
-                @csrf
-
-                @php
-                    $formFields = [
-                        ['field' => 'name', 'type' => 'text', 'label' => 'Full Name'],
-                        ['field' => 'email', 'type' => 'email', 'label' => 'Email'],
-                        ['field' => 'password', 'type' => 'password', 'label' => 'Password'],
-                        ['field' => 'password_confirmation', 'type' => 'password', 'label' => 'Confirm Password'],
-                    ];
-                @endphp
-
-                @foreach ($formFields as $input)
-                    <x-input :field="$input['field']" :type="$input['type']" :label="$input['label']" />
-                @endforeach
-
-
-                <x-login-google-button text="Sign Up With Google"/>
-                <!-- Submit -->
-                <x-button text="Sign Up" />
-
-
-                <p class="text-center text-sm mt-4">
-                    Already have an account?
-                    <a href="{{ route('login') }}" class="text-indigo-600 underline">Sign In</a>
-                </p>
-            </form>
-        </div>
+            <x-login-google-button text="Sign Up With Google" />
+            <x-button text="Sign Up" />
+            <p class="text-center text-sm mt-4">
+                Already have an account?
+                <a href="{{ route('login') }}" class="text-indigo-600 underline">Sign In</a>
+            </p>
+        </form>
     </div>
-
-</body>
-
-</html>
+    </x-auth>
