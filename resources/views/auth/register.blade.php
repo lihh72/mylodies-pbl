@@ -22,4 +22,4 @@
             </p>
         </form>
     </div>
-    </x-layouts.auth>
+    </x-auth>
