@@ -5,7 +5,8 @@
         <p class="mt-4 text-2xl md:text-3xl font-serif leading-snug text-black">Account!!</p>
     </x-logo>
 
-    <div class="bg-cobawarna/70 backdrop-blur-md border border-white/20 rounded-2xl shadow-lg p-10 w-full md:w-1/2 animate-fade-in-up">
+    <div
+        class="bg-cobawarna/70 backdrop-blur-md border border-white/20 rounded-2xl shadow-lg p-10 w-full md:w-1/2 animate-fade-in-up">
         <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-6">
             @csrf
 
@@ -13,7 +14,7 @@
                 <x-input :field="$field" :type="$type" :label="$label" />
             @endforeach
 
-            <x-login-google-button text="Sign Up With Google"/>
+            <x-login-google-button text="Sign Up With Google" />
             <x-button text="Sign Up" />
             <p class="text-center text-sm mt-4">
                 Already have an account?
@@ -21,4 +22,4 @@
             </p>
         </form>
     </div>
-</x-layouts.auth>
+    </x-layouts.auth>
