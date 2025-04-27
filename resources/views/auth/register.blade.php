@@ -5,21 +5,14 @@
         <p class="mt-4 text-2xl md:text-3xl font-serif leading-snug text-black">Account!!</p>
     </x-logo>
 
-    <div
-        class="bg-cobawarna/70 backdrop-blur-md border border-white/20 rounded-2xl shadow-lg p-10 w-full md:w-1/2 animate-fade-in-up">
-        <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-6">
-            @csrf
+    <x-auth-form :action="route('register')" :fields="[
+        ['name', 'text', 'Full Name'],
+        ['email', 'email', 'Email'],
+        ['password', 'password', 'Password'],
+        ['password_confirmation', 'password', 'Confirm Password'],
+    ]" submitText="Sign Up" googleText="Sign Up With Google"
+        linkText="Sign In" :linkRoute="route('login')">
+        Already have an account?
+    </x-auth-form>
 
-            @foreach ([['name', 'text', 'Full Name'], ['email', 'email', 'Email'], ['password', 'password', 'Password'], ['password_confirmation', 'password', 'Confirm Password']] as [$field, $type, $label])
-                <x-input :field="$field" :type="$type" :label="$label" />
-            @endforeach
-
-            <x-login-google-button text="Sign Up With Google" />
-            <x-button text="Sign Up" />
-            <p class="text-center text-sm mt-4">
-                Already have an account?
-                <a href="{{ route('login') }}" class="text-indigo-600 underline">Sign In</a>
-            </p>
-        </form>
-    </div>
-    </x-auth>
+</x-auth>

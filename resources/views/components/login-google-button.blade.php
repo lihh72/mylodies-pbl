@@ -11,9 +11,10 @@
     <!-- Tombol dengan gaya utama button-jadi -->
     <button type="submit"
         class="relative inline-flex items-center justify-center gap-2 bg-neutral-700 hover:bg-neutral-800 text-white font-bold py-3 px-8 rounded-full transition-all duration-500 ease-in-out border-2 border-black w-full">
-        
+
         <!-- Logo Google -->
-        <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google" class="w-6 h-6 transition-all duration-300 ease-in-out">
+        <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google"
+            class="w-6 h-6 transition-all duration-300 ease-in-out">
 
         <!-- Teks tombol -->
         {{ $text }}

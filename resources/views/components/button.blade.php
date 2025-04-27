@@ -12,7 +12,7 @@
     <button type="submit"
         class="relative inline-flex items-center justify-center gap-2 bg-amber-200 hover:bg-amber-300 text-black font-semibold py-3 px-8 transition-all duration-500 ease-in-out border-2 border-black w-full rounded-full">
         {{ $text }}
-        
+
         <!-- Ikon panah dengan transisi untuk pergerakan -->
         <svg aria-hidden="true" viewBox="0 0 10 10" height="10" width="10" fill="none"
             class="mt-0.5 ml-2 -mr-1 stroke-black stroke-2 transition-all duration-300 ease-in-out">
