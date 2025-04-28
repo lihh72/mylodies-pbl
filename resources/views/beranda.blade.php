@@ -35,7 +35,7 @@
 
     <!-- Hero Section -->
     <section class="relative h-[400px] flex flex-col items-center justify-center bg-cover bg-center text-center"
-        style="background-image: url('{{ asset('images/background.png') }}');">
+        style="background-image: url('{{ asset('images/background.jpg') }}');">
         <h1 class="text-white text-3xl font-bold">Your stage, your sound</h1>
         <h2 class="text-[#5b4526] text-2xl font-bold mt-2">our support</h2>
     </section>
@@ -46,7 +46,7 @@
             <p>MyLodies<br>Supporting Great<br>Performances with<br>World-Class Equipment</p>
         </div>
         <div>
-            <img src="{{ asset('images/background.png') }}" alt="Instruments" class="h-48 object-contain">
+            <img src="{{ asset('images/background.jpg') }}" alt="Instruments" class="h-48 object-contain">
         </div>
     </section>
 

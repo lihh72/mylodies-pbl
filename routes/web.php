@@ -19,6 +19,14 @@ Route::get('/landing', function () {
     return view('beranda');
 });
 
+Route::get('/pay', function () {
+    return view('payment');
+});
+
+Route::get('/makasiyabang', function () {
+    return view('katalog');
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

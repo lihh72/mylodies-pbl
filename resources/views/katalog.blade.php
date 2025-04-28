@@ -22,7 +22,7 @@
 
 <body class="bg-white">
     <!-- Header -->
-    <header class="bg-[#9D8B76] flex items-center justify-between px-6 py-6 shadow-md">
+    <header class="bg-[#9D8B76] flex items-center justify-between px-6 py-4 shadow-md">
         <div class="flex items-center space-x-2">
             <img alt="Logo" class="w-12 h-12 object-contain" src="/images/logo.png" />
         </div>
