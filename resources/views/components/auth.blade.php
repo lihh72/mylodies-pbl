@@ -51,7 +51,7 @@
 
             // Bungkus form dalam div baru supaya bisa ditengahin
             const formWrapper = document.createElement('div');
-            formWrapper.classList.add('min-h-screen', 'flex', 'flex-col', 'justify-center', 'items-center', 'opacity-0', 'transition-opacity', 'duration-700', 'ease-in-out', 'px-4');
+            formWrapper.classList.add('w-full', 'min-h-screen', 'flex', 'flex-col', 'justify-center', 'items-center', 'opacity-0', 'transition-opacity', 'duration-700', 'ease-in-out', 'px-4');
             
             wrapper.replaceChild(formWrapper, form);
             formWrapper.appendChild(form);
