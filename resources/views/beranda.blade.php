@@ -16,17 +16,17 @@
             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-8 mr-4">
         </div>
         <ul class="flex space-x-6">
-            <li><a href="{{ route('home') }}" class="text-black font-bold">Home</a></li>
-            <li><a href="{{ route('about') }}" class="text-black font-bold">About Us</a></li>
-            <li><a href="{{ route('contact') }}" class="text-black font-bold">Contact</a></li>
+            <li><a href="#" class="text-black font-bold">Home</a></li>
+            <li><a href="#" class="text-black font-bold">About Us</a></li>
+            <li><a href="#" class="text-black font-bold">Contact</a></li>
         </ul>
         @auth
-            <a href="{{ route('logout') }}"
+            <a href="#"
                 class="flex items-center border border-black rounded-full px-4 py-1 font-bold hover:bg-black hover:text-white transition">
                 Logout →
             </a>
         @else
-            <a href="{{ route('login') }}"
+            <a href="#"
                 class="flex items-center border border-black rounded-full px-4 py-1 font-bold hover:bg-black hover:text-white transition">
                 Login →
             </a>
@@ -35,7 +35,7 @@
 
     <!-- Hero Section -->
     <section class="relative h-[400px] flex flex-col items-center justify-center bg-cover bg-center text-center"
-        style="background-image: url('{{ asset('images/YOUR_BACKGROUND_IMAGE.jpg') }}');">
+        style="background-image: url('{{ asset('images/background.png') }}');">
         <h1 class="text-white text-3xl font-bold">Your stage, your sound</h1>
         <h2 class="text-[#5b4526] text-2xl font-bold mt-2">our support</h2>
     </section>
