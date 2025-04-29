@@ -29,6 +29,9 @@ Route::get('/katalog', function () {
 Route::get('/cart', function () {
     return view('keranjang-salah-ngerjain-hhh');
 });
+Route::get('/edit', function () {
+    return view('edit-user');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
