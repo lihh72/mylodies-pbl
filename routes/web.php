@@ -16,7 +16,18 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/landing', function () {
-    return view('product');
+    return view('beranda');
+});
+
+Route::get('/payment', function () {
+    return view('payment');
+});
+
+Route::get('/katalog', function () {
+    return view('katalog');
+});
+Route::get('/cart', function () {
+    return view('keranjang-salah-ngerjain-hhh');
 });
 
 Route::middleware('auth')->group(function () {
