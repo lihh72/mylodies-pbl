@@ -10,45 +10,57 @@
 
 <body class="font-sans">
 
-    <!-- Navbar -->
-    <nav class="bg-[#b49875] flex items-center justify-between px-6 py-4">
-        <div class="flex items-center">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-8 mr-4">
-        </div>
-        <ul class="flex space-x-6">
-            <li><a href="#" class="text-black font-bold">Home</a></li>
-            <li><a href="#" class="text-black font-bold">About Us</a></li>
-            <li><a href="#" class="text-black font-bold">Contact</a></li>
-        </ul>
-        @auth
-            <a href="#"
-                class="flex items-center border border-black rounded-full px-4 py-1 font-bold hover:bg-black hover:text-white transition">
-                Logout →
-            </a>
-        @else
-            <a href="#"
-                class="flex items-center border border-black rounded-full px-4 py-1 font-bold hover:bg-black hover:text-white transition">
-                Login →
-            </a>
-        @endauth
-    </nav>
+   <!-- Navbar -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-[#b49875] shadow flex items-center justify-between px-6 py-4">
+    <div class="flex items-center">
+        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-8 mr-4">
+    </div>
+    <ul class="flex space-x-6">
+        <li><a href="#" class="text-black font-bold">Home</a></li>
+        <li><a href="#" class="text-black font-bold">About Us</a></li>
+        <li><a href="#" class="text-black font-bold">Contact</a></li>
+    </ul>
+    @auth
+        <a href="#"
+            class="flex items-center border border-black rounded-full px-4 py-1 font-bold hover:bg-black hover:text-white transition">
+            Logout →
+        </a>
+    @else
+        <a href="#"
+            class="flex items-center border border-black rounded-full px-4 py-1 font-bold hover:bg-black hover:text-white transition">
+            Login →
+        </a>
+    @endauth
+</nav>
 
     <!-- Hero Section -->
-    <section class="relative h-[400px] flex flex-col items-center justify-center bg-cover bg-center text-center"
-        style="background-image: url('{{ asset('images/background.jpg') }}');">
-        <h1 class="text-white text-3xl font-bold">Your stage, your sound</h1>
-        <h2 class="text-[#5b4526] text-2xl font-bold mt-2">our support</h2>
-    </section>
+<section class="relative min-h-[500px] md:min-h-[600px] flex flex-col items-center justify-center bg-cover bg-center text-center"
+    style="background-image: url('{{ asset('images/background.jpg') }}');">
+    <div class="bg-black bg-opacity-50 w-full h-full absolute top-0 left-0"></div>
+    <div class="relative z-10 px-4">
+        <h1 class="text-white text-4xl md:text-5xl font-extrabold drop-shadow mb-4">Your stage, your sound</h1>
+        <h2 class="text-[#b49875] text-4xl md:text-5xl font-extrabold">our support</h2>
+    </div>
+</section>
 
     <!-- Content Section -->
-    <section class="flex flex-col md:flex-row items-center justify-between p-10 gap-8">
-        <div class="text-2xl font-bold max-w-md text-center md:text-left">
-            <p>MyLodies<br>Supporting Great<br>Performances with<br>World-Class Equipment</p>
-        </div>
-        <div>
-            <img src="{{ asset('images/background.jpg') }}" alt="Instruments" class="h-48 object-contain">
-        </div>
-    </section>
+<section class="flex flex-col md:flex-row items-center justify-between px-10 py-16 bg-white gap-10">
+    <div class="max-w-xl">
+        <h2 class="text-4xl font-extrabold leading-tight mb-6">
+            MyLodies <br>
+            Supporting Great <br>
+            Performances with <br>
+            World-Class Equipment
+        </h2>
+        <p class="text-base text-gray-700 leading-relaxed">
+            Lorem ipsum dolor sit amet consectetur. Nisl in pretium mattis nunc nisl mauris quis euismod congue.
+            Augue elit id morbi semper sed in. Natoque odio pharetra.
+        </p>
+    </div>
+    <div class="flex-shrink-0">
+        <img src="{{ asset('images/instruments-group.png') }}" alt="Instruments" class="max-h-80 md:max-h-[350px] object-contain">
+    </div>
+</section>
 
     <!-- Top Rented Items Section -->
     <section class="px-6 py-10 bg-white text-center">
