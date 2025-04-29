@@ -19,12 +19,15 @@ Route::get('/landing', function () {
     return view('beranda');
 });
 
-Route::get('/pay', function () {
+Route::get('/payment', function () {
     return view('payment');
 });
 
-Route::get('/makasiyabang', function () {
+Route::get('/katalog', function () {
     return view('katalog');
+});
+Route::get('/cart', function () {
+    return view('keranjang-salah-ngerjain-hhh');
 });
 
 Route::middleware('auth')->group(function () {
