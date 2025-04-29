@@ -66,8 +66,8 @@
             </div>
 
             <!-- Item 2 -->
-            <div class="bg-[#f9e5c9] p-4 rounded-xl shadow-md flex flex-col items-center border-4 border-[#a98dbf]">
-                <img src="{{ asset('images/bass.png') }}" alt="Fender Precision Bass" class="h-40 object-contain mb-4">
+        <div class="bg-[#f9e5c9] p-4 rounded-xl shadow-md flex flex-col items-center">
+            <img src="{{ asset('images/bass.png') }}" alt="Fender Precision Bass" class="h-40 object-contain mb-4">
                 <h3 class="font-bold">Fender Precision Bass</h3>
                 <p class="text-sm text-gray-600">IDN 290.000 / Day</p>
                 <button class="mt-2 px-4 py-1 border border-black rounded-full font-semibold hover:bg-black hover:text-white transition">
