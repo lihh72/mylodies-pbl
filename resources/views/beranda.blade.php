@@ -58,7 +58,7 @@
         </p>
     </div>
     <div class="flex-shrink-0">
-        <img src="{{ asset('images/instruments-group.png') }}" alt="Instruments" class="max-h-80 md:max-h-[350px] object-contain">
+        <img src="{{ asset('images/instrument.jpg') }}" alt="Instruments" class="max-h-80 md:max-h-[350px] object-contain">
     </div>
 </section>
 
@@ -68,28 +68,34 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <!-- Item 1 -->
             <div class="bg-[#f9e5c9] p-4 rounded-xl shadow-md flex flex-col items-center">
-                <img src="{{ asset('images/piano.png') }}" alt="Piano" class="h-32 object-contain mb-4">
+                <img src="{{ asset('images/piano1.jpg') }}" alt="Piano" class="h-32 object-contain mb-4">
                 <p class="font-semibold">Yamaha, Grand Piano</p>
                 <p class="text-sm mb-2">IDR 400.000 / Day</p>
-                <button class="px-4 py-1 bg-black text-white rounded-full text-sm">Check</button>
+                <button class="mt-2 px-4 py-1 border border-black rounded-full font-semibold hover:bg-black hover:text-white transition">
+                    Check
+                </button>            
             </div>
             <!-- Item 2 -->
             <div class="bg-[#f9e5c9] p-4 rounded-xl shadow-md flex flex-col items-center">
-                <img src="{{ asset('images/bass.png') }}" alt="Bass" class="h-32 object-contain mb-4">
+                <img src="{{ asset('images/gitar1.jpg') }}" alt="Bass" class="h-32 object-contain mb-4">
                 <p class="font-semibold">Fender Precision Bass</p>
                 <p class="text-sm mb-2">IDR 290.000 / Day</p>
-                <button class="px-4 py-1 bg-black text-white rounded-full text-sm">Check</button>
+                <button class="mt-2 px-4 py-1 border border-black rounded-full font-semibold hover:bg-black hover:text-white transition">
+                    Check
+                </button>            
             </div>
             <!-- Item 3 -->
             <div class="bg-[#f9e5c9] p-4 rounded-xl shadow-md flex flex-col items-center">
-                <img src="{{ asset('images/violin.png') }}" alt="Violin" class="h-32 object-contain mb-4">
+                <img src="{{ asset('images/violin1.jpg') }}" alt="Violin" class="h-32 object-contain mb-4">
                 <p class="font-semibold">Classic Acoustic Violin</p>
                 <p class="text-sm mb-2">IDR 400.000 / Day</p>
-                <button class="px-4 py-1 bg-black text-white rounded-full text-sm">Check</button>
+                <button class="mt-2 px-4 py-1 border border-black rounded-full font-semibold hover:bg-black hover:text-white transition">
+                    Check
+                </button>            
             </div>
             <!-- Item 4 -->
             <div class="bg-[#f9e5c9] p-4 rounded-xl shadow-md flex flex-col items-center">
-                <img src="{{ asset('images/saxophone.png') }}" alt="Saxophone" class="h-40 object-contain mb-4">
+                <img src="{{ asset('images/saxophone.jpg') }}" alt="Saxophone" class="h-40 object-contain mb-4">
                 <h3 class="font-bold">Saxophone</h3>
                 <p class="text-sm text-gray-600">IDN 350.000 / Day</p>
                 <button class="mt-2 px-4 py-1 border border-black rounded-full font-semibold hover:bg-black hover:text-white transition">
@@ -99,7 +105,7 @@
 
             <!-- Item 5 -->
             <div class="bg-[#f9e5c9] p-4 rounded-xl shadow-md flex flex-col items-center">
-                <img src="{{ asset('images/drum.png') }}" alt="Drum Set" class="h-40 object-contain mb-4">
+                <img src="{{ asset('images/drum.jpg') }}" alt="Drum Set" class="h-40 object-contain mb-4">
                 <h3 class="font-bold">Drum Set</h3>
                 <p class="text-sm text-gray-600">IDN 380.000 / Day</p>
                 <button class="mt-2 px-4 py-1 border border-black rounded-full font-semibold hover:bg-black hover:text-white transition">
@@ -108,7 +114,7 @@
             </div>
              <!-- Item 6 -->
              <div class="bg-[#f9e5c9] p-4 rounded-xl shadow-md flex flex-col items-center">
-                <img src="{{ asset('images/accordion.png') }}" alt="Accordion" class="h-40 object-contain mb-4">
+                <img src="{{ asset('images/accordion.jpg') }}" alt="Accordion" class="h-40 object-contain mb-4">
                 <h3 class="font-bold">Accordion</h3>
                 <p class="text-sm text-gray-600">IDN 330.000 / Day</p>
                 <button class="mt-2 px-4 py-1 border border-black rounded-full font-semibold hover:bg-black hover:text-white transition">
