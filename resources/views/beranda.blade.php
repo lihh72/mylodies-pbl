@@ -33,9 +33,9 @@
     @endauth
 </nav>
 
-    <!-- Hero Section -->
-<section class="relative min-h-[500px] md:min-h-[600px] flex flex-col items-center justify-center bg-cover bg-center text-center"
-    style="background-image: url('{{ asset('images/background.jpg') }}');">
+<!-- Hero Section -->
+<section class="relative min-h-screen flex flex-col items-center justify-center bg-cover bg-center text-center"
+    style="background-image: url('{{ asset('images/bg.jpg') }}');">
     <div class="bg-black bg-opacity-50 w-full h-full absolute top-0 left-0"></div>
     <div class="relative z-10 px-4">
         <h1 class="text-white text-4xl md:text-5xl font-extrabold drop-shadow mb-4">Your stage, your sound</h1>
