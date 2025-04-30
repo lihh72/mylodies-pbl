@@ -128,29 +128,30 @@
   </div>
 </header>
 
-<section id="home" class="relative h-screen bg-cover bg-center flex items-center justify-center text-center overflow-hidden" style="background-image: url('{{ asset('images/bg.jpg') }}');">
-  <!-- Overlay -->
-  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm z-0"></div>
 
-  <!-- Noise & Particles -->
-  <div class="absolute inset-0 bg-[url('/images/texture-noise.png')] opacity-10 mix-blend-soft-light z-0"></div>
-  <div id="particles-js" class="absolute inset-0 z-0 pointer-events-none"></div>
 
-  <!-- Light Glow -->
-  <div class="absolute w-[120vw] h-[120vw] bg-[#b49875]/20 rounded-full blur-3xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0"></div>
+
+<section id="home" class="relative h-screen flex items-center justify-center text-center bg-black overflow-hidden">
+  <!-- Video Background (Concert Ambience / Music Theme) -->
+  <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover brightness-[0.4]">
+    <source src="{{ asset('videos/stage-loop.mp4') }}" type="video/mp4">
+  </video>
+
+  <!-- Particles / Stars -->
+  <div class="absolute inset-0 z-0 pointer-events-none" id="particles-js"></div>
+
+  <!-- Spotlight / Glow -->
+  <div class="absolute z-0 w-[120vw] h-[120vw] rounded-full bg-[#b49875]/20 blur-3xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
 
   <!-- Hero Content -->
   <div class="relative z-10 px-6 max-w-4xl animate-fade-in-up">
-    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ffdfbf] via-[#d2ab7c] to-[#b49875] animate-text-gradient drop-shadow-lg min-h-[5.5rem] sm:min-h-[6.5rem] lg:min-h-[8rem] flex items-center justify-center">
-      <span id="typewriter" class="inline-block whitespace-nowrap transition-all duration-300"></span>
+    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ffdfbf] via-[#d2ab7c] to-[#b49875] animate-text-gradient drop-shadow-lg">
+      <span id="typewriter"></span>
     </h1>
-    
-    <h2 class="mt-4 text-xl sm:text-2xl text-[#f5e4cf] tracking-wide animate-slide-in-fade">
-      Instruments that Perform. Experiences that Resonate.
-    </h2>
+    <h2 class="mt-4 text-xl sm:text-2xl text-[#f5e4cf] tracking-wide animate-slide-in-fade">Instruments that Perform. Experiences that Resonate.</h2>
 
     <a href="#rentals" class="inline-flex mt-10 px-8 py-3 bg-[#b49875] text-white text-lg font-semibold rounded-full shadow-xl hover:bg-[#9a7b56] transition duration-300 ease-in-out hover:scale-110 animate-pulse-glow">
-      Explore Rentals →
+      🎸 Explore Rentals →
     </a>
   </div>
 
@@ -162,86 +163,94 @@
     <div class="w-1 h-7 bg-[#b49875] animate-eq delay-[450ms]"></div>
     <div class="w-1 h-9 bg-[#b49875] animate-eq delay-[600ms]"></div>
   </div>
-</section>
 
-<!-- Scripts and Styles -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-<script>
-  // ParticlesJS background
-  particlesJS("particles-js", {
-    particles: {
-      number: { value: 60 },
-      color: { value: "#ffffff" },
-      shape: { type: "circle" },
-      opacity: { value: 0.15 },
-      size: { value: 3 },
-      move: { enable: true, speed: 0.6 }
-    },
-    interactivity: { events: { onhover: { enable: false } } },
-    retina_detect: true
-  });
+  <!-- Typewriter / Text effect -->
+  <script>
+    const text = ["Your Stage,", "Your Sound.", "Your Moment."];
+    let i = 0, j = 0, current = "", isDeleting = false;
+    const speed = 100;
 
-  // Typewriter effect
-  const text = ["Your Stage,", "Your Sound.", "Your Moment."];
-  let i = 0, j = 0, current = "", isDeleting = false;
-  const speed = 100;
-  function type() {
-    current = text[i];
-    let display = isDeleting ? current.substring(0, j--) : current.substring(0, j++);
-    document.getElementById("typewriter").textContent = display;
-    if (!isDeleting && j === current.length + 1) {
-      isDeleting = true; setTimeout(type, 1000);
-    } else if (isDeleting && j === 0) {
-      isDeleting = false; i = (i + 1) % text.length; setTimeout(type, 400);
-    } else {
-      setTimeout(type, speed);
+    function type() {
+      current = text[i];
+      let display = isDeleting ? current.substring(0, j--) : current.substring(0, j++);
+      document.getElementById("typewriter").textContent = display;
+
+      if (!isDeleting && j === current.length + 1) {
+        isDeleting = true;
+        setTimeout(type, 1000);
+      } else if (isDeleting && j === 0) {
+        isDeleting = false;
+        i = (i + 1) % text.length;
+        setTimeout(type, 400);
+      } else {
+        setTimeout(type, speed);
+      }
     }
-  }
-  window.addEventListener("load", type);
-</script>
 
-<style>
-  @keyframes text-gradient {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-  .animate-text-gradient {
-    background-size: 200% 200%;
-    animation: text-gradient 5s ease-in-out infinite;
-  }
+    window.addEventListener("load", type);
+  </script>
 
-  @keyframes fade-in-up {
-    from { transform: translateY(30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-  .animate-fade-in-up {
-    animation: fade-in-up 1.2s ease-out forwards;
-  }
+  <!-- Tailwind Custom Animations -->
+  <style>
+    @keyframes text-gradient {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    .animate-text-gradient {
+      background-size: 200% 200%;
+      animation: text-gradient 6s ease infinite;
+    }
 
-  @keyframes slide-in-fade {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-  .animate-slide-in-fade {
-    animation: slide-in-fade 1.5s ease-out forwards;
-  }
+    @keyframes eq {
+      0%, 100% { height: 0.75rem; }
+      50% { height: 2rem; }
+    }
+    .animate-eq {
+      animation: eq 1.5s ease-in-out infinite;
+    }
 
-  .animate-pulse-glow {
-    animation: pulse-glow 2.5s infinite ease-in-out;
-  }
-  @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 0px #b49875; }
-    50% { box-shadow: 0 0 20px #b49875aa; }
-  }
+    @keyframes fade-in-up {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .animate-fade-in-up {
+      animation: fade-in-up 1.2s ease-out forwards;
+    }
 
-  @keyframes eq {
-    0%, 100% { height: 0.75rem; }
-    50% { height: 2rem; }
-  }
-  .animate-eq {
-    animation: eq 1.5s ease-in-out infinite;
-  }
-</style>
+    @keyframes slide-in-fade {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .animate-slide-in-fade {
+      animation: slide-in-fade 1.5s ease-out forwards;
+    }
+
+    .animate-pulse-glow {
+      animation: pulse-glow 2.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0px #b49875; }
+      50% { box-shadow: 0 0 20px #b49875aa; }
+    }
+  </style>
+
+  <!-- Particles.js for star/confetti background -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 50 },
+        color: { value: "#fff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.3 },
+        size: { value: 3 },
+        move: { enable: true, speed: 0.6 },
+      },
+      interactivity: { detect_on: "canvas", events: { onhover: { enable: false } } },
+      retina_detect: true,
+    });
+  </script>
 </section>
 
 
