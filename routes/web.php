@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/q', function () {
     return view('welcome');
 });
 
@@ -15,16 +15,22 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/landing', function () {
+Route::get('/', function () {
     return view('beranda');
 });
 
-Route::get('/pay', function () {
+Route::get('/payment', function () {
     return view('payment');
 });
 
-Route::get('/makasiyabang', function () {
+Route::get('/katalog', function () {
     return view('katalog');
+});
+Route::get('/cart', function () {
+    return view('keranjang-salah-ngerjain-hhh');
+});
+Route::get('/edit', function () {
+    return view('edit-user');
 });
 
 Route::get('/bungacandupupa', function () {
