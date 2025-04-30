@@ -86,3 +86,53 @@
   .animate-fade-in-down {
     animation: fade-in-down 0.6s ease-out;
   }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+  @keyframes float-fast {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes float-delay {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-6px); }
+    50% { transform: translateY(0); }
+    75% { transform: translateY(6px); }
+    100% { transform: translateY(0); }
+  }
+  .animate-float      { animation: float 4s ease-in-out infinite; }
+  .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+  .animate-float-fast { animation: float-fast 3s ease-in-out infinite; }
+  .animate-float-delay{ animation: float-delay 5s ease-in-out infinite; }
+  
+  @keyframes orb-a {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+  }
+  @keyframes orb-b {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-14px) rotate(-1.5deg); }
+  }
+  @keyframes orb-c {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(8px); }
+  }
+  @keyframes orb-d {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+  
+  .animate-orb-a { animation: orb-a 6s ease-in-out infinite; }
+  .animate-orb-b { animation: orb-b 5s ease-in-out infinite; }
+  .animate-orb-c { animation: orb-c 7s ease-in-out infinite; }
+  .animate-orb-d { animation: orb-d 6.5s ease-in-out infinite; }
+  
+  .orb-feature {
+    @apply px-4 py-2 text-sm text-white bg-[#ffffff15] backdrop-blur-md border border-white/10 rounded-full shadow-md transition-transform hover:scale-105 hover:bg-[#b49875]/30 cursor-default;
+    white-space: nowrap;
+  }
