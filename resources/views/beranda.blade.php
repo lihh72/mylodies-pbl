@@ -142,6 +142,7 @@
   <!-- Hero Content -->
   <div class="relative z-10 px-6 max-w-4xl animate-fade-in-up">
     <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ffdfbf] via-[#d2ab7c] to-[#b49875] animate-text-gradient drop-shadow-lg min-h-[5.5rem] sm:min-h-[6.5rem] lg:min-h-[8rem] flex items-center justify-center">
+      <span>Your</span>
       <span id="typewriter" class="inline-block whitespace-nowrap transition-all duration-300"></span>
     </h1>
     
@@ -182,13 +183,13 @@
   });
 
   // Typewriter effect
-  const text = ["Your Stage,", "Your Sound.", "Your Moment."];
+  const text = ["Stage,", "Sound.", "Moment."];
   let i = 0, j = 0, current = "", isDeleting = false;
   const speed = 100;
   function type() {
     current = text[i];
     let display = isDeleting ? current.substring(0, j--) : current.substring(0, j++);
-    document.getElementById("typewriter").textContent = display;
+    document.getElementById("typewriter").innerHTML = "&nbsp;" + display;
     if (!isDeleting && j === current.length + 1) {
       isDeleting = true; setTimeout(type, 1000);
     } else if (isDeleting && j === 0) {
@@ -243,9 +244,6 @@
   }
 </style>
 </section>
-
-
-
 
     <!-- About Section - Bright Brand Story -->
 <section id="about" class="relative py-32 bg-white text-gray-800 overflow-hidden">
