@@ -25,7 +25,8 @@ Route::get('/payment', function () {
 
 Route::get('/katalog', function () {
     return view('katalog');
-});
+})->name('katalog');
+
 Route::get('/cart', function () {
     return view('keranjang-salah-ngerjain-hhh');
 });
@@ -36,6 +37,8 @@ Route::get('/edit', function () {
 Route::get('/bungacandupupa', function () {
     return view('riwayat');
 });
+
+Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
