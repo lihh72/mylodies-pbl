@@ -17,6 +17,32 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        .filter-button {
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .filter-button:hover {
+            filter: brightness(0.85);
+            transform: scale(1.1);
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .check-button {
+            transition: transform 0.2s ease;
+        }
+
+        .check-button:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 
@@ -47,7 +73,7 @@
         class="flex justify-center gap-16 py-8 px-4 max-w-6xl mx-auto text-[#3A3A3A] text-sm font-semibold font-sans">
         @foreach ([['icon' => 'keyboard', 'label' => 'Keyboard'], ['icon' => 'guitar', 'label' => 'Guitar'], ['icon' => 'music', 'label' => 'Aerophones'], ['icon' => 'drum', 'label' => 'Traditional Instruments'], ['icon' => 'heart', 'label' => 'Favorites']] as $filter)
             <button type="button"
-                class="flex flex-col items-center space-y-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9D8B76]"
+                class="filter-button flex flex-col items-center space-y-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9D8B76]"
                 aria-label="Filter by {{ $filter['label'] }}">
                 <i class="fas fa-{{ $filter['icon'] }} fa-2x"></i>
                 <span>{{ $filter['label'] }}</span>
@@ -87,27 +113,26 @@
                     [
                         'name' => 'Classic Acoustic Violin',
                         'price' => 'IDR 400.000 / Day',
-                        'img' => asset('images/biola.jpeg') // asset() dipanggil di PHP
+                        'img' => asset('images/biola.jpeg')
                     ],
                 ];
             @endphp
         
             @foreach ($items as $item)
-                <div class="bg-[#F4E6D4] rounded-xl p-4 min-w-[180px] max-w-[180px] flex flex-col items-center">
+                <div class="card-hover bg-[#F4E6D4] rounded-xl p-4 min-w-[180px] max-w-[180px] flex flex-col items-center">
                     <img src="{{ $item['img'] }}" alt="{{ $item['name'] }}" class="mb-3 object-contain w-36 h-36" />
                     <div class="text-xs font-semibold text-[#3A3A3A] w-full flex flex-col justify-between flex-grow">
                         <div>
                             <p class="mb-1">{{ $item['name'] }}</p>
                             <p class="text-[10px] font-normal text-[#3A3A3A]">{{ $item['price'] }}</p>
                         </div>
-                        <button class="bg-[#9D8B76] text-[10px] text-white rounded px-2 py-1 mt-2">
+                        <button class="check-button bg-[#9D8B76] text-[10px] text-white rounded px-2 py-1 mt-2">
                             Check
                         </button>
                     </div>
                 </div>
             @endforeach
         </div>
-        
 
         <button aria-label="Next" class="text-3xl text-gray-700 hover:text-black focus:outline-none">
             <i class="fas fa-chevron-right"></i>
