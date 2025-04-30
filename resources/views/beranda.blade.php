@@ -77,12 +77,28 @@
   <!-- Content Container -->
   <div class="relative z-20 max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
     
-    <!-- Left: Image Collage -->
-    <div class="flex-1 grid grid-cols-2 gap-4">
-        <img src="{{ asset('images/instrument.jpg') }}" class="rounded-2xl shadow-md hover:scale-105 transition-all duration-300" alt="Instrument">
-        <img src="{{ asset('images/studio.jpg') }}" class="rounded-2xl shadow-md hover:scale-105 transition-all duration-300" alt="Studio">
-        <img src="{{ asset('images/microphone.jpg') }}" class="rounded-2xl shadow-md hover:scale-105 transition-all duration-300 col-span-2" alt="Microphone">
-    </div>
+    <!-- Left: Creative Collage -->
+<div class="flex-1 relative h-[460px] w-full">
+    <!-- Base image - large -->
+    <img src="{{ asset('images/instrument.jpg') }}" 
+         class="absolute top-0 left-0 w-[60%] h-[60%] object-cover rounded-xl shadow-xl z-10" 
+         alt="Instrument">
+  
+    <!-- Smaller image top right -->
+    <img src="{{ asset('images/studio.jpg') }}" 
+         class="absolute top-0 right-0 w-[40%] h-[40%] object-cover rounded-lg shadow-md rotate-3 z-20" 
+         alt="Studio">
+  
+    <!-- Wide image bottom center -->
+    <img src="{{ asset('images/microphone.jpg') }}" 
+         class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] h-[35%] object-cover rounded-xl shadow-md -rotate-2 z-0" 
+         alt="Microphone">
+  
+    <!-- Decorative circle -->
+    <div class="absolute -top-6 -left-6 w-12 h-12 bg-[#b49875]/30 rounded-full blur-md"></div>
+    <div class="absolute -bottom-6 -right-6 w-16 h-16 bg-[#b49875]/20 rounded-full blur-lg"></div>
+  </div>
+  
 
     <!-- Right: Story Text -->
     <div class="flex-1 space-y-6">
@@ -207,75 +223,155 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-20 px-6 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-            <div class="space-y-8">
-                <div>
-                    <h4 class="font-bold text-gray-900">How does the rental process work?</h4>
-                    <p class="text-gray-700 mt-2">Choose your instrument, pick a date, and we’ll handle the delivery and pickup. Simple as that.</p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-gray-900">Is a deposit required?</h4>
-                    <p class="text-gray-700 mt-2">Yes, we require a refundable deposit based on the instrument value.</p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-gray-900">Can I cancel my reservation?</h4>
-                    <p class="text-gray-700 mt-2">Cancellations are free up to 24 hours before the scheduled date.</p>
-                </div>
-            </div>
-        </div>
+<section class="bg-white py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-extrabold text-center text-gray-900 mb-14">Frequently Asked Questions</h2>
+  
+      <div class="space-y-6">
+        <!-- FAQ Item 1 -->
+        <details class="group border border-gray-200 rounded-lg p-5 transition-all">
+          <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-gray-800 group-open:text-[#b49875]">
+            <span>How does the rental process work?</span>
+            <svg class="w-5 h-5 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="text-gray-600 mt-4 leading-relaxed">
+            Choose your instrument, pick a date, and we’ll handle the delivery and pickup. Simple as that.
+          </p>
+        </details>
+  
+        <!-- FAQ Item 2 -->
+        <details class="group border border-gray-200 rounded-lg p-5 transition-all">
+          <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-gray-800 group-open:text-[#b49875]">
+            <span>Is a deposit required?</span>
+            <svg class="w-5 h-5 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="text-gray-600 mt-4 leading-relaxed">
+            Yes, we require a refundable deposit based on the instrument value.
+          </p>
+        </details>
+  
+        <!-- FAQ Item 3 -->
+        <details class="group border border-gray-200 rounded-lg p-5 transition-all">
+          <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-gray-800 group-open:text-[#b49875]">
+            <span>Can I cancel my reservation?</span>
+            <svg class="w-5 h-5 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="text-gray-600 mt-4 leading-relaxed">
+            Cancellations are free up to 24 hours before the scheduled date.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+  
     </section>
 
     <!-- Partners -->
-    <section class="bg-[#f9f3ea] py-16">
-        <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-2xl font-bold mb-6 text-gray-900">Trusted by</h2>
-            <div class="flex flex-wrap justify-center items-center gap-8">
-                <img src="{{ asset('images/partner1.png') }}" class="h-12" alt="Partner 1">
-                <img src="{{ asset('images/partner2.png') }}" class="h-12" alt="Partner 2">
-                <img src="{{ asset('images/partner3.png') }}" class="h-12" alt="Partner 3">
-            </div>
+<section class="bg-[#f9f3ea] py-20 relative overflow-hidden">
+    <!-- Background Illustration (Optional) -->
+    <div class="absolute top-0 left-0 w-full h-full bg-[url('/images/pattern.svg')] opacity-5 bg-repeat pointer-events-none"></div>
+  
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-10 tracking-tight">
+        Trusted by Industry Leaders
+      </h2>
+  
+      <div class="flex flex-wrap justify-center items-center gap-12">
+        <div class="grayscale hover:grayscale-0 transition-all duration-300 ease-in-out">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Yamaha_logo.svg/330px-Yamaha_logo.svg.png" class="h-14 md:h-16" alt="Partner 1" />
         </div>
-    </section>
+        <div class="grayscale hover:grayscale-0 transition-all duration-300 ease-in-out">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Fender_guitars_logo.svg/295px-Fender_guitars_logo.svg.png" class="h-14 md:h-16" alt="Partner 2" />
+        </div>
+        <div class="grayscale hover:grayscale-0 transition-all duration-300 ease-in-out">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Gibson_Guitar_logo.svg/330px-Gibson_Guitar_logo.svg.png" class="h-14 md:h-16" alt="Partner 3" />
+        </div>
+        <!-- Tambahkan partner lainnya jika perlu -->
+      </div>
+  
+      <!-- Optional trust message -->
+      <p class="mt-10 text-center text-sm text-gray-600">
+        We’re proud to collaborate with innovators across entertainment, tech, and beyond.
+      </p>
+    </div>
+  </section>
+  
 
     <!-- Contact + Map section already included above -->
 
     <!-- Footer -->
-    <footer class="bg-[#b49875] text-white py-12">
-        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-10">
-            <div>
-                <h3 class="font-bold mb-4">MyLodies</h3>
-                <p>Your reliable partner in sound & performance.</p>
+    <footer class="bg-gradient-to-br from-[#b49875] via-[#9c7b59] to-[#7e6447] text-white py-16 relative overflow-hidden">
+        <!-- Subtle texture background -->
+        <div class="absolute inset-0 bg-[url('/images/noise.png')] opacity-5 pointer-events-none"></div>
+      
+        <div class="relative max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 z-10">
+          <!-- Logo & Brand -->
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <img src="{{ asset('images/logo.png') }}" alt="MyLodies Logo" class="h-10 drop-shadow-lg" />
+              <h3 class="text-2xl font-extrabold tracking-wide">MyLodies</h3>
             </div>
-            <div>
-                <h4 class="font-semibold mb-3">Explore</h4>
-                <ul class="space-y-2">
-                    <li><a href="#" class="hover:underline">Home</a></li>
-                    <li><a href="#" class="hover:underline">About</a></li>
-                    <li><a href="#" class="hover:underline">Rentals</a></li>
-                    <li><a href="#" class="hover:underline">Contact</a></li>
-                </ul>
+            <p class="text-sm text-white/90">Your reliable partner in sound & performance — where every artist finds their stage.</p>
+            <div class="flex space-x-3 mt-4">
+              <a href="#" class="hover:text-white/80 transition"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="hover:text-white/80 transition"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="hover:text-white/80 transition"><i class="fab fa-youtube"></i></a>
             </div>
-            <div>
-                <h4 class="font-semibold mb-3">Help</h4>
-                <ul class="space-y-2">
-                    <li><a href="#" class="hover:underline">FAQ</a></li>
-                    <li><a href="#" class="hover:underline">Terms & Conditions</a></li>
-                    <li><a href="#" class="hover:underline">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-semibold mb-3">Contact</h4>
-                <p>Email: mylodies@gmail.com</p>
-                <p>Phone: 0822 3001 9821</p>
-                <p>Location: Batam, Kepulauan Riau</p>
-            </div>
+          </div>
+      
+          <!-- Explore -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Explore</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#" class="hover:underline hover:text-white/80 transition">Home</a></li>
+              <li><a href="#" class="hover:underline hover:text-white/80 transition">About</a></li>
+              <li><a href="#" class="hover:underline hover:text-white/80 transition">Rentals</a></li>
+              <li><a href="#" class="hover:underline hover:text-white/80 transition">Contact</a></li>
+            </ul>
+          </div>
+      
+          <!-- Help -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Help</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#" class="hover:underline hover:text-white/80 transition">FAQ</a></li>
+              <li><a href="#" class="hover:underline hover:text-white/80 transition">Terms & Conditions</a></li>
+              <li><a href="#" class="hover:underline hover:text-white/80 transition">Privacy Policy</a></li>
+            </ul>
+          </div>
+      
+          <!-- Contact -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Get in Touch</h4>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-start space-x-2">
+                <i class="fas fa-envelope mt-1"></i>
+                <span>mylodies@gmail.com</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <i class="fas fa-phone mt-1"></i>
+                <span>0822 3001 9821</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <i class="fas fa-map-marker-alt mt-1"></i>
+                <span>Batam, Kepulauan Riau</span>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="text-center mt-12 text-sm">
-            &copy; 2025 MyLodies. All rights reserved.
+      
+        <!-- Bottom -->
+        <div class="border-t border-white/20 mt-12 pt-6 text-center text-sm text-white/80 relative z-10">
+          &copy; 2025 <span class="font-semibold">MyLodies</span>. All rights reserved. <span class="italic">Built with rhythm & soul.</span>
         </div>
-    </footer>
+      </footer>
+      
 
 </body>
 </html>
