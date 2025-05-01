@@ -38,6 +38,11 @@ Route::get('/bungacandupupa', function () {
     return view('riwayat');
 });
 
+Route::get('/hasil', function () {
+    return view('hasil');
+    
+})->name('katalog');
+
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 Route::middleware('auth')->group(function () {

@@ -99,35 +99,42 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Product Cards -->
         <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-1 p-4 flex flex-col items-center">
-          <img src="/saxophone.jpg" alt="Alto Saxophone" class="h-40 object-contain mb-4">
+          <img src="/images/saxophone.jpg" alt="Alto Saxophone" class="h-40 object-contain mb-4">
           <h3 class="font-bold text-lg text-center">Alto Saxophone</h3>
           <p class="text-sm text-gray-500">IDR 300.000 / Day</p>
           <button class="mt-3 px-5 py-1 text-sm bg-gradient-to-r from-[#8c735a] to-[#5c4633] text-white rounded-full hover:brightness-110 transition-shadow shadow-md">Check</button>
         </div>
 
         <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-1 p-4 flex flex-col items-center">
-          <img src="/drum.jpg" alt="DW Drum Set" class="h-40 object-contain mb-4">
+          <img src="/images/drum.jpg" alt="DW Drum Set" class="h-40 object-contain mb-4">
           <h3 class="font-bold text-lg text-center">DW Drum Set (Drum Workshop)</h3>
           <p class="text-sm text-gray-500">IDR 450.000 / Day</p>
           <button class="mt-3 px-5 py-1 text-sm bg-gradient-to-r from-[#8c735a] to-[#5c4633] text-white rounded-full hover:brightness-110 transition-shadow shadow-md">Check</button>
         </div>
 
         <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-1 p-4 flex flex-col items-center">
-          <img src="/instrument.jpg" alt="Roland V-Accordion" class="h-40 object-contain mb-4">
+          <img src="/images/instrument.jpg" alt="Roland V-Accordion" class="h-40 object-contain mb-4">
           <h3 class="font-bold text-lg text-center">Roland V-Accordion</h3>
           <p class="text-sm text-gray-500">IDR 250.000 / Day</p>
           <button class="mt-3 px-5 py-1 text-sm bg-gradient-to-r from-[#8c735a] to-[#5c4633] text-white rounded-full hover:brightness-110 transition-shadow shadow-md">Check</button>
         </div>
 
         <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-1 p-4 flex flex-col items-center">
-          <img src="/violin1.jpg" alt="Sonic grey Fender" class="h-40 object-contain mb-4">
+          <img src="/images/violin1.jpg" alt="Sonic grey Fender" class="h-40 object-contain mb-4">
           <h3 class="font-bold text-lg text-center">Sonic grey Fender</h3>
           <p class="text-sm text-gray-500">IDR 100.000 / Day</p>
           <button class="mt-3 px-5 py-1 text-sm bg-gradient-to-r from-[#8c735a] to-[#5c4633] text-white rounded-full hover:brightness-110 transition-shadow shadow-md">Check</button>
         </div>
 
         <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-1 p-4 flex flex-col items-center">
-          <img src="/guitar.png" alt="Electric Guitar" class="h-40 object-contain mb-4">
+            <img src="/images/accordion.jpg" alt="Sonic grey Fender" class="h-40 object-contain mb-4">
+            <h3 class="font-bold text-lg text-center">Accordion</h3>
+            <p class="text-sm text-gray-500">IDR 250.000 / Day</p>
+            <button class="mt-3 px-5 py-1 text-sm bg-gradient-to-r from-[#8c735a] to-[#5c4633] text-white rounded-full hover:brightness-110 transition-shadow shadow-md">Check</button>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-1 p-4 flex flex-col items-center">
+          <img src="/images/gitar1.jpg" alt="Electric Guitar" class="h-40 object-contain mb-4">
           <h3 class="font-bold text-lg text-center">Electric Guitar</h3>
           <p class="text-sm text-gray-500">IDR 200.000 / Day</p>
           <button class="mt-3 px-5 py-1 text-sm bg-gradient-to-r from-[#8c735a] to-[#5c4633] text-white rounded-full hover:brightness-110 transition-shadow shadow-md">Check</button>
