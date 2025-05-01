@@ -72,39 +72,21 @@
           <!-- Product Card 1 -->
           <div class="relative bg-white rounded-3xl overflow-hidden shadow-lg transform group hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
             <div class="relative">
-              <img src="{{ asset('images/sonic-grey-fender.png') }}" alt="Sonic grey Fender" class="w-full h-52 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
-              <div class="absolute top-4 right-4 bg-[#b49875] text-white px-3 py-1 text-xs rounded-full shadow">Top Pick</div>
+              <img src="{{ asset('images/sxophone.jpeg') }}" alt="Sonic grey Fender" class="w-full h-52 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
             </div>
             <div class="p-4">
-              <h3 class="text-lg font-bold text-[#5a4a3b] mb-1">Sonic grey Fender</h3>
-              <div class="mt-2">
-                <span class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[#f6e8d6] to-[#e2cbb3] text-[#5a4a3b] font-semibold text-sm shadow-inner border border-[#d6b896] transition-transform duration-300 group-hover:scale-105">
-                  IDR 100.000 / Hari
-                </span>
-              </div>
-              <p class="mt-3 text-sm text-gray-600 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-                A premium grand piano with rich tonal quality, ideal for concerts and recordings.
-              </p>
-              <button class="mt-4 inline-block px-5 py-2 border border-[#b49875] text-[#b49875] font-medium rounded-full hover:bg-[#b49875] hover:text-white transition-all duration-300">Check Availability</button>
+              <h3 class="text-lg font-bold text-[#5a4a3b] mb-1">Yamaha Saxophone</h3>
+              <button class="mt-4 inline-block px-5 py-2 border border-[#b49875] text-[#b49875] font-medium rounded-full hover:bg-[#b49875] hover:text-white transition-all duration-300">Check Details</button>
             </div>
           </div>
 
           <!-- Product Card 2 -->
           <div class="relative bg-white rounded-3xl overflow-hidden shadow-lg transform group hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
             <div class="relative">
-              <img src="{{ asset('images/gitar1.jpg') }}" alt="Fender Precision Bass" class="w-full h-52 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
-              <div class="absolute top-4 right-4 bg-[#b49875] text-white px-3 py-1 text-xs rounded-full shadow">Top Pick</div>
+              <img src="{{ asset('images/gitarblack.jpeg') }}" alt="Fender Precision Bass" class="w-full h-52 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
             </div>
             <div class="p-4">
               <h3 class="text-lg font-bold text-[#5a4a3b] mb-1">Fender Precision Bass</h3>
-              <div class="mt-2">
-                <span class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[#f6e8d6] to-[#e2cbb3] text-[#5a4a3b] font-semibold text-sm shadow-inner border border-[#d6b896] transition-transform duration-300 group-hover:scale-105">
-                  IDR 290.000 / Day
-                </span>
-              </div>
-              <p class="mt-3 text-sm text-gray-600 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-                Legendary bass tone for rock, jazz, and funk performances.
-              </p>
               <button class="mt-4 inline-block px-5 py-2 border border-[#b49875] text-[#b49875] font-medium rounded-full hover:bg-[#b49875] hover:text-white transition-all duration-300">Check Availability</button>
             </div>
           </div>
@@ -113,18 +95,10 @@
           <div class="relative bg-white rounded-3xl overflow-hidden shadow-lg transform group hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
             <div class="relative">
               <img src="{{ asset('images/violin1.jpg') }}" alt="Classic Acoustic Violin" class="w-full h-52 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
-              <div class="absolute top-4 right-4 bg-[#b49875] text-white px-3 py-1 text-xs rounded-full shadow">Top Pick</div>
             </div>
             <div class="p-4">
               <h3 class="text-lg font-bold text-[#5a4a3b] mb-1">Classic Acoustic Violin</h3>
               <div class="mt-2">
-                <span class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[#f6e8d6] to-[#e2cbb3] text-[#5a4a3b] font-semibold text-sm shadow-inner border border-[#d6b896] transition-transform duration-300 group-hover:scale-105">
-                  IDR 400.000 / Day
-                </span>
-              </div>
-              <p class="mt-3 text-sm text-gray-600 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-                Handcrafted violin with warm, mellow sound. Perfect for orchestras.
-              </p>
               <button class="mt-4 inline-block px-5 py-2 border border-[#b49875] text-[#b49875] font-medium rounded-full hover:bg-[#b49875] hover:text-white transition-all duration-300">Check Availability</button>
             </div>
           </div>

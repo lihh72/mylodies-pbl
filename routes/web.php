@@ -38,6 +38,15 @@ Route::get('/riwayat', function () {
     return view('riwayat');
 });
 
+Route::get('/ya', function () {
+    return view('profile-user');
+});
+
+Route::get('/hasil', function () {
+    return view('hasil');
+    
+})->name('katalog');
+
 Route::get('/detail', function () {
     return view('detail');
 });
