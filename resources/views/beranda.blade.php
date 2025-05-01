@@ -266,12 +266,11 @@
            alt="Instrument">
       <img src="/images/studio.jpg"
            class="absolute bottom-10 right-0 w-[50%] object-cover rounded-xl shadow-xl z-20 blur-sm hover:blur-0 transition" alt="Studio">
-      <img src="/images/microphone.jpg"
+      <img src="/images/piano2.jpg"
            class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[70%] object-cover rounded-xl z-10 opacity-40 hover:opacity-100 transition" alt="Mic">
 
       <!-- Badges -->
-      <div class="absolute top-2 left-2 bg-white/10 backdrop-blur-md px-3 py-1 text-xs rounded-full text-white border border-white/20">🎧 Artist's Pick</div>
-      <div class="absolute bottom-2 right-2 bg-white/10 backdrop-blur-md px-3 py-1 text-xs rounded-full text-white border border-white/20">💡 Studio Certified</div>
+     
     </div>
 
     <!-- Right: Message & Floating Elements -->
@@ -284,11 +283,6 @@
         Our stage-ready equipment powers indie acts, global festivals, and experimental studios. Whether you're setting up a basement jam or a festival stage — we are your unseen crew.
       </p>
 
-      <!-- Floating quote bubble -->
-      <div class="bg-white/10 border border-white/20 rounded-xl p-4 max-w-sm backdrop-blur-md animate-float shadow-xl">
-        <p class="italic text-sm text-white">“Feels like renting from a label. Everything's pro and packed like tour gear.”</p>
-        <span class="block mt-2 text-xs text-[#b49875] font-semibold">– DJ KENTA</span>
-      </div>
 <!-- Feature Pods Cluster with SVG Icons -->
 <div class="relative grid grid-cols-2 gap-4 max-w-md">
   <div class="feature-pod animate-in delay-[100ms]">
@@ -333,12 +327,13 @@
     </div>
   </div>
 
-  <!-- Soundwave SVG bottom -->
-  <div class="absolute bottom-0 left-0 w-full overflow-hidden z-10">
-    <svg class="w-full h-[120px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-      <path fill="#f9e5c9" fill-opacity="1" d="M0,160L48,165.3C96,171,192,181,288,197.3C384,213,480,235,576,229.3C672,224,768,192,864,165.3C960,139,1056,117,1152,122.7C1248,128,1344,160,1392,176L1440,192L1440,320L0,320Z"></path>
-    </svg>
-  </div>
+    <!-- Artistic Wave Transition to Rentals Section -->
+<div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-0">
+  <svg class="relative block w-full h-[80px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <path fill="#fef8f2" fill-opacity="1" d="M0,64L40,96C80,128,160,192,240,208C320,224,400,192,480,192C560,192,640,224,720,229.3C800,235,880,213,960,213.3C1040,213,1120,235,1200,224C1280,213,1360,171,1400,149.3L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path>
+  </svg>
+</div>
+
 </section>
 
     
@@ -399,7 +394,7 @@
 </section>
 
 <section class="bg-[#f9f3ea] py-20 relative overflow-hidden">
-  <div class="absolute top-0 left-0 w-full h-full bg-[url('/images/pattern.svg')] opacity-5 bg-repeat pointer-events-none"></div>
+  <div class="absolute top-0 left-0 w-full h-full bg-[url('/images/pattern1.svg')] opacity-5 bg-repeat pointer-events-none"></div>
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <h2 class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-10 tracking-tight">
@@ -424,6 +419,16 @@
         <a href="https://www.shure.com/" target="_blank" rel="noopener noreferrer">
           <div class="grayscale hover:grayscale-0 transition-all duration-300 ease-in-out">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Shure_Logo_2024.svg/960px-Shure_Logo_2024.svg.png" class="h-14 md:h-16" alt="Shure Logo" />
+          </div>
+        </a>
+        <a href="https://www.shure.com/" target="_blank" rel="noopener noreferrer">
+          <div class="grayscale hover:grayscale-0 transition-all duration-300 ease-in-out">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Stradivarius_logo.svg/512px-Stradivarius_logo.svg.png" class="h-14 md:h-16" alt="Stradivarius Logo" />
+          </div>
+        </a>
+        <a href="https://www.shure.com/" target="_blank" rel="noopener noreferrer">
+          <div class="grayscale hover:grayscale-0 transition-all duration-300 ease-in-out">
+            <img src="images/KL2_Politeknik Negeri Batam.svg" class="h-14 md:h-16" alt="Stradivarius Logo" />
           </div>
         </a>
         @endfor
@@ -524,12 +529,7 @@
 
 <section id="contact" class="bg-[#b49875] text-white py-16 px-6 relative">
   
-  <!-- Decorative wave transition to footer -->
-  <div class="absolute bottom-0 left-0 right-0 overflow-hidden leading-[0]">
-    <svg class="relative block w-full h-[40px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-      <path fill="#9c7b59" d="M0,160L1440,32L1440,320L0,320Z"></path>
-    </svg>
-  </div>
+
 
   <div class="max-w-4xl mx-auto text-center relative z-10">
     <h2 class="text-3xl font-bold mb-4">Stay in Tune</h2>
@@ -541,12 +541,13 @@
         class="bg-white text-[#b49875] font-semibold px-6 py-3 rounded-full hover:bg-gray-200 transition">Subscribe</button>
     </form>
   </div>
+  
 </section>
 
 <!-- Footer -->
 <footer class="bg-gradient-to-br from-[#9c7b59] via-[#8d6f50] to-[#7e6447] text-white py-16 relative overflow-hidden">
   <!-- Subtle texture -->
-  <div class="absolute inset-0 bg-[url('/images/noise.png')] opacity-5 pointer-events-none"></div>
+  <div class="absolute inset-0 bg-[url('/images/texture-noise.png')] opacity-5 pointer-events-none"></div>
 
   <div class="relative max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 z-10">
     <!-- Logo & Brand -->
