@@ -38,6 +38,10 @@ Route::get('/bungacandupupa', function () {
     return view('riwayat');
 });
 
+Route::get('/ya', function () {
+    return view('profile-user');
+});
+
 Route::get('/hasil', function () {
     return view('hasil');
     
