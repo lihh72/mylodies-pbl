@@ -122,7 +122,7 @@
     <!-- Produk 1 -->
     <div class="bg-[#f5ede4] rounded-2xl border border-[#e0d5cb] shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-1 scale-105 p-4 flex flex-col items-center text-center">
         <img src="/images/gitar1.jpg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
-        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Electric Guitar</h3>
+        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Gitar Electric Aloha Original</h3>
         <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 270.000 / Day</p>
         <button class="px-4 py-1 text-xs font-semibold bg-gradient-to-r from-[#8c735a] to-[#5c4633] text-white rounded-full shadow hover:shadow-md hover:brightness-110 transition">Check</button>
     </div>
@@ -130,7 +130,7 @@
     <!-- Produk 2 -->
     <div class="bg-[#f5ede4] rounded-2xl border border-[#e0d5cb] shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-1 scale-105 p-4 flex flex-col items-center text-center">
         <img src="/images/accordion.jpg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
-        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Electric Guitar</h3>
+        <h3 class="font-bold text-sm text-[#5c4633] mb-1">STAINER ACCORDION 60</h3>
         <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 280.000 / Day</p>
         <button class="px-4 py-1 text-xs font-semibold bg-gradient-to-r from-[#8c735a] to-[#5c4633] text-white rounded-full shadow hover:shadow-md hover:brightness-110 transition">Check</button>
     </div>
@@ -138,80 +138,80 @@
     <!-- Produk 3 -->
     <div class="bg-[#f5ede4] rounded-2xl border border-[#e0d5cb] shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-1 scale-105 p-4 flex flex-col items-center text-center">
         <img src="/images/biola.jpeg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
-        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Electric Guitar</h3>
-        <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 290.000 / Day</p>
+        <h3 class="font-bold text-sm text-[#5c4633] mb-1">YAMAHA, Violin (YVN00344) </h3>
+        <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 300.000 / Day</p>
         <button class="px-4 py-1 text-xs font-semibold bg-gradient-to-r from-[#8c735a] to-[#5c4633] text-white rounded-full shadow hover:shadow-md hover:brightness-110 transition">Check</button>
     </div>
   
     <!-- Produk 4 -->
     <div class="bg-[#f5ede4] rounded-2xl border border-[#e0d5cb] shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-1 scale-105 p-4 flex flex-col items-center text-center">
         <img src="/images/drum.jpg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
-        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Electric Guitar</h3>
-        <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 275.000 / Day</p>
+        <h3 class="font-bold text-sm text-[#5c4633] mb-1">PEARL DRUM SET EXX-725</h3>
+        <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 500.000 / Day</p>
         <button class="px-4 py-1 text-xs font-semibold bg-gradient-to-r from-[#8c735a] to-[#5c4633] text-white rounded-full shadow hover:shadow-md hover:brightness-110 transition">Check</button>
     </div>
   
     <!-- Produk 5 -->
     <div class="bg-[#f5ede4] rounded-2xl border border-[#e0d5cb] shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-1 scale-105 p-4 flex flex-col items-center text-center">
-        <img src="/images/instrument.jpg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
-        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Electric Guitar</h3>
+        <img src="/images/gitar2.jpg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
+        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Fender Acoustic Guitar</h3>
         <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 260.000 / Day</p>
         <button class="px-4 py-1 text-xs font-semibold bg-gradient-to-r from-[#8c735a] to-[#5c4633] text-white rounded-full shadow hover:shadow-md hover:brightness-110 transition">Check</button>
     </div>
   
     <!-- Produk 6 -->
     <div class="bg-[#f5ede4] rounded-2xl border border-[#e0d5cb] shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-1 scale-105 p-4 flex flex-col items-center text-center">
-        <img src="/images/instrument1.jpg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
-        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Electric Guitar</h3>
-        <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 270.000 / Day</p>
+        <img src="/images/piano.jpeg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
+        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Steinway&Sons Hinves Piano</h3>
+        <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 600.000 / Day</p>
         <button class="px-4 py-1 text-xs font-semibold bg-gradient-to-r from-[#8c735a] to-[#5c4633] text-white rounded-full shadow hover:shadow-md hover:brightness-110 transition">Check</button>
     </div>
   
     <!-- Produk 7 -->
     <div class="bg-[#f5ede4] rounded-2xl border border-[#e0d5cb] shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-1 scale-105 p-4 flex flex-col items-center text-center">
-        <img src="/images/microphone.jpg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
-        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Electric Guitar</h3>
+        <img src="/images/harmonika.jpg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
+        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Hohner Harmonica 270</h3>
         <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 280.000 / Day</p>
         <button class="px-4 py-1 text-xs font-semibold bg-gradient-to-r from-[#8c735a] to-[#5c4633] text-white rounded-full shadow hover:shadow-md hover:brightness-110 transition">Check</button>
     </div>
   
     <!-- Produk 8 -->
     <div class="bg-[#f5ede4] rounded-2xl border border-[#e0d5cb] shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-1 scale-105 p-4 flex flex-col items-center text-center">
-        <img src="/images/piano1.jpg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
-        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Electric Guitar</h3>
-        <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 290.000 / Day</p>
+        <img src="/images/saxophone.jpg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
+        <h3 class="font-bold text-sm text-[#5c4633] mb-1">yanagisawa saxophones</h3>
+        <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 340.000 / Day</p>
         <button class="px-4 py-1 text-xs font-semibold bg-gradient-to-r from-[#8c735a] to-[#5c4633] text-white rounded-full shadow hover:shadow-md hover:brightness-110 transition">Check</button>
     </div>
   
     <!-- Produk 9 -->
     <div class="bg-[#f5ede4] rounded-2xl border border-[#e0d5cb] shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-1 scale-105 p-4 flex flex-col items-center text-center">
-        <img src="/images/gitar1.jpg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
-        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Electric Guitar</h3>
-        <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 275.000 / Day</p>
+        <img src="/images/guitar1.webp" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
+        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Gibson V Electric Guitar</h3>
+        <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 375.000 / Day</p>
         <button class="px-4 py-1 text-xs font-semibold bg-gradient-to-r from-[#8c735a] to-[#5c4633] text-white rounded-full shadow hover:shadow-md hover:brightness-110 transition">Check</button>
     </div>
   
     <!-- Produk 10 -->
     <div class="bg-[#f5ede4] rounded-2xl border border-[#e0d5cb] shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-1 scale-105 p-4 flex flex-col items-center text-center">
-        <img src="/images/saxophone.jpg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
-        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Electric Guitar</h3>
-        <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 260.000 / Day</p>
+        <img src="/images/drum1.jpeg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
+        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Ludwik Drum Blue set</h3>
+        <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 560.000 / Day</p>
         <button class="px-4 py-1 text-xs font-semibold bg-gradient-to-r from-[#8c735a] to-[#5c4633] text-white rounded-full shadow hover:shadow-md hover:brightness-110 transition">Check</button>
     </div>
   
     <!-- Produk 11 -->
     <div class="bg-[#f5ede4] rounded-2xl border border-[#e0d5cb] shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-1 scale-105 p-4 flex flex-col items-center text-center">
-        <img src="/images/violin1.jpg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
-        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Electric Guitar</h3>
+        <img src="/images/bass.jpeg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
+        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Ibanez Bass Guitar 5-Strings</h3>
         <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 260.000 / Day</p>
         <button class="px-4 py-1 text-xs font-semibold bg-gradient-to-r from-[#8c735a] to-[#5c4633] text-white rounded-full shadow hover:shadow-md hover:brightness-110 transition">Check</button>
     </div>
 
     <!-- Produk 12 -->
     <div class="bg-[#f5ede4] rounded-2xl border border-[#e0d5cb] shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-1 scale-105 p-4 flex flex-col items-center text-center">
-        <img src="/images/biola.jpeg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
-        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Electric Guitar</h3>
-        <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 260.000 / Day</p>
+        <img src="/images/djembe.jpeg" alt="Electric Guitar" class="w-full h-32 object-cover mb-3 rounded-md">
+        <h3 class="font-bold text-sm text-[#5c4633] mb-1">Meinl White Ash Djembe</h3>
+        <p class="text-xs text-[#6b5e53] font-semibold mb-2">IDR 360.000 / Day</p>
         <button class="px-4 py-1 text-xs font-semibold bg-gradient-to-r from-[#8c735a] to-[#5c4633] text-white rounded-full shadow hover:shadow-md hover:brightness-110 transition">Check</button>
     </div>
 
