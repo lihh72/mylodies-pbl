@@ -34,8 +34,12 @@ Route::get('/edit', function () {
     return view('edit-user');
 });
 
-Route::get('/bungacandupupa', function () {
+Route::get('/riwayat', function () {
     return view('riwayat');
+});
+
+Route::get('/detail', function () {
+    return view('detail');
 });
 
 Route::get('/search', [SearchController::class, 'index'])->name('search');
