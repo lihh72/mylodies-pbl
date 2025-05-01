@@ -142,6 +142,7 @@
   <!-- Hero Content -->
   <div class="relative z-10 px-6 max-w-4xl animate-fade-in-up">
     <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ffdfbf] via-[#d2ab7c] to-[#b49875] animate-text-gradient drop-shadow-lg min-h-[5.5rem] sm:min-h-[6.5rem] lg:min-h-[8rem] flex items-center justify-center">
+      <span>Your</span>
       <span id="typewriter" class="inline-block whitespace-nowrap transition-all duration-300"></span>
     </h1>
     
@@ -182,13 +183,13 @@
   });
 
   // Typewriter effect
-  const text = ["Your Stage,", "Your Sound.", "Your Moment."];
+  const text = ["Stage,", "Sound.", "Moment."];
   let i = 0, j = 0, current = "", isDeleting = false;
   const speed = 100;
   function type() {
     current = text[i];
     let display = isDeleting ? current.substring(0, j--) : current.substring(0, j++);
-    document.getElementById("typewriter").textContent = display;
+    document.getElementById("typewriter").innerHTML = "&nbsp;" + display;
     if (!isDeleting && j === current.length + 1) {
       isDeleting = true; setTimeout(type, 1000);
     } else if (isDeleting && j === 0) {
@@ -241,89 +242,106 @@
   .animate-eq {
     animation: eq 1.5s ease-in-out infinite;
   }
+
 </style>
 </section>
 
-
-
-
     <!-- About Section - Bright Brand Story -->
-<section id="about" class="relative py-32 bg-white text-gray-800 overflow-hidden">
+   <section id="about" class="relative py-56 bg-[#1e1b16] text-white overflow-hidden">
+  <!-- Spotlight Background -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-[#1e1b16]/80 to-transparent z-0"></div>
 
-  <!-- Decorative top waveform -->
-  <div class="absolute top-0 left-0 w-full h-16 bg-[url('/images/wave-top-light.svg')] bg-repeat-x bg-top z-10 opacity-10"></div>
-
-  <!-- Content Container -->
-  <div class="relative z-20 max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
-    
-    <!-- Left: Creative Collage -->
-<div class="flex-1 relative h-[460px] w-full">
-    <!-- Base image - large -->
-    <img src="{{ asset('images/instrument.jpg') }}" 
-         class="absolute top-0 left-0 w-[60%] h-[60%] object-cover rounded-xl shadow-xl z-10" 
-         alt="Instrument">
-  
-    <!-- Smaller image top right -->
-    <img src="{{ asset('images/studio.jpg') }}" 
-         class="absolute top-0 right-0 w-[40%] h-[40%] object-cover rounded-lg shadow-md rotate-3 z-20" 
-         alt="Studio">
-  
-    <!-- Wide image bottom center -->
-    <img src="{{ asset('images/microphone.jpg') }}" 
-         class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] h-[35%] object-cover rounded-xl shadow-md -rotate-2 z-0" 
-         alt="Microphone">
-  
-    <!-- Decorative circle -->
-    <div class="absolute -top-6 -left-6 w-12 h-12 bg-[#b49875]/30 rounded-full blur-md"></div>
-    <div class="absolute -bottom-6 -right-6 w-16 h-16 bg-[#b49875]/20 rounded-full blur-lg"></div>
+  <!-- Particle Layer -->
+  <div class="absolute inset-0 z-10 pointer-events-none">
+    <canvas id="particles-bg" class="w-full h-full opacity-10"></canvas> <!-- (diisi dengan JS particles.js misalnya) -->
   </div>
-  
 
-    <!-- Right: Story Text -->
-    <div class="flex-1 space-y-6">
-        <h2 class="text-4xl md:text-5xl font-black leading-tight text-[#5a4a3b]">
-            We’re Not Just Rental,<br><span class="text-[#b49875]">We’re Stage Ready.</span>
-        </h2>
-        <p class="text-lg leading-relaxed text-gray-700">
-            MyLodies is more than a platform — it's a creative ally. We empower 
-            <strong>indie artists</strong>, <strong>festival organizers</strong>, and <strong>studio professionals</strong> 
-            with trusted tools, fast access, and peace of mind.
-        </p>
+  <!-- Main Content -->
+  <div class="relative z-20 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-24">
 
-        <!-- Key Points -->
-        <div class="grid grid-cols-2 gap-4 mt-6 text-sm text-gray-600">
-            <div class="flex items-center space-x-3">
-                <span class="inline-block w-3 h-3 bg-[#b49875] rounded-full"></span>
-                <span>Next-day delivery</span>
-            </div>
-            <div class="flex items-center space-x-3">
-                <span class="inline-block w-3 h-3 bg-[#b49875] rounded-full"></span>
-                <span>Studio-tested quality</span>
-            </div>
-            <div class="flex items-center space-x-3">
-                <span class="inline-block w-3 h-3 bg-[#b49875] rounded-full"></span>
-                <span>Flexible return</span>
-            </div>
-            <div class="flex items-center space-x-3">
-                <span class="inline-block w-3 h-3 bg-[#b49875] rounded-full"></span>
-                <span>24/7 tech support</span>
-            </div>
-        </div>
+    <!-- Left: Hero Visual Layered -->
+    <div class="flex-1 relative h-[600px] w-full">
+      <img src="/images/instrument1.jpg"
+           class="absolute top-0 left-0 w-[60%] object-cover rounded-2xl rounded-xl shadow-xl z-20 blur-sm hover:blur-0 transition"
+           alt="Instrument">
+      <img src="/images/studio.jpg"
+           class="absolute bottom-10 right-0 w-[50%] object-cover rounded-xl shadow-xl z-20 blur-sm hover:blur-0 transition" alt="Studio">
+      <img src="/images/microphone.jpg"
+           class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[70%] object-cover rounded-xl z-10 opacity-40 hover:opacity-100 transition" alt="Mic">
 
-        <!-- CTA -->
-        <a href="#rentals" class="inline-block mt-8 bg-[#b49875] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#9a7b56] transition">
-            Browse Instruments →
-        </a>
+      <!-- Badges -->
+      <div class="absolute top-2 left-2 bg-white/10 backdrop-blur-md px-3 py-1 text-xs rounded-full text-white border border-white/20">🎧 Artist's Pick</div>
+      <div class="absolute bottom-2 right-2 bg-white/10 backdrop-blur-md px-3 py-1 text-xs rounded-full text-white border border-white/20">💡 Studio Certified</div>
     </div>
+
+    <!-- Right: Message & Floating Elements -->
+    <div class="flex-1 space-y-10">
+      <h2 class="text-5xl font-extrabold leading-tight text-[#f9e5c9] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+        This is <span class="text-[#b49875]">More Than Rental</span> —<br>It’s A Production.
+      </h2>
+
+      <p class="text-lg leading-relaxed text-[#ddd] max-w-xl">
+        Our stage-ready equipment powers indie acts, global festivals, and experimental studios. Whether you're setting up a basement jam or a festival stage — we are your unseen crew.
+      </p>
+
+      <!-- Floating quote bubble -->
+      <div class="bg-white/10 border border-white/20 rounded-xl p-4 max-w-sm backdrop-blur-md animate-float shadow-xl">
+        <p class="italic text-sm text-white">“Feels like renting from a label. Everything's pro and packed like tour gear.”</p>
+        <span class="block mt-2 text-xs text-[#b49875] font-semibold">– DJ KENTA</span>
+      </div>
+<!-- Feature Pods Cluster with SVG Icons -->
+<div class="relative grid grid-cols-2 gap-4 max-w-md">
+  <div class="feature-pod animate-in delay-[100ms]">
+    <!-- Delivery Icon -->
+    <svg class="w-5 h-5 text-[#f9e5c9]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <path d="M3 16V6a1 1 0 011-1h11v11H4a1 1 0 01-1-1z" />
+      <path d="M14 9h5l3 3v4a1 1 0 01-1 1h-2" />
+      <circle cx="6" cy="18" r="2" />
+      <circle cx="18" cy="18" r="2" />
+    </svg>
+    <p>Next-day delivery</p>
   </div>
-  <!-- Artistic Wave Transition to Rentals Section -->
-<div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-0">
-  <svg class="relative block w-full h-[80px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-    <path fill="#fef8f2" fill-opacity="1" d="M0,64L40,96C80,128,160,192,240,208C320,224,400,192,480,192C560,192,640,224,720,229.3C800,235,880,213,960,213.3C1040,213,1120,235,1200,224C1280,213,1360,171,1400,149.3L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path>
-  </svg>
+
+  <div class="feature-pod animate-in delay-[200ms]">
+    <svg class="w-5 h-5 text-[#f9e5c9]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <path d="M4 21v-4m0-4v-4m0-4V3m8 18v-6m0-4V3m8 18v-10m0-4V3" />
+    </svg>
+    <p>Studio-tested quality</p>
+  </div>
+
+  <div class="feature-pod animate-in delay-[300ms]">
+    <svg class="w-5 h-5 text-[#f9e5c9]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <path d="M3 12h15a3 3 0 013 3v0a3 3 0 01-3 3h-4" />
+      <path d="M7 16l-4-4 4-4" />
+    </svg>
+    <p>Flexible return</p>
+  </div>
+
+  <div class="feature-pod animate-in delay-[400ms]">
+    <svg class="w-5 h-5 text-[#f9e5c9]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <path d="M14.7 6.3a4 4 0 01-5.4 5.4l-5.3 5.3a2 2 0 102.8 2.8l5.3-5.3a4 4 0 015.4-5.4z" />
+    </svg>
+    <p>24/7 tech support</p>
+  </div>
 </div>
 
+
+      <!-- CTA -->
+      <a href="#rentals" class="inline-block bg-[#b49875] text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-[#a58262] transition-all">
+        🚚 Explore Gear Lineup
+      </a>
+    </div>
+  </div>
+
+  <!-- Soundwave SVG bottom -->
+  <div class="absolute bottom-0 left-0 w-full overflow-hidden z-10">
+    <svg class="w-full h-[120px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#f9e5c9" fill-opacity="1" d="M0,160L48,165.3C96,171,192,181,288,197.3C384,213,480,235,576,229.3C672,224,768,192,864,165.3C960,139,1056,117,1152,122.7C1248,128,1344,160,1392,176L1440,192L1440,320L0,320Z"></path>
+    </svg>
+  </div>
 </section>
+
+    
 
 
 
