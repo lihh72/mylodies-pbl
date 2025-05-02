@@ -70,38 +70,7 @@
         <!-- Product Cards inside Activities Section -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
           <!-- Product Card 1 -->
-          <div class="relative bg-white rounded-3xl overflow-hidden shadow-lg transform group hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
-            <div class="relative">
-              <img src="{{ asset('images/sxophone.jpeg') }}" alt="Sonic grey Fender" class="w-full h-52 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
-            </div>
-            <div class="p-4">
-              <h3 class="text-lg font-bold text-[#5a4a3b] mb-1">Yamaha Saxophone</h3>
-              <button class="mt-4 inline-block px-5 py-2 border border-[#b49875] text-[#b49875] font-medium rounded-full hover:bg-[#b49875] hover:text-white transition-all duration-300">Check Details</button>
-            </div>
-          </div>
-
-          <!-- Product Card 2 -->
-          <div class="relative bg-white rounded-3xl overflow-hidden shadow-lg transform group hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
-            <div class="relative">
-              <img src="{{ asset('images/gitarblack.jpeg') }}" alt="Fender Precision Bass" class="w-full h-52 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
-            </div>
-            <div class="p-4">
-              <h3 class="text-lg font-bold text-[#5a4a3b] mb-1">Fender Precision Bass</h3>
-              <button class="mt-4 inline-block px-5 py-2 border border-[#b49875] text-[#b49875] font-medium rounded-full hover:bg-[#b49875] hover:text-white transition-all duration-300">Check Availability</button>
-            </div>
-          </div>
-
-          <!-- Product Card 3 -->
-          <div class="relative bg-white rounded-3xl overflow-hidden shadow-lg transform group hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
-            <div class="relative">
-              <img src="{{ asset('images/violin1.jpg') }}" alt="Classic Acoustic Violin" class="w-full h-52 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
-            </div>
-            <div class="p-4">
-              <h3 class="text-lg font-bold text-[#5a4a3b] mb-1">Classic Acoustic Violin</h3>
-              <div class="mt-2">
-              <button class="mt-4 inline-block px-5 py-2 border border-[#b49875] text-[#b49875] font-medium rounded-full hover:bg-[#b49875] hover:text-white transition-all duration-300">Check Availability</button>
-            </div>
-          </div>
+          
         </div>
 
         <!-- My Favorites Button -->
