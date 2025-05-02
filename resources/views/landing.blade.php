@@ -274,7 +274,7 @@
         </div>
 
         <div class="text-center mt-16">
-            <a href="{{ route('katalog') }}" class="inline-block bg-[#b49875] text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-[#9a7b56] transition">Explore Full Catalog →</a>
+            <a href="{{ route('catalog') }}" class="inline-block bg-[#b49875] text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-[#9a7b56] transition">Explore Full Catalog →</a>
         </div>
     </div>
 </section>

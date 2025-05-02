@@ -16,42 +16,43 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', function () {
-    return view('beranda');
-});
+    return view('landing');
+})->name('landing');
 
 Route::get('/payment', function () {
     return view('payment');
 });
 
-Route::get('/katalog', function () {
-    return view('katalog');
-})->name('katalog');
+Route::get('/catalog', function () {
+    return view('catalog');
+})->name('catalog');
 
 Route::get('/cart', function () {
-    return view('keranjang-salah-ngerjain-hhh');
-});
+    return view('cart');
+})->name('cart');
+
 Route::get('/edit', function () {
     return view('edit-user');
 });
 
 Route::get('/riwayat', function () {
-    return view('riwayat');
+    return view('history');
 });
 
 Route::get('/ya', function () {
     return view('profile-user');
 });
 
-Route::get('/hasil', function () {
-    return view('hasil');
+Route::get('/search', function () {
+    return view('search');
     
-})->name('katalog');
-
-Route::get('/detail', function () {
-    return view('detail');
 });
 
-Route::get('/search', [SearchController::class, 'index'])->name('search');
+Route::get('/product', function () {
+    return view('product');
+});
+
+//Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
