@@ -18,7 +18,7 @@
     </div>
     <nav class="flex items-center gap-6 font-medium text-[16px]">
       <a href="#" class="text-black hover:underline hover:text-white transition" tabindex="0">Home</a>
-      <a href="#" class="text-black hover:underline hover:text-white transition" tabindex="0">Ploduct</a>
+      <a href="#" class="text-black hover:underline hover:text-white transition" tabindex="0">Product</a>
       <a href="#" class="text-black hover:underline hover:text-white transition" tabindex="0">About Us</a>
       <div class="flex gap-5 text-[22px] text-black">
         <button role="button" aria-label="Shopping cart" class="hover:text-white transition">
