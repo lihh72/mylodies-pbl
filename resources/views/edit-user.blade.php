@@ -41,34 +41,34 @@
       <nav class="w-full text-[15px] mb-10 space-y-2">
         <a href="#" class="block text-black py-2 px-4 rounded hover:bg-[#e5d6c2] hover:pl-5 transition-all">Rent History</a>
         <a href="#" class="block text-black py-2 px-4 rounded hover:bg-[#e5d6c2] hover:pl-5 transition-all">Transaction</a>
-        <a href="#" class="block bg-[#a9937f] text-white font-semibold py-2 px-4 rounded shadow-md">Change Password</a>
+        <a href="#" class="block bg-[#c4b6a9] text-white font-semibold py-2 px-4 rounded shadow-md">Change Password</a>
         <a href="#" class="block text-black py-2 px-4 rounded hover:bg-[#e5d6c2] hover:pl-5 transition-all">Settings</a>
       </nav>
-      <button type="button" aria-label="Change Account" class="bg-[#a9937f] text-white font-bold text-sm py-2 px-6 rounded-xl shadow-md hover:bg-[#7a664f] hover:text-black hover:scale-105 transition-all flex items-center gap-2 w-full justify-center">
+      <button type="button" aria-label="Change Account" class="bg-[#a9937f] text-white font-bold text-sm py-2 px-6 rounded-full shadow-md hover:bg-[#7a664f] hover:text-black hover:scale-105 transition-all flex items-center gap-2 w-full justify-center">
         <i class="bx bx-log-out text-[20px]"></i> Change Account
       </button>
     </aside>
 
     <main class="flex-grow p-10 flex flex-col">
       <h3 class="font-bold text-[28px] text-[#5a3e1b] mb-6 ml-2 tracking-wide">Change Your Password</h3>
-      <form class="bg-[#f3e6d3] p-6 rounded-lg w-[90%] max-w-[1200px] mx-auto mt-6" aria-labelledby="password-form-title">
+      <form class="bg-[#f3e6d3] p-6 rounded-lg w-[85%] max-w-[1200px] mx-auto mt-2" aria-labelledby="password-form-title">
         <div>
           <label for="prev-password" class="block text-sm font-semibold text-[#5a3e1b] mb-2">Previous Password</label>
-          <input type="password" id="prev-password" required class="w-full border-2 border-[#c4b6a9] p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#a9937f]">
+          <input type="password" id="prev-password" required class="w-full border-2 border-[#c4b6a9] p-3 rounded-xl focus:outline-none focus:ring-4 focus:ring-[#e0d6cc] focus:border-[#a9937f]">
+
         </div>
         <div>
           <label for="new-password" class="block text-sm font-semibold text-[#5a3e1b] mb-2">New Password</label>
-          <input type="password" id="new-password" required class="w-full border-2 border-[#c4b6a9] p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#a9937f]">
+          <input type="password" id="prev-password" required class="w-full border-2 border-[#c4b6a9] p-3 rounded-xl focus:outline-none focus:ring-4 focus:ring-[#e0d6cc] focus:border-[#a9937f]">
         </div>
         <div>
           <label for="confirm-password" class="block text-sm font-semibold text-[#5a3e1b] mb-2">Confirm New Password</label>
-          <input type="password" id="confirm-password" required class="w-full border-2 border-[#c4b6a9] p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#a9937f]">
+          <input type="password" id="prev-password" required class="w-full border-2 border-[#c4b6a9] p-3 rounded-xl focus:outline-none focus:ring-4 focus:ring-[#e0d6cc] focus:border-[#a9937f]">
         </div>
         <div>
           <label for="otp-code" class="block text-sm font-semibold text-[#5a3e1b] mb-2">OTP Code</label>
-          <input type="text" id="otp-code" required class="w-full border-2 border-[#c4b6a9] p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#a9937f]">
-        </div>
-        <button type="submit" class="bg-[#a9937f] text-white font-bold py-3 px-6 rounded-full hover:bg-[#7a664f] hover:scale-105 transition-all shadow-md w-full text-center text-lg flex justify-center items-center mt-4">
+          <input type="password" id="prev-password" required class="w-full border-2 border-[#c4b6a9] p-3 rounded-xl focus:outline-none focus:ring-4 focus:ring-[#e0d6cc] focus:border-[#a9937f]">
+        <button type="submit" class="bg-[#a9937f] text-white font-bold py-2 px-6 rounded-full hover:bg-[#7a664f] hover:scale-105 transition-all shadow-md text-center text-lg flex justify-center items-center mt-4">
           <i class="bx bx-refresh mr-2 text-[20px]"></i> Update Password
         </button>
 
