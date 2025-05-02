@@ -24,7 +24,7 @@
     </div>
 
     <!-- Decorative shapes -->
-    <div class="absolute -top-10 -left-10 w-64 h-64 bg-[#f0e1ce] opacity-30 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
+    <div class="absolute -top-10 -left-10 w-64  h-64 bg-[#f0e1ce] opacity-30 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
     <div class="absolute bottom-0 right-0 w-40 h-40 bg-[#e9d4bd] opacity-20 rounded-full blur-2xl pointer-events-none"></div>
 
     <div class="max-w-8xl mx-auto px-6 relative z-10">
