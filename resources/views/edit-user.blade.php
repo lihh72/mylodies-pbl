@@ -54,21 +54,21 @@
       <form class="bg-[#f3e6d3] p-6 rounded-lg w-[90%] max-w-[1200px] mx-auto mt-6" aria-labelledby="password-form-title">
         <div>
           <label for="prev-password" class="block text-sm font-semibold text-[#5a3e1b] mb-2">Previous Password</label>
-          <input type="password" id="prev-password" required class="w-full border border-[#c4b6a9] p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#a9937f]">
+          <input type="password" id="prev-password" required class="w-full border-2 border-[#c4b6a9] p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#a9937f]">
         </div>
         <div>
           <label for="new-password" class="block text-sm font-semibold text-[#5a3e1b] mb-2">New Password</label>
-          <input type="password" id="new-password" required class="w-full border border-[#c4b6a9] p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#a9937f]">
+          <input type="password" id="new-password" required class="w-full border-2 border-[#c4b6a9] p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#a9937f]">
         </div>
         <div>
           <label for="confirm-password" class="block text-sm font-semibold text-[#5a3e1b] mb-2">Confirm New Password</label>
-          <input type="password" id="confirm-password" required class="w-full border border-[#c4b6a9] p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#a9937f]">
+          <input type="password" id="confirm-password" required class="w-full border-2 border-[#c4b6a9] p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#a9937f]">
         </div>
         <div>
           <label for="otp-code" class="block text-sm font-semibold text-[#5a3e1b] mb-2">OTP Code</label>
-          <input type="text" id="otp-code" required class="w-full border border-[#c4b6a9] p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#a9937f]">
+          <input type="text" id="otp-code" required class="w-full border-2 border-[#c4b6a9] p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#a9937f]">
         </div>
-        <button type="submit" class="bg-[#a9937f] text-white font-bold py-3 px-6 rounded-lg hover:bg-[#7a664f] hover:scale-105 transition-all shadow-md w-full text-center text-lg flex justify-center items-center mt-4">
+        <button type="submit" class="bg-[#a9937f] text-white font-bold py-3 px-6 rounded-full hover:bg-[#7a664f] hover:scale-105 transition-all shadow-md w-full text-center text-lg flex justify-center items-center mt-4">
           <i class="bx bx-refresh mr-2 text-[20px]"></i> Update Password
         </button>
 
