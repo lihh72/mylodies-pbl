@@ -57,22 +57,22 @@
       <form class="bg-[#f3e6d3] p-6 rounded-lg w-[90%] max-w-[1200px] mx-auto mt-3 space-y-6" aria-labelledby="password-form-title">
 
         <div class="mb-4 flex items-center gap-4">
-          <label for="prev-password" class="w-1/4 text-sm font-semibold text-[#5a3e1b]">Previous Password</label>
+          <label for="prev-password" class="w-1/4 text-base font-bold text-[#5a3e1b]">Previous Password</label>
           <input type="password" id="prev-password" required class="flex-1 border-2 border-[#8c7b6a] bg-[#f3e6d3] p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5a3e1b] focus:border-[#5a3e1b]">
         </div>
 
         <div class="mb-4 flex items-center gap-4">
-          <label for="new-password" class="w-1/4 text-sm font-semibold text-[#5a3e1b]">New Password</label>
+          <label for="new-password" class="w-1/4 text-base font-bold text-[#5a3e1b]">New Password</label>
           <input type="password" id="new-password" required class="flex-1 border-2 border-[#8c7b6a] bg-[#f3e6d3] p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5a3e1b] focus:border-[#5a3e1b]">
         </div>
 
         <div class="mb-4 flex items-center gap-4">
-          <label for="confirm-password" class="w-1/4 text-sm font-semibold text-[#5a3e1b]">Confirm New Password</label>
+          <label for="confirm-password" class="w-1/4 text-base font-bold text-[#5a3e1b]">Confirm New Password</label>
           <input type="password" id="confirm-password" required class="flex-1 border-2 border-[#8c7b6a] bg-[#f3e6d3] p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5a3e1b] focus:border-[#5a3e1b]">
         </div>
 
         <div class="mb-4 flex items-center gap-4">
-          <label for="otp-code" class="w-1/4 text-sm font-semibold text-[#5a3e1b]">OTP Code</label>
+          <label for="otp-code" class="w-1/4 text-base font-bold text-[#5a3e1b]">OTP Code</label>
           <input type="text" id="otp-code" required class="flex-1 border-2 border-[#8c7b6a] bg-[#f3e6d3] p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5a3e1b] focus:border-[#5a3e1b]">
         </div>
 
