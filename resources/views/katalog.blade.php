@@ -3,83 +3,141 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rent Your Sound | Catalog</title>
-    @vite('resources/js/app.js')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Music Instruments</title>
+    @vite('resources/css/app.css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .filter-button {
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .filter-button:hover {
+            filter: brightness(0.85);
+            transform: scale(1.1);
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .check-button {
+            transition: transform 0.2s ease;
+        }
+
+        .check-button:hover {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 
-<body class="bg-[#fef8f2] text-[#5a4a3b] font-sans">
-
-    <x-navbar />
-
-
-    <!-- Catalog / Rentals Section -->
-
-    <section id="rentals" class="bg-gradient-to-b from-[#fff8f2] to-[#f9f3ea] py-28 relative overflow-hidden">
-    <!-- Background noise -->
-    <div class="absolute inset-0 pointer-events-none">
-        <img src="{{ asset('images/texture-noise.png') }}" class="w-full h-full object-cover opacity-5" alt="Texture">
-    </div>
-
-    <!-- Decorative shapes -->
-    <div class="absolute -top-10 -left-10 w-64 h-64 bg-[#f0e1ce] opacity-30 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
-    <div class="absolute bottom-0 right-0 w-40 h-40 bg-[#e9d4bd] opacity-20 rounded-full blur-2xl pointer-events-none"></div>
-
-    <div class="max-w-8xl mx-auto px-6 relative z-10">
-        <!-- Filters -->
-        <div class="flex flex-wrap justify-center gap-4 mb-14">
-            @foreach([
-                ['icon' => 'keyboard', 'label' => 'Keyboards'],
-                ['icon' => 'guitar', 'label' => 'Guitars'],
-                ['icon' => 'music', 'label' => 'Winds'],
-                ['icon' => 'drum', 'label' => 'Drums'],
-                ['icon' => 'heart', 'label' => 'Favorites']
-            ] as $filter)
-                <button class="flex items-center gap-3 px-5 py-3 rounded-full border border-[#d6b896] bg-gradient-to-r from-[#f6e8d6] to-[#d6b896] text-[#5a4a3b] text-sm font-medium transition-all transform hover:scale-105 shadow-lg hover:shadow-2xl hover:bg-[#f3d0a9] focus:outline-none focus:ring-2 focus:ring-[#b49875] focus:ring-opacity-50">
-                    <i class="fas fa-{{ $filter['icon'] }} text-[#b49875]"></i>
-                    <span>{{ $filter['label'] }}</span>
-                </button>
-            @endforeach
+<body class="bg-white">
+    <!-- Header -->
+    <header class="bg-[#9D8B76] flex items-center justify-between px-6 py-4 shadow-md">
+        <div class="flex items-center space-x-2">
+            <img alt="Logo" class="w-12 h-12 object-contain" src="{{ asset('images/logo.png') }}" />
         </div>
+        <div class="flex-1 max-w-md mx-6">
+            <div class="relative">
+                <input class="w-full rounded-full py-1 pl-4 pr-10 text-gray-400 text-sm font-sans outline-none"
+                    placeholder="Search" style="background-color: #F9F6F0; border: 2.5px solid black" type="text" />
+                <button aria-label="Search"
+                    class="absolute right-2 top-1/2 -translate-y-1/2 bg-[#9D8B76] w-6 h-6 rounded-full flex items-center justify-center p-0">
+                    <i class="fas fa-search text-black text-xs"></i>
+                </button>
+            </div>
+        </div>
+        <div class="flex items-center space-x-6 text-black text-2xl cursor-pointer -translate-y-1">
+            <i class="fas fa-shopping-cart"></i>
+            <i class="fas fa-user-circle"></i>
+        </div>
+    </header>
 
-        <!-- Catalog Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-4 lg:px-8">
-            @foreach([
-                ['img' => 'piano1.jpg', 'name' => 'Yamaha Grand Piano', 'price' => 'IDR 400.000 / Day', 'desc' => 'A premium grand piano with rich tonal quality, ideal for concerts and recordings.'],
-                ['img' => 'gitar1.jpg', 'name' => 'Fender Precision Bass', 'price' => 'IDR 290.000 / Day', 'desc' => 'Legendary bass tone for rock, jazz, and funk performances.'],
-                ['img' => 'violin1.jpg', 'name' => 'Classic Acoustic Violin', 'price' => 'IDR 400.000 / Day', 'desc' => 'Handcrafted violin with warm, mellow sound. Perfect for orchestras.'],
-                ['img' => 'saxophone.jpg', 'name' => 'Saxophone', 'price' => 'IDR 350.000 / Day', 'desc' => 'Smooth and expressive tone, great for jazz sessions and solos.'],
-                ['img' => 'drum.jpg', 'name' => 'Drum Set', 'price' => 'IDR 380.000 / Day', 'desc' => 'Full professional drum set with crisp snare and booming bass.'],
-                ['img' => 'accordion.jpg', 'name' => 'Accordion', 'price' => 'IDR 330.000 / Day', 'desc' => 'Versatile and traditional, adds color to classical or folk music.'],
-            ] as $item)
-                <div class="relative bg-white rounded-3xl overflow-hidden shadow-lg transform group hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
-                    <div class="relative">
-                        <img src="{{ asset('images/' . $item['img']) }}" alt="{{ $item['name'] }}" class="w-full h-52 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
-                        <div class="absolute top-4 right-4 bg-[#b49875] text-white px-3 py-1 text-xs rounded-full shadow">Top Pick</div>
-                    </div>
+    <!-- Filters -->
+    <section
+        class="flex justify-center gap-16 py-8 px-4 max-w-6xl mx-auto text-[#3A3A3A] text-sm font-semibold font-sans">
+        @foreach ([['icon' => 'keyboard', 'label' => 'Keyboard'], ['icon' => 'guitar', 'label' => 'Guitar'], ['icon' => 'music', 'label' => 'Aerophones'], ['icon' => 'drum', 'label' => 'Traditional Instruments'], ['icon' => 'heart', 'label' => 'Favorites']] as $filter)
+            <button type="button"
+                class="filter-button flex flex-col items-center space-y-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9D8B76]"
+                aria-label="Filter by {{ $filter['label'] }}">
+                <i class="fas fa-{{ $filter['icon'] }} fa-2x"></i>
+                <span>{{ $filter['label'] }}</span>
+            </button>
+        @endforeach
+    </section>
 
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-[#5a4a3b] mb-1">{{ $item['name'] }}</h3>
-                        <div class="mt-4">
-                            <span class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[#f6e8d6] to-[#e2cbb3] text-[#5a4a3b] font-semibold text-sm shadow-inner border border-[#d6b896] transition-transform duration-300 group-hover:scale-105">
-                                {{ $item['price'] }}
-                            </span>
+    <!-- Carousel -->
+    <section class="max-w-6xl mx-auto px-4 relative flex items-center py-6">
+        <button aria-label="Previous" class="text-3xl text-gray-700 hover:text-black focus:outline-none">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <div class="flex gap-6 overflow-x-auto no-scrollbar flex-1 px-6">
+            @php
+                $items = [
+                    [
+                        'name' => 'Alto Saxophone',
+                        'price' => 'IDR 300.000 / Day',
+                        'img' => 'https://storage.googleapis.com/a1aa/image/537e1a8a-fdbe-4284-246b-91ea5f3ad880.jpg'
+                    ],
+                    [
+                        'name' => 'DW Drum Set (Drum Workshop)',
+                        'price' => 'IDR 450.000 / Day',
+                        'img' => 'https://storage.googleapis.com/a1aa/image/d75a0787-a4de-435f-1ea8-eb8d6689cc1e.jpg'
+                    ],
+                    [
+                        'name' => 'Roland V-Accordion',
+                        'price' => 'IDR 250.000 / Day',
+                        'img' => 'https://storage.googleapis.com/a1aa/image/1d4b45f3-5a3f-4f71-fc8f-44a54bfa0405.jpg'
+                    ],
+                    [
+                        'name' => 'Sonic Grey Fender',
+                        'price' => 'IDR 300.000 / Day',
+                        'img' => 'https://storage.googleapis.com/a1aa/image/eb8e26e7-96e8-43d3-1427-9d00f26cddcc.jpg'
+                    ],
+                    [
+                        'name' => 'Classic Acoustic Violin',
+                        'price' => 'IDR 400.000 / Day',
+                        'img' => asset('images/biola.jpeg')
+                    ],
+                ];
+            @endphp
+        
+            @foreach ($items as $item)
+                <div class="card-hover bg-[#F4E6D4] rounded-xl p-4 min-w-[180px] max-w-[180px] flex flex-col items-center">
+                    <img src="{{ $item['img'] }}" alt="{{ $item['name'] }}" class="mb-3 object-contain w-36 h-36" />
+                    <div class="text-xs font-semibold text-[#3A3A3A] w-full flex flex-col justify-between flex-grow">
+                        <div>
+                            <p class="mb-1">{{ $item['name'] }}</p>
+                            <p class="text-[10px] font-normal text-[#3A3A3A]">{{ $item['price'] }}</p>
                         </div>
-
-                        <!-- Animated Description -->
-                        <p class="mt-3 text-sm text-gray-600 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-                            {{ $item['desc'] }}
-                        </p>
-
-                        <button class="mt-4 inline-block px-5 py-2 border border-[#b49875] text-[#b49875] font-medium rounded-full hover:bg-[#b49875] hover:text-white transition-all duration-300">Check Availability</button>
+                        <button class="check-button bg-[#9D8B76] text-[10px] text-white rounded px-2 py-1 mt-2">
+                            Check
+                        </button>
                     </div>
                 </div>
             @endforeach
         </div>
-    </div>
-</section>
 
-    
+        <button aria-label="Next" class="text-3xl text-gray-700 hover:text-black focus:outline-none">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </section>
+</body>
 
+</html>
