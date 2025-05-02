@@ -33,7 +33,7 @@
     
     <!-- Orders Section -->
     <div class="bg-[#f7efe1] rounded-lg mt-8 mb-4 p-4 w-full shadow-md">
-      <div class="font-bold text-lg border-b-2 border-[#c9bca7] pb-2" id="orders-header">
+      <div class="font-bold text-lg border-b-2 border-[#c9bca7] text-[#7a5c46] pb-2" id="orders-header">
         My Orders
       </div>
       <div class="flex justify-around pt-4 flex-wrap">
@@ -63,7 +63,7 @@
     <!-- Activities Section -->
     <div class="flex justify-center">
       <div class="bg-[#f7efe1] rounded-lg mt-8 mb-4 p-4 w-full max-w-7xl shadow-md">
-        <div class="font-bold text-lg border-b-2 border-[#c9bca7] pb-2" id="activities-header">
+        <div class="font-bold text-lg border-b-2 border-[#c9bca7] text-[#7a5c46] pb-2" id="activities-header">
           My Activities
         </div>
 
