@@ -52,6 +52,10 @@ Route::get('/product', function () {
     return view('product');
 });
 
+Route::get('/dashboardadmin', function () {
+    return view('dashboardadmin');
+}); 
+
 //Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 Route::middleware('auth')->group(function () {
