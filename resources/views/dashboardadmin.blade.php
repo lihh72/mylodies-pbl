@@ -18,25 +18,25 @@
         </div>
         <!-- Menu -->
         <nav class="mt-4 px-4 space-y-4 text-sm font-medium">
-          <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 text-black">
+          <a href="{{ route('') }}" class="flex items-center gap-3 text-black">
             <div class="text-xl">🔲</div> Dashboard
           </a>
-          <a href="{{ route('admin.alat') }}" class="flex items-center gap-3 text-black">
+          <a href="{{ route('') }}" class="flex items-center gap-3 text-black">
             <div class="text-xl">📋</div> Data Alat Musik
           </a>
-          <a href="{{ route('admin.pengguna') }}" class="flex items-center gap-3 text-black">
+          <a href="{{ route('') }}" class="flex items-center gap-3 text-black">
             <div class="text-xl">👥</div> Data Pengguna
           </a>
-          <a href="{{ route('admin.transaksi') }}" class="flex items-center gap-3 text-black">
+          <a href="{{ route('') }}" class="flex items-center gap-3 text-black">
             <div class="text-xl">🤝</div> Transaksi
           </a>
-          <a href="{{ route('admin.notifikasi') }}" class="flex items-center gap-3 text-black">
+          <a href="{{ route('') }}" class="flex items-center gap-3 text-black">
             <div class="text-xl">🔔</div> Notifikasi
           </a>
-          <a href="{{ route('admin.laporan') }}" class="flex items-center gap-3 text-black">
+          <a href="{{ route('') }}" class="flex items-center gap-3 text-black">
             <div class="text-xl">📄</div> Laporan
           </a>
-          <a href="{{ route('admin.pengaturan') }}" class="flex items-center gap-3 text-black">
+          <a href="{{ route('') }}" class="flex items-center gap-3 text-black">
             <div class="text-xl">⚙️</div> Pengaturan
           </a>
         </nav>
@@ -71,13 +71,13 @@
 
       <!-- Status Buttons -->
       <div class="space-y-4">
-        <a href="{{ route('admin.status.konfirmasi') }}" class="block border border-black rounded-lg p-4 hover:bg-gray-100">
+        <a href="{{ route('') }}" class="block border border-black rounded-lg p-4 hover:bg-gray-100">
           Menunggu Konfirmasi
         </a>
-        <a href="{{ route('admin.status.pembayaran') }}" class="block border border-black rounded-lg p-4 hover:bg-gray-100">
+        <a href="{{ route('') }}" class="block border border-black rounded-lg p-4 hover:bg-gray-100">
           Menunggu Pembayaran
         </a>
-        <a href="{{ route('admin.status.pengembalian') }}" class="block border border-black rounded-lg p-4 hover:bg-gray-100">
+        <a href="{{ route('') }}" class="block border border-black rounded-lg p-4 hover:bg-gray-100">
           Konfirmasi Pengembalian
         </a>
       </div>
