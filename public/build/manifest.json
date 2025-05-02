@@ -1,28 +1,16 @@
 {
   "resources/css/app.css": {
-<<<<<<< HEAD
-    "file": "assets/app-D1BA38u8.css",
-=======
     "file": "assets/app-CBU_AKFb.css",
->>>>>>> parent of afa5949 (tes)
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-<<<<<<< HEAD
-    "file": "assets/app-D3a7tulA.js",
-=======
     "file": "assets/app-qMz-hdQx.js",
->>>>>>> parent of afa5949 (tes)
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-<<<<<<< HEAD
-      "assets/app-D1BA38u8.css"
-=======
       "assets/app-CBU_AKFb.css"
->>>>>>> parent of afa5949 (tes)
     ]
   }
 }
