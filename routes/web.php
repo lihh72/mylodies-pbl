@@ -39,7 +39,7 @@ Route::get('/riwayat', function () {
     return view('history');
 });
 
-Route::get('/ya', function () {
+Route::get('/profileuser', function () {
     return view('profile-user');
 });
 
