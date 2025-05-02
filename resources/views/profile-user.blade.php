@@ -15,7 +15,7 @@
   <nav class="bg-[#a38c75] flex justify-between items-center p-6 flex-wrap shadow-md">
     <div class="flex items-center space-x-6">
       <i class="far fa-user-circle text-black text-5xl"></i>
-      <span class="font-bold text-black text-2xl">Nama Pengguna</span>
+      <span class="font-bold text-black text-2xl">Username</span>
     </div>
     <div class="flex items-center space-x-8">
       <div class="flex space-x-8">
