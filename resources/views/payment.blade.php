@@ -3,153 +3,131 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Payment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Payment Page</title>
     @vite('resources/js/app.js')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
-        button:focus {
-            outline: none;
+        button:focus { outline: none; }
+        .bg-pattern {
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
         }
     </style>
 </head>
 
-<body class="bg-white font-sans">
+<body class="bg-[#f9f6f1] font-sans text-[#3b2f28] relative overflow-x-hidden">
 
-    <!-- Header -->
-    <header class="flex items-center justify-between bg-[#a38f7f] px-6 py-4">
-        <div class="flex items-center space-x-2">
-            <img src="https://storage.googleapis.com/a1aa/image/cbaf4631-03a5-4353-df89-ef2a048998ec.jpg"
-                alt="Company logo" class="h-10 w-10 rounded-full">
-            <h1 class="font-extrabold text-lg text-black">Payment</h1>
-        </div>
-        <div class="flex items-center space-x-6 text-black text-xl">
-            <i class="far fa-bell cursor-pointer"></i>
-            <i class="fas fa-shopping-cart cursor-pointer"></i>
-            <i class="far fa-user-circle cursor-pointer"></i>
-        </div>
-    </header>
+    <!-- DECORATIVE BACKGROUND SHAPES -->
+    <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#f5e5d0] blur-3xl opacity-30"></div>
+    <div class="absolute top-0 right-0 w-80 h-80 rounded-bl-full bg-gradient-to-tr from-[#b49875]/30 to-transparent"></div>
 
-    <main class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row md:space-x-6">
-        <!-- Left Section -->
-        <section class="flex-1">
-            <h2 class="font-semibold text-black mb-3">Alamat Pengiriman</h2>
-            <div class="flex items-start space-x-3 border border-black rounded-lg bg-[#f7efe1] p-4 mb-6 max-w-4xl">
-                <a href="https://www.google.com/maps/search/?api=1&query=Politeknik+Negeri+Batam" target="_blank"
-                    rel="noopener noreferrer" class="text-black mt-1">
-                    <i class="fas fa-map-marker-alt cursor-pointer"></i>
-                </a>
-                <div>
-                    <p class="font-semibold text-black">Burgerita</p>
-                    <p class="text-xs text-[#7a6f63] max-w-[400px]">
-                        Lorem ipsum dolor sit amet consectetur. Nisl in pretium mattis nunc nisl mauris quis
-                    </p>
+    <!-- HEADER -->
+    <x-navbar />
+    
+    <main class="max-w-7xl mx-auto px-8 py-12 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 relative pt-32">
+
+        <section class="space-y-14">
+            <div class="relative rounded-[2rem] border border-[#decdb5] bg-[#fcf8f4] p-10 shadow-2xl">
+              <div class="absolute -top-20 -left-24 w-80 h-80 bg-[#f3e2c9] rounded-full blur-[100px] opacity-30 pointer-events-none z-0"></div>
+      
+              <!-- Title -->
+              <div class="relative z-10 mb-10 flex items-center gap-4">
+                <div class="bg-[#d6bfa4] text-white rounded-xl px-3 py-2 shadow-md">
+                  <i class="fa-solid fa-cart-shopping text-xl"></i>
                 </div>
-            </div>
-
-            <!-- Items List -->
-            <div class="bg-[#f7efe1] rounded-xl p-6 space-y-6 max-w-4xl">
-
-                <!-- Item 1 -->
-                <div class="flex items-center space-x-4 item" data-price="100000">
-                    <div class="flex flex-col items-center space-y-2 pr-2 border-r border-black">
-                        <button class="text-black text-lg cursor-pointer delete-btn"
-                            aria-label="Delete Fender Sonic Grey">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                        <button class="text-black text-lg cursor-pointer" aria-label="Check Fender Sonic Grey">
-                            <i class="fas fa-check-square"></i>
-                        </button>
+                <h2 class="text-3xl font-extrabold tracking-tight text-[#3c2f24]">Your Rental Items</h2>
+              </div>
+      
+              <!-- Items -->
+              <div class="space-y-6">
+      
+                <!-- Item -->
+                <div class="item relative flex flex-col sm:flex-row sm:items-center gap-6 bg-white rounded-2xl border-l-[8px] border-[#d6bfa4] shadow-xl px-6 py-6 group" data-price="100000">
+                  <button class="delete-btn absolute top-4 right-4 text-[#b98a65] hover:text-red-400 text-lg transition">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                  <img src="https://storage.googleapis.com/a1aa/image/24e6f889-e187-4ced-dc2d-7d6e757807ce.jpg" class="w-24 h-24 sm:w-28 sm:h-28 rounded-xl object-cover border border-[#f0e8dc] shadow-md" />
+                  <div class="flex-1 space-y-2 text-[#41362c]">
+                    <h3 class="text-lg font-semibold">Fender Sonic Grey <span class="ml-2 bg-[#f6e7d5] text-[#826c58] px-2 py-0.5 text-xs rounded-full">Rental</span></h3>
+                    <p class="text-xs italic text-[#7e6a57]">01/06/25 – 07/06/25</p>
+                  </div>
+                  <div class="flex flex-col items-center w-24 text-sm text-[#4a3c30]">
+                    <p class="font-medium">Qty</p>
+                    <div class="flex gap-2 text-base mt-1">
+                      <button class="quantity-btn w-7 h-7 rounded-full bg-[#f3e5d7] hover:bg-[#e5d4c0]">−</button>
+                      <span class="quantity font-semibold">1</span>
+                      <button class="quantity-btn w-7 h-7 rounded-full bg-[#f3e5d7] hover:bg-[#e5d4c0]">+</button>
                     </div>
-                    <img src="https://storage.googleapis.com/a1aa/image/24e6f889-e187-4ced-dc2d-7d6e757807ce.jpg"
-                        alt="Fender Sonic Grey" class="rounded-lg" width="100" height="100">
-                    <div class="flex-1">
-                        <p class="font-semibold text-black">Fender Sonic Grey</p>
-                        <p class="text-[9px] text-[#7a6f63]">Rental Begins: <span class="italic">dd/mm/yy</span></p>
-                        <p class="text-[9px] text-[#7a6f63]">Rental Ends: <span class="italic">dd/mm/yy</span></p>
-                    </div>
-                    <div class="w-28 text-center">
-                        <p class="text-xs font-semibold text-black mb-1">Quantity</p>
-                        <div class="flex items-center justify-center space-x-3 text-black text-lg select-none">
-                            <button class="quantity-btn cursor-pointer">−</button>
-                            <span class="text-base font-semibold quantity">1</span>
-                            <button class="quantity-btn cursor-pointer">+</button>
-                        </div>
-                    </div>
-                    <div class="w-36 text-right text-xs text-[#7a6f63]">
-                        <p class="font-semibold text-black mb-1">Price</p>
-                        <p class="price">IDR 100.000 / Day</p>
-                    </div>
+                  </div>
+                  <div class="text-right w-28 text-[#5e5044]">
+                    <p class="text-xs uppercase">Price</p>
+                    <p class="price font-bold">IDR 100.000</p>
+                  </div>
                 </div>
-
-
-                <!-- Item 2 -->
-                <div class="flex items-center space-x-4 item" data-price="150000">
-                    <div class="flex flex-col items-center space-y-2 pr-2 border-r border-black">
-                        <button class="text-black text-lg cursor-pointer delete-btn"
-                            aria-label="Delete Cecilio CVN-100">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                        <button class="text-black text-lg cursor-pointer" aria-label="Check Cecilio CVN-100">
-                            <i class="fas fa-check-square"></i>
-                        </button>
+      
+                <!-- Item -->
+                <div class="item relative flex flex-col sm:flex-row sm:items-center gap-6 bg-white rounded-2xl border-l-[8px] border-[#d6bfa4] shadow-xl px-6 py-6 group" data-price="150000">
+                  <button class="delete-btn absolute top-4 right-4 text-[#b98a65] hover:text-red-400 text-lg transition">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                  <img src="https://storage.googleapis.com/a1aa/image/1eef423e-83af-4a2e-210f-85b2e74696bd.jpg" class="w-24 h-24 sm:w-28 sm:h-28 rounded-xl object-cover border border-[#f0e8dc] shadow-md" />
+                  <div class="flex-1 space-y-2 text-[#41362c]">
+                    <h3 class="text-lg font-semibold">Cecilio CVN-100 <span class="ml-2 bg-[#f6e7d5] text-[#826c58] px-2 py-0.5 text-xs rounded-full">Rental</span></h3>
+                    <p class="text-xs italic text-[#7e6a57]">05/06/25 – 12/06/25</p>
+                  </div>
+                  <div class="flex flex-col items-center w-24 text-sm text-[#4a3c30]">
+                    <p class="font-medium">Qty</p>
+                    <div class="flex gap-2 text-base mt-1">
+                      <button class="quantity-btn w-7 h-7 rounded-full bg-[#f3e5d7] hover:bg-[#e5d4c0]">−</button>
+                      <span class="quantity font-semibold">1</span>
+                      <button class="quantity-btn w-7 h-7 rounded-full bg-[#f3e5d7] hover:bg-[#e5d4c0]">+</button>
                     </div>
-                    <img src="https://storage.googleapis.com/a1aa/image/1eef423e-83af-4a2e-210f-85b2e74696bd.jpg"
-                        alt="Cecilio CVN-100" class="rounded-lg" width="100" height="100">
-                    <div class="flex-1">
-                        <p class="font-semibold text-black">Cecilio CVN-100</p>
-                        <p class="text-[9px] text-[#7a6f63]">Rental Begins: <span class="italic">dd/mm/yy</span></p>
-                        <p class="text-[9px] text-[#7a6f63]">Rental Ends: <span class="italic">dd/mm/yy</span></p>
-                    </div>
-                    <div class="w-28 text-center">
-                        <p class="text-xs font-semibold text-black mb-1">Quantity</p>
-                        <div class="flex items-center justify-center space-x-3 text-black text-lg select-none">
-                            <button class="quantity-btn cursor-pointer">−</button>
-                            <span class="text-base font-semibold quantity">1</span>
-                            <button class="quantity-btn cursor-pointer">+</button>
-                        </div>
-                    </div>
-                    <div class="w-36 text-right text-xs text-[#7a6f63]">
-                        <p class="font-semibold text-black mb-1">Price</p>
-                        <p class="price">IDR 150.000 / Day</p>
-                    </div>
+                  </div>
+                  <div class="text-right w-28 text-[#5e5044]">
+                    <p class="text-xs uppercase">Price</p>
+                    <p class="price font-bold">IDR 150.000</p>
+                  </div>
                 </div>
-
-
-            </div>
-        </section>
-
-        <!-- Right Section -->
-        <aside
-            class="w-full md:w-72 bg-[#f7efe1] rounded-xl p-4 mt-6 md:mt-0 flex flex-col items-stretch gap-4 self-start">
-            <div>
-                <h3 class="font-semibold text-black mb-3">Ringkasan Transaksi</h3>
-                <div class="flex justify-between text-[10px] text-[#7a6f63] mb-1">
+              </div>
+<!-- Total -->
+<div class="mt-6 border-t border-[#eadbc3] pt-4 text-right">
+    <p class="text-sm text-[#7e6a57]">Subtotal (before tax & fees)</p>
+    <p id="total-price" class="text-2xl font-bold text-[#3c2f24]">IDR 0</p>
+  </div>
+</div>
+</section>
+        <!-- RIGHT: SUMMARY -->
+        <aside class="bg-white rounded-3xl shadow-xl border border-[#d9cbb8] p-8 sticky top-32 self-start space-y-6">
+            <h3 class="text-xl font-extrabold flex items-center gap-2">
+                <i class="fa-solid fa-receipt text-[#b49875]"></i> Ringkasan
+            </h3>
+            <div class="text-sm text-[#7a6f63] space-y-3">
+                <div class="flex justify-between">
                     <span>Total Harga</span>
                     <span id="total-price">Rp. 100.000</span>
                 </div>
-                <div class="flex justify-between text-[10px] text-[#7a6f63] mb-1">
-                    <span>Total Ongkos Kirim</span>
+                <div class="flex justify-between">
+                    <span>Ongkos Kirim</span>
                     <span>Rp. 24.000</span>
                 </div>
-                <div class="flex justify-between text-[10px] text-[#7a6f63] mb-3">
-                    <span>Biaya Jasa Aplikasi</span>
+                <div class="flex justify-between">
+                    <span>Biaya Aplikasi</span>
                     <span>Rp. 1.000</span>
                 </div>
-                <hr class="border-[#7a6f63] mb-3" />
-                <div class="flex justify-between font-semibold text-[12px] text-black mb-3">
+                <hr>
+                <div class="flex justify-between font-semibold text-[#3b2f28] pt-2">
                     <span>Total Tagihan</span>
                     <span id="total-bill">Rp. 125.000</span>
                 </div>
             </div>
-            <button
-                class="bg-[#a38f7f] text-black font-extrabold rounded-md py-2 w-full hover:bg-[#8a7a6a] transition-colors">
+            <button class="w-full py-4 rounded-full font-bold text-white bg-gradient-to-r from-[#b49875] to-[#8a7a6a] hover:opacity-90 shadow-lg text-lg transition-all">
                 Bayar Sekarang
             </button>
         </aside>
 
     </main>
 
+    <!-- JavaScript sama seperti sebelumnya -->
     <script>
         const shippingCost = 24000;
         const appFee = 1000;
@@ -169,10 +147,6 @@
             document.getElementById('total-bill').textContent = formatIDR(totalPrice + shippingCost + appFee);
         }
 
-        function updatePriceDisplay(priceElement, qty, pricePerUnit) {
-            priceElement.textContent = `IDR ${ (qty * pricePerUnit).toLocaleString('id-ID') } / Day`;
-        }
-
         document.querySelectorAll('.quantity-btn').forEach(button => {
             button.addEventListener('click', () => {
                 const item = button.closest('.item');
@@ -181,33 +155,24 @@
                 const pricePerUnit = parseInt(item.getAttribute('data-price'));
 
                 let currentQty = parseInt(qtySpan.textContent);
-                if (button.textContent.trim() === '+') {
-                    currentQty++;
-                } else if (button.textContent.trim() === '−') {
-                    if (currentQty > 1) currentQty--;
-                }
+                if (button.textContent.trim() === '+') currentQty++;
+                else if (button.textContent.trim() === '−' && currentQty > 1) currentQty--;
 
                 qtySpan.textContent = currentQty;
-                updatePriceDisplay(priceElement, currentQty, pricePerUnit);
+                priceElement.textContent = `IDR ${ (currentQty * pricePerUnit).toLocaleString('id-ID') } / Day`;
                 updateTotals();
             });
         });
 
-        // DELETE functionality
         document.querySelectorAll('.delete-btn').forEach(button => {
             button.addEventListener('click', () => {
-                const item = button.closest('.item');
-                item.remove();
+                button.closest('.item').remove();
                 updateTotals();
             });
         });
 
-        window.addEventListener('DOMContentLoaded', () => {
-            updateTotals();
-        });
+        window.addEventListener('DOMContentLoaded', updateTotals);
     </script>
-
-
 </body>
 
 </html>
