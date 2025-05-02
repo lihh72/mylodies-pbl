@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Dashboard</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  @vite('resources/css/app.css') {{-- Jika menggunakan Vite --}}
 </head>
 <body class="bg-[#fefefe] font-sans">
 
@@ -18,34 +18,37 @@
         </div>
         <!-- Menu -->
         <nav class="mt-4 px-4 space-y-4 text-sm font-medium">
-          <a href="#" class="flex items-center gap-3 text-black">
+          <a href="{{ route('') }}" class="flex items-center gap-3 text-black">
             <div class="text-xl">🔲</div> Dashboard
           </a>
-          <a href="#" class="flex items-center gap-3 text-black">
+          <a href="{{ route('') }}" class="flex items-center gap-3 text-black">
             <div class="text-xl">📋</div> Data Alat Musik
           </a>
-          <a href="#" class="flex items-center gap-3 text-black">
+          <a href="{{ route('') }}" class="flex items-center gap-3 text-black">
             <div class="text-xl">👥</div> Data Pengguna
           </a>
-          <a href="#" class="flex items-center gap-3 text-black">
+          <a href="{{ route('') }}" class="flex items-center gap-3 text-black">
             <div class="text-xl">🤝</div> Transaksi
           </a>
-          <a href="#" class="flex items-center gap-3 text-black">
+          <a href="{{ route('') }}" class="flex items-center gap-3 text-black">
             <div class="text-xl">🔔</div> Notifikasi
           </a>
-          <a href="#" class="flex items-center gap-3 text-black">
+          <a href="{{ route('') }}" class="flex items-center gap-3 text-black">
             <div class="text-xl">📄</div> Laporan
           </a>
-          <a href="#" class="flex items-center gap-3 text-black">
+          <a href="{{ route('') }}" class="flex items-center gap-3 text-black">
             <div class="text-xl">⚙️</div> Pengaturan
           </a>
         </nav>
       </div>
       <!-- Logout -->
       <div class="px-4 py-6">
-        <button class="flex items-center gap-2 px-4 py-2 bg-[#a89377] text-white rounded-full hover:bg-[#8c7762]">
-          <span>↩️</span> Logout
-        </button>
+        <form method="POST" action="{{ route('dashboardadmin') }}">
+          @csrf
+          <button type="submit" class="flex items-center gap-2 px-4 py-2 bg-[#a89377] text-white rounded-full hover:bg-[#8c7762]">
+            <span>↩️</span> Logout
+          </button>
+        </form>
       </div>
     </aside>
 
@@ -68,18 +71,19 @@
 
       <!-- Status Buttons -->
       <div class="space-y-4">
-        <button class="w-full border border-black rounded-lg p-4 text-left hover:bg-gray-100">
+        <a href="{{ route('') }}" class="block border border-black rounded-lg p-4 hover:bg-gray-100">
           Menunggu Konfirmasi
-        </button>
-        <button class="w-full border border-black rounded-lg p-4 text-left hover:bg-gray-100">
+        </a>
+        <a href="{{ route('') }}" class="block border border-black rounded-lg p-4 hover:bg-gray-100">
           Menunggu Pembayaran
-        </button>
-        <button class="w-full border border-black rounded-lg p-4 text-left hover:bg-gray-100">
+        </a>
+        <a href="{{ route('') }}" class="block border border-black rounded-lg p-4 hover:bg-gray-100">
           Konfirmasi Pengembalian
-        </button>
+        </a>
       </div>
     </main>
   </div>
 
 </body>
 </html>
+
