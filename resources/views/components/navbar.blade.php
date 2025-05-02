@@ -15,7 +15,7 @@
       <!-- Navigation (Desktop Only) -->
       <nav class="hidden lg:flex items-center space-x-6">
         @foreach (['Home', 'About', 'Rentals', 'FAQ', 'Contact'] as $menu)
-          <a href="/{{ strtolower($menu) }}"
+          <a href="#{{ strtolower($menu) }}"
              class="group relative inline-flex items-center gap-1 text-white font-medium transition-all duration-300 ease-in-out hover:text-black">
             <svg class="w-4 h-4 text-white group-hover:text-[#f9e5c9] transition-transform group-hover:rotate-12 duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v3m6.364 1.636l-2.121 2.121M21 12h-3m-1.636 6.364l-2.121-2.121M12 21v-3m-6.364-1.636l2.121-2.121M3 12h3m1.636-6.364l2.121 2.121" />

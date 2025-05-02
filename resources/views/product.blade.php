@@ -48,7 +48,7 @@
 
      <!-- 🎸 Premium Sonic Grey Fender Rental Form -->
 <!-- 🎸 Sonic Grey Fender Rental Form - Refined Colors & Compact Form -->
-<div class="relative max-w-xl mx-auto bg-gradient-to-br from-[#fdf6ee]/70 to-[#f6f1e9]/80 p-10 rounded-3xl border-[1.5px] border-[#dec9b0] shadow-[0_10px_60px_rgba(0,0,0,0.2)] backdrop-blur-3xl overflow-hidden text-[#3e2d1f] animate-fadeIn space-y-5">
+<div class="relative max-w-screen mx-auto bg-gradient-to-br from-[#fdf6ee]/70 to-[#f6f1e9]/80 p-10 rounded-3xl border-[1.5px] border-[#dec9b0] shadow-[0_10px_60px_rgba(0,0,0,0.2)] backdrop-blur-3xl overflow-hidden text-[#3e2d1f] animate-fadeIn space-y-5">
 
   <!-- Ambient Glow (optional, aesthetic only) -->
   <div class="absolute -top-20 -left-24 w-72 h-72 bg-[#f7e8d5]/40 rounded-full blur-3xl opacity-30 z-0"></div>
