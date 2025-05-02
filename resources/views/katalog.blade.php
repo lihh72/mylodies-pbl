@@ -92,7 +92,7 @@
                 $items = [
                     [
                         'name' => 'Alto Saxophone',
-                        'price' => 'IDR 350.000 / Day',
+                        'price' => 'IDR 300.000 / Day',
                         'img' => 'https://storage.googleapis.com/a1aa/image/537e1a8a-fdbe-4284-246b-91ea5f3ad880.jpg'
                     ],
                     [
@@ -140,4 +140,4 @@
     </section>
 </body>
 
-</html> 
+</html>
