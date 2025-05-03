@@ -61,17 +61,34 @@
   <!-- Form -->
   <form id="rentalForm" class="space-y-3 text-sm relative z-10">
 
-    <div class="relative">
-      <i class="far fa-calendar-alt absolute left-3 top-3.5 text-[#a38f7a]"></i>
-      <input type="date" id="rent_date" name="rent_date"
-        class="pl-10 w-full rounded-md border border-[#d6c5b3] py-2.5 bg-white/60 focus:ring-[#a38f7a] focus:border-[#a38f7a] transition" required>
+    
+    <div id="date-range-picker" date-rangepicker class="flex items-center gap-3">
+      <div class="relative w-full">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+          <svg class="w-4 h-4 text-[#a38f7a]" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+          </svg>
+        </div>
+        <input id="datepicker-range-start" name="start" type="text"
+          class="pl-10 w-full rounded-md border border-[#d6c5b3] py-2.5 bg-white/60 text-gray-700 focus:ring-[#a38f7a] focus:border-[#a38f7a] placeholder:text-sm"
+          placeholder="Start date">
+      </div>
+    
+      <span class="text-[#a38f7a] font-semibold">to</span>
+    
+      <div class="relative w-full">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+          <svg class="w-4 h-4 text-[#a38f7a]" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+          </svg>
+        </div>
+        <input id="datepicker-range-end" name="end" type="text"
+          class="pl-10 w-full rounded-md border border-[#d6c5b3] py-2.5 bg-white/60 text-gray-700 focus:ring-[#a38f7a] focus:border-[#a38f7a] placeholder:text-sm"
+          placeholder="End date">
+      </div>
     </div>
+    
 
-    <div class="relative">
-      <i class="far fa-calendar-check absolute left-3 top-3.5 text-[#a38f7a]"></i>
-      <input type="date" id="return_date" name="return_date"
-        class="pl-10 w-full rounded-md border border-[#d6c5b3] py-2.5 bg-white/60 focus:ring-[#a38f7a] focus:border-[#a38f7a] transition" required>
-    </div>
 
     <div class="relative">
       <i class="fas fa-truck absolute left-3 top-3.5 text-[#a38f7a]"></i>
