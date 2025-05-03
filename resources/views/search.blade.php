@@ -23,63 +23,97 @@
     </div>
 
     <!-- Filter + Product Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-10 items-start">
+<div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-14 items-start">
 
-      <!-- Sidebar Filters -->
-      <aside class="bg-white p-5 rounded-xl shadow border border-[#e5d9ce] text-sm text-[#4e3d33] sticky top-28 h-fit max-h-[80vh] overflow-y-auto">
-        <h2 class="text-lg font-semibold flex items-center gap-2 text-[#5c4633] mb-4">
-          <i class="fas fa-filter text-[#7d6651]"></i> Filter
-        </h2>
+  <!-- Sidebar Filters -->
+  <aside class="bg-white p-8 rounded-3xl shadow-[0_10px_30px_-15px_rgba(0,0,0,0.1)] border border-[#f0e8e0] text-sm text-[#4e3d33] sticky top-28 h-fit max-h-[80vh] overflow-y-auto scrollbar-hide">
+    <h2 class="text-2xl font-semibold flex items-center gap-3 text-[#5c4633] mb-8 tracking-wide">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#a78c74]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707l-7 7V21l-4-4v-7l-7-7A1 1 0 013 4z" />
+      </svg>
+      Filters
+    </h2>
 
-        <details class="group border-b border-[#eae2d9] pb-2 mb-2">
-          <summary class="cursor-pointer font-medium text-[#5c4633] hover:text-[#7d6651] flex justify-between items-center">
-            Lokasi <i class="fas fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
-          </summary>
-          <ul class="mt-2 ml-2 space-y-1">
-            <li class="hover:text-[#7d6651] cursor-pointer">Batam</li>
-            <li class="hover:text-[#7d6651] cursor-pointer">Jawa Barat</li>
-            <li class="hover:text-[#7d6651] cursor-pointer">Jabodetabek</li>
-            <li class="hover:text-[#7d6651] cursor-pointer">Others</li>
-          </ul>
-        </details>
+    <div class="space-y-6">
 
-        <details class="group border-b border-[#eae2d9] pb-2 mb-2">
-          <summary class="cursor-pointer font-medium text-[#5c4633] hover:text-[#7d6651] flex justify-between items-center">
-            Rating <i class="fas fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
-          </summary>
-          <ul class="mt-2 ml-2 space-y-1">
-            <li class="hover:text-[#7d6651] cursor-pointer">★☆☆☆☆</li>
-            <li class="hover:text-[#7d6651] cursor-pointer">★★☆☆☆</li>
-            <li class="hover:text-[#7d6651] cursor-pointer">★★★☆☆</li>
-            <li class="hover:text-[#7d6651] cursor-pointer">★★★★☆</li>
-            <li class="hover:text-[#7d6651] cursor-pointer">★★★★★</li>
-          </ul>
-        </details>
+      <!-- Filter section -->
+      <details class="group">
+        <summary class="cursor-pointer text-[#5c4633] hover:text-[#7d6651] flex justify-between items-center font-medium text-base transition-colors duration-200 pb-3 border-b border-[#f0e8e0]">
+          Lokasi
+          <svg class="h-5 w-5 text-[#b49875] group-open:rotate-180 transition-transform duration-300 ease-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <ul class="mt-4 pl-2 space-y-3 text-[#4e3d33]">
+          <li class="cursor-pointer hover:text-[#a78c74] transition-colors">Batam</li>
+          <li class="cursor-pointer hover:text-[#a78c74] transition-colors">Jawa Barat</li>
+          <li class="cursor-pointer hover:text-[#a78c74] transition-colors">Jabodetabek</li>
+          <li class="cursor-pointer hover:text-[#a78c74] transition-colors">Others</li>
+        </ul>
+      </details>
 
-        <details class="group border-b border-[#eae2d9] pb-2 mb-2">
-          <summary class="cursor-pointer font-medium text-[#5c4633] hover:text-[#7d6651] flex justify-between items-center">
-            Brand <i class="fas fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
-          </summary>
-          <ul class="mt-2 ml-2 space-y-1">
-            <li class="hover:text-[#7d6651] cursor-pointer">Fender</li>
-            <li class="hover:text-[#7d6651] cursor-pointer">Yamaha</li>
-            <li class="hover:text-[#7d6651] cursor-pointer">Others</li>
-          </ul>
-        </details>
+      <details class="group">
+        <summary class="cursor-pointer text-[#5c4633] hover:text-[#7d6651] flex justify-between items-center font-medium text-base transition-colors duration-200 pb-3 border-b border-[#f0e8e0]">
+          Rating
+          <svg class="h-5 w-5 text-[#b49875] group-open:rotate-180 transition-transform duration-300 ease-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <ul class="mt-4 pl-2 space-y-3 text-[#4e3d33]">
+          <li class="cursor-pointer hover:text-[#a78c74] transition-colors">★☆☆☆☆</li>
+          <li class="cursor-pointer hover:text-[#a78c74] transition-colors">★★☆☆☆</li>
+          <li class="cursor-pointer hover:text-[#a78c74] transition-colors">★★★☆☆</li>
+          <li class="cursor-pointer hover:text-[#a78c74] transition-colors">★★★★☆</li>
+          <li class="cursor-pointer hover:text-[#a78c74] transition-colors">★★★★★</li>
+        </ul>
+      </details>
 
-        <details class="group pb-2">
-          <summary class="cursor-pointer font-medium text-[#5c4633] hover:text-[#7d6651] flex justify-between items-center">
-            Harga <i class="fas fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
-          </summary>
-          <ul class="mt-2 ml-2 space-y-1">
-            <li class="hover:text-[#7d6651] cursor-pointer">Rp100K - Rp150K</li>
-            <li class="hover:text-[#7d6651] cursor-pointer">Rp150K - Rp250K</li>
-            <li class="hover:text-[#7d6651] cursor-pointer">Rp250K - Rp450K</li>
-            <li class="hover:text-[#7d6651] cursor-pointer">Rp450K - Rp1jt</li>
-          </ul>
-        </details>
-      </aside>
+      <details class="group">
+        <summary class="cursor-pointer text-[#5c4633] hover:text-[#7d6651] flex justify-between items-center font-medium text-base transition-colors duration-200 pb-3 border-b border-[#f0e8e0]">
+          Brand
+          <svg class="h-5 w-5 text-[#b49875] group-open:rotate-180 transition-transform duration-300 ease-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <ul class="mt-4 pl-2 space-y-3 text-[#4e3d33]">
+          <li class="cursor-pointer hover:text-[#a78c74] transition-colors">Fender</li>
+          <li class="cursor-pointer hover:text-[#a78c74] transition-colors">Yamaha</li>
+          <li class="cursor-pointer hover:text-[#a78c74] transition-colors">Others</li>
+        </ul>
+      </details>
 
+      <details class="group">
+        <summary class="cursor-pointer text-[#5c4633] hover:text-[#7d6651] flex justify-between items-center font-medium text-base transition-colors duration-200 pb-3 border-b border-[#f0e8e0]">
+          Harga
+          <svg class="h-5 w-5 text-[#b49875] group-open:rotate-180 transition-transform duration-300 ease-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="mt-4 pl-2 space-y-4">
+          <div class="flex justify-between text-xs text-[#7d6651] font-medium">
+            <span>Rp100K</span>
+            <span>Rp1jt</span>
+          </div>
+          <input type="range" min="100000" max="1000000" step="50000" value="250000"
+            class="w-full accent-[#b49875] h-2 rounded-full bg-[#f0e8e0] focus:outline-none focus:ring-0 cursor-pointer" />
+          <p class="text-xs text-[#4e3d33]">Selected: <span id="hargaValue" class="font-semibold text-[#7d6651]">Rp250K</span></p>
+        </div>
+      </details>
+      
+
+    </div>
+  </aside>
+  <script>
+    const slider = document.querySelector('input[type="range"]');
+    const hargaValue = document.getElementById('hargaValue');
+  
+    slider.addEventListener('input', function () {
+      let val = parseInt(this.value);
+      let formatted = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(val);
+      hargaValue.textContent = formatted;
+    });
+  </script>
+  
       <!-- Product Grid -->
       <section>
         <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
