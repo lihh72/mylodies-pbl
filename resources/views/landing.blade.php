@@ -133,7 +133,7 @@
 </section>
 
     <!-- About Section - Bright Brand Story -->
-   <section id="about" class="relative py-56 bg-[#1e1b16] text-white overflow-hidden">
+   <section id="about" class="relative py-40 bg-[#1e1b16] text-white overflow-hidden">
   <!-- Spotlight Background -->
   <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-[#1e1b16]/80 to-transparent z-0"></div>
 
@@ -147,13 +147,13 @@
 
     <!-- Left: Hero Visual Layered -->
     <div class="flex-1 relative h-[600px] w-full">
-      <img src="/images/instrument1.jpg"
+      <img src="{{ asset('images/instrument1.jpg') }}"
            class="absolute top-0 left-0 w-[60%] object-cover rounded-2xl rounded-xl shadow-xl z-20 blur-sm hover:blur-0 transition"
            alt="Instrument">
-      <img src="/images/studio.jpg"
+      <img src="{{ asset('images/studio.jpg') }}"
            class="absolute bottom-10 right-0 w-[50%] object-cover rounded-xl shadow-xl z-20 blur-sm hover:blur-0 transition" alt="Studio">
-      <img src="/images/piano2.jpg"
-           class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[70%] object-cover rounded-xl z-10 opacity-40 hover:opacity-100 transition" alt="Mic">
+      <img src="{{ asset('images/piano2.jpg') }}"
+           class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[70%] object-cover rounded-xl blur-sm z-10 opacity-40 hover:blur-0 transition" alt="Mic">
 
       <!-- Badges -->
      
