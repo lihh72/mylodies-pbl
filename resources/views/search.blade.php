@@ -118,12 +118,12 @@
       <section>
         <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
           @foreach([
-            ['img' => 'gitar1.jpg', 'name' => 'Gitar Electric Aloha', 'price' => 'IDR 270.000 / Day', 'desc' => 'Nyaman untuk genre apapun.'],
-            ['img' => 'accordion.jpg', 'name' => 'STAINER ACCORDION 60', 'price' => 'IDR 280.000 / Day', 'desc' => 'Untuk musik tradisional.'],
-            ['img' => 'biola.jpeg', 'name' => 'Violin YAMAHA YVN00344', 'price' => 'IDR 300.000 / Day', 'desc' => 'Suara mellow, cocok untuk orkestra.'],
-            ['img' => 'drum.jpg', 'name' => 'PEARL DRUM SET EXX-725', 'price' => 'IDR 500.000 / Day', 'desc' => 'Ideal untuk konser.'],
-            ['img' => 'gitar2.jpg', 'name' => 'Fender Acoustic', 'price' => 'IDR 260.000 / Day', 'desc' => 'Nada khas dan hangat.'],
-            ['img' => 'piano.jpeg', 'name' => 'Steinway Piano', 'price' => 'IDR 600.000 / Day', 'desc' => 'Elegan untuk konser.'],
+            ['img' => 'gitar7.jpeg', 'name' => 'Gitar Electric Aloha', 'price' => 'IDR 270.000 / Day', 'desc' => 'Nyaman untuk latihan dan pemula.'],
+            ['img' => 'gitar8.jpg', 'name' => 'Fender American Deluxe', 'price' => 'IDR 280.000 / Day', 'desc' => 'Suara bright, suit blues & country.'],
+            ['img' => 'guitar1.webp', 'name' => 'Gibson Flying V', 'price' => 'IDR 300.000 / Day', 'desc' => 'Powerful! rock & metal stage.'],
+            ['img' => 'gitar9.jpeg', 'name' => 'Jackson Pro Signature', 'price' => 'IDR 500.000 / Day', 'desc' => 'High-gain untuk metal teknikal.'],
+            ['img' => 'gitar5.jpeg', 'name' => 'Schecter Damien Elite', 'price' => 'IDR 260.000 / Day', 'desc' => 'Tone gelap, pas untuk metal modern.'],
+            ['img' => 'gitar6.webp', 'name' => 'Gretsch G5232T Double Jet', 'price' => 'IDR 600.000 / Day', 'desc' => 'Retro vibe, for rockabilly & jazz.'],
           ] as $item)
           <div class="bg-white rounded-xl shadow-lg hover:shadow-xl overflow-hidden transition-all duration-300 group">
             <img src="{{ asset('images/' . $item['img']) }}" alt="{{ $item['name'] }}" class="w-full h-52 object-cover group-hover:scale-105 transition-transform">
