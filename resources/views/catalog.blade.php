@@ -65,7 +65,7 @@
                     ['img' => 'gamelan.avif', 'name' => 'Mini Gamelan', 'price' => 'IDR 300.000 / Day', 'desc' => 'Balinese percussive ensemble.', 'cat' => 'Traditional'],
 
                     // Favorites
-                    ['img' => 'violin1.jpg', 'name' => 'AScott Cao Violin', 'price' => 'IDR 550.000 / Day', 'desc' => 'Colorful for folk and polka.', 'cat' => 'Favorites'],
+                    ['img' => 'violin.jpg', 'name' => 'AScott Cao Violin', 'price' => 'IDR 550.000 / Day', 'desc' => 'Colorful for folk and polka.', 'cat' => 'Favorites'],
                     ['img' => 'gitar7.jpeg', 'name' => 'Ibanez Acoustic Guitar', 'price' => 'IDR 240.000 / Day', 'desc' => 'Light, fun sound for beginners.', 'cat' => 'Favorites'],
                     ['img' => 'piano4.jpeg', 'name' => 'Bechstein Grand Piano', 'price' => 'IDR 450.000 / Day', 'desc' => 'Portable and rhythmic.', 'cat' => 'Favorites'],
                 ] as $item)
