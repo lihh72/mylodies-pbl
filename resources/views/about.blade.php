@@ -179,7 +179,7 @@
     <div class="relative grid md:grid-cols-4 sm:grid-cols-2 gap-10">
       @php
   $team = [
-    ['name' => 'Lidya Nur Raudhatul', 'role' => 'Designer', 'desc' => 'Crafts visuals that sing in silence.', 'img' => '/images/team/lidya.png'],
+    ['name' => 'Lidya Nur Raudhatul', 'role' => 'Designer & Frontend Dev', 'desc' => 'Crafts visuals that sing in silence.', 'img' => '/images/team/lidya.png'],
     ['name' => 'Bunga Citra Lestari S.', 'role' => 'Frontend Dev', 'desc' => 'Brings melody to motion on screen.', 'img' => '/images/team/bunga.webp'],
     ['name' => 'Birgita Anastasya H.', 'role' => 'UX & Motion', 'desc' => 'Orchestrates user flow with elegance.', 'img' => '/images/team/birgita.webp'],
     ['name' => 'M. Falih Hilmy', 'role' => 'Backend Engineer', 'desc' => 'Builds the backbone of performance.', 'img' => '/images/team/falih.png'],

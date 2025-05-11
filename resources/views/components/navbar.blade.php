@@ -10,7 +10,7 @@
             <a href="{{ route('landing') }}" class="flex items-center space-x-3 shrink-0">
                 <img src="{{ asset('images/logo.png') }}" alt="MyLodies Logo"
                     class="h-9 drop-shadow-lg hover:scale-110 transition duration-300">
-                <span class="text-xl font-bold text-white tracking-wide hover:text-[#f9e5c9] transition">MyLodies</span>
+                <span class="hidden lg:flex text-xl font-bold text-white tracking-wide hover:text-[#f9e5c9] transition">MyLodies</span>
             </a>
 
 
@@ -52,7 +52,7 @@
             </div>
 
             <!-- Shopping Cart Icon (Mobile) -->
-            <a href="{{ route('cart') }}" class="text-white relative">
+            <a href="{{ route('cart') }}" class="hidden lg:flex text-white relative">
                 <svg xmlns="http://www.w3.org/2000/svg"
                     class="w-6 h-6 text-white hover:text-[#f9e5c9] transition duration-300" fill="none"
                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
@@ -121,33 +121,48 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div x-show="open" x-transition:enter="transition ease-out duration-300"
-        x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
-        x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 scale-100"
-        x-transition:leave-end="opacity-0 scale-95"
-        class="lg:hidden bg-[#b49875]/95 backdrop-blur-lg px-6 pt-4 pb-6 space-y-4">
+<div x-show="open" x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+    x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 scale-100"
+    x-transition:leave-end="opacity-0 scale-95"
+    class="lg:hidden bg-[#b49875]/95 backdrop-blur-lg px-6 pt-4 pb-6 space-y-4">
 
-        <!-- Mobile Links -->
-        @foreach (['Home', 'About', 'Rentals', 'FAQ', 'Contact'] as $menu)
-            <a href="#{{ strtolower($menu) }}" @click="open = false"
-                class="block text-white text-base font-medium hover:text-black transition duration-300 ease-in-out">
-                {{ $menu }}
+    <!-- Mobile Links -->
+    @foreach (['Home', 'About', 'Rentals', 'FAQ', 'Contact'] as $menu)
+        <a href="#{{ strtolower($menu) }}" @click="open = false"
+            class="block text-white text-base font-medium hover:text-black transition duration-300 ease-in-out">
+            {{ $menu }}
+        </a>
+    @endforeach
+
+    <!-- Mobile Cart Icon -->
+    <a href="{{ route('cart') }}" @click="open = false" class="relative inline-flex items-center text-white mt-2 hover:text-[#f9e5c9] transition">
+        <svg xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3 3h2l.4 2M7 13h10l4-8H6.4M7 13L5.4 5M7 13l-2 9m14-9l2 9m-6-4a1 1 0 11-2 0 1 1 0 012 0zm-6 0a1 1 0 11-2 0 1 1 0 012 0z" />
+        </svg>
+        <span
+            class="absolute -top-1 -right-2 bg-red-500 text-white text-[10px] font-semibold rounded-full px-1 py-0.5 shadow-md">
+            2
+        </span>
+        <span>Cart</span>
+    </a>
+
+    <!-- Mobile Auth -->
+    <div class="pt-2">
+        @auth
+            <a href="#"
+                class="block text-white mt-4 px-4 py-2 border border-white rounded-full text-center hover:bg-white hover:text-[#b49875] transition">
+                Logout
             </a>
-        @endforeach
-
-        <!-- Mobile Auth -->
-        <div class="pt-2">
-            @auth
-                <a href="#"
-                    class="block text-white mt-4 px-4 py-2 border border-white rounded-full text-center hover:bg-white hover:text-[#b49875] transition">
-                    Logout
-                </a>
-            @else
-                <a href="{{ route('login') }}"
-                    class="block text-white mt-4 px-4 py-2 border border-white rounded-full text-center hover:bg-white hover:text-[#b49875] transition">
-                    Login
-                </a>
-            @endauth
-        </div>
+        @else
+            <a href="{{ route('login') }}"
+                class="block text-white mt-4 px-4 py-2 border border-white rounded-full text-center hover:bg-white hover:text-[#b49875] transition">
+                Login
+            </a>
+        @endauth
     </div>
+</div>
+
 </header>
