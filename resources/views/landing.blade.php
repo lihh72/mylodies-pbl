@@ -16,7 +16,7 @@
 
     <section id="home"
         class="relative h-screen bg-cover bg-center flex items-center justify-center text-center overflow-hidden"
-        style="background-image: url('{{ asset('images/bg.jpg') }}');">
+        style="background-image: url('{{ asset('images/bg1.jpg') }}');">
         <!-- Overlay -->
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm z-0"></div>
 
