@@ -49,11 +49,11 @@
 
         <!-- Equalizer Bars -->
         <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex gap-1 z-10">
-            <div class="w-1 h-8 bg-[#b49875] animate-eq delay-[0ms]"></div>
-            <div class="w-1 h-6 bg-[#b49875] animate-eq delay-[150ms]"></div>
-            <div class="w-1 h-10 bg-[#b49875] animate-eq delay-[300ms]"></div>
-            <div class="w-1 h-7 bg-[#b49875] animate-eq delay-[450ms]"></div>
-            <div class="w-1 h-9 bg-[#b49875] animate-eq delay-[600ms]"></div>
+            <div class="w-1 h-4 bg-[#b49875] animate-eq delay-eq-0"></div>
+  <div class="w-1 h-4 bg-[#b49875] animate-eq delay-eq-1"></div>
+  <div class="w-1 h-4 bg-[#b49875] animate-eq delay-eq-2"></div>
+  <div class="w-1 h-4 bg-[#b49875] animate-eq delay-eq-3"></div>
+  <div class="w-1 h-4 bg-[#b49875] animate-eq delay-eq-4"></div>
         </div>
     </section>
 
@@ -186,20 +186,25 @@
         }
 
         @keyframes eq {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(2.5); /* Atur skala sesuai selera */
+  }
+}
 
-            0%,
-            100% {
-                height: 0.75rem;
-            }
+.animate-eq {
+  animation: eq 1.5s ease-in-out infinite;
+  transform-origin: bottom;
+}
 
-            50% {
-                height: 2rem;
-            }
-        }
+        .delay-eq-0   { animation-delay: 0ms; }
+.delay-eq-1   { animation-delay: 150ms; }
+.delay-eq-2   { animation-delay: 300ms; }
+.delay-eq-3   { animation-delay: 450ms; }
+.delay-eq-4   { animation-delay: 600ms; }
 
-        .animate-eq {
-            animation: eq 1.5s ease-in-out infinite;
-        }
     </style>
     </section>
 
