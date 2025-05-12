@@ -2,7 +2,11 @@
 <header x-data="{ open: false }"
     class="fixed top-0 w-full z-50 bg-gradient-to-r from-[#b49875]/90 to-[#9c7b59]/90 shadow-lg backdrop-blur-md transition-transform duration-700 ease-in-out animate-fade-in-down">
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center relative">
-
+<style>
+    [x-cloak] {
+    display: none !important;
+}
+</style>
         <!-- Left Side: Navigation & Logo -->
         <div class="flex items-center space-x-6">
 

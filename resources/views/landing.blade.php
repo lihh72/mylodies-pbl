@@ -205,10 +205,6 @@
 .delay-eq-3   { animation-delay: 450ms; }
 .delay-eq-4   { animation-delay: 600ms; }
 
-[x-cloak] {
-    display: none !important;
-}
-
     </style>
     </section>
 
