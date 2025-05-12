@@ -1,9 +1,27 @@
+@extends('layouts.app')
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+         <!-- Meta for Mylodies -->
+    <meta name="description" content="Mylodies is a music platform that brings you the best tracks from various genres. Discover your favorite music here.">
+    <meta name="author" content="Mylodies Team">
+    <meta name="keywords" content="music, songs, streaming, Mylodies, pop, rock, jazz, indie, rent">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Mylodies - Your Favorite Music Platform">
+    <meta property="og:description" content="Enjoy the best listening experience with curated music on Mylodies.">
+    <meta property="og:image" content="{{ asset('images/logo.png') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mylodies - Your Favorite Music Platform">
+    <meta name="twitter:description" content="Enjoy the best listening experience with curated music on Mylodies.">
+    <meta name="twitter:image" content="{{ asset('images/logo.png') }}">
     <title>MyLodies - Rent Your Sound</title>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     @vite('resources/js/app.js')
