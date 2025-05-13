@@ -71,6 +71,12 @@
                     class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-semibold rounded-full px-1.5 py-0.5 shadow-md">2</span>
             </a>
 
+<!-- Profile Icon -->
+<a href="/edit" class="group">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white group-hover:text-[#f9e5c9] transition duration-300" fill="currentColor" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M12 2a5 5 0 100 10 5 5 0 000-10zm-7 17a7 7 0 0114 0v1H5v-1z" clip-rule="evenodd" />
+    </svg>
+</a>
             <!-- Logout Button -->
             <a href="{{ route('logout') }}"
                 class="px-5 py-2 text-sm font-semibold border border-white text-white rounded-full hover:bg-white hover:text-[#b49875] transition-all duration-300 shadow-md hover:shadow-lg">

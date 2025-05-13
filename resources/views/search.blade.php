@@ -49,7 +49,7 @@
         <ul class="mt-4 pl-2 space-y-3 text-[#4e3d33]">
           <li class="cursor-pointer hover:text-[#a78c74] transition-colors">Batam</li>
           <li class="cursor-pointer hover:text-[#a78c74] transition-colors">Jawa Barat</li>
-          <li class="cursor-pointer hover:text-[#a78c74] transition-colors">Jabodetabek</li>
+          <li class="cursor-pointer hover:text-[#a78c74] transition-colors">Kalimantan</li>
           <li class="cursor-pointer hover:text-[#a78c74] transition-colors">Others</li>
         </ul>
       </details>
