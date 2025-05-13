@@ -37,7 +37,7 @@
   
       <!-- Right: Cinematic Instrument Feature Image with Border -->
       <div class="hidden md:block relative w-full max-w-lg aspect-[3/2] border-4 border-[#574537] rounded-3xl overflow-hidden shadow-2xl">
-        <img src="/images/hero-still.jpg" alt="Creative Instrument" class="w-full h-full object-cover" />
+        <img src="https://www.polibatam.ac.id/wp-content/uploads/2023/05/Gedung-2048x1366.jpg" alt="Creative Instrument" class="w-full h-full object-cover" />
         <div class="absolute bottom-0 left-0 bg-gradient-to-t from-[#1e1b16]/90 to-transparent p-4 text-white text-sm font-light tracking-wide">
           Precision meets soul. Every rental, studio-grade.
         </div>
@@ -180,8 +180,8 @@
       @php
   $team = [
     ['name' => 'Lidya Nur Raudhatul', 'role' => 'Designer & Frontend Dev', 'desc' => 'Crafts visuals that sing in silence.', 'img' => '/images/team/lidya.png'],
-    ['name' => 'Bunga Citra Lestari S.', 'role' => 'Frontend Dev', 'desc' => 'Brings melody to motion on screen.', 'img' => '/images/team/bunga.webp'],
-    ['name' => 'Birgita Anastasya H.', 'role' => 'UX & Motion', 'desc' => 'Orchestrates user flow with elegance.', 'img' => '/images/team/birgita.webp'],
+    ['name' => 'Bunga Citra Lestari S.', 'role' => 'designer & Frontend Dev', 'desc' => 'Brings melody to motion on screen.', 'img' => '/images/team/bunga.webp'],
+    ['name' => 'Birgita Anastasya H.', 'role' => 'Designer & Frontend Dev', 'desc' => 'Orchestrates user flow with elegance.', 'img' => '/images/team/birgita.webp'],
     ['name' => 'M. Falih Hilmy', 'role' => 'Backend Engineer', 'desc' => 'Builds the backbone of performance.', 'img' => '/images/team/falih.png'],
   ];
 @endphp
