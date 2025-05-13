@@ -39,6 +39,9 @@ Route::get('/search', [SearchController::class, 'index']);
 Route::get('/product', [ProductController::class, 'index']);
 Route::get('/dashboardadmin', [DashboardAdminController::class, 'index']);
 
+Route::get('/about', function () {
+    return view('about');
+});
 
 
 Route::middleware('auth')->group(function () {

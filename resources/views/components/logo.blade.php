@@ -5,8 +5,10 @@
     {{ $slot }}
 
     <!-- Tombol Scroll dengan SVG Panah ke Bawah -->
-    <button id="scroll-button" class="md:hidden mt-6 px-6 py-3 bg-gradient-to-r from-indigo-600 to-blue-500 text-white rounded-full shadow-lg transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl focus:outline-none animate-pulse">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+    <button id="scroll-button"
+        class="md:hidden mt-6 px-6 py-3 bg-gradient-to-r from-indigo-600 to-blue-500 text-white rounded-full shadow-lg transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl focus:outline-none animate-pulse">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mx-auto" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
         </svg>
     </button>
