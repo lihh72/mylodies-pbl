@@ -252,7 +252,7 @@
                     </div>
                     <div
                         class="absolute bottom-4 left-4 text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition duration-700">
-                        Instrument Gear
+                        
                     </div>
                 </div>
 
@@ -266,7 +266,7 @@
                     </div>
                     <div
                         class="absolute bottom-4 left-4 text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition duration-700">
-                        Studio Vibe
+                        
                     </div>
                 </div>
 
@@ -280,7 +280,7 @@
                     </div>
                     <div
                         class="absolute bottom-4 left-4 text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition duration-700">
-                        Grand Piano
+                        
                     </div>
                 </div>
 
