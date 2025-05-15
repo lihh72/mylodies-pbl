@@ -129,9 +129,9 @@
   
         <!-- Scrollable Cards -->
         <div class="flex space-x-20 overflow-x-auto no-scrollbar pb-4 relative z-10">
-          @foreach ([['2018', 'The Idea Was Born', 'From a small studio in Bandung to a national mission.', 'lightbulb'],
-                    ['2020', 'Scaling Up', 'Hit 1,000 rentals and collaborated with indie festivals.', 'rocket'],
-                    ['2024', 'Nationwide Reach', 'Available across 12+ provinces.', 'globe']] as [$year, $title, $desc, $icon])
+          @foreach ([['February 2025', 'Kickoff', 'Focused on concept planning, user research, and forming the development team.', 'lightbulb'],
+                    ['March 2025', 'Development Phase', 'Began building core features such as the rental system, music gear catalog, and product detail pages.', 'rocket'],
+                    ['April 2025', 'Refinement & Testing', 'Worked on UI/UX improvements, feature testing, and preparation for early implementation and presentation.', 'globe']] as [$year, $title, $desc, $icon])
           <div class="min-w-[260px] flex-shrink-0 text-center transition-all duration-300">
             <!-- Icon Circle -->
             <div class="mx-auto mb-6 w-20 h-20 flex items-center justify-center bg-[#b4926d]/20 border-2 border-[#b4926d] rounded-full shadow-md backdrop-blur-md">
