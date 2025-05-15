@@ -20,20 +20,28 @@
 
             <!-- Navigation (Desktop Only) -->
             <nav class="hidden lg:flex items-center space-x-6">
-                @foreach (['Home', 'About', 'Rentals', 'FAQ', 'Contact'] as $menu)
-                    <a href="#{{ strtolower($menu) }}"
-                        class="group relative inline-flex items-center gap-1 text-white font-medium transition-all duration-300 ease-in-out hover:text-black">
-                        <svg class="w-4 h-4 text-white group-hover:text-[#f9e5c9] transition-transform group-hover:rotate-12 duration-300"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M12 3v3m6.364 1.636l-2.121 2.121M21 12h-3m-1.636 6.364l-2.121-2.121M12 21v-3m-6.364-1.636l2.121-2.121M3 12h3m1.636-6.364l2.121 2.121" />
-                        </svg>
-                        {{ $menu }}
-                        <span
-                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                @endforeach
-            </nav>
+    @foreach (['Home', 'About', 'Catalog'] as $menu)
+        @if ($menu === '')
+            @continue
+        @endif
+
+        @php
+            $url = strtolower($menu) === 'home' ? '/' : '/' . strtolower($menu);
+        @endphp
+
+        <a href="{{ $url }}"
+            class="group relative inline-flex items-center gap-1 text-white font-medium transition-all duration-300 ease-in-out hover:text-black">
+            <svg class="w-4 h-4 text-white group-hover:text-[#f9e5c9] transition-transform group-hover:rotate-12 duration-300"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M12 3v3m6.364 1.636l-2.121 2.121M21 12h-3m-1.636 6.364l-2.121-2.121M12 21v-3m-6.364-1.636l2.121-2.121M3 12h3m1.636-6.364l2.121 2.121" />
+            </svg>
+            {{ $menu }}
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+    @endforeach
+</nav>
+
 
 
 
@@ -42,18 +50,34 @@
         <!-- Search & Hamburger (Mobile Only) -->
         <div class="flex items-center gap-2 lg:hidden ml-auto">
 
-            <!-- Search Bar (Mobile) -->
-            <div x-data="{ focus: false, query: '' }" class="relative transition-all duration-300">
-                <input type="text" placeholder="Search..." x-model="query" @focus="focus = true"
-                    @blur="focus = query !== ''"
-                    :class="(focus || query !== '') ? 'w-[180px]' : 'w-[130px] hover:w-[160px]'"
-                    class="bg-white/20 backdrop-blur-sm text-white placeholder-white/70 rounded-full pl-8 pr-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#f9e5c9] focus:bg-white/30 transition-all duration-300">
-                <svg class="w-4 h-4 absolute left-2 top-1/2 transform -translate-y-1/2 text-white/80"
-                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M21 21l-4.35-4.35M16.65 16.65A7.5 7.5 0 1116.65 2.5a7.5 7.5 0 010 14.15z" />
-                </svg>
-            </div>
+<!-- Search Bar (Mobile) -->
+<div x-data="{ focus: false, query: '' }" class="relative transition-all duration-300">
+    <input
+        type="text"
+        placeholder="Search..."
+        x-model="query"
+        @focus="focus = true"
+        @blur="focus = query !== ''"
+        @keydown.enter="window.location.href = '/search'"
+        :class="(focus || query !== '') ? 'w-[180px]' : 'w-[130px] hover:w-[160px]'"
+        class="bg-white/20 backdrop-blur-sm text-white placeholder-white/70 rounded-full pl-8 pr-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#f9e5c9] focus:bg-white/30 transition-all duration-300"
+    >
+    <svg
+        class="w-4 h-4 absolute left-2 top-1/2 transform -translate-y-1/2 text-white/80"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+    >
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M21 21l-4.35-4.35M16.65 16.65A7.5 7.5 0 1116.65 2.5a7.5 7.5 0 010 14.15z"
+        />
+    </svg>
+</div>
+
 
             <!-- Shopping Cart Icon (Mobile) -->
             <a href="{{ route('cart') }}" class="hidden lg:flex text-white relative">
@@ -84,18 +108,34 @@
         <div class="hidden lg:flex items-center gap-3">
 
 
-            <!-- Desktop Search -->
-            <div x-data="{ focus: false, query: '' }" class="relative text-white">
-                <input type="text" placeholder="Search..." x-model="query" @focus="focus = true"
-                    @blur="focus = query !== ''"
-                    class="bg-white/20 backdrop-blur-sm text-white placeholder-white/70 rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#f9e5c9] focus:bg-white/30 transition-all duration-300"
-                    :class="(focus || query !== '') ? 'w-60' : 'w-40 hover:w-60'">
-                <svg class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-white/80"
-                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M21 21l-4.35-4.35M16.65 16.65A7.5 7.5 0 1116.65 2.5a7.5 7.5 0 010 14.15z" />
-                </svg>
-            </div>
+<!-- Desktop Search -->
+<div x-data="{ focus: false, query: '' }" class="relative text-white">
+    <input
+        type="text"
+        placeholder="Search..."
+        x-model="query"
+        @focus="focus = true"
+        @blur="focus = query !== ''"
+        @keydown.enter="window.location.href = '/search'"
+        class="bg-white/20 backdrop-blur-sm text-white placeholder-white/70 rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#f9e5c9] focus:bg-white/30 transition-all duration-300"
+        :class="(focus || query !== '') ? 'w-60' : 'w-40 hover:w-60'"
+    >
+    <svg
+        class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-white/80"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+    >
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M21 21l-4.35-4.35M16.65 16.65A7.5 7.5 0 1116.65 2.5a7.5 7.5 0 010 14.15z"
+        />
+    </svg>
+</div>
+
 
             <!-- Shopping Cart Icon -->
             <a href="/cart" class="relative group">
@@ -131,13 +171,17 @@
     x-transition:leave-end="opacity-0 scale-95"
     class="lg:hidden bg-[#b49875]/95 backdrop-blur-lg px-6 pt-4 pb-6 space-y-4">
 
-    <!-- Mobile Links -->
-    @foreach (['Home', 'About', 'Rentals', 'FAQ', 'Contact'] as $menu)
-        <a href="#{{ strtolower($menu) }}" @click="open = false"
-            class="block text-white text-base font-medium hover:text-black transition duration-300 ease-in-out">
-            {{ $menu }}
-        </a>
-    @endforeach
+<!-- Mobile Links -->
+@foreach (['Home', 'About', 'Catalog'] as $menu)
+    @php
+        $url = strtolower($menu) === 'home' ? '/' : '/' . strtolower($menu);
+    @endphp
+    <a href="{{ $url }}" @click="open = false"
+        class="block text-white text-base font-medium hover:text-black transition duration-300 ease-in-out">
+        {{ $menu }}
+    </a>
+@endforeach
+
 
     <!-- Mobile Cart Icon -->
     <a href="{{ route('cart') }}" @click="open = false" class="relative inline-flex items-center text-white mt-2 hover:text-[#f9e5c9] transition">

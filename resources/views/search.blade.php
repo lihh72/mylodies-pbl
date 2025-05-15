@@ -140,9 +140,10 @@
               <h3 class="font-semibold text-lg text-[#4a3c31] mb-1">{{ $item['name'] }}</h3>
               <p class="text-sm text-[#6c5e53]">{{ $item['desc'] }}</p>
               <p class="mt-3 inline-block bg-[#f6e8d6] text-[#5c4633] px-3 py-1 rounded-full text-xs font-medium border border-[#d6b896]">{{ $item['price'] }}</p>
-              <button class="mt-4 w-full bg-[#b49875] text-white py-2 rounded-full hover:bg-[#9a7b56] transition-all text-sm font-medium">
-                Check Availability
-              </button>
+              <a href="/product"
+           class="mt-4 block text-center bg-[#b49875] text-white py-2 rounded-full hover:bg-[#9a7b56] transition-all text-sm font-medium">
+            Check Availability
+        </a>
             </div>
           </div>
           @endforeach

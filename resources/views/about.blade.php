@@ -7,6 +7,11 @@
   <title>About Us – MyLodies</title>
   @vite('resources/js/app.js')
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <!-- Alpine Plugins -->
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+ 
+<!-- Alpine Core -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body class="bg-[#faf5ee] text-[#1e1b16] font-sans antialiased">
@@ -30,16 +35,14 @@
         <p class="text-lg text-[#d2c1b2] max-w-lg mb-8">
           From the heart of our studio to your stage — MyLodies brings sound to life with curated instruments for passionate creators.
         </p>
-        <a href="#journey" class="inline-block px-8 py-4 bg-[#b4926d] hover:bg-[#9e7c58] text-white font-medium rounded-full shadow-md transition">
-          Start Your Journey
-        </a>
       </div>
   
       <!-- Right: Cinematic Instrument Feature Image with Border -->
       <div class="hidden md:block relative w-full max-w-lg aspect-[3/2] border-4 border-[#574537] rounded-3xl overflow-hidden shadow-2xl">
         <img src="https://www.polibatam.ac.id/wp-content/uploads/2023/05/Gedung-2048x1366.jpg" alt="Creative Instrument" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-black bg-opacity-30"></div>
         <div class="absolute bottom-0 left-0 bg-gradient-to-t from-[#1e1b16]/90 to-transparent p-4 text-white text-sm font-light tracking-wide">
-          Precision meets soul. Every rental, studio-grade.
+          Politeknik Negeri Batam - Where The All Start...
         </div>
       </div>
     </div>
@@ -54,22 +57,23 @@
     <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#f7efe1] opacity-20 rounded-full blur-[100px] -z-10"></div>
   
     <div class="max-w-7xl mx-auto px-6">
-      <!-- Title -->
-      <div class="text-center mb-20">
-        <h2 class="text-5xl font-bold text-[#3b2e1c] tracking-tight">Our Impact in Numbers</h2>
-        <p class="text-[#5a4e3d] mt-4 text-lg max-w-2xl mx-auto">
-          Di setiap nada dan transaksi, kami mengukir perjalanan yang nyata. Berikut cuplikan pencapaian kami:
-        </p>
-      </div>
-  
-      <!-- Dynamic Layout -->
-      <div class="grid md:grid-cols-2 gap-16 relative z-10">
-        @foreach ([
-          ['+5K', 'Instrument Rentals', 'Kami telah menyewakan ribuan alat musik ke seluruh Indonesia.', 'music-note'],
-          ['98%', 'Positive Feedback', 'Kepuasan pelanggan menjadi prioritas utama kami.', 'thumbs-up'],
-          ['12+', 'Provinces Reached', 'Hadir di lebih dari 12 provinsi dan terus berkembang.', 'map'],
-          ['24/7', 'Customer Support', 'Tim kami siap membantu kapan pun dibutuhkan.', 'headset']
-        ] as [$num, $title, $desc, $icon])
+  <!-- Title -->
+  <div class="text-center mb-20">
+    <h2 class="text-5xl font-bold text-[#3b2e1c] tracking-tight">Our Impact in Numbers</h2>
+    <p class="text-[#5a4e3d] mt-4 text-lg max-w-2xl mx-auto">
+      Through every note and transaction, we shape a meaningful journey. Here's a snapshot of our achievements:
+    </p>
+  </div>
+
+  <!-- Dynamic Layout -->
+  <div class="grid md:grid-cols-2 gap-16 relative z-10">
+    @foreach ([
+      ['+5K', 'Instrument Rentals', 'We have rented out thousands of musical instruments across Indonesia.', 'music-note'],
+      ['98%', 'Positive Feedback', 'Customer satisfaction is our top priority.', 'thumbs-up'],
+      ['12+', 'Provinces Reached', 'Present in more than 12 provinces and continuing to grow.', 'map'],
+      ['24/7', 'Customer Support', 'Our team is ready to help whenever needed.', 'headset']
+    ] as [$num, $title, $desc, $icon])
+
         <div
           x-data="{ visible: false }"
           x-intersect.once="visible = true"
@@ -128,7 +132,7 @@
           @foreach ([['2018', 'The Idea Was Born', 'From a small studio in Bandung to a national mission.', 'lightbulb'],
                     ['2020', 'Scaling Up', 'Hit 1,000 rentals and collaborated with indie festivals.', 'rocket'],
                     ['2024', 'Nationwide Reach', 'Available across 12+ provinces.', 'globe']] as [$year, $title, $desc, $icon])
-          <div class="min-w-[260px] flex-shrink-0 text-center transition-all duration-300 hover:scale-105 hover:drop-shadow-xl">
+          <div class="min-w-[260px] flex-shrink-0 text-center transition-all duration-300">
             <!-- Icon Circle -->
             <div class="mx-auto mb-6 w-20 h-20 flex items-center justify-center bg-[#b4926d]/20 border-2 border-[#b4926d] rounded-full shadow-md backdrop-blur-md">
               <svg class="w-8 h-8 text-[#b4926d]" fill="currentColor">
@@ -149,14 +153,6 @@
       <div class="mt-24 text-center max-w-xl mx-auto">
         <p class="italic text-[#d6c4b3] text-lg">“We don’t just rent instruments — we build memories, one melody at a time.”</p>
       </div>
-  
-      <!-- CTA Button -->
-      <div class="mt-10 text-center">
-        <a href="/about" class="inline-block px-6 py-3 border border-[#b4926d] text-[#b4926d] hover:bg-[#b4926d] hover:text-[#1e1b16] rounded-full transition duration-300">
-          Read Our Full Story
-        </a>
-      </div>
-    </div>
   
     <!-- SVG Icons -->
     <svg style="display: none">

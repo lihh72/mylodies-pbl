@@ -39,7 +39,7 @@
                     class="relative group overflow-hidden rounded-3xl shadow-xl transition-transform duration-500 transform hover:scale-[1.02]">
                     <img id="mainImage"
                         src="https://storage.googleapis.com/a1aa/image/22f99f54-be24-403e-28cf-b80d31ba8e34.jpg"
-                        alt="Fender Hero" class="object-cover w-full h-[420px] transition duration-300" />
+                        alt="Fender Hero" class="object-contain w-full h-[420px] transition duration-300" />
                     <span
                         class="absolute top-5 left-5 bg-white/80 px-3 py-1 rounded-full text-sm font-medium text-[#3e2d1f] shadow-sm">
                         ⭐ 4.8 / 5.0
@@ -52,13 +52,13 @@
                 <div class="flex gap-3">
                     <img onclick="document.getElementById('mainImage').src=this.src"
                         src="https://storage.googleapis.com/a1aa/image/22f99f54-be24-403e-28cf-b80d31ba8e34.jpg"
-                        class="w-20 h-20 object-cover rounded-xl shadow-md cursor-pointer hover:scale-110 transition" />
+                        class="w-20 h-20 object-contain rounded-xl shadow-md cursor-pointer hover:scale-110 transition" />
                     <img onclick="document.getElementById('mainImage').src=this.src"
                         src="https://guitarvillage.co.uk/wp-content/uploads/2023/04/Fender_AmProHSS_Strat_SonicGrey_411_01-scaled.jpg"
-                        class="w-20 h-20 object-cover rounded-xl shadow-md cursor-pointer hover:scale-110 transition" />
+                        class="w-20 h-20 object-contain rounded-xl shadow-md cursor-pointer hover:scale-110 transition" />
                     <img onclick="document.getElementById('mainImage').src=this.src"
                         src="https://guitarvillage.co.uk/wp-content/uploads/2023/04/Fender_AmProHSS_Strat_SonicGrey_411_05-scaled.jpg"
-                        class="w-20 h-20 object-cover rounded-xl shadow-md cursor-pointer hover:scale-110 transition" />
+                        class="w-20 h-20 object-contain rounded-xl shadow-md cursor-pointer hover:scale-110 transition" />
                 </div>
             </div>
 
@@ -132,10 +132,23 @@
                         <span id="priceEstimation">—</span>
                     </div>
 
-                    <button type="submit"
-                        class="w-full bg-gradient-to-tr from-[#a38f7a] to-[#8c7a65] hover:from-[#8c7a65] hover:to-[#6b584a] text-white font-semibold py-2.5 rounded-full shadow-md transition-transform hover:-translate-y-1 flex justify-center gap-2 uppercase tracking-wide">
-                        <i class="fas fa-paper-plane"></i> Rent Now
-                    </button>
+                   <div class="flex gap-3 mt-4">
+    <!-- Add to Cart Button -->
+    <button type="button"
+        onclick="window.location.href='/cart'"
+        class="w-1/2 bg-white border border-[#a38f7a] text-[#3e2d1f] font-semibold py-2.5 rounded-full shadow-sm transition-transform hover:-translate-y-1 hover:bg-[#f9e5c9] flex justify-center gap-2 uppercase tracking-wide">
+        <i class="fas fa-shopping-cart"></i> Add to Cart
+    </button>
+
+    <!-- Rent Now Button -->
+    <button type="button"
+        onclick="window.location.href='/payment'"
+        class="w-1/2 bg-gradient-to-tr from-[#a38f7a] to-[#8c7a65] hover:from-[#8c7a65] hover:to-[#6b584a] text-white font-semibold py-2.5 rounded-full shadow-md transition-transform hover:-translate-y-1 flex justify-center gap-2 uppercase tracking-wide">
+        <i class="fas fa-paper-plane"></i> Rent Now
+    </button>
+</div>
+
+
                 </form>
 
 

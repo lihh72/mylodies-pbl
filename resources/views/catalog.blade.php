@@ -86,9 +86,10 @@
                             <p class="mt-3 text-sm text-gray-600 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-in-out">
                                 {{ $item['desc'] }}
                             </p>
-                            <button class="mt-4 inline-block px-5 py-2 border border-[#b49875] text-[#b49875] font-medium rounded-full hover:bg-[#b49875] hover:text-white transition-all duration-300">
-                                Check Availability
-                            </button>
+                            <a href="/product"
+    class="mt-4 inline-block px-5 py-2 border border-[#b49875] text-[#b49875] font-medium rounded-full hover:bg-[#b49875] hover:text-white transition-all duration-300">
+    Check Availability
+</a>
                         </div>
                     </div>
                 @endforeach
