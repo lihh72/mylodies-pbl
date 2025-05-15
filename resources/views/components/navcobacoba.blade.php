@@ -13,21 +13,29 @@
             </a>
 
             <!-- Navigation (Desktop Only) -->
+             <!-- Navigation (Desktop Only) -->
             <nav class="hidden lg:flex items-center space-x-6">
-                @foreach (['Home', 'About', 'Rentals', 'FAQ', 'Contact'] as $menu)
-                    <a href="#{{ strtolower($menu) }}"
-                        class="group relative inline-flex items-center gap-1 text-white font-medium transition-all duration-300 ease-in-out hover:text-black">
-                        <svg class="w-4 h-4 text-white group-hover:text-[#f9e5c9] transition-transform group-hover:rotate-12 duration-300"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M12 3v3m6.364 1.636l-2.121 2.121M21 12h-3m-1.636 6.364l-2.121-2.121M12 21v-3m-6.364-1.636l2.121-2.121M3 12h3m1.636-6.364l2.121 2.121" />
-                        </svg>
-                        {{ $menu }}
-                        <span
-                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                @endforeach
-            </nav>
+    @foreach (['Home', 'About', 'Catalog'] as $menu)
+        @if ($menu === '')
+            @continue
+        @endif
+
+        @php
+            $url = strtolower($menu) === 'home' ? '/' : '/' . strtolower($menu);
+        @endphp
+
+        <a href="{{ $url }}"
+            class="group relative inline-flex items-center gap-1 text-white font-medium transition-all duration-300 ease-in-out hover:text-black">
+            <svg class="w-4 h-4 text-white group-hover:text-[#f9e5c9] transition-transform group-hover:rotate-12 duration-300"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M12 3v3m6.364 1.636l-2.121 2.121M21 12h-3m-1.636 6.364l-2.121-2.121M12 21v-3m-6.364-1.636l2.121-2.121M3 12h3m1.636-6.364l2.121 2.121" />
+            </svg>
+            {{ $menu }}
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+    @endforeach
+</nav>
         </div>
 
         <!-- Mobile Controls -->
@@ -71,6 +79,12 @@
                     class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-semibold rounded-full px-1.5 py-0.5 shadow-md">2</span>
             </a>
 
+<!-- Profile Icon -->
+<a href="/edit" class="group">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white group-hover:text-[#f9e5c9] transition duration-300" fill="currentColor" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M12 2a5 5 0 100 10 5 5 0 000-10zm-7 17a7 7 0 0114 0v1H5v-1z" clip-rule="evenodd" />
+    </svg>
+</a>
             <!-- Logout Button -->
             <a href="{{ route('logout') }}"
                 class="px-5 py-2 text-sm font-semibold border border-white text-white rounded-full hover:bg-white hover:text-[#b49875] transition-all duration-300 shadow-md hover:shadow-lg">
@@ -86,13 +100,16 @@
         x-transition:leave-end="opacity-0 scale-95"
         class="lg:hidden bg-[#b49875]/95 backdrop-blur-lg px-6 pt-4 pb-6 space-y-4">
 
-        <!-- Mobile Links -->
-        @foreach (['Home', 'About', 'Rentals', 'FAQ', 'Contact'] as $menu)
-            <a href="#{{ strtolower($menu) }}" @click="open = false"
-                class="block text-white text-base font-medium hover:text-black transition duration-300 ease-in-out">
-                {{ $menu }}
-            </a>
-        @endforeach
+<!-- Mobile Links -->
+@foreach (['Home', 'About', 'Catalog'] as $menu)
+    @php
+        $url = strtolower($menu) === 'home' ? '/' : '/' . strtolower($menu);
+    @endphp
+    <a href="{{ $url }}" @click="open = false"
+        class="block text-white text-base font-medium hover:text-black transition duration-300 ease-in-out">
+        {{ $menu }}
+    </a>
+@endforeach
 
         <!-- Logout Button (Mobile) -->
         <div class="pt-2">

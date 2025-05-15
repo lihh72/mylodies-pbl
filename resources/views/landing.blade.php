@@ -4,6 +4,23 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+         <!-- Meta for Mylodies -->
+    <meta name="description" content="Mylodies is a music platform that brings you the best tracks from various genres. Discover your favorite music here.">
+    <meta name="author" content="Mylodies Team">
+    <meta name="keywords" content="music, songs, streaming, Mylodies, pop, rock, jazz, indie, rent">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Mylodies - Your Favorite Music Platform">
+    <meta property="og:description" content="Enjoy the best listening experience with curated music on Mylodies.">
+    <meta property="og:image" content="{{ asset('images/logo.png') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mylodies - Your Favorite Music Platform">
+    <meta name="twitter:description" content="Enjoy the best listening experience with curated music on Mylodies.">
+    <meta name="twitter:image" content="{{ asset('images/logo.png') }}">
     <title>MyLodies - Rent Your Sound</title>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     @vite('resources/js/app.js')
@@ -16,7 +33,7 @@
 
     <section id="home"
         class="relative h-screen bg-cover bg-center flex items-center justify-center text-center overflow-hidden"
-        style="background-image: url('{{ asset('images/bg.jpg') }}');">
+        style="background-image: url('{{ asset('images/bg1.jpg') }}');">
         <!-- Overlay -->
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm z-0"></div>
 
@@ -49,11 +66,11 @@
 
         <!-- Equalizer Bars -->
         <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex gap-1 z-10">
-            <div class="w-1 h-8 bg-[#b49875] animate-eq delay-[0ms]"></div>
-            <div class="w-1 h-6 bg-[#b49875] animate-eq delay-[150ms]"></div>
-            <div class="w-1 h-10 bg-[#b49875] animate-eq delay-[300ms]"></div>
-            <div class="w-1 h-7 bg-[#b49875] animate-eq delay-[450ms]"></div>
-            <div class="w-1 h-9 bg-[#b49875] animate-eq delay-[600ms]"></div>
+            <div class="w-1 h-4 bg-[#b49875] animate-eq delay-eq-0"></div>
+  <div class="w-1 h-4 bg-[#b49875] animate-eq delay-eq-1"></div>
+  <div class="w-1 h-4 bg-[#b49875] animate-eq delay-eq-2"></div>
+  <div class="w-1 h-4 bg-[#b49875] animate-eq delay-eq-3"></div>
+  <div class="w-1 h-4 bg-[#b49875] animate-eq delay-eq-4"></div>
         </div>
     </section>
 
@@ -186,20 +203,25 @@
         }
 
         @keyframes eq {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(2.5); /* Atur skala sesuai selera */
+  }
+}
 
-            0%,
-            100% {
-                height: 0.75rem;
-            }
+.animate-eq {
+  animation: eq 1.5s ease-in-out infinite;
+  transform-origin: bottom;
+}
 
-            50% {
-                height: 2rem;
-            }
-        }
+        .delay-eq-0   { animation-delay: 0ms; }
+.delay-eq-1   { animation-delay: 150ms; }
+.delay-eq-2   { animation-delay: 300ms; }
+.delay-eq-3   { animation-delay: 450ms; }
+.delay-eq-4   { animation-delay: 600ms; }
 
-        .animate-eq {
-            animation: eq 1.5s ease-in-out infinite;
-        }
     </style>
     </section>
 
@@ -338,10 +360,6 @@
 
     </section>
 
-
-
-
-
     <!-- Featured Rentals Section - With Hover Descriptions -->
     <section id="rentals" class="bg-gradient-to-b from-[#fef8f2] to-[#f9f3ea] py-24 relative overflow-hidden">
         <div class="absolute inset-0 pointer-events-none">
@@ -359,7 +377,7 @@
                 @foreach ([
         ['img' => 'piano1.jpg', 'name' => 'Yamaha Grand Piano', 'price' => 'IDR 400.000 / Day', 'desc' => 'A premium grand piano with rich tonal quality, ideal for concerts and recordings.'],
         ['img' => 'guitar.webp', 'name' => 'Fender Precision Bass', 'price' => 'IDR 290.000 / Day', 'desc' => 'Legendary bass tone for rock, jazz, and funk performances.'],
-        ['img' => 'violin1.jpg', 'name' => 'Classic Acoustic Violin', 'price' => 'IDR 400.000 / Day', 'desc' => 'Handcrafted violin with warm, mellow sound. Perfect for orchestras.'],
+        ['img' => 'violin.jpg', 'name' => 'Classic Acoustic Violin', 'price' => 'IDR 400.000 / Day', 'desc' => 'Handcrafted violin with warm, mellow sound. Perfect for orchestras.'],
         ['img' => 'saxophone.jpg', 'name' => 'Saxophone', 'price' => 'IDR 350.000 / Day', 'desc' => 'Smooth and expressive tone, great for jazz sessions and solos.'],
         ['img' => 'drum.jpg', 'name' => 'Drum Set', 'price' => 'IDR 380.000 / Day', 'desc' => 'Full professional drum set with crisp snare and booming bass.'],
         ['img' => 'accordion.jpg', 'name' => 'Accordion', 'price' => 'IDR 330.000 / Day', 'desc' => 'Versatile and traditional, adds color to classical or folk music.'],
@@ -397,9 +415,11 @@
                                 {{ $item['desc'] }}
                             </p>
 
-                            <button
-                                class="mt-4 inline-block px-5 py-2 border border-[#b49875] text-[#b49875] font-medium rounded-full hover:bg-[#b49875] hover:text-white transition-all duration-300">Check
-                                Availability</button>
+                            <a href="/product"
+    class="mt-4 inline-block px-5 py-2 border border-[#b49875] text-[#b49875] font-medium rounded-full hover:bg-[#b49875] hover:text-white transition-all duration-300">
+    Check Availability
+</a>
+
                         </div>
                     </div>
                 @endforeach
@@ -582,74 +602,5 @@
 
     </section>
 
-    <!-- Footer -->
-    <footer
-        class="bg-gradient-to-br from-[#9c7b59] via-[#8d6f50] to-[#7e6447] text-white py-16 relative overflow-hidden">
-        <!-- Subtle texture -->
-        <div class="absolute inset-0 bg-[url('/images/texture-noise.png')] opacity-5 pointer-events-none"></div>
 
-        <div class="relative max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 z-10">
-            <!-- Logo & Brand -->
-            <div>
-                <div class="flex items-center space-x-3 mb-4">
-                    <img src="{{ asset('images/logo.png') }}" alt="MyLodies Logo" class="h-10 drop-shadow-lg" />
-                    <h3 class="text-2xl font-extrabold tracking-wide">MyLodies</h3>
-                </div>
-                <p class="text-sm text-white/90">Your reliable partner in sound & performance — where every artist
-                    finds their stage.</p>
-                <div class="flex space-x-3 mt-4">
-                    <a href="#" class="hover:text-white/80 transition"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="hover:text-white/80 transition"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="hover:text-white/80 transition"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-
-            <!-- Explore -->
-            <div>
-                <h4 class="text-lg font-semibold mb-4">Explore</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="#" class="hover:underline hover:text-white/80 transition">Home</a></li>
-                    <li><a href="#" class="hover:underline hover:text-white/80 transition">About</a></li>
-                    <li><a href="#" class="hover:underline hover:text-white/80 transition">Rentals</a></li>
-                    <li><a href="#" class="hover:underline hover:text-white/80 transition">Contact</a></li>
-                </ul>
-            </div>
-
-            <!-- Help -->
-            <div>
-                <h4 class="text-lg font-semibold mb-4">Help</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="#" class="hover:underline hover:text-white/80 transition">FAQ</a></li>
-                    <li><a href="#" class="hover:underline hover:text-white/80 transition">Terms &
-                            Conditions</a></li>
-                    <li><a href="#" class="hover:underline hover:text-white/80 transition">Privacy Policy</a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Contact -->
-            <div>
-                <h4 class="text-lg font-semibold mb-4">Get in Touch</h4>
-                <ul class="space-y-2 text-sm">
-                    <li class="flex items-start space-x-2">
-                        <i class="fas fa-envelope mt-1"></i>
-                        <span>mylodies@gmail.com</span>
-                    </li>
-                    <li class="flex items-start space-x-2">
-                        <i class="fas fa-phone mt-1"></i>
-                        <span>0822 3001 9821</span>
-                    </li>
-                    <li class="flex items-start space-x-2">
-                        <i class="fas fa-map-marker-alt mt-1"></i>
-                        <span>Batam, Kepulauan Riau</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Footer Bottom -->
-        <div class="border-t border-white/20 mt-12 pt-6 text-center text-sm text-white/80 relative z-10">
-            &copy; 2025 <span class="font-semibold">MyLodies</span>. All rights reserved. <span class="italic">Built
-                with rhythm & soul.</span>
-        </div>
-    </footer>
+    <x-footer />
