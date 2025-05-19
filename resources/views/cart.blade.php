@@ -134,14 +134,13 @@
                 <i class="fa-solid fa-receipt text-[#b49875]"></i> Summary
             </h3>
 
-            <div class="space-y-2 text-sm text-[#3c2f24]">
-                <div class="flex justify-between"><span>Total Items</span><span id="item-count">0</span></div>
-                <div class="flex justify-between"><span>Total Rental Period</span><span>7 + 7 days</span></div>
-                <div class="flex justify-between font-semibold"><span>Total Rental Price</span><span
-                        id="total-summary">IDR 0</span></div>
-                <p class="text-xs italic text-[#7e6a57] pt-2">*Final cost will include tax, deposit, and delivery fees
-                    in the next step.</p>
-            </div>
+        <div class="space-y-2 text-sm text-[#3c2f24]">
+            <div class="flex justify-between"><span>Total Items</span><span id="item-count">0</span></div>
+            <div class="flex justify-between"><span>Total Rental Period</span><span>7 + 7 days</span></div>
+            <div class="flex justify-between"><span>Service Fee</span><span>IDR 3.000</span></div>
+            <div class="flex justify-between font-semibold"><span>Total Rental Price</span><span id="total-summary">IDR 0</span></div>
+                <p class="text-xs italic text-[#7e6a57] pt-2">*Final cost will include tax, deposit, and delivery fees in the next step.</p>
+        </div>
 
             <button
                 class="w-full py-4 rounded-full font-bold text-white bg-gradient-to-r from-[#b49875] to-[#8a7a6a] hover:opacity-90 shadow-lg text-lg transition-all">
@@ -159,6 +158,8 @@
         function updateTotals() {
             let totalPrice = 0;
             let itemCount = 0;
+            const adminFee = 3000;  // Biaya admin tetap
+
             document.querySelectorAll('.item').forEach(item => {
                 const qty = parseInt(item.querySelector('.quantity').textContent);
                 const price = parseInt(item.dataset.price);
@@ -167,8 +168,10 @@
                 item.querySelector('.price').textContent = formatIDR(qty * price);
             });
 
+            const totalWithAdmin = totalPrice + adminFee;
+
             document.getElementById('total-price').textContent = formatIDR(totalPrice);
-            document.getElementById('total-summary').textContent = formatIDR(totalPrice);
+            document.getElementById('total-summary').textContent = formatIDR(totalWithAdmin);
             document.getElementById('item-count').textContent = itemCount;
         }
 
