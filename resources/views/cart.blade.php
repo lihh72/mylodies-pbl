@@ -1,24 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Checkout</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-    @vite('resources/js/app.js')
-    <style>
-        button:focus {
-            outline: none;
-        }
+@section('title', 'MyLodies - Product')
+@section('bg-[#f9f6f1] font-sans text-[#3b2f28] relative overflow-x-hidden')
 
-        .bg-pattern {
-            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-        }
-    </style>
-</head>
-
-<body class="bg-[#f9f6f1] font-sans text-[#3b2f28] relative overflow-x-hidden">
 
     <!-- Decorative Background -->
     <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#f5e5d0] blur-3xl opacity-30"></div>

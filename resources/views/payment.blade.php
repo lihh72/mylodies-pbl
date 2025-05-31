@@ -1,32 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elegant Payment Page</title>
-    @vite('resources/js/app.js')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <style>
-        button:focus {
-            outline: none;
-        }
+@section('title', 'MyLodies - Payment')
+@section('bg-[#f9f6f1] font-sans text-[#3b2f28] relative overflow-x-hidden')
 
-        .bg-pattern {
-            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-        }
-    </style>
-</head>
-
-<body class="bg-[#f9f6f1] font-sans text-[#3b2f28] relative overflow-x-hidden">
 
     <!-- DECORATIVE BACKGROUND SHAPES -->
     <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#f5e5d0] blur-3xl opacity-30"></div>
     <div class="absolute top-0 right-0 w-80 h-80 rounded-bl-full bg-gradient-to-tr from-[#b49875]/30 to-transparent">
     </div>
-
-    <!-- HEADER -->
-    <x-navbar />
 
     <main class="max-w-7xl mx-auto px-8 py-12 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 relative pt-32">
 

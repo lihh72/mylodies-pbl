@@ -1,39 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-         <!-- Meta for Mylodies -->
-    <meta name="description" content="Mylodies is a music platform that brings you the best tracks from various genres. Discover your favorite music here.">
-    <meta name="author" content="Mylodies Team">
-    <meta name="keywords" content="music, songs, streaming, Mylodies, pop, rock, jazz, indie, rent">
-
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Mylodies - Your Favorite Music Platform">
-    <meta property="og:description" content="Enjoy the best listening experience with curated music on Mylodies.">
-    <meta property="og:image" content="{{ asset('images/logo.png') }}">
-    <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mylodies - Your Favorite Music Platform">
-    <meta name="twitter:description" content="Enjoy the best listening experience with curated music on Mylodies.">
-    <meta name="twitter:image" content="{{ asset('images/logo.png') }}">
-    <title>MyLodies - Rent Your Sound</title>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    @vite('resources/js/app.js')
-</head>
-
-<body class="font-sans text-gray-800 bg-white">
-
-    <x-navbar />
+@section('title', 'MyLodies - Home')
+@section('body_class', 'font-sans text-gray-800 bg-white')
 
 
     <section id="home"
         class="relative h-screen bg-cover bg-center flex items-center justify-center text-center overflow-hidden"
-        style="background-image: url('{{ asset('images/bg1.jpg') }}');">
+        >
+        <!-- Background Video -->
+    <video autoplay muted loop playsinline
+        class="absolute inset-0 w-full h-full object-cover z-[-1]">
+        <source src="{{ asset('videos/Video_Musik_Siap_Ini_Tautan.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
         <!-- Overlay -->
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm z-0"></div>
 
@@ -601,6 +580,3 @@
         </div>
 
     </section>
-
-
-    <x-footer />

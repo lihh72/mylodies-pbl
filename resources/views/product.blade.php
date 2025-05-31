@@ -1,26 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sonic Grey Fender - Product Detail</title>
-    @vite('resources/js/app.js')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-    <style>
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(circle at top left, #f9e5c9 0%, transparent 60%), radial-gradient(circle at bottom right, #f9e5c9 0%, transparent 60%);
-            z-index: -1;
-        }
-    </style>
-</head>
+@section('title', 'MyLodies - Product')
+@section('body_class', 'bg-[#fdfaf5] text-gray-800 font-sans')
 
-<body class="bg-[#fdfaf5] text-gray-800 font-sans">
-
-    <x-navbar />
 
     <!-- Hero Section -->
     <section class="relative bg-[#fdfaf5] py-20 overflow-hidden">

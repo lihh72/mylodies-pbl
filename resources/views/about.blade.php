@@ -1,22 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+@extends('layouts.app')
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us – MyLodies</title>
-  @vite('resources/js/app.js')
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-  <!-- Alpine Plugins -->
-<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
- 
-<!-- Alpine Core -->
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-</head>
+@section('title', 'MyLodies - Product')
+@section('bg-[#faf5ee] text-[#1e1b16] font-sans antialiased')
 
-<body class="bg-[#faf5ee] text-[#1e1b16] font-sans antialiased">
 
-  <x-navbar />
 
   <!-- Hero Section: Cinematic & Creative -->
   <section class="relative h-screen bg-[#1e1b16] text-white overflow-hidden flex items-center">

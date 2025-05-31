@@ -1,17 +1,8 @@
-<!-- resources/views/instruments.blade.php -->
-<!DOCTYPE html>
-<html lang="en" x-data="{ category: 'All' }" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rent Your Sound | Catalog</title>
-    @vite('resources/js/app.js')
-    <script src="//unpkg.com/alpinejs" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-</head>
-<body class="bg-[#fef8f2] text-[#5a4a3b] font-sans">
+@extends('layouts.app')
 
-    <x-navbar />
+@section('title', 'MyLodies - Product')
+@section('bg-[#fef8f2] text-[#5a4a3b] font-sans')
+
 
     <section id="rentals" class="bg-gradient-to-b from-[#fff8f2] to-[#f9f3ea] py-28 relative overflow-hidden">
         <!-- Background noise and decorations -->
