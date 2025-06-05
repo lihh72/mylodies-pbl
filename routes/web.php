@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileUserController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/q', function () {
     return view('welcome');
@@ -28,16 +29,24 @@ Route::get('/dashboard', function () {
 
 // total 12 views ditambah /login dan /register yang sudah masuk ke auth dan sudah bekerja
 
-Route::get('/', [LandingController::class, 'index'])->name('landing');
-Route::get('/payment', [PaymentController::class, 'index']);
-Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog');
+Route::get('/', [ProductController::class, 'index'])->name('landing');
+Route::match(['get', 'post'], '/payment/process/{order}', [PaymentController::class, 'process'])->name('payment.process');
+
+Route::get('/payment/{code}', [PaymentController::class, 'show'])->name('payment.show')->middleware('auth');
+
+Route::get('/catalog', [ProductController::class, 'catalog'])->name('catalog');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
-Route::get('/edit', [EditUserController::class, 'index']);
+Route::get('/edit', [EditUserController::class, 'index'])->middleware('auth');
+Route::post('/edit/password', [EditUserController::class, 'updatePassword'])->name('edit.password')->middleware('auth');
+Route::post('/payment/callback', [PaymentController::class, 'callback'])->name('payment.callback');
 Route::get('/history', [HistoryController::class, 'index']);
 Route::get('/profileuser', [ProfileUserController::class, 'index']);
-Route::get('/search', [SearchController::class, 'index']);
-Route::get('/product', [ProductController::class, 'index']);
+Route::get('/search', [ProductController::class, 'search'])->name('search');
+Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product');
 Route::get('/dashboardadmin', [DashboardAdminController::class, 'index']);
+Route::middleware('auth')->group(function () {
+    Route::post('/products/{product}/order', [OrderController::class, 'store'])->name('order.store');
+});
 
 Route::get('/about', function () {
     return view('about');
@@ -49,6 +58,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('oauth/google', [\App\Http\Controllers\OauthController::class, 'redirectToProvider'])->name('oauth.google');  
+Route::get('oauth/google/callback', [\App\Http\Controllers\OauthController::class, 'handleProviderCallback'])->name('oauth.google.callback');
 
 //Route::get('/search', [SearchController::class, 'index'])->name('search');
 

@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name'); // Instrument name
+            $table->string('slug')->unique(); // ✅ Slug unik
             $table->string('category'); // Instrument category
             $table->decimal('rental_price_per_day', 10, 2);
             $table->text('description')->nullable();
-            $table->string('image')->nullable(); // product image
+            $table->longText('full_description')->nullable(); // ✅ Full description
+            $table->string('images')->nullable(); // Product image
             $table->timestamps();
         });
     }

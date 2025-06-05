@@ -11,10 +11,40 @@ class Product extends Model
 
     // ✅ Izinkan mass assignment untuk kolom berikut:
     protected $fillable = [
-        'name',
-        'category',
-        'rental_price_per_day',
-        'description',
-        'image',
-    ];
+    'name',
+    'slug',
+    'category',
+    'rental_price_per_day',
+    'description',
+    'full_description',
+    'images',
+    'highlights',
+    'included_items',
+    'badge',
+];
+
+protected $casts = [
+    'images' => 'array',
+    'highlights' => 'array',
+    'included_items' => 'array',
+];
+
+
+public function orders()
+{
+    return $this->hasMany(Order::class);
+}
+
+// Model Product
+public function images()
+{
+    return $this->hasMany(ProductImage::class);
+}
+
+// Optional, buat method untuk ambil main image
+public function mainImage()
+{
+    return $this->images()->where('is_main', true)->first() ?? $this->images()->first();
+}
+
 }

@@ -2,9 +2,9 @@
 
 @section('title', 'MyLodies - Product')
 @section('bg-[#faf5ee] text-[#1e1b16] font-sans antialiased')
+@section('loading_screen', true)
 
-
-
+@section('content')
   <!-- Hero Section: Cinematic & Creative -->
   <section class="relative h-screen bg-[#1e1b16] text-white overflow-hidden flex items-center">
     <!-- Background Video with Cinematic Mask -->
@@ -211,3 +211,4 @@
 
 </body>
 </html>
+@endsection

@@ -10,13 +10,19 @@
     <!-- Search Header -->
     <div class="text-center mb-12">
       <h2 class="text-3xl font-bold text-[#5c4633]">Search Results</h2>
-      <p class="mt-2 text-sm italic text-[#7a6a59]">
-        Menampilkan hasil pencarian: <strong>"Electric Guitar"</strong>
-      </p>
-    </div>
+@if(request('q'))
+  <p class="mt-2 text-sm italic text-[#7a6a59]">
+    Menampilkan hasil pencarian untuk: <strong>"{{ $query }}"</strong>
+  </p>
+@else
+  <p class="mt-2 text-sm italic text-[#7a6a59]">
+    Menampilkan semua produk
+  </p>
+@endif
+</div>
 
     <!-- Filter + Product Grid -->
-<div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-14 items-start">
+<div class="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-14 items-start">
 
   <!-- Sidebar Filters -->
   <aside class="hidden lg:block bg-white p-8 rounded-3xl shadow-[0_10px_30px_-15px_rgba(0,0,0,0.1)] border border-[#f0e8e0] text-sm text-[#4e3d33] lg:sticky lg:top-28 lg:h-fit lg:max-h-[80vh] lg:overflow-y-auto scrollbar-hide">
@@ -116,33 +122,17 @@
   </button>
 </div>
 
-      <!-- Product Grid -->
-      <section>
-        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
-          @foreach([
-            ['img' => 'gitar7.jpeg', 'name' => 'Gitar Electric Aloha', 'price' => 'IDR 270.000 / Day', 'desc' => 'Nyaman untuk latihan dan pemula.'],
-            ['img' => 'gitar8.jpg', 'name' => 'Fender American Deluxe', 'price' => 'IDR 280.000 / Day', 'desc' => 'Suara bright, suit blues & country.'],
-            ['img' => 'guitar1.webp', 'name' => 'Gibson Flying V', 'price' => 'IDR 300.000 / Day', 'desc' => 'Powerful! rock & metal stage.'],
-            ['img' => 'gitar9.jpeg', 'name' => 'Jackson Pro Signature', 'price' => 'IDR 500.000 / Day', 'desc' => 'High-gain untuk metal teknikal.'],
-            ['img' => 'gitar5.jpeg', 'name' => 'Schecter Damien Elite', 'price' => 'IDR 260.000 / Day', 'desc' => 'Tone gelap, pas untuk metal modern.'],
-            ['img' => 'gitar6.webp', 'name' => 'Gretsch G5232T Double Jet', 'price' => 'IDR 600.000 / Day', 'desc' => 'Retro vibe, for rockabilly & jazz.'],
-          ] as $item)
-          <div class="bg-white rounded-xl shadow-lg hover:shadow-xl overflow-hidden transition-all duration-300 group">
-            <img src="{{ asset('images/' . $item['img']) }}" alt="{{ $item['name'] }}" class="w-full h-52 object-cover group-hover:scale-105 transition-transform">
-            <div class="p-5">
-              <h3 class="font-semibold text-lg text-[#4a3c31] mb-1">{{ $item['name'] }}</h3>
-              <p class="text-sm text-[#6c5e53]">{{ $item['desc'] }}</p>
-              <p class="mt-3 inline-block bg-[#f6e8d6] text-[#5c4633] px-3 py-1 rounded-full text-xs font-medium border border-[#d6b896]">{{ $item['price'] }}</p>
-              <a href="/product"
-           class="mt-4 block text-center bg-[#b49875] text-white py-2 rounded-full hover:bg-[#9a7b56] transition-all text-sm font-medium">
-            Check Availability
-        </a>
-            </div>
-          </div>
-          @endforeach
-        </div>
-      </section>
-    </div>
+<!-- Main product area -->
+
+  <x-card :products="$products" />
+
+  <div class="flex justify-center">
+    {{ $products->onEachSide(1)->links('components.pagination-custom') }}
+  </div>
+</div>
+
+
+
     <!-- Mobile Filter Modal -->
 <div id="mobileFilter" class="fixed inset-0 z-50 bg-black/40 hidden">
   <div class="absolute bottom-0 w-full bg-white rounded-t-3xl p-6 max-h-[90vh] overflow-y-auto">

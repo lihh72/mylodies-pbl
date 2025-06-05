@@ -2,7 +2,10 @@
 
 @section('title', 'MyLodies - Home')
 @section('body_class', 'font-sans text-gray-800 bg-white')
+@section('loading_screen', true)
 
+
+@section('content')
 
     <section id="home"
         class="relative h-screen bg-cover bg-center flex items-center justify-center text-center overflow-hidden"
@@ -17,7 +20,10 @@
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm z-0"></div>
 
         <!-- Noise & Particles -->
-        <div class="absolute inset-0 bg-[url('/images/texture-noise.png')] opacity-10 mix-blend-soft-light z-0"></div>
+        <div class="absolute inset-0 opacity-10 mix-blend-soft-light z-0 bg-cover bg-repeat"
+     style="background-image: url('{{ asset('images/texture-noise.png') }}')">
+</div>
+
         <div id="particles-js" class="absolute inset-0 z-0 pointer-events-none"></div>
 
         <!-- Light Glow -->
@@ -352,57 +358,7 @@
                 <p class="mt-4 text-lg text-[#7a6a59]">Crafted by legends. Tuned for your stage.</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                @foreach ([
-        ['img' => 'piano1.jpg', 'name' => 'Yamaha Grand Piano', 'price' => 'IDR 400.000 / Day', 'desc' => 'A premium grand piano with rich tonal quality, ideal for concerts and recordings.'],
-        ['img' => 'guitar.webp', 'name' => 'Fender Precision Bass', 'price' => 'IDR 290.000 / Day', 'desc' => 'Legendary bass tone for rock, jazz, and funk performances.'],
-        ['img' => 'violin.jpg', 'name' => 'Classic Acoustic Violin', 'price' => 'IDR 400.000 / Day', 'desc' => 'Handcrafted violin with warm, mellow sound. Perfect for orchestras.'],
-        ['img' => 'saxophone.jpg', 'name' => 'Saxophone', 'price' => 'IDR 350.000 / Day', 'desc' => 'Smooth and expressive tone, great for jazz sessions and solos.'],
-        ['img' => 'drum.jpg', 'name' => 'Drum Set', 'price' => 'IDR 380.000 / Day', 'desc' => 'Full professional drum set with crisp snare and booming bass.'],
-        ['img' => 'accordion.jpg', 'name' => 'Accordion', 'price' => 'IDR 330.000 / Day', 'desc' => 'Versatile and traditional, adds color to classical or folk music.'],
-    ] as $item)
-                    <div
-                        class="relative bg-white rounded-3xl overflow-hidden shadow-lg transform group hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
-                        <div class="relative">
-                            <!-- Gambar default -->
-                            <img src="{{ asset('images/' . $item['img']) }}" alt="{{ $item['name'] }}"
-                                class="w-full h-52 object-contain transition-opacity duration-500 ease-in-out group-hover:opacity-0">
-
-                            <!-- Gambar saat hover -->
-                            <img src="{{ asset('images/hover-' . $item['img']) }}" alt="{{ $item['name'] }} Hover"
-                                class="absolute inset-0 w-full h-52 object-contain opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
-
-                            <div
-                                class="absolute top-4 right-4 bg-[#b49875] text-white px-3 py-1 text-xs rounded-full shadow">
-                                Top Pick</div>
-                        </div>
-
-
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-[#5a4a3b] mb-1">{{ $item['name'] }}</h3>
-                            <div class="mt-4">
-                                <span
-                                    class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[#f6e8d6] to-[#e2cbb3] text-[#5a4a3b] font-semibold text-sm shadow-inner border border-[#d6b896] transition-transform duration-300 group-hover:scale-105">
-                                    {{ $item['price'] }}
-                                </span>
-                            </div>
-
-
-                            <!-- Animated Description -->
-                            <p
-                                class="mt-3 text-sm text-gray-600 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-                                {{ $item['desc'] }}
-                            </p>
-
-                            <a href="/product"
-    class="mt-4 inline-block px-5 py-2 border border-[#b49875] text-[#b49875] font-medium rounded-full hover:bg-[#b49875] hover:text-white transition-all duration-300">
-    Check Availability
-</a>
-
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+<x-card :products="$products" />
 
             <div class="text-center mt-16">
                 <a href="{{ route('catalog') }}"
@@ -413,9 +369,10 @@
     </section>
 
     <section class="bg-[#f9f3ea] py-20 relative overflow-hidden">
-        <div
-            class="absolute top-0 left-0 w-full h-full bg-[url('/images/pattern1.svg')] opacity-5 bg-repeat pointer-events-none">
-        </div>
+        <div class="absolute top-0 left-0 w-full h-full opacity-5 bg-repeat pointer-events-none"
+     style="background-image: url('{{ asset('images/pattern1.svg') }}')">
+</div>
+
 
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <h2 class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-10 tracking-tight">
@@ -580,3 +537,4 @@
         </div>
 
     </section>
+    @endsection

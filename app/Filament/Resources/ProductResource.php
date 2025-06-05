@@ -18,6 +18,9 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
+use Illuminate\Support\Str;
+use Filament\Forms\Components\Repeater;
+
 
 class ProductResource extends Resource
 {
@@ -25,12 +28,42 @@ class ProductResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    public static function form(Form $form): Form
-    {
-        return $form->schema([
+public static function form(Form $form): Form
+{
+    return $form->schema([
         TextInput::make('name')
             ->label('Product Name')
-            ->required(),
+            ->required()
+            ->afterStateUpdated(function (\Filament\Forms\Set $set, ?string $state) {
+                // Generate a slug from the name
+                $slug = Str::slug($state);
+
+                // Check if the slug is unique
+                $originalSlug = $slug;
+                $counter = 1;
+                while (\App\Models\Product::where('slug', $slug)->exists()) {
+                    // Append a counter to the slug if it's already taken
+                    $slug = $originalSlug . '-' . $counter;
+                    $counter++;
+                }
+
+                // Set the unique slug value
+                $set('slug', $slug);
+            }),
+
+        TextInput::make('slug')
+            ->label('Slug')
+            ->disabled()
+            ->dehydrated()
+            ->required()
+            ->unique(ignoreRecord: true),
+
+
+Textarea::make('full_description')
+    ->label('Full Description')
+    ->rows(6)
+    ->columnSpan('full'),
+
 
         Select::make('category')
             ->label('Category')
@@ -52,10 +85,31 @@ class ProductResource extends Resource
         Textarea::make('description')
             ->label('Product Description'),
 
-        FileUpload::make('image')
-            ->label('Instrument Image')
-            ->image()
-            ->directory('instruments'),
+FileUpload::make('images')
+    ->label('Instrument Images')
+    ->image()
+    ->multiple()
+    ->reorderable()
+    ->directory('instruments')
+    ->disk('public'), // Pastikan ini ditambahkan!
+
+    Repeater::make('highlights')
+    ->label('Highlights')
+    ->schema([
+        TextInput::make('value')->label('Highlight'),
+    ])
+    ->default([])
+    ->columnSpanFull(),
+
+Repeater::make('included_items')
+    ->label("What's Included")
+    ->schema([
+        TextInput::make('value')->label('Included Item'),
+    ])
+    ->default([])
+    ->columnSpanFull(),
+
+
     ]);
     }
 
@@ -63,9 +117,12 @@ class ProductResource extends Resource
     {
         return $table
         ->columns([
-            ImageColumn::make('image')
-                ->label('Image')
-                ->circular(),
+            ImageColumn::make('images')
+    ->label('Image')
+    ->getStateUsing(fn ($record) => $record->images[0] ?? null)
+    ->circular(),
+    
+
 
             TextColumn::make('name')->label('Product Name')->searchable(),
             TextColumn::make('category')->label('Category')->sortable(),
@@ -76,7 +133,10 @@ class ProductResource extends Resource
         ->actions([
             Tables\Actions\EditAction::make(),
             Tables\Actions\DeleteAction::make(),
-        ]);
+        ])
+        ->bulkActions([
+                Tables\Actions\DeleteBulkAction::make(),
+            ]);
     }
 
     public static function getRelations(): array

@@ -2,7 +2,11 @@
     <footer
         class="bg-gradient-to-br from-[#9c7b59] via-[#8d6f50] to-[#7e6447] text-white py-16 relative overflow-hidden">
         <!-- Subtle texture -->
-        <div class="absolute inset-0 bg-[url('/images/texture-noise.png')] opacity-5 pointer-events-none"></div>
+        <div
+  class="absolute inset-0 opacity-5 pointer-events-none bg-repeat bg-cover"
+  style="background-image: url('{{ asset('images/texture-noise.png') }}')">
+</div>
+
 
         <div class="relative max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 z-10">
             <!-- Logo & Brand -->
