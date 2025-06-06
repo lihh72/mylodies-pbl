@@ -73,16 +73,19 @@
             </div>
 
             <!-- Cart (hidden on mobile, shown on lg) -->
-            <a href="/cart" class="hidden lg:inline-block relative group">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                    class="w-6 h-6 text-white group-hover:text-[#f9e5c9] transition duration-300 drop-shadow-sm"
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M3 3h2l.4 2M7 13h10l4-8H6.4M7 13L5.4 5M7 13l-2 9m14-9l2 9m-6-4a1 1 0 11-2 0 1 1 0 012 0zm-6 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                </svg>
-                <span
-                    class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-semibold rounded-full px-1.5 py-0.5 shadow-md">2</span>
-            </a>
+<a href="/cart" class="hidden lg:inline-block relative group">
+    <svg xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6 text-white group-hover:text-[#f9e5c9] transition duration-300 drop-shadow-sm"
+        fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+        <path stroke-linecap="round" stroke-linejoin="round"
+            d="M3 3h2l.4 2M7 13h10l4-8H6.4M7 13L5.4 5M7 13l-2 9m14-9l2 9m-6-4a1 1 0 11-2 0 1 1 0 012 0zm-6 0a1 1 0 11-2 0 1 1 0 012 0z" />
+    </svg>
+    <span
+        class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-semibold rounded-full px-1.5 py-0.5 shadow-md">
+        {{ $cartCount }}
+    </span>
+</a>
+
 
             <!-- Profile/Login -->
             <div class="hidden lg:flex items-center gap-4">

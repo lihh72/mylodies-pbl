@@ -1,6 +1,6 @@
     <!-- Footer -->
     <footer
-        class="bg-gradient-to-br from-[#9c7b59] via-[#8d6f50] to-[#7e6447] text-white py-16 relative overflow-hidden">
+        class="bg-gradient-to-br from-[#9c7b59] via-[#8d6f50] to-[#7e6447] text-white py-6 relative overflow-hidden">
         <!-- Subtle texture -->
         <div
   class="absolute inset-0 opacity-5 pointer-events-none bg-repeat bg-cover"
@@ -68,7 +68,7 @@
         </div>
 
         <!-- Footer Bottom -->
-        <div class="border-t border-white/20 mt-12 pt-6 text-center text-sm text-white/80 relative z-10">
+        <div class="border-t border-white/20 mt-8 pt-4 text-center text-sm text-white/80 relative z-10">
             &copy; 2025 <span class="font-semibold">MyLodies</span>. All rights reserved. <span class="italic">Built
                 with rhythm & soul.</span>
         </div>

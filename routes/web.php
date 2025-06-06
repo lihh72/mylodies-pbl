@@ -35,7 +35,15 @@ Route::match(['get', 'post'], '/payment/process/{order}', [PaymentController::cl
 Route::get('/payment/{code}', [PaymentController::class, 'show'])->name('payment.show')->middleware('auth');
 
 Route::get('/catalog', [ProductController::class, 'catalog'])->name('catalog');
-Route::get('/cart', [CartController::class, 'index'])->name('cart');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/add/{productId}', [CartController::class, 'store'])->name('cart.store');
+    Route::post('/cart/update/{id}', [CartController::class, 'updateQuantity'])->name('cart.update');
+    Route::delete('/cart/delete/{id}', [CartController::class, 'destroy'])->name('cart.delete');
+});
+
 Route::get('/edit', [EditUserController::class, 'index'])->middleware('auth');
 Route::post('/edit/password', [EditUserController::class, 'updatePassword'])->name('edit.password')->middleware('auth');
 Route::post('/payment/callback', [PaymentController::class, 'callback'])->name('payment.callback');

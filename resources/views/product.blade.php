@@ -138,11 +138,9 @@
                    <div class="flex gap-3 mt-10 pt-10 border-t border-[#e4c7aa]">
 
     <!-- Add to Cart Button -->
-    <button type="button"
-        onclick="window.location.href='/cart'"
-        class="w-1/2 bg-white border border-[#a38f7a] text-[#3e2d1f] font-semibold py-2.5 rounded-full shadow-sm transition-transform hover:-translate-y-1 hover:bg-[#f9e5c9] flex justify-center gap-2 uppercase tracking-wide">
-        <i class="fas fa-shopping-cart"></i> Add to Cart
-    </button>
+<button type="submit" class="w-1/2 bg-white border border-[#a38f7a] text-[#3e2d1f] font-semibold py-2.5 rounded-full shadow-sm transition-transform hover:-translate-y-1 hover:bg-[#f9e5c9] flex justify-center gap-2 uppercase tracking-wide" formaction="{{ route('cart.store', $product->id) }}">
+    <i class="fas fa-shopping-cart"></i> Add to Cart
+</button>
 
 <button type="submit"
     class="w-1/2 bg-gradient-to-tr from-[#a38f7a] to-[#8c7a65] hover:from-[#8c7a65] hover:to-[#6b584a] text-white font-semibold py-2.5 rounded-full shadow-md transition-transform hover:-translate-y-1 flex justify-center gap-2 uppercase tracking-wide">
