@@ -12,6 +12,7 @@ class Payment extends Model
         'midtrans_order_id',
         'snap_token',
         'payment_status',
+        'gross_amount',
         'code',
     ];
 

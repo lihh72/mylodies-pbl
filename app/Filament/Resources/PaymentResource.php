@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PaymentResource\Pages;
-use App\Filament\Resources\PaymentResource\RelationManagers;
 use App\Models\Payment;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\DeleteAction;
@@ -22,7 +19,6 @@ class PaymentResource extends Resource
     protected static ?string $model = Payment::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-credit-card';
-
     protected static ?string $navigationGroup = 'Payment Management';
 
     public static function form(Form $form): Form
@@ -51,6 +47,12 @@ class PaymentResource extends Resource
                     ])
                     ->required()
                     ->default('pending'),
+
+                Forms\Components\TextInput::make('gross_amount')
+                    ->label('Paid Price')
+                    ->numeric()
+                    ->prefix('Rp')
+                    ->required(),
             ]);
     }
 
@@ -58,7 +60,8 @@ class PaymentResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')->sortable(),
+                TextColumn::make('id')
+                    ->sortable(),
 
                 TextColumn::make('order.id')
                     ->label('Order ID')
@@ -69,22 +72,26 @@ class PaymentResource extends Resource
                     ->searchable(),
 
                 TextColumn::make('payment_status')
-    ->label('Status')
-    ->sortable()
-    ->colors([
-        'warning' => 'pending',
-        'success' => 'paid',
-        'danger' => 'failed',
-        'secondary' => 'expired',
-    ])
-    ->formatStateUsing(fn (string $state): string => match ($state) {
-        'pending' => 'Pending',
-        'paid' => 'Paid',
-        'failed' => 'Failed',
-        'expired' => 'Expired',
-        default => $state,
-    }),
+                    ->label('Status')
+                    ->sortable()
+                    ->colors([
+                        'warning' => 'pending',
+                        'success' => 'paid',
+                        'danger' => 'failed',
+                        'secondary' => 'expired',
+                    ])
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                        'pending' => 'Pending',
+                        'paid' => 'Paid',
+                        'failed' => 'Failed',
+                        'expired' => 'Expired',
+                        default => $state,
+                    }),
 
+                TextColumn::make('gross_amount')
+                    ->label('Paid Price')
+                    ->money('IDR', true)
+                    ->sortable(),
 
                 TextColumn::make('created_at')
                     ->label('Created')

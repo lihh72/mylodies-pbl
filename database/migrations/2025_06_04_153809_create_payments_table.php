@@ -11,6 +11,7 @@ public function up(): void {
         $table->foreignId('order_id')->constrained()->onDelete('cascade');
         $table->string('midtrans_order_id')->nullable()->unique();
         $table->string('snap_token')->nullable();
+        $table->decimal('gross_amount', 10, 2)->nullable(); // Menyimpan total dari Midtrans
         $table->enum('payment_status', ['pending', 'paid', 'failed', 'expired'])->default('pending');
         $table->string('code')->unique(); // ← Tambahkan di sini
         $table->timestamps();

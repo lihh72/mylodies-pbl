@@ -6,6 +6,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ProductSeeder extends Seeder
 {
@@ -15,22 +17,36 @@ class ProductSeeder extends Seeder
 
         $categories = ['Guitar', 'Drum', 'Keyboard', 'Violin', 'Saxophone', 'Microphone', 'Amplifier'];
 
+        // Ambil semua file gambar dari storage/app/public/instruments
+        $imageFiles = File::files(storage_path('app/public/instruments'));
+
+        // Pastikan ada minimal 2 gambar
+        if (count($imageFiles) < 2) {
+            throw new \Exception("Minimal harus ada 2 gambar di folder storage/app/public/instruments");
+        }
+
         for ($i = 0; $i < 20; $i++) {
             $name = $faker->unique()->words(3, true);
 
-            // Generate highlights sebagai array of arrays ['value' => '...']
+            // Highlights
             $highlights = [];
-            $highlightCount = rand(2, 5);
-            for ($h = 0; $h < $highlightCount; $h++) {
+            for ($h = 0; $h < rand(2, 5); $h++) {
                 $highlights[] = ['value' => $faker->sentence(3)];
             }
 
-            // Generate included_items sebagai array of arrays ['value' => '...']
+            // Included items
             $includedItems = [];
-            $includeCount = rand(1, 4);
-            for ($inc = 0; $inc < $includeCount; $inc++) {
+            for ($inc = 0; $inc < rand(1, 4); $inc++) {
                 $includedItems[] = ['value' => $faker->word()];
             }
+
+            // Ambil 2 gambar random dari folder instruments
+            $randomImages = collect($imageFiles)
+                ->shuffle()
+                ->take(2)
+                ->map(fn ($file) => 'instruments/' . $file->getFilename())
+
+                ->toArray();
 
             DB::table('products')->insert([
                 'name' => $name,
@@ -39,10 +55,7 @@ class ProductSeeder extends Seeder
                 'rental_price_per_day' => $faker->numberBetween(30000, 200000),
                 'description' => $faker->sentence(),
                 'full_description' => $faker->paragraph(4),
-                'images' => json_encode([
-                    'https://picsum.photos/640/480?random=' . rand(1, 10000),
-                    'https://picsum.photos/640/480?random=' . rand(10001, 20000),
-                ]),
+                'images' => json_encode($randomImages),
                 'highlights' => json_encode($highlights),
                 'included_items' => json_encode($includedItems),
                 'created_at' => now(),

@@ -106,23 +106,33 @@
 
         <!-- Right: Summary -->
         <aside class="bg-white rounded-3xl shadow-xl border border-[#d9cbb8] p-8 sticky top-32 self-start space-y-6">
-            <h3 class="text-xl font-extrabold flex items-center gap-2">
-                <i class="fa-solid fa-receipt text-[#b49875]"></i> Summary
-            </h3>
+    <h3 class="text-xl font-extrabold flex items-center gap-2">
+        <i class="fa-solid fa-receipt text-[#b49875]"></i> Summary
+    </h3>
 
-        <div class="space-y-2 text-sm text-[#3c2f24]">
-            <div class="flex justify-between"><span>Total Items</span><span id="item-count">0</span></div>
-            <div class="flex justify-between"><span>Total Rental Period</span><span>7 + 7 days</span></div>
-            <div class="flex justify-between"><span>Service Fee</span><span>IDR 3.000</span></div>
-            <div class="flex justify-between font-semibold"><span>Total Rental Price</span><span id="total-summary">IDR 0</span></div>
-                <p class="text-xs italic text-[#7e6a57] pt-2">*Final cost will include tax, deposit, and delivery fees in the next step.</p>
-        </div>
+    <div class="space-y-2 text-sm text-[#3c2f24]">
+        <div class="flex justify-between"><span>Total Items</span><span id="item-count">0</span></div>
+        <div class="flex justify-between"><span>Total Rental Period</span><span>7 + 7 days</span></div>
+        <div class="flex justify-between"><span>Service Fee</span><span>IDR 3.000</span></div>
+        <div class="flex justify-between font-semibold"><span>Total Rental Price</span><span id="total-summary">IDR 0</span></div>
+        <p class="text-xs italic text-[#7e6a57] pt-2">*Final cost will include tax, deposit, and delivery fees in the next step.</p>
+    </div>
 
-            <button
-                class="w-full py-4 rounded-full font-bold text-white bg-gradient-to-r from-[#b49875] to-[#8a7a6a] hover:opacity-90 shadow-lg text-lg transition-all">
-                Proceed to Payment
-            </button>
-        </aside>
+    <form method="POST" action="{{ route('order.storeFromCart') }}">
+        @csrf
+        <!-- Notes input, kirim ke backend -->
+        <label for="notes" class="block text-sm font-semibold text-[#3c2f24] mb-2">Notes (optional)</label>
+        <textarea id="notes" name="notes" rows="4" placeholder="Add delivery info, preferences, or special instructions…"
+            class="w-full bg-[#fffdf9] border border-[#eadbc3] rounded-xl p-4 text-sm shadow-inner focus:ring-2 focus:ring-[#d6bfa4] focus:outline-none resize-none mb-6"></textarea>
+
+        <button
+            type="submit"
+            class="w-full py-4 rounded-full font-bold text-white bg-gradient-to-r from-[#b49875] to-[#8a7a6a] hover:opacity-90 shadow-lg text-lg transition-all">
+            Proceed to Payment
+        </button>
+    </form>
+</aside>
+
     </main>
 
     <!-- Script -->

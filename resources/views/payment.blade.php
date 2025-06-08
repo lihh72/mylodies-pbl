@@ -15,26 +15,34 @@
                 <h2 class="text-3xl font-extrabold tracking-tight text-[#3c2f24]">Your Rental Items</h2>
             </div>
 
-            <div class="space-y-6">
-                <div class="item relative flex flex-col sm:flex-row sm:items-center gap-6 bg-white rounded-2xl border-l-[8px] border-[#d6bfa4] shadow-xl px-6 py-6 group" data-price="{{ $order->total_price }}">
-                    <img src="{{ isset($order->product->images[0]) ? asset('storage/' . $order->product->images[0]) : 'https://via.placeholder.com/150' }}" class="w-24 h-24 sm:w-28 sm:h-28 rounded-xl object-cover border border-[#f0e8dc] shadow-md" />
+<div class="space-y-6">
+    @foreach ($order->orderItems as $item)
+    <div class="item relative flex flex-col sm:flex-row sm:items-center gap-6 bg-white rounded-2xl border-l-[8px] border-[#d6bfa4] shadow-xl px-6 py-6 group" data-price="{{ $item->total_price }}">
+        <img src="{{ isset($item->product->images[0]) ? asset('storage/' . $item->product->images[0]) : 'https://via.placeholder.com/150' }}" 
+             class="w-24 h-24 sm:w-28 sm:h-28 rounded-xl object-cover border border-[#f0e8dc] shadow-md" />
 
-                    <div class="flex-1 space-y-2 text-[#41362c]">
-                        <h3 class="text-lg font-semibold">{{ $order->product->name }} <span class="ml-2 bg-[#f6e7d5] text-[#826c58] px-2 py-0.5 text-xs rounded-full">Rental</span></h3>
-                        <p class="text-xs italic text-[#7e6a57]">{{ \Carbon\Carbon::parse($order->start_date)->format('d/m/Y') }} – {{ \Carbon\Carbon::parse($order->end_date)->format('d/m/Y') }}</p>
-                    </div>
-                    <div class="text-right w-28 text-[#5e5044]">
-                        <p class="text-xs uppercase">Price</p>
-                        <p class="price font-bold">IDR {{ number_format($order->total_price, 0, ',', '.') }}</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-6 border-t border-[#eadbc3] pt-4 text-right">
-                <p class="text-sm text-[#7e6a57]">Subtotal (before tax & fees)</p>
-                <p id="total-price" class="text-2xl font-bold text-[#3c2f24]">IDR {{ number_format($order->total_price, 0, ',', '.') }}</p>
-            </div>
+        <div class="flex-1 space-y-2 text-[#41362c]">
+            <h3 class="text-lg font-semibold">
+                {{ $item->product->name }}
+                <span class="ml-2 bg-[#f6e7d5] text-[#826c58] px-2 py-0.5 text-xs rounded-full">Rental</span>
+            </h3>
+            <p class="text-xs italic text-[#7e6a57]">
+                {{ \Carbon\Carbon::parse($item->start_date)->format('d/m/Y') }} – {{ \Carbon\Carbon::parse($item->end_date)->format('d/m/Y') }}
+            </p>
         </div>
+
+        <div class="text-right w-28 text-[#5e5044]">
+            <p class="text-xs uppercase">Price</p>
+            <p class="price font-bold">IDR {{ number_format($item->total_price, 0, ',', '.') }}</p>
+        </div>
+    </div>
+    @endforeach
+</div>
+
+<div class="mt-6 border-t border-[#eadbc3] pt-4 text-right">
+    <p class="text-sm text-[#7e6a57]">Subtotal (before tax & fees)</p>
+    <p id="total-price" class="text-2xl font-bold text-[#3c2f24]">IDR {{ number_format($order->total_price, 0, ',', '.') }}</p>
+</div>
     </section>
 
     <aside class="bg-white rounded-3xl shadow-xl border border-[#d9cbb8] p-8 sticky top-32 self-start space-y-6">

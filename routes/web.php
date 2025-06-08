@@ -53,8 +53,10 @@ Route::get('/search', [ProductController::class, 'search'])->name('search');
 Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product');
 Route::get('/dashboardadmin', [DashboardAdminController::class, 'index']);
 Route::middleware('auth')->group(function () {
-    Route::post('/products/{product}/order', [OrderController::class, 'store'])->name('order.store');
+    Route::post('/products/{product}/order', [OrderController::class, 'storeSingle'])->name('order.store');
+    Route::post('/order/from-cart', [OrderController::class, 'storeFromCart'])->name('order.storeFromCart');
 });
+
 
 Route::get('/about', function () {
     return view('about');

@@ -17,6 +17,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use App\Filament\Widgets\TotalRevenueWidget;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -28,6 +29,9 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->brandLogo(asset('images/logo.png'))
+                    ->widgets([
+            TotalRevenueWidget::class,
+        ])
             ->sidebarCollapsibleOnDesktop(true)
             ->colors([
                 'primary' => Color::Amber,

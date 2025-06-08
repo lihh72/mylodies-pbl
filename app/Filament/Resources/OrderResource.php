@@ -4,8 +4,13 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\OrderResource\Pages;
 use App\Models\Order;
+use App\Models\Product;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
@@ -13,6 +18,8 @@ use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
+use Illuminate\Support\Collection;
+use Carbon\Carbon;
 
 class OrderResource extends Resource
 {
@@ -26,34 +33,83 @@ class OrderResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('user_id')
+                Select::make('user_id')
                     ->relationship('user', 'name')
                     ->searchable()
-                    ->required(),
-
-                Forms\Components\Select::make('product_id')
-                    ->relationship('product', 'name')
-                    ->searchable()
                     ->required()
-                    ->reactive()
-                    ->afterStateUpdated(fn ($state, callable $set, callable $get) => self::updateTotalPrice($set, $get)),
+                    ->disabledOn('edit'),
 
-                Forms\Components\DatePicker::make('start_date')
+                Repeater::make('orderItems')
+                    ->relationship()
+                    ->label('Order Items')
+                    ->schema([
+                        Select::make('product_id')
+                            ->label('Product')
+                            ->options(Product::all()->pluck('name', 'id')->toArray())
+                            ->searchable()
+                            ->required()
+                            ->reactive()
+                            ->afterStateUpdated(function ($state, callable $set, callable $get) {
+                                $product = Product::find($state);
+                                $set('price', $product?->rental_price_per_day ?? 0);
+                            })
+                            ->disabledOn('edit'),
+
+                        DatePicker::make('start_date')
+                            ->required()
+                            ->reactive()
+                            ->afterStateUpdated(fn ($state, callable $set, callable $get) => self::updateItemTotalPrice($set, $get))
+                            ->disabledOn('edit'),
+
+                        DatePicker::make('end_date')
+                            ->required()
+                            ->reactive()
+                            ->afterStateUpdated(fn ($state, callable $set, callable $get) => self::updateItemTotalPrice($set, $get))
+                            ->disabledOn('edit'),
+
+                        TextInput::make('quantity')
+                            ->numeric()
+                            ->minValue(1)
+                            ->default(1)
+                            ->required()
+                            ->reactive()
+                            ->afterStateUpdated(fn ($state, callable $set, callable $get) => self::updateItemTotalPrice($set, $get))
+                            ->disabledOn('edit'),
+
+                        TextInput::make('price')
+                            ->label('Price per Day')
+                            ->numeric()
+                            ->required()
+                            ->disabled(),
+
+                        TextInput::make('total_price')
+                            ->label('Total Price')
+                            ->numeric()
+                            ->required()
+                            ->disabled(),
+                    ])
+                    ->columnSpan('full')
                     ->required()
+                    ->minItems(1)
                     ->reactive()
-                    ->afterStateUpdated(fn ($state, callable $set, callable $get) => self::updateTotalPrice($set, $get)),
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        $total = 0;
+                        if ($state instanceof Collection || is_array($state)) {
+                            foreach ($state as $item) {
+                                $total += $item['total_price'] ?? 0;
+                            }
+                        }
+                        $set('total_price', $total);
+                    })
+                    ->disabledOn('edit'),
 
-                Forms\Components\DatePicker::make('end_date')
-                    ->required()
-                    ->reactive()
-                    ->afterStateUpdated(fn ($state, callable $set, callable $get) => self::updateTotalPrice($set, $get)),
-
-                Forms\Components\TextInput::make('total_price')
+                TextInput::make('total_price')
+                    ->label('Total Order Price')
                     ->numeric()
                     ->required()
                     ->disabled(),
 
-                Forms\Components\Select::make('status')
+                Select::make('status')
                     ->options([
                         'pending' => 'Pending',
                         'processing' => 'Processing',
@@ -67,30 +123,25 @@ class OrderResource extends Resource
             ]);
     }
 
-    protected static function updateTotalPrice(callable $set, callable $get): void
+    protected static function updateItemTotalPrice(callable $set, callable $get): void
     {
-        $productId = $get('product_id');
+        $pricePerDay = $get('price') ?? 0;
+        $quantity = $get('quantity') ?? 1;
         $startDate = $get('start_date');
         $endDate = $get('end_date');
 
-        if (!$productId || !$startDate || !$endDate) {
+        if (!$startDate || !$endDate) {
             $set('total_price', 0);
             return;
         }
 
-        $product = \App\Models\Product::find($productId);
-        if (!$product) {
-            $set('total_price', 0);
-            return;
-        }
-
-        $days = \Carbon\Carbon::parse($startDate)->diffInDays(\Carbon\Carbon::parse($endDate)) + 1;
+        $days = Carbon::parse($startDate)->diffInDays(Carbon::parse($endDate)) + 1;
         if ($days < 1) {
             $set('total_price', 0);
             return;
         }
 
-        $totalPrice = $product->rental_price_per_day * $days;
+        $totalPrice = $pricePerDay * $quantity * $days;
         $set('total_price', $totalPrice);
     }
 
@@ -105,18 +156,16 @@ class OrderResource extends Resource
                     ->searchable()
                     ->sortable(),
 
-                TextColumn::make('product.name')
-                    ->label('Product')
-                    ->searchable()
-                    ->sortable(),
+                TextColumn::make('orderItems')
+                    ->label('Products')
+                    ->formatStateUsing(function ($state, $record) {
+                        return $record->orderItems->map(function ($item) {
+                            return $item->product->name . " x{$item->quantity}";
+                        })->implode(', ');
+                    })
+                    ->wrap()
+                    ->sortable(false),
 
-                TextColumn::make('start_date')
-                    ->date()
-                    ->sortable(),
-
-                TextColumn::make('end_date')
-                    ->date()
-                    ->sortable(),
 
                 TextColumn::make('total_price')
                     ->money('idr', true)
@@ -147,9 +196,7 @@ class OrderResource extends Resource
                     ->dateTime()
                     ->sortable(),
             ])
-            ->filters([
-                //
-            ])
+            ->filters([])
             ->actions([
                 EditAction::make(),
                 DeleteAction::make(),
