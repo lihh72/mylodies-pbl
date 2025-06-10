@@ -32,4 +32,7 @@ class EditUserController extends Controller
 
     return back()->with('success', 'Password has been updated successfully.');
 }
+
+
+
 }

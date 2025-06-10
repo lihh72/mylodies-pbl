@@ -86,7 +86,7 @@
 
 
 
-                    <div id="date-range-picker" name="start_date" date-rangepicker class="flex items-center gap-3">
+                    <div id="date-range-picker" name="start_date" date-rangepicker datepicker-min-date="{{ $minDate }}" class="flex items-center gap-3">
                         <div class="relative w-full">
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                 <svg class="w-4 h-4 text-[#a38f7a]" xmlns="http://www.w3.org/2000/svg"
@@ -157,38 +157,61 @@
 
 
     <!-- Price Estimator Script -->
-    <script>
+   <script>
+    const rentalPricePerDay = {{ $product->rental_price_per_day }};
+    const rentInput = document.getElementById('datepicker-range-start');
+    const returnInput = document.getElementById('datepicker-range-end');
+    const pickupSelect = document.getElementById('pickup_method');
+    const priceDisplay = document.getElementById('priceEstimation');
 
-        document.addEventListener('DOMContentLoaded', function () {
-  const el = document.querySelector('[date-rangepicker]');
-  if (el) {
-    new DateRangePicker(el, {
-      format: 'yyyy-MM-dd',
-      minDate: new Date(),
-    });
-  }
-});
-        const rentInput = document.getElementById('datepicker-range-start');
-const returnInput = document.getElementById('datepicker-range-end');
+    function calculatePrice() {
+    if (!rentInput.value || !returnInput.value) {
+        priceDisplay.textContent = "—";
+        return;
+    }
 
-        const priceDisplay = document.getElementById('priceEstimation');
+    const rentDate = new Date(rentInput.value);
+    const returnDate = new Date(returnInput.value);
 
-        function calculatePrice() {
-            const rentDate = new Date(rentInput.value);
-            const returnDate = new Date(returnInput.value);
-            const diffTime = returnDate - rentDate;
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            if (diffDays > 0) {
-                const price = diffDays * 100000;
-                priceDisplay.textContent = `IDR ${price.toLocaleString()}`;
-            } else {
-                priceDisplay.textContent = "—";
-            }
+    if (isNaN(rentDate) || isNaN(returnDate)) {
+        priceDisplay.textContent = "—";
+        return;
+    }
+
+    const diffTime = returnDate - rentDate;
+    let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+    if (diffDays > 0) {
+        let price = diffDays * rentalPricePerDay;
+
+        if (pickupSelect.value === 'delivery') {
+            price += 30000;
         }
 
-        rentInput.addEventListener('change', calculatePrice);
-        returnInput.addEventListener('change', calculatePrice);
-    </script>
+        priceDisplay.textContent = `IDR ${price.toLocaleString('id-ID')}`;
+    } else {
+        priceDisplay.textContent = "—";
+    }
+}
+
+    
+
+    rentInput.addEventListener('change', calculatePrice);
+    returnInput.addEventListener('change', calculatePrice);
+    pickupSelect.addEventListener('change', calculatePrice);
+
+    // Init datepicker
+    document.addEventListener('DOMContentLoaded', function () {
+        const el = document.querySelector('[date-rangepicker]');
+        if (el) {
+            new DateRangePicker(el, {
+                format: 'yyyy-MM-dd',
+                minDate: new Date(),
+            });
+        }
+    });
+</script>
+
     <!-- Stylish Product Description with SVGs -->
 <section class="relative max-w-6xl mx-auto px-6 py-20">
     <!-- Decorative Background SVGs -->

@@ -13,7 +13,7 @@
     <!-- Navbar -->
     <header class="bg-[#b79e7d] p-4 flex items-center justify-between shadow">
         <div class="flex items-center space-x-4">
-            <img src="/images/logo.png" alt="Logo" class="h-10">
+            <img src="/images/logo-background.png" alt="Logo" class="h-10">
         </div>
         <div class="relative w-full max-w-xl mx-4">
             <input type="text" placeholder="Search"

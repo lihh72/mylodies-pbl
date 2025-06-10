@@ -14,7 +14,7 @@ class TotalRevenueWidget extends BaseWidget
 
         return [
             Card::make('Total Revenue', 'Rp ' . number_format($totalRevenue, 0, ',', '.'))
-                ->description('Total pembayaran yang sudah berhasil')
+                ->description('Total paid revenue from all orders')
                 ->descriptionIcon('heroicon-o-currency-dollar')
                 ->color('success'),
         ];

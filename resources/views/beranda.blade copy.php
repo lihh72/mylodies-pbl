@@ -17,7 +17,7 @@
 
     <!-- Logo -->
     <div class="flex items-center space-x-3 shrink-0">
-      <img src="{{ asset('images/logo.png') }}" alt="MyLodies Logo" class="h-9 drop-shadow-lg hover:scale-110 transition duration-300">
+      <img src="{{ asset('images/logo-background.png') }}" alt="MyLodies Logo" class="h-9 drop-shadow-lg hover:scale-110 transition duration-300">
       <span class="text-xl font-bold text-white tracking-wide hover:text-[#f9e5c9] transition">MyLodies</span>
     </div>
 
@@ -543,7 +543,7 @@
     <!-- Logo & Brand -->
     <div>
       <div class="flex items-center space-x-3 mb-4">
-        <img src="{{ asset('images/logo.png') }}" alt="MyLodies Logo" class="h-10 drop-shadow-lg" />
+        <img src="{{ asset('images/logo-background.png') }}" alt="MyLodies Logo" class="h-10 drop-shadow-lg" />
         <h3 class="text-2xl font-extrabold tracking-wide">MyLodies</h3>
       </div>
       <p class="text-sm text-white/90">Your reliable partner in sound & performance — where every artist finds their stage.</p>

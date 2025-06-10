@@ -13,7 +13,8 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\OrderController;
-
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\OauthController;
 Route::get('/q', function () {
     return view('welcome');
 });
@@ -57,6 +58,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/order/from-cart', [OrderController::class, 'storeFromCart'])->name('order.storeFromCart');
 });
 
+Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index')->middleware('auth');
+Route::put('/settings', [SettingsController::class, 'update'])->name('settings.update')->middleware('auth');
+
 
 Route::get('/about', function () {
     return view('about');
@@ -69,8 +73,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('oauth/google', [\App\Http\Controllers\OauthController::class, 'redirectToProvider'])->name('oauth.google');  
-Route::get('oauth/google/callback', [\App\Http\Controllers\OauthController::class, 'handleProviderCallback'])->name('oauth.google.callback');
+Route::get('oauth/google', [OauthController::class, 'redirectToProvider'])->name('oauth.google');  
+Route::get('oauth/google/callback', [OauthController::class, 'handleProviderCallback'])->name('oauth.google.callback');
 
 //Route::get('/search', [SearchController::class, 'index'])->name('search');
 

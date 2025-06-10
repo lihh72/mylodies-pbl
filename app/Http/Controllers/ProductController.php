@@ -16,7 +16,8 @@ class ProductController extends Controller
 public function show($slug)
 {
     $product = Product::where('slug', $slug)->firstOrFail();
-    return view('product', compact('product'));
+    $minDate = now()->addDays(3)->format('m/d/Y');
+    return view('product', compact('product', 'minDate'));
 }
 
     public function catalog()

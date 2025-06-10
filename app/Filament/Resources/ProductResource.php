@@ -27,12 +27,14 @@ class ProductResource extends Resource
     protected static ?string $model = Product::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+        protected static ?string $navigationGroup = 'Product Management';
 
 public static function form(Form $form): Form
 {
     return $form->schema([
         TextInput::make('name')
             ->label('Product Name')
+            ->maxLength(18)
             ->required()
             ->afterStateUpdated(function (\Filament\Forms\Set $set, ?string $state) {
                 // Generate a slug from the name
@@ -61,6 +63,7 @@ public static function form(Form $form): Form
 
 Textarea::make('full_description')
     ->label('Full Description')
+    ->required()
     ->rows(6)
     ->columnSpan('full'),
 
@@ -80,9 +83,11 @@ Textarea::make('full_description')
             ->label('Rental Price per Day')
             ->numeric()
             ->prefix('IDR')
-            ->required(),
+            ->required()
+            ->rule('digits_between:1,8'),
 
         Textarea::make('description')
+        ->required()
             ->label('Product Description'),
 
 FileUpload::make('images')
@@ -91,6 +96,7 @@ FileUpload::make('images')
     ->multiple()
     ->reorderable()
     ->directory('instruments')
+    ->maxFiles(5)
     ->disk('public'), // Pastikan ini ditambahkan!
 
     Repeater::make('highlights')

@@ -13,7 +13,7 @@
 
             <!-- Logo -->
             <a href="{{ route('landing') }}" class="flex items-center space-x-3 shrink-0">
-                <img src="{{ asset('images/logo.png') }}" alt="MyLodies Logo"
+                <img src="{{ asset('images/logo-background.png') }}" alt="MyLodies Logo"
                     class="h-9 drop-shadow-lg hover:scale-110 transition duration-300">
                 <span
                     class="hidden lg:flex text-xl font-bold text-white tracking-wide hover:text-[#f9e5c9] transition">MyLodies</span>

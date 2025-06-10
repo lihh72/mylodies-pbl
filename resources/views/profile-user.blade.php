@@ -12,7 +12,7 @@
 
 <body class="bg-[#fef8f2] text-[#5a4a3b] font-sans pt-[60px]">
     <!-- Navbar -->
-    <x-navcobacoba />
+<x-navbar />
 
     <div class="max-w-6xl mx-auto px-4">
 

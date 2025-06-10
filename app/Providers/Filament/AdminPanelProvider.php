@@ -28,10 +28,8 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->brandLogo(asset('images/logo.png'))
-                    ->widgets([
-            TotalRevenueWidget::class,
-        ])
+            ->brandLogo(asset('images/logo-background.png'))
+
             ->sidebarCollapsibleOnDesktop(true)
             ->colors([
                 'primary' => Color::Amber,

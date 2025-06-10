@@ -17,7 +17,7 @@
     <!-- Header -->
     <header class="bg-[#9D8B76] flex items-center justify-between px-6 py-4 shadow-md">
         <div class="flex items-center space-x-2">
-            <img alt="Logo" class="w-12 h-12 object-contain" src="/images/logo.png" />
+            <img alt="Logo" class="w-12 h-12 object-contain" src="/images/logo-background.png" />
         </div>
         <div class="flex-1 max-w-md mx-6">
             <div class="relative">

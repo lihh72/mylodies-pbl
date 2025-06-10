@@ -20,7 +20,7 @@
                 <div class="flex items-center gap-3 px-6 py-5 bg-[#b49875] shadow-inner">
                     <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24"></svg>
-                    <img src="{{ asset('images/logo.png') }}" alt="MyLodies Logo" class="w-8 h-8 object-contain" />
+                    <img src="{{ asset('images/logo-background.png') }}" alt="MyLodies Logo" class="w-8 h-8 object-contain" />
                     <span class="text-white text-lg font-semibold tracking-wide">MyLodies</span>
                 </div>
 

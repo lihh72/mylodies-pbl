@@ -17,7 +17,7 @@
     {{-- Open Graph --}}
     <meta property="og:title" content="Mylodies - Your Favorite Music Platform">
     <meta property="og:description" content="Enjoy the best listening experience with curated music on Mylodies.">
-    <meta property="og:image" content="{{ asset('images/logo.png') }}">
+    <meta property="og:image" content="{{ asset('images/logo-background.png') }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
 
@@ -25,7 +25,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Mylodies - Your Favorite Music Platform">
     <meta name="twitter:description" content="Enjoy the best listening experience with curated music on Mylodies.">
-    <meta name="twitter:image" content="{{ asset('images/logo.png') }}">
+    <meta name="twitter:image" content="{{ asset('images/logo-background.png') }}">
 {{-- Font Awesome --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
@@ -55,7 +55,7 @@
 <!-- Loading Screen -->
 <div id="loading-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#f9e5c9] transition-opacity duration-500">
   <!-- Logo dengan efek glow dan zoom-in subtle -->
-  <img src="{{ asset('images/logo.png') }}" alt="MyLodies Logo"
+  <img src="{{ asset('images/logo-background.png') }}" alt="MyLodies Logo"
     class="w-24 h-24 object-contain opacity-0 scale-90 animate-fadeZoom drop-shadow-[0_0_15px_#b49875]" />
 
   <!-- Teks branding -->

@@ -12,7 +12,7 @@
             <!-- Logo & Brand -->
             <div>
                 <div class="flex items-center space-x-3 mb-4">
-                    <img src="{{ asset('images/logo.png') }}" alt="MyLodies Logo" class="h-10 drop-shadow-lg" />
+                    <img src="{{ asset('images/logo-background.png') }}" alt="MyLodies Logo" class="h-10 drop-shadow-lg" />
                     <h3 class="text-2xl font-extrabold tracking-wide">MyLodies</h3>
                 </div>
                 <p class="text-sm text-white/90">Your reliable partner in sound & performance — where every artist

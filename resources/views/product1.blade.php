@@ -5,7 +5,7 @@
         <!-- Navbar -->
         <div class="bg-[#b19d87] text-black py-4 px-6 flex items-center justify-between shadow">
             <div class="flex items-center space-x-6">
-                <img src="/logo.png" alt="Logo" class="h-6" />
+                <img src="/logo-background.png" alt="Logo" class="h-6" />
                 <a href="#" class="font-semibold">Home</a>
                 <a href="#" class="font-semibold">About Us</a>
                 <a href="#" class="font-semibold">Contact</a>

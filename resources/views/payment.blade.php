@@ -120,4 +120,4 @@
 
     window.addEventListener('DOMContentLoaded', updateTotals);
 </script>
-@endsection
+@endsection 
