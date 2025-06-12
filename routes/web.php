@@ -23,12 +23,8 @@ Route::get('/q', function () {
 //    return view('home');
 //});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 
-// total 12 views ditambah /login dan /register yang sudah masuk ke auth dan sudah bekerja
 
 Route::get('/', [ProductController::class, 'index'])->name('landing');
 Route::match(['get', 'post'], '/payment/process/{order}', [PaymentController::class, 'process'])->name('payment.process');
@@ -65,6 +61,8 @@ Route::put('/settings', [SettingsController::class, 'update'])->name('settings.u
 Route::get('/about', function () {
     return view('about');
 });
+Route::get('/change-password', [EditUserController::class, 'forceChange'])->middleware('auth')->name('password.force');
+Route::post('/change-password', [EditUserController::class, 'forceChangePost'])->middleware('auth')->name('password.force.post');
 
 
 Route::middleware('auth')->group(function () {

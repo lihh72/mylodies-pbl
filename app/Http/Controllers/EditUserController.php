@@ -33,6 +33,32 @@ class EditUserController extends Controller
     return back()->with('success', 'Password has been updated successfully.');
 }
 
+public function forceChange()
+{
+    if (!session('force_change_password')) {
+        return redirect()->route('landing'); // redirect jika tidak perlu ubah password
+    }
+
+    $user = Auth::user();
+    return view('change-password-force', compact('user'));
+}
+
+public function forceChangePost(Request $request)
+{
+    $request->validate([
+        'new_password' => 'required|min:8|confirmed',
+    ]);
+
+    $user = auth()->user();
+    $user->update([
+        'password' => Hash::make($request->new_password),
+    ]);
+
+    session()->forget('force_change_password'); // hapus flag
+    return redirect()->route('landing')->with('success', 'Password updated successfully.');
+}
+
+
 
 
 }

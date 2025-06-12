@@ -1,4 +1,4 @@
-<div id="product-skeleton" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 animate-pulse">
+<div id="product-skeleton" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-4 gap-10 animate-pulse">
     @for ($i = 0; $i < 6; $i++)
         <div class="relative bg-white rounded-3xl overflow-hidden shadow-lg">
             <!-- Sesuaikan tinggi gambar skeleton -->
@@ -23,7 +23,7 @@
 @endphp
 
 <div id="product-content" class="hidden">
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-4 gap-8">
 @foreach ($products as $product)
     @php
         $img1 = $product->images[0] ?? 'default.jpg';

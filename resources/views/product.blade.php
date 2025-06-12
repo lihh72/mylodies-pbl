@@ -5,8 +5,9 @@
 @section('loading_screen', true)
 
 @section('content')
+<div class="min-h-screen flex flex-col">
     <!-- Hero Section -->
-    <section class="relative bg-[#fdfaf5] py-20 overflow-hidden">
+    <section class="flex-1 flex items-center justify-center relative bg-[#fdfaf5] py-20 overflow-hidden">
         <div
             class="absolute -top-10 -left-10 w-72 h-72 bg-[#f9e5c9] rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse">
         </div>
@@ -14,25 +15,24 @@
             class="absolute -bottom-16 right-0 w-96 h-96 bg-[#d2bfa4] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse">
         </div>
 
+        @php
+            function is_url($str) {
+                return preg_match('/^https?:\/\//', $str) === 1;
+            }
+        @endphp
 
-@php
-    function is_url($str) {
-        return preg_match('/^https?:\/\//', $str) === 1;
-    }
-@endphp
-
-<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-stretch px-6 md:px-12 relative z-10 pt-9">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-stretch px-6 md:px-12 relative z-10 pt-9">
 
 
-    <!-- Gallery kiri -->
-    <div class="space-y-6 flex flex-col">
-        <div
-            class="relative group overflow-hidden rounded-3xl shadow-xl transition-transform duration-500 transform hover:scale-[1.02] flex-1">
-            @php
-                $mainImage = $product->images[0] ?? 'fallback.jpg';
-                $mainImageUrl = is_url($mainImage) ? $mainImage : asset('storage/' . $mainImage);
-            @endphp
-            <div class="bg-white rounded-2xl overflow-hidden flex items-center justify-center h-[400px]">
+            <!-- Gallery kiri -->
+            <div class="space-y-6 flex flex-col">
+                <div
+                    class="relative group overflow-hidden rounded-3xl shadow-xl transition-transform duration-500 transform hover:scale-[1.02] flex-1">
+                    @php
+                        $mainImage = $product->images[0] ?? 'fallback.jpg';
+                        $mainImageUrl = is_url($mainImage) ? $mainImage : asset('storage/' . $mainImage);
+                    @endphp
+                    <div class="bg-white rounded-2xl overflow-hidden flex items-center justify-center h-[400px]">
     <img id="mainImage"
         src="{{ $mainImageUrl }}"
         alt="{{ $product->name }}"
@@ -40,31 +40,31 @@
 </div>
 
 
-            <span
-                class="absolute top-5 left-5 bg-white/80 px-3 py-1 rounded-full text-sm font-medium text-[#3e2d1f] shadow-sm">
-                ⭐ 4.8 / 5.0
-            </span>
-            <span
-                class="absolute bottom-5 right-5 bg-gradient-to-r from-[#a38f7a] to-[#816c59] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide animate-pulse">
-                ⚡ Limited Edition
-            </span>
-        </div>
-        <div class="flex gap-3">
-            @foreach ($product->images as $image)
-                @php
-                    $imageUrl = is_url($image) ? $image : asset('storage/' . $image);
-                @endphp
-                <img onclick="document.getElementById('mainImage').src='{{ $imageUrl }}'"
-                    src="{{ $imageUrl }}"
-                    class="w-20 h-20 object-contain rounded-xl shadow-md cursor-pointer hover:scale-110 transition" />
-            @endforeach
-        </div>
-    </div>
+                    <span
+                        class="absolute top-5 left-5 bg-white/80 px-3 py-1 rounded-full text-sm font-medium text-[#3e2d1f] shadow-sm">
+                        ⭐ 4.8 / 5.0
+                    </span>
+                    <span
+                        class="absolute bottom-5 right-5 bg-gradient-to-r from-[#a38f7a] to-[#816c59] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide animate-pulse">
+                        ⚡ Limited Edition
+                    </span>
+                </div>
+                <div class="flex gap-3">
+                    @foreach ($product->images as $image)
+                        @php
+                            $imageUrl = is_url($image) ? $image : asset('storage/' . $image);
+                        @endphp
+                        <img onclick="document.getElementById('mainImage').src='{{ $imageUrl }}'"
+                            src="{{ $imageUrl }}"
+                            class="w-20 h-20 object-contain rounded-xl shadow-md cursor-pointer hover:scale-110 transition" />
+                    @endforeach
+                </div>
+            </div>
 
-    <!-- Form kanan -->
-    <div
-        class="relative max-w-screen mx-auto bg-gradient-to-br from-[#fdf6ee]/70 to-[#f6f1e9]/80 p-8 rounded-3xl border-[1.5px] border-[#dec9b0] shadow-[0_10px_60px_rgba(0,0,0,0.2)] backdrop-blur-3xl overflow-hidden text-[#3e2d1f] animate-fadeIn space-y-5">
-         <!-- Ambient Glow (optional, aesthetic only) -->
+            <!-- Form kanan -->
+            <div
+                class="relative max-w-screen mx-auto bg-gradient-to-br from-[#fdf6ee]/70 to-[#f6f1e9]/80 p-8 rounded-3xl border-[1.5px] border-[#dec9b0] shadow-[0_10px_60px_rgba(0,0,0,0.2)] backdrop-blur-3xl overflow-hidden text-[#3e2d1f] animate-fadeIn space-y-5">
+                 <!-- Ambient Glow (optional, aesthetic only) -->
                 <div class="absolute -top-20 -left-24 w-72 h-72 bg-[#f7e8d5]/40 rounded-full blur-3xl opacity-30 z-0">
                 </div>
 
@@ -152,6 +152,7 @@
 </div>
 
     </section>
+</div>
 
 
 
@@ -213,72 +214,77 @@
 </script>
 
     <!-- Stylish Product Description with SVGs -->
-<section class="relative max-w-6xl mx-auto px-6 py-20">
-    <!-- Decorative Background SVGs -->
-    <svg class="absolute top-0 left-0 w-40 h-40 text-[#f9e5c9] opacity-30 animate-spin-slow" fill="currentColor"
-        viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
-    </svg>
+    <section class="relative max-w-6xl mx-auto px-6 py-20">
+        <!-- Decorative Background SVGs -->
+        <svg class="absolute top-0 left-0 w-40 h-40 text-[#f9e5c9] opacity-30 animate-spin-slow" fill="currentColor"
+            viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
+        </svg>
 
-    <div class="bg-white/80 backdrop-blur-xl p-10 rounded-3xl shadow-xl relative z-10">
-        <h2 class="text-3xl font-extrabold text-[#3e2d1f] mb-6 flex items-center gap-2">
-            <svg class="w-7 h-7 text-[#a38f7a]" fill="none" stroke="currentColor" stroke-width="2"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6h13M9 6L2 12l7 6" />
-            </svg>
-            About This Gear
-        </h2>
+        <div class="relative z-10 bg-gradient-to-br from-[#fdf6ee]/90 to-[#f6f1e9]/80 border-4 border-[#a38f7a]/20 shadow-2xl rounded-3xl p-0 overflow-hidden">
+            <!-- Decorative Top Bar -->
+            <div class="h-3 bg-gradient-to-r from-[#a38f7a] via-[#f9e5c9] to-[#816c59]"></div>
+            <div class="p-10 md:p-14">
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#a38f7a]/10 border-2 border-[#a38f7a]/30 shadow-lg">
+                        <svg class="w-8 h-8 text-[#a38f7a]" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6h13M9 6L2 12l7 6" />
+                        </svg>
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-[#3e2d1f] tracking-tight drop-shadow-lg bg-gradient-to-r from-[#a38f7a] to-[#816c59] bg-clip-text text-transparent">
+                        About This Gear
+                    </h2>
+                </div>
 
-        {{-- Full Description (dinamis dari model) --}}
-        <p class="text-sm md:text-base text-gray-700 leading-relaxed mb-6">
-            {!! nl2br(e($product->full_description)) !!}
-        </p>
+                {{-- Full Description (dinamis dari model) --}}
+                <p class="text-base md:text-lg text-[#5e4b3b] leading-relaxed mb-8 italic border-l-4 border-[#a38f7a]/40 pl-6 bg-[#f9e5c9]/30 py-3 shadow-inner">
+                    {!! nl2br(e($product->full_description)) !!}
+                </p>
 
-        <div class="grid md:grid-cols-2 gap-8 text-sm md:text-base text-gray-600">
-            <div>
-                <h3 class="font-bold text-[#3e2d1f] mb-3 flex items-center gap-2">
-                    <svg class="w-5 h-5 text-[#a38f7a]" fill="none" stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path d="M12 4v16m8-8H4" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                    Highlights
-                </h3>
-                <ul class="list-disc list-inside space-y-1">
-                    @foreach ($product->highlights ?? [] as $highlight)
-    <li>{{ $highlight['value'] ?? '' }}</li>
-@endforeach
+                <div class="grid md:grid-cols-2 gap-10 text-base text-[#3e2d1f]">
+                    <div>
+                        <h3 class="font-bold text-[#a38f7a] mb-3 flex items-center gap-2 text-lg">
+                            <svg class="w-5 h-5 text-[#a38f7a]" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path d="M12 4v16m8-8H4" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            Highlights
+                        </h3>
+                        <ul class="list-none space-y-2">
+                            @foreach ($product->highlights ?? [] as $highlight)
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1 w-3 h-3 rounded-full bg-gradient-to-tr from-[#a38f7a] to-[#816c59] shadow"></span>
+                                <span class="font-medium">{{ $highlight['value'] ?? '' }}</span>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-[#a38f7a] mb-3 flex items-center gap-2 text-lg">
+                            <svg class="w-5 h-5 text-[#a38f7a]" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path d="M3 7h18M3 12h18M3 17h18" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            What's Included
+                        </h3>
+                        <ul class="list-none space-y-2">
+                            @foreach ($product->included_items ?? [] as $item)
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1 w-3 h-3 rounded-full bg-gradient-to-tr from-[#816c59] to-[#a38f7a] shadow"></span>
+                                <span class="font-medium">{{ $item['value'] ?? '' }}</span>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
 
-                </ul>
-            </div>
-            <div>
-                <h3 class="font-bold text-[#3e2d1f] mb-3 flex items-center gap-2">
-                    <svg class="w-5 h-5 text-[#a38f7a]" fill="none" stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path d="M3 7h18M3 12h18M3 17h18" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                    What's Included
-                </h3>
-                <ul class="list-disc list-inside space-y-1">
-                    @foreach ($product->included_items ?? [] as $item)
-    <li>{{ $item['value'] ?? '' }}</li>
-@endforeach
-
-                </ul>
+               
             </div>
         </div>
-
-        <!-- Stylish Badge -->
-        <div
-            class="absolute -top-5 right-5 bg-gradient-to-r from-[#a38f7a] to-[#816c59] text-white text-xs px-4 py-1 rounded-full font-semibold shadow-md animate-pulse">
-            <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path d="M5 13l4 4L19 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            {{ $product->badge ?? 'Limited Edition' }}
-        </div>
-    </div>
-</section>
+    </section>
 
 
     <!-- Testimonials -->

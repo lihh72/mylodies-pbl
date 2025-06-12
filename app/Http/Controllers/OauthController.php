@@ -45,7 +45,11 @@ class OauthController extends Controller
 
             Auth::login($newUser);
 
-            return redirect('/');
+// Set flag ke session
+session(['force_change_password' => true]);
+
+return redirect('/change-password');
+
         }
 
     } catch (Exception $e) {

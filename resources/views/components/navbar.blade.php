@@ -95,7 +95,7 @@
                         class="inline-flex justify-center items-center w-8 h-8 rounded-full ring-2 ring-[#b49875] hover:ring-[#f9e5c9] hover:scale-110 shadow-lg transition duration-300 focus:outline-none"
                         aria-expanded="true" data-dropdown-toggle="profileDropdown">
                         @if (Auth::user()->profile_picture)
-                            <img src="{{ Auth::user()->profile_picture }}" alt="Profile Picture" class="w-8 h-8 rounded-full object-cover">
+                            <img src="{{ asset(Auth::user()->profile_picture) }}" alt="Profile Picture" class="w-8 h-8 rounded-full object-cover">
                         @else
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white group-hover:text-[#f9e5c9]" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"

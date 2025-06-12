@@ -22,7 +22,7 @@
 </div>
 
     <!-- Filter + Product Grid -->
-<div class="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-14 items-start">
+<div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-8 items-start">
 
   <!-- Sidebar Filters -->
   <aside class="hidden lg:block bg-white p-8 rounded-3xl shadow-[0_10px_30px_-15px_rgba(0,0,0,0.1)] border border-[#f0e8e0] text-sm text-[#4e3d33] lg:sticky lg:top-28 lg:h-fit lg:max-h-[80vh] lg:overflow-y-auto scrollbar-hide">
