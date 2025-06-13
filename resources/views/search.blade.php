@@ -3,7 +3,7 @@
 @section('title', 'MyLodies - Home')
 @section('body_class', 'bg-[#f9f6f1] text-[#3b2e2a] font-sans')
 
-
+@section('content')
   <!-- Main Section -->
   <main class="max-w-7xl mx-auto px-6 py-16 pt-24">
     
@@ -240,3 +240,4 @@
 
 </body>
 </html>
+@endsection
