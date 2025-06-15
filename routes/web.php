@@ -15,6 +15,7 @@ use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\OauthController;
+use App\Http\Controllers\OrderDetailController;
 Route::get('/q', function () {
     return view('welcome');
 });
@@ -35,6 +36,12 @@ Route::get('/catalog', [ProductController::class, 'catalog'])->name('catalog');
 
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
+    Route::post('/history/repeat/{id}', [HistoryController::class, 'repeat'])->name('order.repeat');
+});
+
+
+Route::middleware(['auth'])->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/add/{productId}', [CartController::class, 'store'])->name('cart.store');
     Route::post('/cart/update/{id}', [CartController::class, 'updateQuantity'])->name('cart.update');
@@ -44,7 +51,7 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/edit', [EditUserController::class, 'index'])->middleware('auth');
 Route::post('/edit/password', [EditUserController::class, 'updatePassword'])->name('edit.password')->middleware('auth');
 Route::post('/payment/callback', [PaymentController::class, 'callback'])->name('payment.callback');
-Route::get('/history', [HistoryController::class, 'index']);
+
 Route::get('/profileuser', [ProfileUserController::class, 'index']);
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product');
@@ -57,6 +64,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index')->middleware('auth');
 Route::put('/settings', [SettingsController::class, 'update'])->name('settings.update')->middleware('auth');
 
+
+
+Route::middleware(['auth'])->get('/order/{order}', [OrderDetailController::class, 'show'])->name('order.detail');
 
 Route::get('/about', function () {
     return view('about');

@@ -12,11 +12,11 @@
       <h2 class="text-3xl font-bold text-[#5c4633]">Search Results</h2>
 @if(request('q'))
   <p class="mt-2 text-sm italic text-[#7a6a59]">
-    Menampilkan hasil pencarian untuk: <strong>"{{ $query }}"</strong>
+    Showing search results for: <strong>"{{ $query }}"</strong>
   </p>
 @else
   <p class="mt-2 text-sm italic text-[#7a6a59]">
-    Menampilkan semua produk
+    Showing all products
   </p>
 @endif
 </div>

@@ -118,14 +118,22 @@ class PaymentController extends Controller
 
 
     public function process(Request $request, Order $order)
-    {
-        if ($order->payment) {
-            $order->payment->update(['payment_status' => 'paid']);
-            $order->update(['status' => 'processing']);
-        }
-
-        return redirect()->route('landing')->with('success', 'Payment successful!');
+{
+    if ($order->payment) {
+        $order->payment->update(['payment_status' => 'paid']);
+        $order->update(['status' => 'processing']);
     }
+
+    // Redirect dinamis berdasarkan query parameter
+    if ($request->query('redirect_to') === 'order_detail') {
+        return redirect()->route('order.detail', $order->id)
+                         ->with('success', 'Pembayaran berhasil!');
+    }
+
+    // Default fallback
+    return redirect()->route('landing')->with('success', 'Payment successful!');
+}
+
 
     public function callback(Request $request)
 {

@@ -20,6 +20,7 @@
     <meta property="og:image" content="{{ asset('images/logo-background.png') }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
+    <meta property="fb:app_id" content="1214107493842933" />
 
     {{-- Twitter Card --}}
     <meta name="twitter:card" content="summary_large_image">
@@ -71,14 +72,6 @@
     <!-- Logo dengan efek glow dan zoom-in subtle -->
     <img src="{{ asset('images/logo-background.png') }}" alt="MyLodies Logo"
         class="w-28 h-28 object-contain opacity-0 scale-90 animate-fadeZoom drop-shadow-[0_0_25px_#b49875]" />
-    <!-- Animated Equalizer Bars -->
-    <div class="flex gap-1 mt-8 mb-2">
-        <div class="w-2 h-8 bg-[#b49875] rounded-full animate-eq delay-eq-0"></div>
-        <div class="w-2 h-8 bg-[#b49875] rounded-full animate-eq delay-eq-1"></div>
-        <div class="w-2 h-8 bg-[#b49875] rounded-full animate-eq delay-eq-2"></div>
-        <div class="w-2 h-8 bg-[#b49875] rounded-full animate-eq delay-eq-3"></div>
-        <div class="w-2 h-8 bg-[#b49875] rounded-full animate-eq delay-eq-4"></div>
-    </div>
     <!-- Teks branding -->
     <p class="mt-2 text-[#b49875] text-lg italic font-light animate-pulse tracking-widest">Crafting timeless harmony...</p>
 </div>
@@ -114,12 +107,6 @@
     0%,100% { transform: scaleY(1);}
     50% { transform: scaleY(2.2);}
   }
-  .animate-eq { animation: eq 1.3s infinite cubic-bezier(.4,0,.2,1); transform-origin: bottom;}
-  .delay-eq-0 { animation-delay: 0ms;}
-  .delay-eq-1 { animation-delay: 120ms;}
-  .delay-eq-2 { animation-delay: 240ms;}
-  .delay-eq-3 { animation-delay: 360ms;}
-  .delay-eq-4 { animation-delay: 480ms;}
 </style>
 @endif
 

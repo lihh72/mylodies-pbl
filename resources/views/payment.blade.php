@@ -90,7 +90,7 @@
             onSuccess: function(result){
                 alert('Payment success!');
                 // Redirect ke route process untuk update status
-                window.location.href = "{{ route('payment.process', $order->id) }}";
+                 window.location.href = "{{ route('payment.process', $order->id) }}?redirect_to=order_detail";
             },
             onPending: function(result){
                 alert('Waiting for your payment!');

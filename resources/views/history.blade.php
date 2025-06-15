@@ -1,110 +1,86 @@
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <title>
-        Rent History
-    </title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter&amp;display=swap" rel="stylesheet" />
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
-    <!-- Header -->
-    <header class="bg-[#9D8B76] flex items-center justify-between px-6 py-4 shadow-md">
-        <div class="flex items-center space-x-2">
-            <img alt="Logo" class="w-12 h-12 object-contain" src="/images/logo-background.png" />
+@section('title', 'MyLodies - Riwayat')
+@section('body_class', 'bg-[#fdfaf5] text-gray-800 font-sans')
+@section('loading_screen', true)
+
+@section('content')
+<section x-data="{ status: 'All' }" class="min-h-screen pt-[80px] pb-20 px-6 md:px-12 bg-[#fdfaf5] relative overflow-hidden">
+    <!-- Glow -->
+    <div class="absolute -top-32 -left-24 w-80 h-80 bg-[#f9e5c9] rounded-full filter blur-3xl opacity-40 animate-pulse z-0"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-[#d2bfa4] rounded-full filter blur-3xl opacity-30 animate-pulse z-0"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto space-y-12">
+        <div class="text-center">
+            <h1 class="text-4xl font-extrabold text-[#3e2d1f] drop-shadow-sm tracking-tight">Riwayat Peminjaman</h1>
+            <p class="text-sm text-[#6c5949] mt-2 italic">Lihat kembali semua transaksi sewa kamu berdasarkan statusnya.</p>
         </div>
-        <div class="flex-1 max-w-md mx-6">
-            <div class="relative">
-                <input class="w-full rounded-full py-1 pl-4 pr-10 text-gray-400 text-sm font-sans outline-none"
-                    placeholder="Search" style="background-color: #F9F6F0; border: 2.5px solid black" type="text" />
-                <button aria-label="Search"
-                    class="absolute right-2 top-1/2 -translate-y-1/2 bg-[#9D8B76] w-6 h-6 rounded-full flex items-center justify-center p-0">
-                    <i class="fas fa-search text-black text-xs"></i>
+
+        <!-- Filter Status -->
+        <div class="flex flex-wrap justify-center gap-4 mb-6">
+            @foreach (['All', 'Pending', 'Confirmed', 'Processing', 'Shipped', 'Completed', 'Cancelled'] as $label)
+                <button @click="status = '{{ $label }}'"
+                        class="flex items-center gap-2 px-5 py-2 rounded-full border border-[#d6b896] text-sm font-medium transition transform hover:scale-105 shadow hover:shadow-md focus:outline-none"
+                        :class="{ 'bg-gradient-to-r from-[#f6e8d6] to-[#d6b896] text-[#5a4a3b] ring-2 ring-[#b49875]' : status === '{{ $label }}', 'bg-white text-[#6f5a48]' : status !== '{{ $label }}' }">
+                    <i class="fas fa-circle text-xs" :class="status === '{{ $label }}' ? 'text-[#b49875]' : 'text-[#bfb2a3]'"></i>
+                    <span>{{ $label }}</span>
                 </button>
-            </div>
+            @endforeach
         </div>
-        <div class="flex items-center space-x-6 text-black text-2xl cursor-pointer -translate-y-1">
-            <i class="fas fa-shopping-cart"></i>
-            <i class="fas fa-user-circle"></i>
-        </div>
-    </header>
 
-    <main class="p-6 max-w-4xl mx-auto bg-white rounded-xl">
-        <div class="p-6 space-y-6 bg-[#f6f0e6] rounded-xl">
-            <section class="bg-[#d9cbb8] rounded-xl flex items-center p-4 space-x-6">
-                <img alt="Fender Sonic Grey electric guitar with light blue body and maple neck"
-                    class="rounded-lg w-[100px] h-[100px] object-contain" height="100"
-                    src="https://storage.googleapis.com/a1aa/image/34588204-0b36-4a38-ff74-41b4597c3364.jpg"
-                    width="100" />
-                <div class="flex-1">
-                    <h2 class="font-semibold text-black text-base mb-1">
-                        Fender Sonic Grey
-                    </h2>
-                    <p class="text-[#7a6f5f] text-sm">
-                        19 Mar, 00.07
-                    </p>
-                </div>
-                <div class="flex flex-col items-end space-y-2">
-                    <span class="text-[#7a6f5f] text-sm font-semibold">
-                        IDR 100.000
-                    </span>
-                    <button class="bg-[#f6f0e6] text-black font-bold text-sm rounded-md px-4 py-1" type="button">
-                        Sewa Lagi !
-                    </button>
-                </div>
-            </section>
-            <section class="bg-[#d9cbb8] rounded-xl flex items-center p-4 space-x-6">
-                <img alt="Cecilio CVN-100 violin with reddish-brown wood finish and black chin rest"
-                    class="rounded-lg w-[100px] h-[100px] object-contain" height="100"
-                    src="https://storage.googleapis.com/a1aa/image/98e2694c-2779-44ae-4060-173296b83bdd.jpg"
-                    width="100" />
-                <div class="flex-1">
-                    <h2 class="font-semibold text-black text-base mb-1">
-                        Cecilio CVN-100
-                    </h2>
-                    <p class="text-[#7a6f5f] text-sm">
-                        31 Mar, 10.37
-                    </p>
-                </div>
-                <div class="flex flex-col items-end space-y-2">
-                    <span class="text-[#7a6f5f] text-sm font-semibold">
-                        IDR 150.000
-                    </span>
-                    <button class="bg-[#f6f0e6] text-black font-bold text-sm rounded-md px-4 py-1" type="button">
-                        Sewa Lagi !
-                    </button>
-                </div>
-            </section>
-            <section class="bg-[#d9cbb8] rounded-xl flex items-center p-4 space-x-6">
-                <img alt="Cecilio CVN-100 violin with reddish-brown wood finish and black chin rest"
-                    class="rounded-lg w-[100px] h-[100px] object-contain" height="100"
-                    src="https://storage.googleapis.com/a1aa/image/98e2694c-2779-44ae-4060-173296b83bdd.jpg"
-                    width="100" />
-                <div class="flex-1">
-                    <h2 class="font-semibold text-black text-base mb-1">
-                        Cecilio CVN-100
-                    </h2>
-                    <p class="text-[#7a6f5f] text-sm">
-                        31 Mar, 10.37
-                    </p>
-                </div>
-                <div class="flex flex-col items-end space-y-2">
-                    <span class="text-[#7a6f5f] text-sm font-semibold">
-                        IDR 150.000
-                    </span>
-                    <button class="bg-[#f6f0e6] text-black font-bold text-sm rounded-md px-4 py-1" type="button">
-                        Sewa Lagi !
-                    </button>
-                </div>
-            </section>
-        </div>
-    </main>
-    </body>
+        <!-- Orders -->
+        <div class="space-y-6">
+            @foreach ($groupedHistories as $status => $orders)
+                @foreach ($orders as $order)
+                <div x-show="status === 'All' || status === '{{ ucfirst($status) }}'"
+                     class="bg-gradient-to-br from-[#fdf6ee]/70 to-[#f3ede3]/80 p-6 md:p-7 rounded-3xl border border-[#e4d4c3] shadow-lg backdrop-blur-xl transition hover:shadow-xl hover:scale-[1.01] duration-200">
+                    <div class="flex flex-col md:flex-row md:items-center gap-6">
 
-</html>
+                        @php
+                            $firstItem = $order->orderItems->first();
+                            $firstImage = optional($firstItem->product->images)[0] ?? 'fallback.jpg';
+                            $productNames = $order->orderItems->pluck('product.name')->filter()->implode(', ');
+                        @endphp
+
+                        <img src="{{ preg_match('/^https?:\/\//', $firstImage) ? $firstImage : asset('storage/' . $firstImage) }}"
+                             class="w-24 h-24 object-contain rounded-2xl border border-[#d6c5b3] shadow-sm" />
+
+                        <div class="flex-1 space-y-1">
+                           <h3 class="text-xl font-semibold text-[#3e2d1f] tracking-tight">
+    Sewa {{ $firstItem->product->name ?? 'Produk' }}
+    @if($order->orderItems->count() > 1)
+        dan {{ $order->orderItems->count() - 1 }} lainnya
+    @endif
+</h3>
+
+                            <p class="text-sm text-[#7b6957]">Produk: {{ $productNames }}</p>
+                            <p class="text-xs text-[#a08973] italic">Dipesan: {{ $order->created_at->format('d M Y, H:i') }}</p>
+                        </div>
+
+                        <div class="flex flex-col justify-between items-end gap-2 text-right min-w-[140px]">
+                            <p class="text-[#6e5c4d] font-bold text-sm whitespace-nowrap">
+                                IDR {{ number_format($order->total_price, 0, ',', '.') }}
+                            </p>
+                            <span class="text-xs text-white px-3 py-1 rounded-full bg-[#a38f7a] shadow whitespace-nowrap">
+                                {{ ucfirst($order->status) }}
+                            </span>
+                            <a href="{{ route('order.detail', $order->id) }}"
+                               class="inline-flex items-center gap-1 px-4 py-2 rounded-full bg-[#fdf9f3] hover:bg-[#f3eee7] text-[#3e2d1f] border border-[#dec9b0] text-xs font-semibold shadow-sm transition">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m0 0l3-3m-3 3l3 3" />
+                                </svg>
+                                Lihat Detail
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            @endforeach
+        </div>
+
+        @if ($groupedHistories->flatten(1)->isEmpty())
+            <div class="text-center text-[#b09b85] italic pt-12">Belum ada riwayat peminjaman.</div>
+        @endif
+    </div>
+</section>
+@endsection
