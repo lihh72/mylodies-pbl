@@ -19,6 +19,11 @@ class User extends Authenticatable implements FilamentUser
         'password',
         'gauth_id', // tambahkan ini
         'gauth_type', // tambahkan ini
+        'address', // ganti 'shipping_address' dengan 'address'
+        'phone_number',
+        'province', // tambahkan ini
+        'city', // tambahkan ini
+        'postal_code', // tambahkan ini
         'profile_picture',
     ];
 

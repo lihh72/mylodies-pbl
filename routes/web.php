@@ -47,6 +47,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cart/update/{id}', [CartController::class, 'updateQuantity'])->name('cart.update');
     Route::delete('/cart/delete/{id}', [CartController::class, 'destroy'])->name('cart.delete');
 });
+Route::post('/payment/address/{code}', [PaymentController::class, 'confirmAddress'])->name('payment.address.confirm');
+Route::get('/payment/confirm/{code}', [PaymentController::class, 'confirm'])->name('payment.confirm');
 
 Route::get('/edit', [EditUserController::class, 'index'])->middleware('auth');
 Route::post('/edit/password', [EditUserController::class, 'updatePassword'])->name('edit.password')->middleware('auth');

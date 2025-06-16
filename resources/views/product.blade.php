@@ -118,17 +118,6 @@
 
 
 
-                    <div class="relative">
-                        <i class="fas fa-truck absolute left-3 top-3.5 text-[#a38f7a]"></i>
-                        <select id="pickup_method" name="pickup_method"
-                            class="pl-10 w-full rounded-md border border-[#d6c5b3] py-2.5 bg-white/60 text-gray-700 focus:ring-[#a38f7a] focus:border-[#a38f7a] transition"
-                            required>
-                            <option disabled selected value="">Choose Pickup Method</option>
-                            <option value="pickup">🎚 Pickup</option>
-                            <option value="delivery">🚚 Delivery</option>
-                        </select>
-                    </div>
-
                     <div
                         class="text-sm bg-[#f9e5c9]/50 text-[#3e2d1f] px-4 py-2 rounded-lg flex justify-between items-center font-semibold shadow-inner border border-[#e4c7aa]">
                         Total Estimate:
@@ -162,46 +151,40 @@
     const rentalPricePerDay = {{ $product->rental_price_per_day }};
     const rentInput = document.getElementById('datepicker-range-start');
     const returnInput = document.getElementById('datepicker-range-end');
-    const pickupSelect = document.getElementById('pickup_method');
     const priceDisplay = document.getElementById('priceEstimation');
 
-    function calculatePrice() {
-    if (!rentInput.value || !returnInput.value) {
-        priceDisplay.textContent = "—";
-        return;
-    }
+    function calculateEstimate() {
+        const startVal = rentInput.value;
+        const endVal = returnInput.value;
 
-    const rentDate = new Date(rentInput.value);
-    const returnDate = new Date(returnInput.value);
-
-    if (isNaN(rentDate) || isNaN(returnDate)) {
-        priceDisplay.textContent = "—";
-        return;
-    }
-
-    const diffTime = returnDate - rentDate;
-    let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
-
-    if (diffDays > 0) {
-        let price = diffDays * rentalPricePerDay;
-
-        if (pickupSelect.value === 'delivery') {
-            price += 30000;
+        if (!startVal || !endVal) {
+            priceDisplay.textContent = "—";
+            return;
         }
 
-        priceDisplay.textContent = `IDR ${price.toLocaleString('id-ID')}`;
-    } else {
-        priceDisplay.textContent = "—";
+        const startDate = new Date(startVal);
+        const endDate = new Date(endVal);
+
+        if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+            priceDisplay.textContent = "—";
+            return;
+        }
+
+        const diffDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
+
+        if (diffDays <= 0) {
+            priceDisplay.textContent = "—";
+            return;
+        }
+
+        const total = diffDays * rentalPricePerDay;
+        priceDisplay.textContent = `IDR ${total.toLocaleString('id-ID')}`;
     }
-}
 
-    
+    // Auto-check terus-menerus tiap 500ms
+    setInterval(calculateEstimate, 500);
 
-    rentInput.addEventListener('change', calculatePrice);
-    returnInput.addEventListener('change', calculatePrice);
-    pickupSelect.addEventListener('change', calculatePrice);
-
-    // Init datepicker
+    // Inisialisasi datepicker jika pakai Flowbite atau lainnya
     document.addEventListener('DOMContentLoaded', function () {
         const el = document.querySelector('[date-rangepicker]');
         if (el) {
@@ -212,6 +195,7 @@
         }
     });
 </script>
+
 
     <!-- Stylish Product Description with SVGs -->
     <section class="relative max-w-6xl mx-auto px-6 py-20">

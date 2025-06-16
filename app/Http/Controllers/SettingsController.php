@@ -21,6 +21,11 @@ class SettingsController extends Controller
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email,' . $user->id,
         'profile_picture' => 'nullable|image|max:2048',
+        'address' => 'nullable|string|max:255', // Ganti 'shipping_address' dengan 'address'
+        'phone_number' => 'nullable|string|max:15', // Tambahkan validasi untuk nomor telepon
+        'province' => 'nullable|string|max:100', // Tambahkan validasi untuk provinsi
+        'city' => 'nullable|string|max:100', // Tambahkan validasi untuk kota
+        'postal_code' => 'nullable|string|max:20', // Tambahkan validasi untuk kode pos
     ]);
 
     if ($request->hasFile('profile_picture')) {

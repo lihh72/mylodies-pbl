@@ -15,6 +15,7 @@ class OauthController extends Controller
     {
         return Socialite::driver('google')->redirect();
     }
+
     public function handleProviderCallback()
 {
     try {
@@ -30,7 +31,14 @@ class OauthController extends Controller
 
             Auth::login($finduser);
 
-            return redirect('/');
+            // 🔁 Cek jika perlu ganti password
+            if (session('force_change_password')) {
+                return redirect('/change-password');
+            }
+
+            // ✅ Redirect ke halaman intended
+            return redirect()->intended(route('landing'));
+
         } else {
             $newUser = User::create([
                 'name' => $user->name,
@@ -38,23 +46,23 @@ class OauthController extends Controller
                 'gauth_id' => $user->id,
                 'gauth_type' => 'google',
                 'password' => Hash::make('user@123'),
-                'profile_picture' => $user->avatar, // simpan avatar Google
+                'profile_picture' => $user->avatar,
             ]);
 
             $newUser->assignRole('user');
 
             Auth::login($newUser);
 
-// Set flag ke session
-session(['force_change_password' => true]);
+            // Set flag wajib ganti password
+            session(['force_change_password' => true]);
 
-return redirect('/change-password');
-
+            return redirect('/change-password');
         }
 
     } catch (Exception $e) {
         dd($e->getMessage());
     }
 }
+
 
 }
