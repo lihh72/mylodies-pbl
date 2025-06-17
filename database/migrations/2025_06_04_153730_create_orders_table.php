@@ -9,7 +9,7 @@ return new class extends Migration {
         Schema::create('orders', function (Blueprint $table) {
     $table->id();
     $table->foreignId('user_id')->constrained()->onDelete('cascade');
-    $table->string('name'); // nama pemesan
+    //$table->string('name'); // nama pemesan
     $table->date('start_date');
     $table->date('end_date');
     $table->string('shipping_address')->nullable();
