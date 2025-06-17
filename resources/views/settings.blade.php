@@ -10,7 +10,10 @@
         <!-- Sidebar -->
         <aside class="w-full lg:w-[280px] shrink-0 bg-white/40 backdrop-blur-lg border border-[#e5d5c2]/40 rounded-3xl shadow-xl px-6 py-10 flex flex-col items-center text-center">
             @if (Auth::user()->profile_picture)
-                <img src="{{ asset('storage/' . Auth::user()->profile_picture) }}" alt="Profile Picture"
+                <img
+  src="{{ Str::startsWith(Auth::user()->profile_picture, 'http') 
+        ? Auth::user()->profile_picture 
+        : asset(Auth::user()->profile_picture) }}" alt="Profile Picture"
 
                      class="w-24 h-24 rounded-full object-cover ring-4 ring-[#eee1d2] shadow-md hover:scale-105 transition-transform duration-300" />
             @else
