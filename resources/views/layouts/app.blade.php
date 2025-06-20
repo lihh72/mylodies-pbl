@@ -152,8 +152,8 @@
 
 <script async
   src="https://xfomasa55tircp52ktxbzmgy.agents.do-ai.run/static/chatbot/widget.js"
-  data-agent-id="{{ config('services.chatbot.agent_id') }}"
-  data-chatbot-id="{{ config('services.chatbot.chatbot_id') }}"
+  data-agent-id="152d5c78-4d9b-11f0-bf8f-4e013e2ddde4"
+  data-chatbot-id="BL-Hj1I9TI14sJJo5-8DzMRA4pM1qYvJ"
   data-name="Mylodies Agent"
   data-primary-color="#b49875"
   data-secondary-color="#f9e5c9"
@@ -161,7 +161,6 @@
   data-starting-message="Hello! How can I help you today?"
   data-logo="https://falih.me/images/logo-background.png">
 </script>
-
 
 
 </body>
