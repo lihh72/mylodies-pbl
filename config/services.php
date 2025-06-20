@@ -47,5 +47,10 @@ return [
     'is_production' => env('MIDTRANS_IS_PRODUCTION', false),
 ],
 
+'chatbot' => [
+    'agent_id' => env('CHATBOT_AGENT_ID'),
+    'chatbot_id' => env('CHATBOT_ID'),
+],
+
 
 ];

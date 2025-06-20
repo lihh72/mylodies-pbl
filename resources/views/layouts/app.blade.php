@@ -150,6 +150,19 @@
     });
 </script>
 
+<script async
+  src="https://xfomasa55tircp52ktxbzmgy.agents.do-ai.run/static/chatbot/widget.js"
+  data-agent-id="{{ config('services.chatbot.agent_id') }}"
+  data-chatbot-id="{{ config('services.chatbot.chatbot_id') }}"
+  data-name="Mylodies Agent"
+  data-primary-color="#b49875"
+  data-secondary-color="#f9e5c9"
+  data-button-background-color="#8b6f4d"
+  data-starting-message="Hello! How can I help you today?"
+  data-logo="https://falih.me/images/logo-background.png">
+</script>
+
+
 
 </body>
 </html>
