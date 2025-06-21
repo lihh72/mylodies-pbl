@@ -47,4 +47,9 @@ public function mainImage()
     return $this->images()->where('is_main', true)->first() ?? $this->images()->first();
 }
 
+public function reviews() {
+    return $this->hasMany(ProductReview::class);
 }
+
+}
+

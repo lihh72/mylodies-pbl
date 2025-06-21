@@ -16,6 +16,8 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\OauthController;
 use App\Http\Controllers\OrderDetailController;
+use App\Http\Controllers\ProductReviewController;
+
 Route::get('/q', function () {
     return view('welcome');
 });
@@ -85,6 +87,11 @@ Route::middleware('auth')->group(function () {
 
 Route::get('oauth/google', [OauthController::class, 'redirectToProvider'])->name('oauth.google');  
 Route::get('oauth/google/callback', [OauthController::class, 'handleProviderCallback'])->name('oauth.google.callback');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/reviews/create/{order_item}', [\App\Http\Controllers\ProductReviewController::class, 'create'])->name('reviews.create');
+    Route::post('/reviews/store/{order_item}', [\App\Http\Controllers\ProductReviewController::class, 'store'])->name('reviews.store');
+});
 
 //Route::get('/search', [SearchController::class, 'index'])->name('search');
 

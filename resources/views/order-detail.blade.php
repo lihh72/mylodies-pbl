@@ -103,10 +103,20 @@
                             <p class="text-xs mt-1 text-[#7a6d58] italic">
                                 {{ $start->format('d M Y') }} → {{ $end->format('d M Y') }} ({{ $days }} hari)
                             </p>
+                            <!-- Tombol Review -->
+@if($order->status === 'arrive' && !$item->review)
+    <div class="pt-3">
+        <a href="{{ route('reviews.create', ['order_item' => $item->id]) }}"
+           class="inline-block px-4 py-2 text-sm rounded-full bg-[#f9e5c9] border border-[#a38f7a] text-[#3e2d1f] font-semibold shadow hover:bg-[#f5ddbe] transition">
+            ✍️ Beri Ulasan
+        </a>
+    </div>
+@endif
                         </div>
                     </div>
                     @endforeach
                 </div>
+
 
                 <!-- Tombol Aksi -->
                 <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 border-t border-[#e0ccb1]">

@@ -50,42 +50,107 @@
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-stretch px-6 md:px-12 relative z-10 pt-1">
 
 
-            <!-- Gallery kiri -->
-            <div class="space-y-6 flex flex-col">
-                <div
-                    class="relative group overflow-hidden rounded-3xl shadow-xl transition-transform duration-500 transform hover:scale-[1.02] flex-1">
-                    @php
-                        $mainImage = $product->images[0] ?? 'fallback.jpg';
-                        $mainImageUrl = is_url($mainImage) ? $mainImage : asset('storage/' . $mainImage);
-                    @endphp
-                    <div class="bg-white rounded-2xl overflow-hidden flex items-center justify-center h-[400px]">
-    <img id="mainImage"
-        src="{{ $mainImageUrl }}"
-        alt="{{ $product->name }}"
-        class="object-contain object-center w-full h-full transition duration-300" />
+           <!-- Gallery kiri -->
+<div class="space-y-6 flex flex-col" x-data="gallerySlideshow()" x-init="start()">
+    <div class="relative group overflow-hidden rounded-3xl shadow-xl transition-transform duration-500 transform hover:scale-[1.02] flex-1">
+        
+        <!-- Container Gambar -->
+        <div class="bg-white rounded-2xl overflow-hidden flex items-center justify-center h-[400px] relative">
+
+            <!-- Slideshow Images -->
+            <template x-for="(image, index) in images" :key="index">
+                <img :src="image"
+                    :alt="'Product Image ' + index"
+                    x-show="index === currentIndex"
+                    x-transition:enter="transition-opacity duration-700"
+                    x-transition:enter-start="opacity-0"
+                    x-transition:enter-end="opacity-100"
+                    x-transition:leave="transition-opacity duration-700"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0"
+                    class="absolute inset-0 w-full h-full object-contain object-center z-0" />
+            </template>
+
+            <!-- Dot Animation Inside -->
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 flex gap-2">
+                <template x-for="(dot, i) in 3" :key="i">
+                    <div :class="[
+                        'w-2.5 h-2.5 rounded-full transition-all duration-500',
+                        animationStep === 1 && i === 1 ? 'bg-[#3e2d1f] scale-150 blur-[1px]' :
+                        (animationStep === 2 && (i === 0 || i === 2)) ? 'bg-[#c1b1a0] scale-125' :
+                        (i === currentIndex) ? 'bg-[#816c59]' : 'bg-[#d8c4ae] opacity-50'
+                    ]"></div>
+                </template>
+            </div>
+        </div>
+
+        <!-- Badge -->
+        <span class="absolute top-5 left-5 bg-white/80 px-3 py-1 rounded-full text-sm font-medium text-[#3e2d1f] shadow-sm">
+            ⭐ {{ $averageRating }} / 5.0
+        </span>
+        <span class="absolute bottom-5 right-5 bg-gradient-to-r from-[#a38f7a] to-[#816c59] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide animate-pulse">
+            ⚡ Limited Edition
+        </span>
+    </div>
+
+    <!-- Thumbnail -->
+    <div class="flex gap-3 mt-1">
+        @foreach ($product->images as $index => $image)
+            @php $imageUrl = is_url($image) ? $image : asset('storage/' . $image); @endphp
+            <img @click="goTo({{ $index }})"
+                src="{{ $imageUrl }}"
+                class="w-20 h-20 object-contain rounded-xl shadow-md cursor-pointer hover:scale-110 transition" />
+        @endforeach
+    </div>
 </div>
 
+<script>
+function gallerySlideshow() {
+    return {
+        images: @json(array_map(fn($img) => is_url($img) ? $img : asset('storage/' . $img), $product->images)),
+        currentIndex: 0,
+        animationStep: 0, // 0 = normal, 1 = merge center, 2 = rebound
+        interval: null,
+        stepTimeout: null,
 
-                    <span
-                        class="absolute top-5 left-5 bg-white/80 px-3 py-1 rounded-full text-sm font-medium text-[#3e2d1f] shadow-sm">
-                        ⭐ 4.8 / 5.0
-                    </span>
-                    <span
-                        class="absolute bottom-5 right-5 bg-gradient-to-r from-[#a38f7a] to-[#816c59] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide animate-pulse">
-                        ⚡ Limited Edition
-                    </span>
-                </div>
-                <div class="flex gap-3">
-                    @foreach ($product->images as $image)
-                        @php
-                            $imageUrl = is_url($image) ? $image : asset('storage/' . $image);
-                        @endphp
-                        <img onclick="document.getElementById('mainImage').src='{{ $imageUrl }}'"
-                            src="{{ $imageUrl }}"
-                            class="w-20 h-20 object-contain rounded-xl shadow-md cursor-pointer hover:scale-110 transition" />
-                    @endforeach
-                </div>
-            </div>
+        start() {
+            this.interval = setInterval(() => {
+                this.animateDots(); // Jalankan animasi dot dulu
+
+                // Ganti gambar setelah jeda transisi dot
+                setTimeout(() => {
+                    this.currentIndex = (this.currentIndex + 1) % this.images.length;
+                }, 1000);
+            }, 5000); // 5 detik siklus penuh
+        },
+
+        animateDots() {
+            // Step 1: merge center
+            this.animationStep = 1;
+            clearTimeout(this.stepTimeout);
+
+            // Step 2: bounce / pisah balik
+            this.stepTimeout = setTimeout(() => {
+                this.animationStep = 2;
+            }, 500); // merge sebentar lalu rebound
+
+            // Reset
+            this.stepTimeout = setTimeout(() => {
+                this.animationStep = 0;
+            }, 900);
+        },
+
+        goTo(index) {
+            this.currentIndex = index;
+            clearInterval(this.interval);
+            clearTimeout(this.stepTimeout);
+            this.animationStep = 0;
+            this.start();
+        }
+    }
+}
+</script>
+
 
             <!-- Form kanan -->
             <div
@@ -304,61 +369,71 @@
     <h3 class="text-2xl md:text-3xl font-bold text-[#3e2d1f]">User Reviews</h3>
 
     <!-- Overall Rating Summary -->
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 bg-[#fffaf3] rounded-2xl p-4 border border-[#e7d4be] shadow-sm">
-      <!-- Skor Besar -->
-      <div class="text-center md:text-left">
-        <div class="text-4xl font-bold text-[#3e2d1f] leading-tight">4.9</div>
-        <div class="text-sm text-[#7a6650]">out of 5.0</div>
-      </div>
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 bg-[#fffaf3] rounded-2xl p-4 border border-[#e7d4be] shadow-sm">
+  <!-- Skor Besar -->
+  <div class="text-center md:text-left">
+    <div class="text-4xl font-bold text-[#3e2d1f] leading-tight">{{ $averageRating }}</div>
+    <div class="text-sm text-[#7a6650]">out of 5.0</div>
+  </div>
 
-      <!-- Bintang -->
-      <div class="flex items-center gap-1 text-[#f2c94c]">
-        @for ($i = 0; $i < 5; $i++)
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.237 3.8a1 1 0 00.95.69h4.004c.969 0 1.371 1.24.588 1.81l-3.24 2.355a1 1 0 00-.364 1.118l1.237 3.8c.3.921-.755 1.688-1.54 1.118l-3.24-2.355a1 1 0 00-1.176 0l-3.24 2.355c-.784.57-1.838-.197-1.539-1.118l1.236-3.8a1 1 0 00-.364-1.118L2.22 9.227c-.784-.57-.38-1.81.588-1.81h4.005a1 1 0 00.95-.69l1.236-3.8z"/>
-          </svg>
-        @endfor
-      </div>
+  <!-- Bintang -->
+  <div class="flex items-center gap-1 text-[#f2c94c]">
+    @for ($i = 0; $i < round($averageRating); $i++)
+      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M9.049 2.927c..." />
+      </svg>
+    @endfor
+  </div>
 
-      <!-- Total Review -->
-      <div class="text-sm text-[#7a6650] font-medium md:text-right">
-        Based on <span class="font-semibold text-[#3e2d1f]">128 reviews</span>
-      </div>
-    </div>
+  <!-- Total Review -->
+  <div class="text-sm text-[#7a6650] font-medium md:text-right">
+    Based on <span class="font-semibold text-[#3e2d1f]">{{ $totalReviews }} reviews</span>
+  </div>
+</div>
+
 
     <!-- Daftar Review -->
-    @foreach ([1, 2, 3] as $review)
-    <div class="flex items-start gap-5 bg-white border border-[#e4c7aa] rounded-2xl p-6 shadow-sm">
-      <!-- Avatar -->
-      <div class="w-12 h-12 rounded-full overflow-hidden bg-[#f9e5c9] border border-[#dec0a2] shadow-inner">
-        <img src="https://i.pravatar.cc/100?img={{ $review + 20 }}" alt="User Avatar" class="w-full h-full object-cover">
-      </div>
+   @foreach ($reviews as $review)
+<div class="flex items-start gap-5 bg-white border border-[#e4c7aa] rounded-2xl p-6 shadow-sm">
+<!-- Avatar -->
+@php
+    $avatar = $review->user->profile_picture;
 
-      <!-- Content -->
-      <div class="flex-1 space-y-1">
-        <div class="flex justify-between items-center">
-          <div class="font-semibold text-[#3e2d1f]">
-            {{ $review == 1 ? 'Aulia R.' : ($review == 2 ? 'Dimas W.' : 'Sinta M.') }}
-          </div>
-          <div class="text-sm text-[#a38f7a]">2 weeks ago</div>
-        </div>
+    $avatarUrl = Str::startsWith($avatar, 'http')
+        ? $avatar
+        : ($avatar ? asset('storage/' . $avatar) : 'https://i.pravatar.cc/100?u=' . $review->user->id);
+@endphp
 
-        <!-- Stars -->
-        <div class="flex items-center gap-1 text-[#f2c94c]">
-          @for ($i = 0; $i < 5; $i++)
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.237 3.8a1 1 0 00.95.69h4.004c.969 0 1.371 1.24.588 1.81l-3.24 2.355a1 1 0 00-.364 1.118l1.237 3.8c.3.921-.755 1.688-1.54 1.118l-3.24-2.355a1 1 0 00-1.176 0l-3.24 2.355c-.784.57-1.838-.197-1.539-1.118l1.236-3.8a1 1 0 00-.364-1.118L2.22 9.227c-.784-.57-.38-1.81.588-1.81h4.005a1 1 0 00.95-.69l1.236-3.8z"/>
-            </svg>
-          @endfor
-        </div>
+<div class="w-12 h-12 rounded-full overflow-hidden bg-[#f9e5c9] border border-[#dec0a2] shadow-inner">
+    <img src="{{ $avatarUrl }}" alt="{{ $review->user->name }}" class="w-full h-full object-cover">
+</div>
 
-        <!-- Comment -->
-        <p class="text-sm text-[#5e4b3b] italic">
-          {{ $review == 1 ? 'Produk sangat mulus & pengiriman cepat. Proses rental juga gampang banget!' : ($review == 2 ? 'Gear-nya mantap, sesuai deskripsi, dan service dari Mylodies selalu top!' : 'Packing rapi, alat berkualitas, dan harga worth it buat event saya.') }}
-        </p>
-      </div>
+
+  <!-- Content -->
+  <div class="flex-1 space-y-1">
+    <div class="flex justify-between items-center">
+      <div class="font-semibold text-[#3e2d1f]">{{ $review->user->name }}</div>
+      <div class="text-sm text-[#a38f7a]">{{ $review->created_at->diffForHumans() }}</div>
     </div>
-    @endforeach
+
+<!-- Stars -->
+<div class="flex items-center gap-1 text-[#f2c94c]">
+  @for ($i = 1; $i <= 5; $i++)
+    <svg class="w-4 h-4 {{ $i <= $review->rating ? 'text-[#f2c94c]' : 'text-gray-300' }}" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.237 3.8a1 1 0 00.95.69h4.004c.969 0 1.371 1.24.588 1.81l-3.24 2.355a1 1 0 00-.364 1.118l1.237 3.8c.3.921-.755 1.688-1.54 1.118l-3.24-2.355a1 1 0 00-1.176 0l-3.24 2.355c-.784.57-1.838-.197-1.539-1.118l1.236-3.8a1 1 0 00-.364-1.118L2.22 9.227c-.784-.57-.38-1.81.588-1.81h4.005a1 1 0 00.95-.69l1.236-3.8z"/>
+    </svg>
+  @endfor
+</div>
+
+
+    <!-- Comment -->
+    <p class="text-sm text-[#5e4b3b] italic">
+      {{ $review->comment ?? 'Tidak ada komentar.' }}
+    </p>
+  </div>
+</div>
+@endforeach
+
 
   </div>
 </section>

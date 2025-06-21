@@ -17,8 +17,15 @@ public function show($slug)
 {
     $product = Product::where('slug', $slug)->firstOrFail();
     $minDate = now()->addDays(3)->format('m/d/Y');
-    return view('product', compact('product', 'minDate'));
+
+    // Tambahan untuk review
+    $reviews = $product->reviews()->with('user')->latest()->take(10)->get(); // bisa ganti take() sesuai kebutuhan
+    $averageRating = number_format($product->reviews()->avg('rating') ?? 0, 1);
+    $totalReviews = $product->reviews()->count();
+
+    return view('product', compact('product', 'minDate', 'reviews', 'averageRating', 'totalReviews'));
 }
+
 
     public function catalog()
 {
