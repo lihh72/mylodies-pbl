@@ -6,8 +6,34 @@
 
 @section('content')
 <div class="min-h-screen flex flex-col">
+    <!-- Breadcrumb Natural Tanpa Background/Border -->
+<div class="w-full pt-[6rem]">
+  <nav class="flex items-center text-sm text-[#5e4b3b]" aria-label="Breadcrumb">
+    <ol class="flex flex-wrap items-center gap-2 w-full pl-16">
+      <li>
+        <a href="{{ route('landing') }}" class="inline-flex items-center font-semibold hover:text-[#a38f7a] transition">
+          <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10.707 1.293a1 1 0 00-1.414 0l-8 8a1 1 0 001.414 1.414L3 10.414V18a2 2 0 002 2h3a1 1 0 001-1v-4h2v4a1 1 0 001 1h3a2 2 0 002-2v-7.586l.293.293a1 1 0 001.414-1.414l-8-8z"/>
+          </svg>
+          Home
+        </a>
+      </li>
+      <li><span class="text-[#a38f7a] font-semibold">›</span></li>
+      <li>
+        <a href="{{ route('catalog') }}" class="font-semibold hover:text-[#a38f7a] transition">
+          Products
+        </a>
+      </li>
+      <li><span class="text-[#a38f7a] font-semibold">›</span></li>
+      <li class="text-[#7a6650] font-semibold truncate max-w-[150px] md:max-w-[300px]">
+        {{ Str::limit($product->name, 50) }}
+      </li>
+    </ol>
+  </nav>
+</div>
+
     <!-- Hero Section -->
-    <section class="flex-1 flex items-center justify-center relative bg-[#fdfaf5] py-20 overflow-hidden">
+    <section class="flex-1 flex items-center justify-center relative bg-[#fdfaf5] py-2 overflow-hidden">
         <div
             class="absolute -top-10 -left-10 w-72 h-72 bg-[#f9e5c9] rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse">
         </div>
@@ -21,7 +47,7 @@
             }
         @endphp
 
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-stretch px-6 md:px-12 relative z-10 pt-9">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-stretch px-6 md:px-12 relative z-10 pt-1">
 
 
             <!-- Gallery kiri -->
@@ -69,7 +95,7 @@
                 </div>
 
                 <!-- Title & Description -->
-                <h2 class="relative z-10 text-4xl font-extrabold">{{ $product->name }}</h2>
+                <h2 class="relative z-10 text-3xl font-bold">{{ $product->name }}</h2>
 <p class="relative z-10 text-lg text-[#7a6650] font-semibold">
     IDR {{ number_format($product->rental_price_per_day, 0, ',', '.') }}
     <span class="text-sm text-gray-500">/ day</span>
@@ -270,40 +296,75 @@
         </div>
     </section>
 
+<!-- User Reviews Section -->
+<section class="max-w-5xl mx-auto px-6 py-14">
+  <div class="bg-[#fffaf3] border border-[#e4c7aa] rounded-3xl shadow-xl p-8 space-y-8">
+    
+    <!-- Judul -->
+    <h3 class="text-2xl md:text-3xl font-bold text-[#3e2d1f]">User Reviews</h3>
 
-    <!-- Testimonials -->
-    <section class="max-w-7xl mx-auto py-20 text-center space-y-10">
-        <h2 class="text-3xl font-bold text-[#3e2d1f]">What Our Customers Say</h2>
-        <div class="grid md:grid-cols-3 gap-10">
-            <div
-                class="bg-white/80 backdrop-blur rounded-2xl shadow-xl p-6 hover:-translate-y-1 hover:shadow-2xl transition">
-                <p class="italic text-sm">"Amazing guitar quality. Sounded incredible at my live show!"</p>
-                <div class="mt-4 flex justify-center gap-1 text-[#a38f7a] text-sm">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                        class="fas fa-star"></i><i class="far fa-star"></i>
-                </div>
-                <p class="mt-2 text-xs text-gray-500">— Alex, Musician</p>
-            </div>
-            <div
-                class="bg-white/80 backdrop-blur rounded-2xl shadow-xl p-6 hover:-translate-y-1 hover:shadow-2xl transition">
-                <p class="italic text-sm">"Smooth rental process, fast delivery, great support."</p>
-                <div class="mt-4 flex justify-center gap-1 text-[#a38f7a] text-sm">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                        class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p class="mt-2 text-xs text-gray-500">— Jamie, Producer</p>
-            </div>
-            <div
-                class="bg-white/80 backdrop-blur rounded-2xl shadow-xl p-6 hover:-translate-y-1 hover:shadow-2xl transition">
-                <p class="italic text-sm">"Looks brand new. Loved the whole experience!"</p>
-                <div class="mt-4 flex justify-center gap-1 text-[#a38f7a] text-sm">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                        class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p class="mt-2 text-xs text-gray-500">— Mia, Performer</p>
-            </div>
+    <!-- Overall Rating Summary -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 bg-[#fffaf3] rounded-2xl p-4 border border-[#e7d4be] shadow-sm">
+      <!-- Skor Besar -->
+      <div class="text-center md:text-left">
+        <div class="text-4xl font-bold text-[#3e2d1f] leading-tight">4.9</div>
+        <div class="text-sm text-[#7a6650]">out of 5.0</div>
+      </div>
+
+      <!-- Bintang -->
+      <div class="flex items-center gap-1 text-[#f2c94c]">
+        @for ($i = 0; $i < 5; $i++)
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.237 3.8a1 1 0 00.95.69h4.004c.969 0 1.371 1.24.588 1.81l-3.24 2.355a1 1 0 00-.364 1.118l1.237 3.8c.3.921-.755 1.688-1.54 1.118l-3.24-2.355a1 1 0 00-1.176 0l-3.24 2.355c-.784.57-1.838-.197-1.539-1.118l1.236-3.8a1 1 0 00-.364-1.118L2.22 9.227c-.784-.57-.38-1.81.588-1.81h4.005a1 1 0 00.95-.69l1.236-3.8z"/>
+          </svg>
+        @endfor
+      </div>
+
+      <!-- Total Review -->
+      <div class="text-sm text-[#7a6650] font-medium md:text-right">
+        Based on <span class="font-semibold text-[#3e2d1f]">128 reviews</span>
+      </div>
+    </div>
+
+    <!-- Daftar Review -->
+    @foreach ([1, 2, 3] as $review)
+    <div class="flex items-start gap-5 bg-white border border-[#e4c7aa] rounded-2xl p-6 shadow-sm">
+      <!-- Avatar -->
+      <div class="w-12 h-12 rounded-full overflow-hidden bg-[#f9e5c9] border border-[#dec0a2] shadow-inner">
+        <img src="https://i.pravatar.cc/100?img={{ $review + 20 }}" alt="User Avatar" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Content -->
+      <div class="flex-1 space-y-1">
+        <div class="flex justify-between items-center">
+          <div class="font-semibold text-[#3e2d1f]">
+            {{ $review == 1 ? 'Aulia R.' : ($review == 2 ? 'Dimas W.' : 'Sinta M.') }}
+          </div>
+          <div class="text-sm text-[#a38f7a]">2 weeks ago</div>
         </div>
-    </section>
+
+        <!-- Stars -->
+        <div class="flex items-center gap-1 text-[#f2c94c]">
+          @for ($i = 0; $i < 5; $i++)
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.237 3.8a1 1 0 00.95.69h4.004c.969 0 1.371 1.24.588 1.81l-3.24 2.355a1 1 0 00-.364 1.118l1.237 3.8c.3.921-.755 1.688-1.54 1.118l-3.24-2.355a1 1 0 00-1.176 0l-3.24 2.355c-.784.57-1.838-.197-1.539-1.118l1.236-3.8a1 1 0 00-.364-1.118L2.22 9.227c-.784-.57-.38-1.81.588-1.81h4.005a1 1 0 00.95-.69l1.236-3.8z"/>
+            </svg>
+          @endfor
+        </div>
+
+        <!-- Comment -->
+        <p class="text-sm text-[#5e4b3b] italic">
+          {{ $review == 1 ? 'Produk sangat mulus & pengiriman cepat. Proses rental juga gampang banget!' : ($review == 2 ? 'Gear-nya mantap, sesuai deskripsi, dan service dari Mylodies selalu top!' : 'Packing rapi, alat berkualitas, dan harga worth it buat event saya.') }}
+        </p>
+      </div>
+    </div>
+    @endforeach
+
+  </div>
+</section>
+
+
+    
 
 </body>
 

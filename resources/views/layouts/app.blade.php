@@ -158,7 +158,7 @@
   data-primary-color="#b49875"
   data-secondary-color="#f9e5c9"
   data-button-background-color="#8b6f4d"
-  data-starting-message="Hello! How can I help you today?"
+  data-starting-message="Jangan spam ges, tokennya mahal"
   data-logo="https://falih.me/images/logo-background.png">
 </script>
 

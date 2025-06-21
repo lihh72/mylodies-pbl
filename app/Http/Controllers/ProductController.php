@@ -29,20 +29,27 @@ public function show($slug)
 public function search(Request $request)
 {
     $query = $request->input('q');
+    $category = $request->input('category');
 
     $products = Product::when($query, function ($q) use ($query) {
         $keywords = explode(' ', $query);
-
         $q->where(function ($subQuery) use ($keywords) {
             foreach ($keywords as $word) {
                 $subQuery->orWhere('name', 'like', '%' . $word . '%')
                          ->orWhere('category', 'like', '%' . $word . '%');
             }
         });
-    })->latest()->paginate(15);
+    })
+    ->when($category, function ($q) use ($category) {
+        $q->where('category', $category);
+    })
+    ->latest()
+    ->paginate(15)
+    ->appends(['q' => $query, 'category' => $category]); // untuk menjaga query saat paginasi
 
-    return view('search', compact('products', 'query'));
+    return view('search', compact('products', 'query', 'category'));
 }
+
 
 
 }
