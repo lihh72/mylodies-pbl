@@ -33,10 +33,6 @@ class OauthController extends Controller
 
             Auth::login($finduser, session('remember', false));
 
-            // 🔁 Cek jika perlu ganti password
-            if (session('force_change_password')) {
-                return redirect('/change-password');
-            }
 
             // ✅ Redirect ke halaman intended
             return redirect()->intended(route('landing'));
@@ -56,10 +52,8 @@ class OauthController extends Controller
 
             Auth::login($newUser, session('remember', false));
 
-            // Set flag wajib ganti password
-            session(['force_change_password' => true]);
 
-            return redirect('/change-password');
+            return redirect(route('landing'))->with('success', 'Successfully logged in with your Google account!');
         }
 
     } catch (Exception $e) {

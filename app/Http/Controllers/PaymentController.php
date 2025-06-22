@@ -29,7 +29,7 @@ class PaymentController extends Controller
         empty($user->phone_number)
     ) {
         return redirect()->route('settings.index')
-            ->with('warning', 'Lengkapi data alamat Anda terlebih dahulu sebelum melanjutkan pembayaran.');
+            ->with('warning', 'Please complete your address details first before proceeding with payment.');
     }
 
     $payment = Payment::where('code', $code)->firstOrFail();
@@ -95,7 +95,7 @@ class PaymentController extends Controller
         $order = $payment->order;
         if ($payment->payment_status === 'paid') {
     return redirect()->route('order.detail', $order->id)
-                     ->with('info', 'Pembayaran telah selesai untuk pesanan ini.');
+                     ->with('info', 'Payment has been completed for this order.');
 }
 
 

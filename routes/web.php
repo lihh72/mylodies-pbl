@@ -28,9 +28,14 @@ Route::get('/q', function () {
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::put('/settings', [SettingsController::class, 'update'])->name('settings.update');
+
 });
 
 Route::get('/', [ProductController::class, 'index'])->name('landing');
@@ -69,9 +74,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/order/from-cart', [OrderController::class, 'storeFromCart'])->name('order.storeFromCart');
 });
 
-Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index')->middleware('auth');
-Route::put('/settings', [SettingsController::class, 'update'])->name('settings.update')->middleware('auth');
-
 
 
 Route::middleware(['auth'])->get('/order/{order}', [OrderDetailController::class, 'show'])->name('order.detail');
@@ -79,8 +81,7 @@ Route::middleware(['auth'])->get('/order/{order}', [OrderDetailController::class
 Route::get('/about', function () {
     return view('about');
 });
-Route::get('/change-password', [EditUserController::class, 'forceChange'])->middleware('auth')->name('password.force');
-Route::post('/change-password', [EditUserController::class, 'forceChangePost'])->middleware('auth')->name('password.force.post');
+
 
 
 Route::middleware('auth')->group(function () {
