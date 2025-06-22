@@ -34,6 +34,7 @@ class OrderController extends Controller
 
         $order = Order::create([
             'user_id' => Auth::id(),
+            'name' => Auth::user()->name, // Ambil nama dari user yang login
             'start_date' => $startDate,
             'end_date' => $endDate,
             'total_price' => $itemTotal,

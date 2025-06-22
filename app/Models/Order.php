@@ -14,13 +14,15 @@ class Order extends Model
 
     protected $fillable = [
         'user_id',
-        //'name',
+        'name',
         'start_date',
         'end_date',
         'shipping_address',
         'phone_number',
         'total_price',
         'status',
+        'invoice_number',
+        'invoice_path',
     ];
 
     public function user()

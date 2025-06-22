@@ -77,10 +77,15 @@ public function destroy($id)
     $item = \App\Models\CartItem::findOrFail($id);
 
     if ($item->cart->user_id === Auth::id()) {
-        $item->quantity = $request->quantity;
+        if ($request->quantity <= 0) {
+            $item->delete();
+        } else {
+            $item->quantity = $request->quantity;
         $days = Carbon::parse($item->start_date)->diffInDays(Carbon::parse($item->end_date)) + 1;
         $item->total_price = $item->product->rental_price_per_day * $days * $request->quantity;
         $item->save();
+        }
+        
     }
 
     return back();

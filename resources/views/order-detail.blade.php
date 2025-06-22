@@ -129,14 +129,23 @@
                     </a>
 
                     @if(strtolower($order->payment->payment_status ?? '') === 'pending' && $order->payment?->code)
-                        <a href="{{ url('/payment/' . $order->payment->code) }}"
-                           class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#a38f7a] to-[#816c59] text-white font-semibold text-sm shadow-md hover:shadow-lg transition duration-200">
-                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                <path d="M17 9V7a4 4 0 0 0-8 0v2m-2 0h12v10H7V9z" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            Bayar Sekarang
-                        </a>
-                    @endif
+    <a href="{{ url('/payment/' . $order->payment->code) }}"
+       class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#a38f7a] to-[#816c59] text-white font-semibold text-sm shadow-md hover:shadow-lg transition duration-200">
+        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M17 9V7a4 4 0 0 0-8 0v2m-2 0h12v10H7V9z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Bayar Sekarang
+    </a>
+@elseif(!empty($order->invoice_number))
+    <a href="{{ route('invoice.show', ['order' => $order->id]) }}"
+       class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#f9e5c9] border border-[#a38f7a] text-[#3e2d1f] font-semibold text-sm shadow hover:bg-[#f5ddbe] transition">
+        <svg class="w-4 h-4 text-[#3e2d1f]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Cek Invoice
+    </a>
+@endif
+
                 </div>
 
             </div>

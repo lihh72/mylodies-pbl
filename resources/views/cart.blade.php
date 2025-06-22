@@ -65,8 +65,9 @@
                                     @csrf
                                     <p class="font-medium">Qty</p>
                                     <div class="flex gap-2 text-base mt-1">
-                                        <button type="submit" name="quantity" value="{{ $item->quantity - 1 }}"
-                                                class="w-7 h-7 rounded-full bg-[#f3e5d7] hover:bg-[#e5d4c0]">−</button>
+                                        <button type="submit" name="quantity" value="{{ $item->quantity <= 1 ? 0 : $item->quantity - 1 }}"
+        class="w-7 h-7 rounded-full bg-[#f3e5d7] hover:bg-[#e5d4c0]">−</button>
+
                                         <span class="quantity font-semibold">{{ $item->quantity }}</span>
                                         <button type="submit" name="quantity" value="{{ $item->quantity + 1 }}"
                                                 class="w-7 h-7 rounded-full bg-[#f3e5d7] hover:bg-[#e5d4c0]">+</button>

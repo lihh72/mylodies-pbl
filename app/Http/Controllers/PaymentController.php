@@ -10,12 +10,28 @@ use Midtrans\Transaction;
 use Midtrans\Notification;
 use App\Models\Payment;
 use Illuminate\Support\Facades\Log;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class PaymentController extends Controller
 {
     // Step 1: Form Pilih Alamat
     public function show($code)
 {
+    $user = Auth::user();
+        if (
+        empty($user->address) ||
+        empty($user->city) ||
+        empty($user->province) ||
+        empty($user->postal_code) ||
+        empty($user->phone_number)
+    ) {
+        return redirect()->route('settings.index')
+            ->with('warning', 'Lengkapi data alamat Anda terlebih dahulu sebelum melanjutkan pembayaran.');
+    }
+
     $payment = Payment::where('code', $code)->firstOrFail();
     $order = $payment->order;
 
@@ -52,6 +68,7 @@ class PaymentController extends Controller
 
             $order->update([
                 'shipping_address' => $shippingAddress,
+                'name' => auth()->user()->name,
                 'phone_number' => auth()->user()->phone_number,
             ]);
         } else {
@@ -63,6 +80,7 @@ class PaymentController extends Controller
 
             $order->update([
                 'shipping_address' => $shippingAddress,
+                'name' => $request->new_name,
                 'phone_number' => $request->new_phone,
             ]);
         }
@@ -131,11 +149,11 @@ class PaymentController extends Controller
             ],
             'item_details' => $itemDetails,
             'customer_details' => [
-                'first_name' => auth()->user()->name,
+                'first_name' => $order->name,
                 'email' => auth()->user()->email,
                 'phone' => $order->phone_number,
                 'shipping_address' => [
-                    'first_name' => auth()->user()->name,
+                    'first_name' => $order->name,
                     'phone' => $order->phone_number,
                     'address' => $order->shipping_address,
                     'country_code' => 'IDN'
@@ -170,46 +188,91 @@ class PaymentController extends Controller
 
     // Callback dari Midtrans ke endpoint server
     public function callback(Request $request)
-    {
-        Config::$serverKey = config('services.midtrans.server_key');
-        Config::$isProduction = config('services.midtrans.is_production');
-        Config::$isSanitized = true;
-        Config::$is3ds = true;
+{
+    Config::$serverKey = config('services.midtrans.server_key');
+    Config::$isProduction = config('services.midtrans.is_production');
+    Config::$isSanitized = true;
+    Config::$is3ds = true;
 
-        $notification = new Notification();
-        Log::info('Midtrans callback received', (array) $notification);
+    $notification = new Notification();
+    Log::info('Midtrans callback received', (array) $notification);
 
-        preg_match('/ORDER-(\d+)-/', $notification->order_id, $matches);
+    preg_match('/ORDER-(\d+)-/', $notification->order_id, $matches);
+    if (!isset($matches[1])) return response('Invalid order ID', 400);
 
-        if (!isset($matches[1])) return response('Invalid order ID', 400);
+    $order = Order::with(['user', 'orderItems.product'])->find($matches[1]);
+    if (!$order) return response('Order not found', 404);
 
-        $order = Order::find($matches[1]);
-        if (!$order) return response('Order not found', 404);
+    $payment = $order->payment;
+    if (!$payment) return response('Payment not found', 404);
 
-        $payment = $order->payment;
-        if (!$payment) return response('Payment not found', 404);
+    $status = $notification->transaction_status;
+    $fraud = $notification->fraud_status;
 
-        $status = $notification->transaction_status;
-        $fraud = $notification->fraud_status;
+    $paymentStatus = match ($status) {
+        'capture' => $fraud === 'accept' ? 'paid' : 'pending',
+        'settlement' => 'paid',
+        'cancel', 'deny', 'expire' => 'failed',
+        default => 'pending',
+    };
 
-        $paymentStatus = match ($status) {
-            'capture' => $fraud === 'accept' ? 'paid' : 'pending',
-            'settlement' => 'paid',
-            'cancel', 'deny', 'expire' => 'failed',
-            default => 'pending',
-        };
+    $payment->update([
+        'payment_status' => $paymentStatus,
+        'gross_amount' => $notification->gross_amount ?? $payment->gross_amount,
+    ]);
 
-        $payment->update([
-            'payment_status' => $paymentStatus,
-            'gross_amount' => $notification->gross_amount !== $payment->gross_amount
-                ? $notification->gross_amount
-                : $payment->gross_amount,
-        ]);
+    if ($paymentStatus === 'paid') {
+        $order->update(['status' => 'processing']);
 
-        if ($paymentStatus === 'paid') {
-            $order->update(['status' => 'processing']);
-        }
+         // 👇 Buat Invoice Lengkap
+    $invoiceNumber = 'INV-' . now()->format('Ymd') . '-' . $order->id;
 
-        return response('OK', 200);
+    $pdf = Pdf::loadView('invoices.pdf', [
+        'order' => $order,
+        'invoice_number' => $invoiceNumber,
+        'midtrans' => [
+            'order_id' => $notification->order_id,
+            'transaction_id' => $notification->transaction_id,
+            'payment_type' => $notification->payment_type,
+            'va_number' => $notification->va_numbers[0]->va_number ?? '-',
+            'bank' => $notification->va_numbers[0]->bank ?? '-',
+            'transaction_time' => $notification->transaction_time,
+            'settlement_time' => $notification->settlement_time ?? '-',
+            'gross_amount' => $notification->gross_amount,
+            'currency' => $notification->currency,
+            'status_code' => $notification->status_code,
+            'status_message' => $notification->status_message,
+        ]
+    ]);
+
+    $pdfPath = "invoices/{$invoiceNumber}.pdf";
+    Storage::disk('public')->put($pdfPath, $pdf->output());
+
+    $order->update([
+        'invoice_number' => $invoiceNumber,
+        'invoice_path' => $pdfPath,
+    ]);
+}
+
+    return response('OK', 200);
+}
+
+public function showInvoice(Order $order)
+{
+    // Cek hak akses
+    if ($order->user_id !== auth()->id()) {
+        abort(403, 'Unauthorized access to this invoice.');
     }
+
+    // Pastikan invoice sudah ada
+    if (!$order->invoice_path || !Storage::disk('public')->exists($order->invoice_path)) {
+        return redirect()->back()->with('error', 'Invoice belum tersedia.');
+    }
+
+    // Tampilkan inline PDF
+    return response()->file(storage_path('app/public/' . $order->invoice_path), [
+        'Content-Type' => 'application/pdf',
+    ]);
+}
+
 }
