@@ -202,7 +202,7 @@
   data-secondary-color="#f9e5c9"
   data-button-background-color="#8b6f4d"
   data-starting-message="Jangan spam ges, tokennya mahal"
-  data-logo="https://falih.me/images/logo-background.png">
+  data-logo="https://mylodies.xyz/images/logo-background.png">
 </script>
 
 
