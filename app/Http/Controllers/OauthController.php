@@ -12,9 +12,11 @@ use Illuminate\Support\Facades\Hash;
 class OauthController extends Controller
 {
     public function redirectToProvider()
-    {
-        return Socialite::driver('google')->redirect();
-    }
+{
+    session(['remember' => request()->boolean('remember')]);
+    return Socialite::driver('google')->redirect();
+}
+
 
     public function handleProviderCallback()
 {
@@ -29,7 +31,7 @@ class OauthController extends Controller
                 $finduser->update(['profile_picture' => $user->avatar]);
             }
 
-            Auth::login($finduser);
+            Auth::login($finduser, session('remember', false));
 
             // 🔁 Cek jika perlu ganti password
             if (session('force_change_password')) {
@@ -47,11 +49,12 @@ class OauthController extends Controller
                 'gauth_type' => 'google',
                 'password' => Hash::make('user@123'),
                 'profile_picture' => $user->avatar,
+                'email_verified_at' => now(),
             ]);
 
             $newUser->assignRole('user');
 
-            Auth::login($newUser);
+            Auth::login($newUser, session('remember', false));
 
             // Set flag wajib ganti password
             session(['force_change_password' => true]);

@@ -10,7 +10,19 @@
         @endforeach
 
         <x-button :text="$submitText" />
+
         <x-login-google-button :text="$googleText" />
+
+        
+        @if (request()->routeIs('login'))
+        <div class="flex items-center">
+    <input id="remember" type="checkbox" name="remember"
+        class="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded">
+    <label for="remember" class="ml-2 block text-sm text-gray-700">
+        Remember me
+    </label>
+</div>
+@endif
 
         <p class="text-center text-sm mt-4">
             {{ $slot }}
@@ -18,3 +30,13 @@
         </p>
     </form>
 </div>
+
+@once
+    <script>
+        function handleGoogleLogin() {
+            const rememberChecked = document.getElementById('remember')?.checked;
+            const rememberParam = rememberChecked ? '?remember=1' : '';
+            window.location.href = "{{ route('oauth.google') }}" + rememberParam;
+        }
+    </script>
+@endonce

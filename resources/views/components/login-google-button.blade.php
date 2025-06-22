@@ -1,14 +1,9 @@
-@props([
-    'text' => 'Submit',
-])
-
 <div class="relative inline-flex items-center justify-center group w-full">
     <div
         class="absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400 blur-lg opacity-60 group-hover:opacity-100 transition-all duration-500">
     </div>
 
-    <!-- Ubah dari <button> ke <a> -->
-    <a href="{{ route('oauth.google') }}"
+    <button type="button" onclick="handleGoogleLogin()"
         class="relative inline-flex items-center justify-center gap-2 bg-neutral-700 hover:bg-neutral-800 text-white font-bold py-3 px-8 rounded-full transition-all duration-500 ease-in-out border-2 border-black w-full">
 
         <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google"
@@ -21,5 +16,5 @@
             <path d="M0 5h7" class="transition-all opacity-0 group-hover:opacity-100"></path>
             <path d="M1 1l4 4-4 4" class="transition-all transform group-hover:translate-x-[3px]"></path>
         </svg>
-    </a>
+    </button>
 </div>

@@ -27,7 +27,11 @@ Route::get('/q', function () {
 //});
 
 
-
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
 
 Route::get('/', [ProductController::class, 'index'])->name('landing');
 Route::match(['get', 'post'], '/payment/process/{order}', [PaymentController::class, 'process'])->name('payment.process');

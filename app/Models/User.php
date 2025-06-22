@@ -8,8 +8,9 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
     use HasFactory, Notifiable, HasRoles;
 
@@ -25,6 +26,7 @@ class User extends Authenticatable implements FilamentUser
         'city', // tambahkan ini
         'postal_code', // tambahkan ini
         'profile_picture',
+        'email_verified_at',
     ];
 
     protected $hidden = [
