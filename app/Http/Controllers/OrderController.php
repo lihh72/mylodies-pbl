@@ -75,6 +75,7 @@ class OrderController extends Controller
 
         $order = Order::create([
             'user_id' => $user->id,
+            'name' => Auth::user()->name, // ✅
             'start_date' => $startDate,
             'end_date' => $endDate,
             'total_price' => $totalPrice,
