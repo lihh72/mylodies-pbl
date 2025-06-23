@@ -45,10 +45,18 @@
     <!-- Hero Content -->
     <div class="relative z-10 px-6 max-w-4xl motion-safe:animate-fade-in-up">
         <h1
-            class="text-4xl sm:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ffdfbf] via-[#d2ab7c] to-[#b49875] animate-text-gradient drop-shadow-lg min-h-[5rem] sm:min-h-[6.5rem] lg:min-h-[8rem] flex items-center justify-center">
-            <span>Your</span>
-            <span id="typewriter" class="inline-block whitespace-nowrap transition-all duration-300"></span>
-        </h1>
+  class="text-4xl sm:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ffdfbf] via-[#d2ab7c] to-[#b49875] animate-text-gradient drop-shadow-lg min-h-[5rem] sm:min-h-[6.5rem] lg:min-h-[8rem] flex items-center justify-center text-center"
+>
+  <!-- Mobile: hanya "Mylodies" -->
+  <span class="sm:hidden">&nbsp;Mylodies</span>
+
+  <!-- Desktop: "Your <typewriter>" -->
+  <span class="hidden sm:inline-flex items-center">
+    Your&nbsp;
+    <span id="typewriter" class="inline-block whitespace-nowrap transition-all duration-300"></span>
+  </span>
+</h1>
+
         <h2 class="mt-4 text-lg sm:text-2xl text-[#f5e4cf] tracking-wide motion-safe:animate-slide-in-fade">
             Instruments that Perform. Experiences that Resonate.
         </h2>
@@ -57,13 +65,6 @@
             class="inline-flex mt-10 px-8 py-3 bg-[#b49875] text-white text-lg font-semibold rounded-full shadow-xl hover:bg-[#9a7b56] transition duration-300 ease-in-out hover:scale-110 motion-safe:animate-pulse-glow">
             Explore Rentals →
         </a>
-    </div>
-
-    <!-- Equalizer Bars -->
-    <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex gap-1 z-10">
-        @for ($i = 0; $i < 5; $i++)
-            <div class="w-1 h-4 bg-[#b49875] animate-eq delay-eq-{{ $i }}"></div>
-        @endfor
     </div>
 </section>
 

@@ -58,56 +58,6 @@
     animation: pulse-glow 2.5s infinite ease-in-out;
   }
 
-
-  /* --------------------------------------
-     Equalizer Animation
-  -------------------------------------- */
-  @keyframes eq {
-    0%, 100% { transform: scaleY(1); }
-    50% { transform: scaleY(2.5); }
-  }
-
-  .animate-eq {
-    animation: eq 1.5s ease-in-out infinite;
-    transform-origin: bottom;
-  }
-
-  .delay-eq-0 { animation-delay: 0ms; }
-  .delay-eq-1 { animation-delay: 150ms; }
-  .delay-eq-2 { animation-delay: 300ms; }
-  .delay-eq-3 { animation-delay: 450ms; }
-  .delay-eq-4 { animation-delay: 600ms; }
-
-
-  /* --------------------------------------
-     Float Animations
-  -------------------------------------- */
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-  @keyframes float-slow {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
-  }
-  @keyframes float-fast {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-  }
-  @keyframes float-delay {
-    0% { transform: translateY(0); }
-    25% { transform: translateY(-6px); }
-    50% { transform: translateY(0); }
-    75% { transform: translateY(6px); }
-    100% { transform: translateY(0); }
-  }
-
-  .animate-float        { animation: float 4s ease-in-out infinite; }
-  .animate-float-slow   { animation: float-slow 6s ease-in-out infinite; }
-  .animate-float-fast   { animation: float-fast 3s ease-in-out infinite; }
-  .animate-float-delay  { animation: float-delay 5s ease-in-out infinite; }
-
-
   /* --------------------------------------
      Orb Animation
   -------------------------------------- */
