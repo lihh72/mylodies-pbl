@@ -9,208 +9,163 @@
 
 <section id="home"
     class="relative h-screen bg-cover bg-center flex items-center justify-center text-center overflow-hidden">
-    <!-- Animated Gradient & Glow Background -->
+
+    <!-- Gradient & Glow Background -->
     <div class="absolute inset-0 z-0 pointer-events-none">
         <div class="absolute inset-0 bg-gradient-to-br from-[#f9e5c9]/80 via-[#b49875]/10 to-[#fdfaf5]"></div>
-        <div class="absolute left-1/2 top-0 -translate-x-1/2 w-[120vw] h-[120vw] bg-[#b49875]/10 rounded-full blur-3xl"></div>
-        <div class="absolute right-0 top-1/4 w-80 h-80 bg-[#d2bfa4]/40 rounded-full blur-2xl"></div>
-        <div class="absolute left-0 bottom-0 w-72 h-72 bg-[#f9e5c9]/40 rounded-full blur-2xl"></div>
-        <div class="absolute inset-0 opacity-10 pointer-events-none bg-repeat bg-cover"
-            style="background-image: url('{{ asset('images/texture-noise.png') }}')"></div>
+
+        <!-- Hanya tampil di desktop -->
+        <div class="hidden sm:block absolute left-1/2 top-0 -translate-x-1/2 w-[120vw] h-[120vw] bg-[#b49875]/10 rounded-full blur-3xl"></div>
+        <div class="hidden sm:block absolute right-0 top-1/4 w-80 h-80 bg-[#d2bfa4]/40 rounded-full blur-2xl"></div>
+        <div class="hidden sm:block absolute left-0 bottom-0 w-72 h-72 bg-[#f9e5c9]/40 rounded-full blur-2xl"></div>
+
+        <!-- Texture -->
+        <div class="absolute inset-0 opacity-10 pointer-events-none bg-[url('{{ asset('images/texture-noise.png') }}')] bg-repeat bg-cover"></div>
     </div>
-    <!-- Background Video -->
-    <video autoplay muted loop playsinline
-        class="absolute inset-0 w-full h-full object-cover z-[-1]">
+
+    <!-- Video Desktop / Gambar Mobile -->
+    <picture>
+        <source srcset="{{ asset('videos/Video_Musik_Siap_Ini_Tautan.mp4') }}" type="video/mp4" media="(min-width: 640px)">
+        <img src="{{ asset('images/bg1.jpg') }}" alt="Mylodies Background" class="sm:hidden absolute inset-0 w-full h-full object-cover z-[-1]" loading="lazy">
+    </picture>
+
+    <video autoplay muted loop playsinline class="hidden sm:block absolute inset-0 w-full h-full object-cover z-[-1]" poster="{{ asset('images/bg1.jpg') }}">
         <source src="{{ asset('videos/Video_Musik_Siap_Ini_Tautan.mp4') }}" type="video/mp4">
-        Your browser does not support the video tag.
     </video>
+
     <!-- Overlay -->
     <div class="absolute inset-0 bg-black/60 backdrop-blur-sm z-0"></div>
-    <!-- Particles -->
-    <div id="particles-js" class="absolute inset-0 z-0 pointer-events-none"></div>
-    <!-- Light Glow -->
-    <div
-        class="absolute w-[120vw] h-[120vw] bg-[#b49875]/20 rounded-full blur-3xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0">
-    </div>
+
+    <!-- Particles (desktop only) -->
+    <div id="particles-js" class="hidden sm:block absolute inset-0 z-0 pointer-events-none"></div>
+
+    <!-- Light Glow Center -->
+    <div class="hidden sm:block absolute w-[120vw] h-[120vw] bg-[#b49875]/20 rounded-full blur-3xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0"></div>
+
     <!-- Hero Content -->
-    <div class="relative z-10 px-6 max-w-4xl animate-fade-in-up">
+    <div class="relative z-10 px-6 max-w-4xl motion-safe:animate-fade-in-up">
         <h1
-            class="text-5xl sm:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ffdfbf] via-[#d2ab7c] to-[#b49875] animate-text-gradient drop-shadow-lg min-h-[5.5rem] sm:min-h-[6.5rem] lg:min-h-[8rem] flex items-center justify-center">
+            class="text-4xl sm:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ffdfbf] via-[#d2ab7c] to-[#b49875] animate-text-gradient drop-shadow-lg min-h-[5rem] sm:min-h-[6.5rem] lg:min-h-[8rem] flex items-center justify-center">
             <span>Your</span>
             <span id="typewriter" class="inline-block whitespace-nowrap transition-all duration-300"></span>
         </h1>
-        <h2 class="mt-4 text-xl sm:text-2xl text-[#f5e4cf] tracking-wide animate-slide-in-fade">
+        <h2 class="mt-4 text-lg sm:text-2xl text-[#f5e4cf] tracking-wide motion-safe:animate-slide-in-fade">
             Instruments that Perform. Experiences that Resonate.
         </h2>
 
         <a href="#rentals"
-            class="inline-flex mt-10 px-8 py-3 bg-[#b49875] text-white text-lg font-semibold rounded-full shadow-xl hover:bg-[#9a7b56] transition duration-300 ease-in-out hover:scale-110 animate-pulse-glow">
+            class="inline-flex mt-10 px-8 py-3 bg-[#b49875] text-white text-lg font-semibold rounded-full shadow-xl hover:bg-[#9a7b56] transition duration-300 ease-in-out hover:scale-110 motion-safe:animate-pulse-glow">
             Explore Rentals →
         </a>
     </div>
+
     <!-- Equalizer Bars -->
     <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex gap-1 z-10">
-        <div class="w-1 h-4 bg-[#b49875] animate-eq delay-eq-0"></div>
-        <div class="w-1 h-4 bg-[#b49875] animate-eq delay-eq-1"></div>
-        <div class="w-1 h-4 bg-[#b49875] animate-eq delay-eq-2"></div>
-        <div class="w-1 h-4 bg-[#b49875] animate-eq delay-eq-3"></div>
-        <div class="w-1 h-4 bg-[#b49875] animate-eq delay-eq-4"></div>
+        @for ($i = 0; $i < 5; $i++)
+            <div class="w-1 h-4 bg-[#b49875] animate-eq delay-eq-{{ $i }}"></div>
+        @endfor
     </div>
 </section>
+
 
 <!-- Scripts and Styles -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script>
-    // ParticlesJS background
-    particlesJS("particles-js", {
-        particles: {
-            number: { value: 60 },
-            color: { value: "#ffffff" },
-            shape: { type: "circle" },
-            opacity: { value: 0.15 },
-            size: { value: 3 },
-            move: { enable: true, speed: 0.6 }
-        },
-        interactivity: { events: { onhover: { enable: false } } },
-        retina_detect: true
-    });
-
-    // Typewriter effect
-    const text = ["Stage,", "Sound.", "Moment."];
-    let i = 0, j = 0, current = "", isDeleting = false;
-    const speed = 100;
-    function type() {
-        current = text[i];
-        let display = isDeleting ? current.substring(0, j--) : current.substring(0, j++);
-        document.getElementById("typewriter").innerHTML = "&nbsp;" + display;
-        if (!isDeleting && j === current.length + 1) {
-            isDeleting = true;
-            setTimeout(type, 1000);
-        } else if (isDeleting && j === 0) {
-            isDeleting = false;
-            i = (i + 1) % text.length;
-            setTimeout(type, 400);
-        } else {
-            setTimeout(type, speed);
-        }
+    // Aktifkan hanya jika > 640px
+    if (window.innerWidth > 640) {
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 60 },
+                color: { value: "#ffffff" },
+                shape: { type: "circle" },
+                opacity: { value: 0.15 },
+                size: { value: 3 },
+                move: { enable: true, speed: 0.6 }
+            },
+            interactivity: { events: { onhover: { enable: false } } },
+            retina_detect: true
+        });
     }
-    window.addEventListener("load", type);
+
+    // Typewriter effect (tetap ringan, tapi bisa dimatikan untuk mobile ekstrem)
+    if (window.innerWidth > 480) {
+        const text = ["Stage,", "Sound.", "Moment."];
+        let i = 0, j = 0, current = "", isDeleting = false;
+        const speed = 100;
+        function type() {
+            current = text[i];
+            let display = isDeleting ? current.substring(0, j--) : current.substring(0, j++);
+            document.getElementById("typewriter").innerHTML = "&nbsp;" + display;
+            if (!isDeleting && j === current.length + 1) {
+                isDeleting = true;
+                setTimeout(type, 1000);
+            } else if (isDeleting && j === 0) {
+                isDeleting = false;
+                i = (i + 1) % text.length;
+                setTimeout(type, 400);
+            } else {
+                setTimeout(type, speed);
+            }
+        }
+        window.addEventListener("load", type);
+    }
 </script>
 <style>
-    @keyframes text-gradient {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-    }
-    .animate-text-gradient {
-        background-size: 200% 200%;
-        animation: text-gradient 5s ease-in-out infinite;
-    }
-    @keyframes fade-in-up {
-        from { transform: translateY(30px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-    }
-    .animate-fade-in-up { animation: fade-in-up 1.2s ease-out forwards; }
-    @keyframes slide-in-fade {
-        from { transform: translateY(20px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-    }
-    .animate-slide-in-fade { animation: slide-in-fade 1.5s ease-out forwards; }
-    .animate-pulse-glow { animation: pulse-glow 2.5s infinite ease-in-out; }
-    @keyframes pulse-glow {
-        0%, 100% { box-shadow: 0 0 0px #b49875; }
-        50% { box-shadow: 0 0 20px #b49875aa; }
-    }
-    @keyframes eq {
-        0%, 100% { transform: scaleY(1); }
-        50% { transform: scaleY(2.5); }
-    }
-    .animate-eq { animation: eq 1.5s ease-in-out infinite; transform-origin: bottom; }
-    .delay-eq-0 { animation-delay: 0ms; }
-    .delay-eq-1 { animation-delay: 150ms; }
-    .delay-eq-2 { animation-delay: 300ms; }
-    .delay-eq-3 { animation-delay: 450ms; }
-    .delay-eq-4 { animation-delay: 600ms; }
+
 </style>
 </section>
 
-<!-- About Section - Bright Brand Story -->
-<section id="about" class="relative py-40 bg-[#1e1b16] text-white overflow-hidden">
+<section id="about" class="relative py-24 sm:py-40 bg-[#1e1b16] text-white overflow-hidden">
     <!-- Spotlight Background -->
     <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-[#1e1b16]/80 to-transparent z-0"></div>
 
     <!-- Particle Layer -->
     <div class="absolute inset-0 z-10 pointer-events-none">
         <canvas id="particles-bg" class="w-full h-full opacity-10"></canvas>
-        <!-- (diisi dengan JS particles.js misalnya) -->
     </div>
 
-    <!-- Main Content -->
-    <div class="relative z-20 max-w-7xl mx-auto px-6 grid md:grid-cols-12 items-center gap-12">
+    <!-- Main Grid Layout -->
+    <div class="relative z-20 max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-12 items-center gap-12">
 
-        <!-- Left Column: Visual Grid -->
-        <div class="intersect-once intersect:motion-preset-slide-right motion-blur-in-md col-span-6 grid grid-cols-2 grid-rows-2 gap-4 relative motion-delay-300">
+        <!-- Left Column: Image Grid (6 cols on desktop) -->
+        <div class="intersect-once intersect:motion-preset-slide-right motion-blur-in-md sm:col-span-6 grid grid-cols-2 grid-rows-2 gap-4 motion-delay-300">
 
             <!-- Gambar 1 -->
-            <div
-                class=" row-span-2 group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition duration-700">
-                <img src="{{ asset('images/instrument1.jpg') }}" alt="Instrument"
-                    class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-out" />
-                <div
-                    class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 backdrop-blur-sm transition duration-700">
-                </div>
-                <div
-                    class="absolute bottom-4 left-4 text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition duration-700">
-                    
-                </div>
+            <div class="row-span-2 group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition duration-700">
+                <img src="{{ asset('images/instrument1.jpg') }}" alt="Instrument" loading="lazy"
+                    class="w-full h-full object-cover transform sm:group-hover:scale-110 transition duration-700 ease-out" />
+                <div class="absolute inset-0 bg-black/30 opacity-0 sm:group-hover:opacity-100 backdrop-blur-sm transition duration-700"></div>
             </div>
 
             <!-- Gambar 2 -->
-            <div
-                class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition duration-700">
-                <img src="{{ asset('images/studio.jpg') }}" alt="Studio"
-                    class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-out" />
-                <div
-                    class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 backdrop-blur-sm transition duration-700">
-                </div>
-                <div
-                    class="absolute bottom-4 left-4 text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition duration-700">
-                    
-                </div>
+            <div class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition duration-700">
+                <img src="{{ asset('images/studio.jpg') }}" alt="Studio" loading="lazy"
+                    class="w-full h-full object-cover transform sm:group-hover:scale-110 transition duration-700 ease-out" />
+                <div class="absolute inset-0 bg-black/30 opacity-0 sm:group-hover:opacity-100 backdrop-blur-sm transition duration-700"></div>
             </div>
 
             <!-- Gambar 3 -->
-            <div
-                class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition duration-700">
-                <img src="{{ asset('images/piano2.jpg') }}" alt="Piano"
-                    class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-out" />
-                <div
-                    class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 backdrop-blur-sm transition duration-700">
-                </div>
-                <div
-                    class="absolute bottom-4 left-4 text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition duration-700">
-                    
-                </div>
+            <div class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition duration-700">
+                <img src="{{ asset('images/piano2.jpg') }}" alt="Piano" loading="lazy"
+                    class="w-full h-full object-cover transform sm:group-hover:scale-110 transition duration-700 ease-out" />
+                <div class="absolute inset-0 bg-black/30 opacity-0 sm:group-hover:opacity-100 backdrop-blur-sm transition duration-700"></div>
             </div>
-
         </div>
 
-
-        <!-- Right: Message & Floating Elements -->
-        <div class="col-span-6 space-y-10">
-            <h2
-                class="text-5xl font-extrabold leading-tight text-[#f9e5c9] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]  intersect-once intersect:motion-preset-slide-left motion-blur-in-md motion-delay-100">
-                This is <span class="text-[#b49875]">More Than Rental</span> —<br>It’s A Production.
+        <!-- Right Column: Text & Features (6 cols on desktop) -->
+        <div class="sm:col-span-6 space-y-10">
+            <h2 class="text-3xl sm:text-5xl font-extrabold leading-tight text-[#f9e5c9] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] intersect-once intersect:motion-preset-slide-left motion-blur-in-md motion-delay-100">
+                This is <span class="text-[#b49875]">More Than Rental</span> —<br class="hidden sm:block">It’s A Production.
             </h2>
 
-            <p class="text-lg leading-relaxed text-[#ddd] max-w-xl intersect-once intersect:motion-preset-slide-left motion-blur-in-md motion-delay-300">
+            <p class="text-base sm:text-lg leading-relaxed text-[#ddd] max-w-xl intersect-once intersect:motion-preset-slide-left motion-blur-in-md motion-delay-300">
                 Our stage-ready equipment powers indie acts, global festivals, and experimental studios. Whether
                 you're setting up a basement jam or a festival stage — we are your unseen crew.
             </p>
 
-            <!-- Feature Pods Cluster with SVG Icons -->
+            <!-- Features Grid -->
             <div class="relative grid grid-cols-2 gap-4 max-w-md">
-                <div class=" intersect-once intersect:motion-preset-fade motion-blur-in-md feature-pod animate-in motion-delay-500">
-                    <!-- Delivery Icon -->
+                <div class="intersect-once intersect:motion-preset-fade motion-blur-in-md feature-pod animate-in motion-delay-500">
                     <svg class="w-5 h-5 text-[#f9e5c9]" fill="none" stroke="currentColor" stroke-width="1.8"
                         viewBox="0 0 24 24">
                         <path d="M3 16V6a1 1 0 011-1h11v11H4a1 1 0 01-1-1z" />
@@ -246,23 +201,20 @@
                     <p>24/7 tech support</p>
                 </div>
             </div>
-
-
-
         </div>
     </div>
 
-    <!-- Artistic Wave Transition to Rentals Section -->
+    <!-- Wave Transition -->
     <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-0">
         <svg class="relative block w-full h-[80px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"
             preserveAspectRatio="none">
             <path fill="#fef8f2" fill-opacity="1"
-                d="M0,64L40,96C80,128,160,192,240,208C320,224,400,192,480,192C560,192,640,224,720,229.3C800,235,880,213,960,213.3C1040,213,1120,235,1200,224C1280,213,1360,171,1400,149.3L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z">
+                d="M0,64L40,96C80,128,160,192,240,208C320,224,400,192,480,192C560,192,640,224,720,229.3C800,235,880,213,960,213.3C1040,213,1120,235,1200,224C1280,213,1360,171,1400,149.3L1440,128L1440,320L0,320Z">
             </path>
         </svg>
     </div>
-
 </section>
+
 
 <!-- Featured Rentals Section - With Hover Descriptions -->
 <section id="rentals" class="bg-gradient-to-b from-[#fef8f2] to-[#f9f3ea] py-24 relative overflow-hidden">

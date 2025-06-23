@@ -4,88 +4,84 @@
 @plugin "daisyui";
 
 @layer utilities {
+
+  /* --------------------------------------
+     Fade & Slide Animations
+  -------------------------------------- */
   @keyframes fade-in-up {
-    0% {
-      opacity: 0;
-      transform: translateY(20px) scale(0.98);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
 
   .animate-fade-in-up {
-    animation: fade-in-up 0.6s ease-out both;
-  }
+    animation: fade-in-up 1.2s ease-out forwards;
   }
 
-  .aurora-glow {
-    position: fixed; /* Memastikan aurora-glow tetap di layar */
-    top: 0;
-    left: 0;
-    right: 0; /* Pastikan aurora-glow mengisi seluruh lebar layar */
-    bottom: 0; /* Pastikan aurora-glow mengisi seluruh tinggi layar */
-    z-index: 0; /* Tempatkan aurora-glow di belakang elemen lainnya */
-    pointer-events: none; /* Pastikan efek aurora tidak menghalangi interaksi dengan elemen lain */
-  }
-  
-  .aurora-glow::before,
-  .aurora-glow::after {
-    content: "";
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    border-radius: 9999px;
-    opacity: 0.3;
-  }
-  
-  .aurora-glow::before {
-    box-shadow: 0 0 35vmax 35vmax #facc89; /* pastel peach */
-    animation: hue 6s linear infinite, move1 12s linear infinite;
-  }
-  
-  .aurora-glow::after {
-    box-shadow: 0 0 35vmax 35vmax #eec373; /* soft gold */
-    animation: hue 10s linear infinite, move2 20s linear infinite;
-  }
-  
-  
-  @keyframes hue {
-    0%   { filter: hue-rotate(0deg); }
-    100% { filter: hue-rotate(360deg); }
-  }
-  
-  @keyframes move1 {
-    0%   { top: 0vh;   left: 50vw; }
-    25%  { left: 0vw; }
-    50%  { top: 100vh; }
-    75%  { left: 100vw; }
-    100% { top: 0vh;   left: 50vw; }
-  }
-  
-  @keyframes move2 {
-    0%   { top: 50vh;  left: 100vw; }
-    25%  { top: 100vh; }
-    50%  { left: 0vw; }
-    75%  { top: 0vh; }
-    100% { top: 50vh;  left: 100vw; }
-  }
-  
   @keyframes fade-in-down {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .animate-fade-in-down {
-    animation: fade-in-down 0.6s ease-out;
+    animation: fade-in-down 0.6s ease-out both;
   }
+
+  @keyframes slide-in-fade {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .animate-slide-in-fade {
+    animation: slide-in-fade 1.5s ease-out forwards;
+  }
+
+
+  /* --------------------------------------
+     Text Gradient / Glow / Pulse
+  -------------------------------------- */
+  @keyframes text-gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .animate-text-gradient {
+    background-size: 200% 200%;
+    animation: text-gradient 5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0px #b49875; }
+    50% { box-shadow: 0 0 20px #b49875aa; }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2.5s infinite ease-in-out;
+  }
+
+
+  /* --------------------------------------
+     Equalizer Animation
+  -------------------------------------- */
+  @keyframes eq {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(2.5); }
+  }
+
+  .animate-eq {
+    animation: eq 1.5s ease-in-out infinite;
+    transform-origin: bottom;
+  }
+
+  .delay-eq-0 { animation-delay: 0ms; }
+  .delay-eq-1 { animation-delay: 150ms; }
+  .delay-eq-2 { animation-delay: 300ms; }
+  .delay-eq-3 { animation-delay: 450ms; }
+  .delay-eq-4 { animation-delay: 600ms; }
+
+
+  /* --------------------------------------
+     Float Animations
+  -------------------------------------- */
   @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-8px); }
@@ -105,34 +101,103 @@
     75% { transform: translateY(6px); }
     100% { transform: translateY(0); }
   }
-  .animate-float      { animation: float 4s ease-in-out infinite; }
-  .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
-  .animate-float-fast { animation: float-fast 3s ease-in-out infinite; }
-  .animate-float-delay{ animation: float-delay 5s ease-in-out infinite; }
-  
+
+  .animate-float        { animation: float 4s ease-in-out infinite; }
+  .animate-float-slow   { animation: float-slow 6s ease-in-out infinite; }
+  .animate-float-fast   { animation: float-fast 3s ease-in-out infinite; }
+  .animate-float-delay  { animation: float-delay 5s ease-in-out infinite; }
+
+
+  /* --------------------------------------
+     Orb Animation
+  -------------------------------------- */
   @keyframes orb-a {
     0%, 100% { transform: translateY(0px) rotate(0deg); }
     50% { transform: translateY(-10px) rotate(1deg); }
   }
+
   @keyframes orb-b {
     0%, 100% { transform: translateY(0px) rotate(0deg); }
     50% { transform: translateY(-14px) rotate(-1.5deg); }
   }
+
   @keyframes orb-c {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(8px); }
   }
+
   @keyframes orb-d {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-6px); }
   }
-  
+
   .animate-orb-a { animation: orb-a 6s ease-in-out infinite; }
   .animate-orb-b { animation: orb-b 5s ease-in-out infinite; }
   .animate-orb-c { animation: orb-c 7s ease-in-out infinite; }
   .animate-orb-d { animation: orb-d 6.5s ease-in-out infinite; }
-  
+
+
+  /* --------------------------------------
+     Orb Feature Style
+  -------------------------------------- */
   .orb-feature {
     @apply px-4 py-2 text-sm text-white bg-[#ffffff15] backdrop-blur-md border border-white/10 rounded-full shadow-md transition-transform hover:scale-105 hover:bg-[#b49875]/30 cursor-default;
     white-space: nowrap;
   }
+
+}
+
+
+/* --------------------------------------
+   Global Aurora Glow (Not Utility Layer)
+-------------------------------------- */
+.aurora-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.aurora-glow::before,
+.aurora-glow::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  border-radius: 9999px;
+  opacity: 0.3;
+}
+
+.aurora-glow::before {
+  box-shadow: 0 0 35vmax 35vmax #facc89;
+  animation: hue 6s linear infinite, move1 12s linear infinite;
+}
+
+.aurora-glow::after {
+  box-shadow: 0 0 35vmax 35vmax #eec373;
+  animation: hue 10s linear infinite, move2 20s linear infinite;
+}
+
+@keyframes hue {
+  0%   { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes move1 {
+  0%   { top: 0vh;   left: 50vw; }
+  25%  { left: 0vw; }
+  50%  { top: 100vh; }
+  75%  { left: 100vw; }
+  100% { top: 0vh;   left: 50vw; }
+}
+
+@keyframes move2 {
+  0%   { top: 50vh;  left: 100vw; }
+  25%  { top: 100vh; }
+  50%  { left: 0vw; }
+  75%  { top: 0vh; }
+  100% { top: 50vh;  left: 100vw; }
+}
