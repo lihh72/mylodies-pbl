@@ -148,11 +148,11 @@
     <div class="relative z-20 max-w-7xl mx-auto px-6 grid md:grid-cols-12 items-center gap-12">
 
         <!-- Left Column: Visual Grid -->
-        <div class="col-span-6 grid grid-cols-2 grid-rows-2 gap-4 relative">
+        <div class="intersect-once intersect:motion-preset-slide-right motion-blur-in-md col-span-6 grid grid-cols-2 grid-rows-2 gap-4 relative motion-delay-300">
 
             <!-- Gambar 1 -->
             <div
-                class="row-span-2 group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition duration-700">
+                class=" row-span-2 group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition duration-700">
                 <img src="{{ asset('images/instrument1.jpg') }}" alt="Instrument"
                     class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-out" />
                 <div
@@ -198,18 +198,18 @@
         <!-- Right: Message & Floating Elements -->
         <div class="col-span-6 space-y-10">
             <h2
-                class="text-5xl font-extrabold leading-tight text-[#f9e5c9] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+                class="text-5xl font-extrabold leading-tight text-[#f9e5c9] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]  intersect-once intersect:motion-preset-slide-left motion-blur-in-md motion-delay-100">
                 This is <span class="text-[#b49875]">More Than Rental</span> —<br>It’s A Production.
             </h2>
 
-            <p class="text-lg leading-relaxed text-[#ddd] max-w-xl">
+            <p class="text-lg leading-relaxed text-[#ddd] max-w-xl intersect-once intersect:motion-preset-slide-left motion-blur-in-md motion-delay-300">
                 Our stage-ready equipment powers indie acts, global festivals, and experimental studios. Whether
                 you're setting up a basement jam or a festival stage — we are your unseen crew.
             </p>
 
             <!-- Feature Pods Cluster with SVG Icons -->
             <div class="relative grid grid-cols-2 gap-4 max-w-md">
-                <div class="feature-pod animate-in delay-[100ms]">
+                <div class=" intersect-once intersect:motion-preset-fade motion-blur-in-md feature-pod animate-in motion-delay-500">
                     <!-- Delivery Icon -->
                     <svg class="w-5 h-5 text-[#f9e5c9]" fill="none" stroke="currentColor" stroke-width="1.8"
                         viewBox="0 0 24 24">
@@ -221,7 +221,7 @@
                     <p>Next-day delivery</p>
                 </div>
 
-                <div class="feature-pod animate-in delay-[200ms]">
+                <div class="intersect-once intersect:motion-preset-fade motion-blur-in-md feature-pod animate-in motion-delay-500">
                     <svg class="w-5 h-5 text-[#f9e5c9]" fill="none" stroke="currentColor" stroke-width="1.8"
                         viewBox="0 0 24 24">
                         <path d="M4 21v-4m0-4v-4m0-4V3m8 18v-6m0-4V3m8 18v-10m0-4V3" />
@@ -229,7 +229,7 @@
                     <p>Studio-tested quality</p>
                 </div>
 
-                <div class="feature-pod animate-in delay-[300ms]">
+                <div class="intersect-once intersect:motion-preset-fade motion-blur-in-md feature-pod animate-in motion-delay-700">
                     <svg class="w-5 h-5 text-[#f9e5c9]" fill="none" stroke="currentColor" stroke-width="1.8"
                         viewBox="0 0 24 24">
                         <path d="M3 12h15a3 3 0 013 3v0a3 3 0 01-3 3h-4" />
@@ -238,7 +238,7 @@
                     <p>Flexible return</p>
                 </div>
 
-                <div class="feature-pod animate-in delay-[400ms]">
+                <div class="intersect-once intersect:motion-preset-fade motion-blur-in-md feature-pod animate-in motion-delay-700">
                     <svg class="w-5 h-5 text-[#f9e5c9]" fill="none" stroke="currentColor" stroke-width="1.8"
                         viewBox="0 0 24 24">
                         <path d="M14.7 6.3a4 4 0 01-5.4 5.4l-5.3 5.3a2 2 0 102.8 2.8l5.3-5.3a4 4 0 015.4-5.4z" />
@@ -248,11 +248,7 @@
             </div>
 
 
-            <!-- CTA -->
-            <a href="#rentals"
-                class="inline-block bg-[#b49875] text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-[#a58262] transition-all">
-                🚚 Explore Gear Lineup
-            </a>
+
         </div>
     </div>
 

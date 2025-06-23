@@ -26,6 +26,8 @@ export default {
 
     plugins: [
         forms,
-        flowbite, // ← tambahkan ini
+        flowbite,
+        require('tailwindcss-motion'),
+        require('tailwindcss-intersect')  // ← tambahkan ini
     ],
 };

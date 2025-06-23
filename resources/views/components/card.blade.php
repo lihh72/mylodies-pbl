@@ -24,7 +24,7 @@
 
 <div id="product-content" class="hidden">
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-4 gap-8">
-@foreach ($products as $product)
+@foreach ($products as $index => $product)
     @php
         $img1 = $product->images[0] ?? 'default.jpg';
         $img2 = $product->images[1] ?? null;
@@ -33,7 +33,10 @@
         $img2_url = $img2 ? (is_url($img2) ? $img2 : asset('storage/' . $img2)) : null;
     @endphp
 
-    <div class="relative bg-white rounded-3xl overflow-hidden shadow-lg transform group hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+    <div class="relative bg-white rounded-3xl overflow-hidden shadow-lg transform group hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]
+    opacity-0 translate-y-10 motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out
+intersect-once intersect:opacity-100 intersect:translate-y-0 motion-delay-{{ $index * 150 }}"
+>
         <div class="relative">
             <!-- Gambar default -->
             <img src="{{ $img1_url }}"
