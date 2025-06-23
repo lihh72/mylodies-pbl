@@ -10,28 +10,33 @@
 <section id="home"
     class="relative h-screen bg-cover bg-center flex items-center justify-center text-center overflow-hidden">
 
-    <!-- Gradient & Glow Background -->
-    <div class="absolute inset-0 z-0 pointer-events-none">
-        <div class="absolute inset-0 bg-gradient-to-br from-[#f9e5c9]/80 via-[#b49875]/10 to-[#fdfaf5]"></div>
+    <div 
+    x-data="{ isDesktop: window.innerWidth >= 640 }" 
+    x-init="() => {
+        window.addEventListener('resize', () => isDesktop = window.innerWidth >= 640)
+    }"
+    class="absolute inset-0 w-full h-full z-[-1]"
+>
+    <!-- Untuk Desktop: Video -->
+    <template x-if="isDesktop">
+        <video 
+            autoplay muted loop playsinline 
+            class="w-full h-full object-cover" 
+            poster="{{ asset('images/bg1.jpg') }}">
+            <source src="{{ asset('videos/Video_Musik_Siap_Ini_Tautan.mp4') }}" type="video/mp4">
+        </video>
+    </template>
 
-        <!-- Hanya tampil di desktop -->
-        <div class="hidden sm:block absolute left-1/2 top-0 -translate-x-1/2 w-[120vw] h-[120vw] bg-[#b49875]/10 rounded-full blur-3xl"></div>
-        <div class="hidden sm:block absolute right-0 top-1/4 w-80 h-80 bg-[#d2bfa4]/40 rounded-full blur-2xl"></div>
-        <div class="hidden sm:block absolute left-0 bottom-0 w-72 h-72 bg-[#f9e5c9]/40 rounded-full blur-2xl"></div>
+    <!-- Untuk Mobile: Gambar -->
+    <template x-if="!isDesktop">
+        <img 
+            src="{{ asset('images/bg1.jpg') }}" 
+            alt="Mylodies Background" 
+            class="w-full h-full object-cover" 
+            loading="lazy">
+    </template>
+</div>
 
-        <!-- Texture -->
-        <div class="absolute inset-0 opacity-10 pointer-events-none bg-[url('{{ asset('images/texture-noise.png') }}')] bg-repeat bg-cover"></div>
-    </div>
-
-    <!-- Video Desktop / Gambar Mobile -->
-    <picture>
-        <source srcset="{{ asset('videos/Video_Musik_Siap_Ini_Tautan.mp4') }}" type="video/mp4" media="(min-width: 640px)">
-        <img src="{{ asset('images/bg1.jpg') }}" alt="Mylodies Background" class="sm:hidden absolute inset-0 w-full h-full object-cover z-[-1]" loading="lazy">
-    </picture>
-
-    <video autoplay muted loop playsinline class="hidden sm:block absolute inset-0 w-full h-full object-cover z-[-1]" poster="{{ asset('images/bg1.jpg') }}">
-        <source src="{{ asset('videos/Video_Musik_Siap_Ini_Tautan.mp4') }}" type="video/mp4">
-    </video>
 
     <!-- Overlay -->
     <div class="absolute inset-0 bg-black/60 backdrop-blur-sm z-0"></div>
@@ -52,7 +57,7 @@
 
   <!-- Desktop: "Your <typewriter>" -->
   <span class="hidden sm:inline-flex items-center">
-    Your&nbsp;
+    Your
     <span id="typewriter" class="inline-block whitespace-nowrap transition-all duration-300"></span>
   </span>
 </h1>
