@@ -22,7 +22,7 @@
         <video 
             autoplay muted loop playsinline 
             class="w-full h-full object-cover" 
-            poster="{{ asset('images/bg1.jpg') }}">
+            poster="{{ asset('images/aezgif-frame-001.jpg') }}">
             <source src="{{ asset('videos/Video_Musik_Siap_Ini_Tautan.mp4') }}" type="video/mp4">
         </video>
     </template>
@@ -30,7 +30,7 @@
     <!-- Untuk Mobile: Gambar -->
     <template x-if="!isDesktop">
         <img 
-            src="{{ asset('images/bg1.jpg') }}" 
+            src="{{ asset('images/aezgif-frame-001.jpg') }}" 
             alt="Mylodies Background" 
             class="w-full h-full object-cover" 
             loading="lazy">
@@ -39,7 +39,8 @@
 
 
     <!-- Overlay -->
-    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm z-0"></div>
+<div class="absolute inset-0 bg-black/60 backdrop-blur-0 sm:backdrop-blur-sm z-0"></div>
+
 
     <!-- Particles (desktop only) -->
     <div id="particles-js" class="hidden sm:block absolute inset-0 z-0 pointer-events-none"></div>
