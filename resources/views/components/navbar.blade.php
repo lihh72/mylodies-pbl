@@ -9,22 +9,28 @@ x-cloak
     }"
 x-init="
     lastY = window.scrollY;
-    scrolled = window.scrollY > 50;
+    const threshold = 600;
+    scrolled = window.scrollY > threshold;
     hidden = false;
     window.addEventListener('scroll', () => {
         let currentY = window.scrollY;
-        scrolled = currentY > 50;
-        hidden = currentY > lastY && currentY > 100;
+        scrolled = currentY > threshold;
+        hidden = currentY > lastY && currentY > threshold;
         lastY = currentY;
     });
-    "
+"
+
+
+
+    
     x-bind:class="{
         'bg-[#b49875]/90 backdrop-blur-md shadow-lg': scrolled,
         'bg-transparent backdrop-blur-0': !scrolled,
         'translate-y-0 opacity-100': !hidden,
         '-translate-y-full opacity-0': hidden
     }"
-    class="fixed top-0 w-full z-50 transition-all duration-500 ease-in-out transform translate-y-0 opacity-0">
+    class="fixed top-0 w-full z-50 transition-all duration-500 ease-in-out transform translate-y-0 opacity-100"
+>
 
 @else
 <header 
