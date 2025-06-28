@@ -32,12 +32,26 @@ class OauthController extends Controller
             }
 
             Auth::login($finduser, session('remember', false));
-
-
-            // ✅ Redirect ke halaman intended
             return redirect()->intended(route('landing'));
 
         } else {
+            // Cek apakah sudah ada user dengan email sama (register manual)
+            $existingUser = User::where('email', $user->email)->first();
+
+            if ($existingUser) {
+                // Hubungkan akun Google ke akun manual tersebut
+                $existingUser->update([
+                    'gauth_id' => $user->id,
+                    'gauth_type' => 'google',
+                    'profile_picture' => $existingUser->profile_picture ?: $user->avatar,
+                    'email_verified_at' => now(),
+                ]);
+
+                Auth::login($existingUser, session('remember', false));
+                return redirect()->intended(route('landing'));
+            }
+
+            // Buat akun baru jika email belum ada sama sekali
             $newUser = User::create([
                 'name' => $user->name,
                 'email' => $user->email,
@@ -49,9 +63,7 @@ class OauthController extends Controller
             ]);
 
             $newUser->assignRole('user');
-
             Auth::login($newUser, session('remember', false));
-
 
             return redirect(route('landing'))->with('success', 'Successfully logged in with your Google account!');
         }
@@ -60,6 +72,7 @@ class OauthController extends Controller
         dd($e->getMessage());
     }
 }
+
 
 
 }

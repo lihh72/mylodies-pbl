@@ -23,6 +23,78 @@
 
             <div class="p-8 space-y-10">
 
+@php
+    $statusSteps = [
+        'pending' => ['label' => 'Pesanan Dibuat', 'icon' => 'document'],
+        'processing' => ['label' => 'Pembayaran Dikonfirmasi', 'icon' => 'credit-card'],
+        'shipped' => ['label' => 'Pesanan Dikirim', 'icon' => 'truck'],
+        'arrive' => ['label' => 'Pesanan Sampai', 'icon' => 'box'],
+    ];
+
+    $statusOrder = $order->status;
+    $statusSequence = array_keys($statusSteps);
+    $currentStepIndex = array_search($statusOrder, $statusSequence);
+@endphp
+
+<div class="flex items-center justify-between overflow-x-auto px-2 py-6 gap-3">
+    @foreach($statusSequence as $index => $status)
+        @php
+            $step = $statusSteps[$status];
+            $isActive = $index <= $currentStepIndex;
+            $isLast = $index === count($statusSequence) - 1;
+        @endphp
+
+        <div class="relative flex items-center gap-2 {{ !$isLast ? 'flex-1' : '' }}">
+            <!-- Icon Circle -->
+            <div class="flex flex-col items-center text-center w-24 min-w-[72px]">
+                <div class="w-10 h-10 rounded-full border-2 flex items-center justify-center 
+                    {{ $isActive ? 'border-[#22c55e] bg-[#f0fdf4]' : 'border-gray-300 bg-white' }}">
+                    @switch($step['icon'])
+                        @case('document')
+                            <svg class="w-5 h-5 {{ $isActive ? 'text-[#22c55e]' : 'text-gray-400' }}" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+  <path d="M8 16h8M8 12h8M8 8h4m6-2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4z" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+                            @break
+                        @case('credit-card')
+                            <svg class="w-5 h-5 {{ $isActive ? 'text-[#22c55e]' : 'text-gray-400' }}" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+  <rect x="2" y="5" width="20" height="14" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2 10h20M6 15h2m2 0h6" stroke-linecap="round"/>
+</svg>
+
+                            @break
+                        @case('truck')
+                            <svg class="w-5 h-5 {{ $isActive ? 'text-[#22c55e]' : 'text-gray-400' }}" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+  <path d="M3 13V6a1 1 0 011-1h11v8h5.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V19a1 1 0 01-1 1H19" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="7.5" cy="19.5" r="1.5"/>
+  <circle cx="17.5" cy="19.5" r="1.5"/>
+</svg>
+
+                            @break
+                        @case('box')
+                            <svg class="w-5 h-5 {{ $isActive ? 'text-[#22c55e]' : 'text-gray-400' }}" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+  <path d="M21 16V8l-9-4-9 4v8l9 4 9-4z" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M3.3 7.8L12 12.5l8.7-4.7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+                            @break
+                    @endswitch
+                </div>
+
+                <div class="mt-1 text-xs md:text-sm font-medium {{ $isActive ? 'text-green-600' : 'text-gray-400' }}">
+                    {{ $step['label'] }}
+                </div>
+            </div>
+
+            <!-- Connector Line -->
+            @if(!$isLast)
+                <div class="flex-1 h-1 {{ $index < $currentStepIndex ? 'bg-green-500' : 'bg-gray-300' }}"></div>
+            @endif
+        </div>
+    @endforeach
+</div>
+
+
                 <!-- INFORMASI ORDER -->
                 <div class="grid md:grid-cols-2 gap-8 text-sm text-[#3e2d1f] font-medium leading-snug">
                     <!-- Kolom Kiri -->
@@ -37,10 +109,6 @@
                             <p class="text-base">{{ $order->phone_number }}</p>
                         </div>
 
-                        <div>
-                            <p class="text-sm text-[#7d6750] font-semibold uppercase mb-1">Status Pembayaran</p>
-                            <p class="text-base">{{ ucfirst($order->payment->payment_status ?? 'Belum Diproses') }}</p>
-                        </div>
 
                         @if($order->payment && $order->payment->midtrans_order_id)
                         <div>
@@ -54,12 +122,7 @@
 
                     <!-- Kolom Kanan -->
                     <div class="flex flex-col justify-between gap-5">
-                        <div>
-                            <p class="text-sm text-[#7d6750] font-semibold uppercase mb-1">Status Order</p>
-                            <span class="inline-block px-4 py-1 text-sm font-semibold rounded-full bg-gradient-to-r from-[#a38f7a] to-[#816c59] text-white shadow-md">
-                                {{ ucfirst($order->status) }}
-                            </span>
-                        </div>
+
 
                         <div>
                             <p class="text-sm text-[#7d6750] font-semibold uppercase mb-1">Alamat Pengiriman</p>
@@ -68,12 +131,7 @@
                             </p>
                         </div>
 
-                        <div>
-                            <p class="text-sm text-[#7d6750] font-semibold uppercase mb-1">Total Pembayaran</p>
-                            <p class="text-xl font-extrabold text-[#2c1c10] tracking-wide">
-                                IDR {{ number_format($order->total_price, 0, ',', '.') }}
-                            </p>
-                        </div>
+                       
                     </div>
                 </div>
 
@@ -116,6 +174,50 @@
                     </div>
                     @endforeach
                 </div>
+
+                <!-- RINGKASAN PEMBAYARAN -->
+<div class="space-y-3 border-t pt-6 border-[#e2d4c2]">
+    <h2 class="text-lg font-bold text-[#3e2d1f]">Ringkasan Pembayaran</h2>
+
+    @php
+        $subtotal = 0;
+        foreach ($order->orderItems as $item) {
+            $days = \Carbon\Carbon::parse($item->start_date)->diffInDays(\Carbon\Carbon::parse($item->end_date)) + 1;
+            $subtotal += $item->price * $item->quantity * $days;
+        }
+
+        $total = $order->payment->gross_amount ?? $order->total_price;
+        $diskon = $subtotal - $total;
+    @endphp
+
+    <div class="space-y-2 text-sm text-[#3e2d1f]">
+        <div class="flex justify-between">
+            <span>Subtotal Produk</span>
+            <span>IDR {{ number_format($subtotal, 0, ',', '.') }}</span>
+        </div>
+
+        @if($diskon > 0)
+        <div class="flex justify-between">
+            <span class="text-[#816c59]">Diskon</span>
+            <span class="text-[#a94442]">- IDR {{ number_format($diskon, 0, ',', '.') }}</span>
+        </div>
+        @endif
+
+        {{-- Tambahkan biaya tambahan lain jika ada --}}
+        {{-- Contoh biaya layanan tetap Rp0 --}}
+        <div class="flex justify-between">
+            <span class="text-[#816c59]">Biaya Layanan</span>
+            <span>IDR 0</span>
+        </div>
+
+        <hr class="my-2 border-[#dbc8b2]">
+
+        <div class="flex justify-between font-bold text-lg text-[#2c1c10]">
+            <span>Total Pembayaran</span>
+            <span>IDR {{ number_format($total, 0, ',', '.') }}</span>
+        </div>
+    </div>
+</div>
 
 
                 <!-- Tombol Aksi -->

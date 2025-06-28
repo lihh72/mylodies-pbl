@@ -153,40 +153,75 @@
                 <p><strong>Bank:</strong> {{ strtoupper($midtrans['bank']) }}</p>
                 <p><strong>VA Number:</strong> {{ $midtrans['va_number'] }}</p>
             @endif
-            <p><strong>Jumlah Dibayar:</strong> Rp {{ number_format($midtrans['gross_amount']) }} {{ $midtrans['currency'] }}</p>
+           
         </div>
 
         <!-- Tabel Produk -->
-        <table>
-            <thead>
-                <tr>
-                    <th>Produk</th>
-                    <th>Qty</th>
-                    <th>Harga / Hari</th>
-                    <th>Lama Sewa</th>
-                    <th>Subtotal</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($order->orderItems as $item)
-                    @php
-                        $days = \Carbon\Carbon::parse($item->start_date)->diffInDays(\Carbon\Carbon::parse($item->end_date)) + 1;
-                        $price = $item->price * $days;
-                    @endphp
-                    <tr>
-                        <td>{{ $item->product->name }}</td>
-                        <td>{{ $item->quantity }}</td>
-                        <td>Rp {{ number_format($item->price) }}</td>
-                        <td>{{ $days }} hari</td>
-                        <td>Rp {{ number_format($item->quantity * $price) }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+@php
+    $subtotal = 0;
+@endphp
 
-        <div class="total">
-            Total Dibayar: Rp {{ number_format($order->total_price) }}
-        </div>
+<table>
+    <thead>
+        <tr>
+            <th>Produk</th>
+            <th>Qty</th>
+            <th>Harga / Hari</th>
+            <th>Lama Sewa</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($order->orderItems as $item)
+            @php
+                $days = \Carbon\Carbon::parse($item->start_date)->diffInDays(\Carbon\Carbon::parse($item->end_date)) + 1;
+                $price = $item->price * $days;
+                $rowSubtotal = $item->quantity * $price;
+                $subtotal += $rowSubtotal;
+            @endphp
+            <tr>
+                <td>{{ $item->product->name }}</td>
+                <td>{{ $item->quantity }}</td>
+                <td>Rp {{ number_format($item->price) }}</td>
+                <td>{{ $days }} hari</td>
+                <td>Rp {{ number_format($rowSubtotal) }}</td>
+            </tr>
+        @endforeach
+
+        <!-- Ringkasan setelah produk -->
+        <tr>
+            <td colspan="4" style="text-align: right;"><strong>Subtotal Produk</strong></td>
+            <td><strong>Rp {{ number_format($subtotal) }}</strong></td>
+        </tr>
+
+        <!-- Biaya layanan jika ada (bisa disesuaikan) -->
+        <tr>
+            <td colspan="4" style="text-align: right;">Biaya Layanan</td>
+            <td>Rp 0</td>
+        </tr>
+
+        <!-- Diskon -->
+        @php
+            $gross = $midtrans['gross_amount'];
+            $diskon = $subtotal - $gross;
+        @endphp
+
+        @if($diskon > 0)
+        <tr>
+            <td colspan="4" style="text-align: right;">Diskon</td>
+            <td style="color: #a94442;">- Rp {{ number_format($diskon) }}</td>
+        </tr>
+        @endif
+
+        <!-- Total akhir -->
+        <tr>
+            <td colspan="4" style="text-align: right;"><strong>Total Dibayar</strong></td>
+            <td><strong>Rp {{ number_format($gross) }}</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+
 
         <div class="footer">
             &copy; {{ date('Y') }} Mylodies. Invoice ini dihasilkan secara otomatis oleh sistem.

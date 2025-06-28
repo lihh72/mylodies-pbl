@@ -1,5 +1,35 @@
-<header x-data="{ open: false }"
-    class="fixed top-0 w-full z-50 bg-gradient-to-r from-[#b49875]/90 to-[#9c7b59]/90 shadow-lg backdrop-blur-md transition-transform duration-700 ease-in-out animate-fade-in-down">
+@if (Route::is('landing'))
+<header 
+    x-data="{
+        open: false,
+        scrolled: false,
+        hidden: false,
+        lastY: 0
+    }"
+    x-init="
+        lastY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            let currentY = window.scrollY;
+            scrolled = currentY > 50;
+            hidden = currentY > lastY && currentY > 100;
+            lastY = currentY;
+        });
+    "
+    x-bind:class="{
+        'bg-[#b49875]/90 backdrop-blur-md shadow-lg': scrolled,
+        'bg-transparent backdrop-blur-0': !scrolled,
+        'translate-y-0 opacity-100': !hidden,
+        '-translate-y-full opacity-0': hidden
+    }"
+    class="fixed top-0 w-full z-50 transition-all duration-500 ease-in-out transform">
+@else
+<header 
+    x-data="{ open: false, scrolled: true }"
+    class="fixed top-0 w-full z-50 bg-[#b49875]/90 shadow-lg backdrop-blur-md transition-all duration-500 ease-in-out animate-fade-in-down">
+@endif
+
+
+
     <style>
         [x-cloak] {
             display: none !important;
@@ -13,10 +43,18 @@
 
             <!-- Logo -->
             <a href="{{ route('landing') }}" class="flex items-center space-x-3 shrink-0">
-                <img src="{{ asset('images/logo-background.png') }}" alt="MyLodies Logo"
-                    class="h-9 drop-shadow-lg hover:scale-110 transition duration-300">
+                <img 
+    :src="scrolled 
+        ? '{{ asset('images/logo.png') }}' 
+        : '{{ asset('images/logo-background.png') }}'" 
+    alt="MyLodies Logo"
+    class="h-9 drop-shadow-lg hover:scale-110 transition duration-300"
+/>
+
                 <span
-                    class="hidden lg:flex text-xl font-bold text-white tracking-wide hover:text-[#f9e5c9] transition">MyLodies</span>
+                   :class="scrolled ? 'text-white hover:text-[#f9e5c9]' : 'text-[#d6b08a] hover:text-white'"
+class="hidden lg:flex text-xl font-bold tracking-wide transition"
+>MyLodies</span>
             </a>
 
             <!-- Desktop Nav -->
@@ -26,7 +64,9 @@
                         $url = strtolower($menu) === 'home' ? '/' : '/' . strtolower($menu);
                     @endphp
                     <a href="{{ $url }}"
-                        class="group relative inline-flex items-center gap-1 text-white font-medium transition-all duration-300 ease-in-out hover:text-black">
+                        :class="scrolled ? 'text-white hover:text-black' : 'text-[#d6b08a] hover:text-[#f9e5c9]'"
+class="group relative inline-flex items-center gap-1 font-medium transition-all duration-300">
+
                         <svg class="w-4 h-4 text-white group-hover:text-[#f9e5c9] transition-transform group-hover:rotate-12 duration-300"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -45,46 +85,64 @@
         <div class="flex items-center gap-4">
 
             <!-- Search Bar (Visible on all screen sizes) -->
-            <div x-data="{ focus: {{ request('q') ? 'true' : 'false' }}, query: @js(request('q')) }" class="relative text-white">
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    x-model="query"
-                    @focus="focus = true"
-                    @blur="focus = false"
-                    @keydown.enter="if (query) { window.location.href = '/search?q=' + encodeURIComponent(query) }"
-                    class="bg-white/20 backdrop-blur-sm text-white placeholder-white/70 rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#f9e5c9] focus:bg-white/30 transition-all duration-300"
-                    :class="focus ? 'w-60' : 'w-40 hover:w-60'"
-                >
-                <svg
-                    class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-white/80"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M21 21l-4.35-4.35M16.65 16.65A7.5 7.5 0 1116.65 2.5a7.5 7.5 0 010 14.15z"
-                    />
-                </svg>
-            </div>
+<div 
+    x-data="{ focus: {{ request('q') ? 'true' : 'false' }}, query: @js(request('q')) }" 
+    class="relative"
+>
+    <input
+        type="text"
+        placeholder="Search..."
+        x-model="query"
+        @focus="focus = true"
+        @blur="focus = false"
+        @keydown.enter="if (query) { window.location.href = '/search?q=' + encodeURIComponent(query) }"
+        :class="[
+            focus ? 'w-60' : 'w-40 hover:w-60',
+            scrolled 
+                ? 'bg-white/20 backdrop-blur-sm text-white placeholder-white/70 focus:ring-[#f9e5c9]' 
+                : 'bg-white/10 backdrop-blur-0 text-[#d6b08a] placeholder-[#d8bfa1] focus:ring-[#d6b08a]'
+        ]"
+        class="rounded-full pl-10 pr-4 py-2 focus:outline-none focus:bg-white/30 transition-all duration-300"
+    >
+
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        :class="scrolled ? 'text-white/80' : 'text-[#d6b08a]'"
+        class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 transition duration-300"
+    >
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M21 21l-4.35-4.35M16.65 16.65A7.5 7.5 0 1116.65 2.5a7.5 7.5 0 010 14.15z"
+        />
+    </svg>
+</div>
+
 
             <!-- Cart (hidden on mobile, shown on lg) -->
 <a href="/cart" class="hidden lg:inline-block relative group">
-    <svg xmlns="http://www.w3.org/2000/svg"
-        class="w-6 h-6 text-white group-hover:text-[#f9e5c9] transition duration-300 drop-shadow-sm"
-        fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+    <svg 
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"
+        :class="scrolled 
+            ? 'text-white group-hover:text-[#f9e5c9]' 
+            : 'text-[#d6b08a] group-hover:text-[#f9e5c9]'"
+        class="w-6 h-6 transition duration-300 drop-shadow-sm"
+    >
         <path stroke-linecap="round" stroke-linejoin="round"
             d="M3 3h2l.4 2M7 13h10l4-8H6.4M7 13L5.4 5M7 13l-2 9m14-9l2 9m-6-4a1 1 0 11-2 0 1 1 0 012 0zm-6 0a1 1 0 11-2 0 1 1 0 012 0z" />
     </svg>
+
     <span
         class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-semibold rounded-full px-1.5 py-0.5 shadow-md">
         {{ $cartCount }}
     </span>
 </a>
+
 
 
             <!-- Profile/Login -->
@@ -211,4 +269,4 @@
 </div>
 
 
-</header>
+</header> 
