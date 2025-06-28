@@ -34,10 +34,18 @@ x-init="
 
 @else
 <header 
-x-cloak
-    x-data="{ open: false, scrolled: true }"
-    class="fixed top-0 w-full z-50 bg-[#b49875]/90 shadow-lg backdrop-blur-md transition-all duration-500 ease-in-out animate-fade-in-down">
+    x-cloak
+    x-data="{ open: false, scrolled: true, hidden: false }"
+    x-bind:class="{
+        'bg-[#b49875]/90 backdrop-blur-md shadow-lg': scrolled,
+        'bg-transparent backdrop-blur-0': !scrolled,
+        'translate-y-0 opacity-100': !hidden,
+        '-translate-y-full opacity-0': hidden
+    }"
+    class="fixed top-0 w-full z-50 transition-all duration-500 ease-in-out transform translate-y-0 opacity-100"
+>
 @endif
+
 
 
 
