@@ -34,6 +34,7 @@ x-init="
 
 @else
 <header 
+x-cloak
     x-data="{ open: false, scrolled: true }"
     class="fixed top-0 w-full z-50 bg-[#b49875]/90 shadow-lg backdrop-blur-md transition-all duration-500 ease-in-out animate-fade-in-down">
 @endif
