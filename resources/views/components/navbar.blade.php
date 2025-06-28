@@ -1,19 +1,22 @@
 @if (Route::is('landing'))
 <header 
+x-cloak
     x-data="{
         open: false,
         scrolled: false,
         hidden: false,
         lastY: 0
     }"
-    x-init="
-        lastY = window.scrollY;
-        window.addEventListener('scroll', () => {
-            let currentY = window.scrollY;
-            scrolled = currentY > 50;
-            hidden = currentY > lastY && currentY > 100;
-            lastY = currentY;
-        });
+x-init="
+    lastY = window.scrollY;
+    scrolled = window.scrollY > 50;
+    hidden = false;
+    window.addEventListener('scroll', () => {
+        let currentY = window.scrollY;
+        scrolled = currentY > 50;
+        hidden = currentY > lastY && currentY > 100;
+        lastY = currentY;
+    });
     "
     x-bind:class="{
         'bg-[#b49875]/90 backdrop-blur-md shadow-lg': scrolled,
@@ -21,7 +24,8 @@
         'translate-y-0 opacity-100': !hidden,
         '-translate-y-full opacity-0': hidden
     }"
-    class="fixed top-0 w-full z-50 transition-all duration-500 ease-in-out transform">
+    class="fixed top-0 w-full z-50 transition-all duration-500 ease-in-out transform translate-y-0 opacity-0">
+
 @else
 <header 
     x-data="{ open: false, scrolled: true }"
