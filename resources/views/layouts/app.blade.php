@@ -42,6 +42,7 @@
 
     {{-- Filament & Vite --}}
     @filamentStyles
+    @livewireStyles
     @vite(['resources/js/app.js', 'resources/css/app.css'])
 
     {{-- Custom Head Injections --}}
@@ -75,6 +76,7 @@
 
     {{-- Scripts --}}
     @filamentScripts
+    @livewireScripts
     @yield('scripts')
 
     {{-- Loading Transition --}}
