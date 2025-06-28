@@ -8,8 +8,9 @@
 <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#f5e5d0] blur-3xl opacity-30"></div>
 <div class="absolute top-0 right-0 w-80 h-80 rounded-bl-full bg-gradient-to-tr from-[#b49875]/30 to-transparent"></div>
 
+@section('content')
 <div class="min-h-screen flex flex-col">
-    <x-navbar />
+
 
     <!-- Main -->
        <main class="flex-1 flex items-center justify-center">
@@ -42,7 +43,7 @@
             </aside>
         </div>
     </main>
-    
+    @endsection
 
 
 </body>
