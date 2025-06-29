@@ -3,7 +3,7 @@
 @section('title', 'MyLodies - Payment')
 
 @section('content')
-<div class="min-h-screen flex flex-col pt-24">
+<div class="light-stage min-h-screen flex flex-col pt-24">
     <div class="flex-1 flex items-center justify-center">
         <form action="{{ route('payment.address.confirm', $payment->code) }}" method="POST" class="w-full">
             @csrf

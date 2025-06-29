@@ -4,7 +4,7 @@
 @section('bg-[#fef8f2] text-[#5a4a3b] font-sans')
 
 @section('content')
-    <section id="rentals" class="bg-gradient-to-b from-[#fff8f2] to-[#f9f3ea] py-28 relative overflow-hidden">
+    <section id="rentals" class="light-stage bg-gradient-to-b from-[#fff8f2] to-[#f9f3ea] py-28 relative overflow-hidden">
         <!-- Background noise and decorations -->
         <div class="absolute inset-0 pointer-events-none">
             <img src="{{ asset('images/texture-noise.png') }}" class="w-full h-full object-cover opacity-5" alt="Texture">

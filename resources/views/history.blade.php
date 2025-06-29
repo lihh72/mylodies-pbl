@@ -5,7 +5,7 @@
 @section('loading_screen', true)
 
 @section('content')
-<section x-data="{ status: 'All' }" class="min-h-screen pt-[80px] pb-20 px-6 md:px-12 bg-[#fdfaf5] relative overflow-hidden">
+<section x-data="{ status: 'All' }" class="light-stage min-h-screen pt-[80px] pb-20 px-6 md:px-12 bg-[#fdfaf5] relative overflow-hidden">
     <!-- Glow -->
     <div class="absolute -top-32 -left-24 w-80 h-80 bg-[#f9e5c9] rounded-full filter blur-3xl opacity-40 animate-pulse z-0"></div>
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-[#d2bfa4] rounded-full filter blur-3xl opacity-30 animate-pulse z-0"></div>

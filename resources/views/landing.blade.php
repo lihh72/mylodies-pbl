@@ -8,7 +8,7 @@
 @section('content')
 
 <section id="home"
-    class="relative h-screen bg-cover bg-center flex items-center justify-center text-center overflow-hidden">
+    class="dark-stage relative h-screen bg-cover bg-center flex items-center justify-center text-center overflow-hidden">
 
     <div 
     x-data="{ isDesktop: window.innerWidth >= 640 }" 
@@ -122,7 +122,7 @@
 </style>
 </section>
 
-<section id="about" class="relative py-24 sm:py-40 bg-[#1e1b16] text-white overflow-hidden">
+<section id="about" class="dark-stage relative py-24 sm:py-40 bg-[#1e1b16] text-white overflow-hidden">
     <!-- Spotlight Background -->
     <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-[#1e1b16]/80 to-transparent z-0"></div>
 
@@ -211,26 +211,18 @@
         </div>
     </div>
 
-    <!-- Wave Transition -->
-    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-0">
-        <svg class="relative block w-full h-[80px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"
-            preserveAspectRatio="none">
-            <path fill="#fef8f2" fill-opacity="1"
-                d="M0,64L40,96C80,128,160,192,240,208C320,224,400,192,480,192C560,192,640,224,720,229.3C800,235,880,213,960,213.3C1040,213,1120,235,1200,224C1280,213,1360,171,1400,149.3L1440,128L1440,320L0,320Z">
-            </path>
-        </svg>
-    </div>
 </section>
 
-
+<section class="light-stage"></section>
 <!-- Featured Rentals Section - With Hover Descriptions -->
-<section id="rentals" class="bg-gradient-to-b from-[#fef8f2] to-[#f9f3ea] py-24 relative overflow-hidden">
-    <div class="absolute inset-0 pointer-events-none">
+<section id="rentals" class="light-stage bg-gradient-to-b from-[#fef8f2] to-[#f9f3ea] py-24 relative overflow-hidden">
+    
+    <div class="light-stage absolute inset-0 pointer-events-none">
         <img src="{{ asset('images/texture-noise.png') }}" class="w-full h-full object-cover opacity-5"
             alt="Texture">
     </div>
 
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="light-stage max-w-7xl mx-auto px-6 relative z-10">
         <div class="text-center mb-16">
             <h2 class="text-4xl md:text-5xl font-extrabold text-[#5a4a3b]">Our Most Wanted Gears</h2>
             <p class="mt-4 text-lg text-[#7a6a59]">Crafted by legends. Tuned for your stage.</p>
@@ -246,7 +238,7 @@
     </div>
 </section>
 
-<section class="bg-[#f9f3ea] py-20 relative overflow-hidden">
+<section class="light-stage bg-[#f9f3ea] py-20 relative overflow-hidden">
     <div class="absolute top-0 left-0 w-full h-full opacity-5 bg-repeat pointer-events-none"
  style="background-image: url('{{ asset('images/pattern1.svg') }}')">
 </div>

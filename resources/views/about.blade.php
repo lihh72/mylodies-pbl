@@ -6,7 +6,7 @@
 
 @section('content')
   <!-- Hero Section: Cinematic & Creative -->
-  <section class="relative h-screen bg-[#1e1b16] text-white overflow-hidden flex items-center">
+  <section class="dark-stage relative h-screen bg-[#1e1b16] text-white overflow-hidden flex items-center">
     <!-- Background Video with Cinematic Mask -->
     <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-20"></video>
     <div class="absolute inset-0 bg-gradient-to-br from-[#1e1b16]/90 to-[#312820]/95 z-10"></div>
@@ -39,7 +39,7 @@
          style="background-image: url('/images/grain.png'); background-size: cover;"></div>
   </section>
 
-  <section class="relative bg-[#fff9f1] py-36 overflow-hidden">
+  <section class="light-stage relative bg-[#fff9f1] py-36 overflow-hidden">
     <div class="absolute top-0 left-0 w-[600px] h-[600px] bg-[#a87c5f] opacity-10 rounded-full blur-[150px] -z-10"></div>
     <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#f7efe1] opacity-20 rounded-full blur-[100px] -z-10"></div>
   
@@ -97,7 +97,7 @@
   
   
 
-  <section id="journey" class="relative bg-[#1e1b16] text-white py-36 overflow-hidden">
+  <section id="journey" class=" dark-stage relative bg-[#1e1b16] text-white py-36 overflow-hidden">
     <!-- Background Blobs -->
     <img src="/images/blob3.svg" class="absolute top-0 right-0 w-[600px] opacity-10 pointer-events-none animate-float" />
     <img src="/images/blob3.svg" class="absolute bottom-0 left-0 w-[400px] opacity-5 rotate-180 pointer-events-none animate-float-slow" />

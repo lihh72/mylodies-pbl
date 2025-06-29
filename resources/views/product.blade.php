@@ -5,7 +5,7 @@
 @section('loading_screen', true)
 
 @section('content')
-<div class="min-h-screen flex flex-col">
+<div class="light-stage min-h-screen flex flex-col">
     <!-- Breadcrumb Natural Tanpa Background/Border -->
 <div class="w-full pt-[6rem]">
   <nav class="flex items-center text-sm text-[#5e4b3b]" aria-label="Breadcrumb">

@@ -5,7 +5,7 @@
 @section('loading_screen', true)
 
 @section('content')
-<section class="min-h-screen pt-24 pb-20 px-6 md:px-12 bg-[#fdfaf5] relative overflow-hidden">
+<section class="light-stage min-h-screen pt-24 pb-20 px-6 md:px-12 bg-[#fdfaf5] relative overflow-hidden">
     <!-- Latar belakang glow -->
     <div class="absolute -top-40 -left-32 w-[400px] h-[400px] bg-[#fcecd6] rounded-full blur-3xl opacity-50 animate-pulse z-0"></div>
     <div class="absolute bottom-0 right-0 w-[420px] h-[420px] bg-[#dac4a9] rounded-full blur-3xl opacity-40 animate-pulse z-0"></div>

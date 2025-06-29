@@ -3,7 +3,7 @@
 @section('title', 'MyLodies - Konfirmasi Pembayaran')
 
 @section('content')
-<div class="min-h-screen flex flex-col">
+<div class="light-stage min-h-screen flex flex-col">
     {{-- Offset untuk navbar --}}
     <div class="pt-24 px-6">
         {{-- Stepper Breadcrumb --}}

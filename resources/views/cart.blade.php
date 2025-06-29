@@ -13,7 +13,7 @@
 
 
     <!-- Main -->
-       <main class="flex-1 flex items-center justify-center">
+       <main class="light-stage flex-1 flex items-center justify-center">
         <div class="max-w-7xl w-full mx-auto px-8 py-12 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 relative pt-32">
             <section class="space-y-14">
                 <div class="relative rounded-[2rem] border border-[#decdb5] bg-[#fcf8f4] p-10 shadow-2xl">

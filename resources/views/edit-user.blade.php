@@ -4,7 +4,7 @@
 @section('body_class', 'bg-[#fdfaf6] text-[#2c1a0f] font-sans pt-[60px] overflow-x-hidden')
 
 @section('content')
-<div class="relative z-10 w-full max-w-[1280px] mx-auto px-4 md:px-6 py-16">
+<div class="light-stage relative z-10 w-full max-w-[1280px] mx-auto px-4 md:px-6 py-16">
     <div class="flex flex-col lg:flex-row gap-8 items-start">
 
         <!-- Sidebar -->

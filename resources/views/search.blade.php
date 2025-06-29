@@ -5,7 +5,7 @@
 
 @section('content')
   <!-- Main Section -->
-  <main class="max-w-7xl mx-auto px-6 py-16 pt-24">
+  <main class="light-stage max-w-7xl mx-auto px-6 py-16 pt-24">
     
     <!-- Search Header -->
     <div class="text-center mb-12">

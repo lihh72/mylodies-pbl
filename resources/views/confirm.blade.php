@@ -3,7 +3,7 @@
 @section('title', 'Konfirmasi Pembayaran - MyLodies')
 
 @section('content')
-<div class="min-h-screen flex flex-col items-center justify-center py-20 px-4 bg-[#fdfaf5]">
+<div class="light-stage min-h-screen flex flex-col items-center justify-center py-20 px-4 bg-[#fdfaf5]">
     <div class="max-w-3xl w-full bg-white border border-[#e4d3c0] rounded-3xl shadow-2xl p-10 space-y-8">
 
         <h1 class="text-3xl font-extrabold text-[#3e2d1f] flex items-center gap-3">
