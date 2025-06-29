@@ -32,7 +32,7 @@
     <source src="https://mylodies.xyz/images/Squid.Game.S03E01.Keys.and.Knives.1080p.WEB-DL.x264.6CH-Pahe.in.mp4" type="video/mp4" />
     
     <track 
-      src="{{ asset('images/Squid.Game.S03E01.KOREAN.NF.WEB.h264-ETHEL.id.vtt') }}"
+      src="{{ asset('images/SG S3E01 IDCP.vtt') }}"
       kind="subtitles"
       srclang="id"
       label="Bahasa Indonesia"
