@@ -213,7 +213,6 @@
 
 </section>
 
-<section class="light-stage"></section>
 <!-- Featured Rentals Section - With Hover Descriptions -->
 <section id="rentals" class="light-stage bg-gradient-to-b from-[#fef8f2] to-[#f9f3ea] py-24 relative overflow-hidden">
     

@@ -3,7 +3,7 @@
         return preg_match('/^https?:\/\//', $str) === 1;
     }
 @endphp
-
+<div class="light-stage h-1 col-span-full"></div>
 <!-- Wrapper Alpine -->
 <div x-data="{ loaded: false }" x-init="setTimeout(() => loaded = true, 600)">
 

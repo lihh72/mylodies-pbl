@@ -168,5 +168,53 @@ class="fixed top-4 left-1/2 -translate-x-1/2 w-[95vw] max-w-screen-xl z-50
         </div>
     </div>
 </div>
+<!-- Mobile Navigation -->
+<div 
+    x-show="open" 
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0 -translate-y-2"
+    x-transition:enter-end="opacity-100 translate-y-0"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100 translate-y-0"
+    x-transition:leave-end="opacity-0 -translate-y-2"
+    class="lg:hidden px-6 pt-4 pb-6 space-y-3 border-t border-white/10"
+    :class="mode === 'light' ? 'bg-white/70 text-black' : 'bg-[#1f1f1f]/80 text-white'"
+>
+    @foreach (['Home', 'About', 'Catalog'] as $menu)
+        @php $url = strtolower($menu) === 'home' ? '/' : '/' . strtolower($menu); @endphp
+        <a href="{{ $url }}"
+           @click="open = false"
+           class="block text-base font-medium transition hover:underline"
+           :class="mode === 'light' 
+                ? 'hover:text-[#b49875]' 
+                : 'hover:text-[#f9e5c9]'"
+        >
+            {{ $menu }}
+        </a>
+    @endforeach
+
+    @auth
+        <div class="pt-4 border-t border-white/10">
+            <a href="/edit"
+               class="block text-base font-medium transition hover:underline"
+               :class="mode === 'light' ? 'hover:text-[#b49875]' : 'hover:text-[#f9e5c9]'">
+                Edit Profile
+            </a>
+            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+               class="block text-base font-medium transition hover:underline mt-1"
+               :class="mode === 'light' ? 'hover:text-red-600' : 'hover:text-red-400'">
+                Logout
+            </a>
+        </div>
+    @else
+        <div class="pt-4 border-t border-white/10">
+            <a href="{{ route('login') }}"
+               class="inline-block text-sm font-semibold border border-current rounded-full px-5 py-2 mt-2 hover:bg-current hover:text-white transition-all duration-300"
+               :class="mode === 'light' ? 'text-black border-black hover:bg-black' : 'text-white border-white hover:bg-white hover:text-[#1f1f1f]'">
+                Login →
+            </a>
+        </div>
+    @endauth
+</div>
 
 </header>
