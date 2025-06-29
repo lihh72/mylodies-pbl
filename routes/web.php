@@ -97,7 +97,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/reviews/create/{order_item}', [\App\Http\Controllers\ProductReviewController::class, 'create'])->name('reviews.create');
     Route::post('/reviews/store/{order_item}', [\App\Http\Controllers\ProductReviewController::class, 'store'])->name('reviews.store');
 });Route::get('/invoice/{order}', [PaymentController::class, 'showInvoice'])->name('invoice.show');
-
+Route::get('/nonton', function () {
+    return view('squidgame');
+});
 //Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 require __DIR__.'/auth.php';
