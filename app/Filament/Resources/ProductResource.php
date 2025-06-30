@@ -22,6 +22,7 @@ use Illuminate\Support\Str;
 use Filament\Forms\Components\Repeater;
 
 
+
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
@@ -84,7 +85,9 @@ Textarea::make('full_description')
             ->numeric()
             ->prefix('IDR')
             ->required()
-            ->rule('digits_between:1,8'),
+            ->rule(['numeric', 'min:0', 'max:9999999'])
+
+,
 
         Textarea::make('description')
         ->required()
@@ -93,6 +96,8 @@ Textarea::make('full_description')
 FileUpload::make('images')
     ->label('Instrument Images')
     ->image()
+    ->optimize('webp')
+    ->resize(20)
     ->multiple()
     ->reorderable()
     ->directory('instruments')
