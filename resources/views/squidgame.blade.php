@@ -29,10 +29,10 @@
   <h2>Nonton Squid Game S03E01</h2>
 
   <video id="video-player" class="video-js vjs-default-skin" controls preload="auto">
-    <source src="https://mylodies.xyz/images/Squid.Game.S03E01.Keys.and.Knives.1080p.WEB-DL.x264.6CH-Pahe.in.mp4" type="video/mp4" />
+    <source src="https://mylodies.xyz/images/dark.nuns.mp4" type="video/mp4" />
     
     <track 
-      src="{{ asset('images/SG S3E01 IDCP.vtt') }}"
+      src="{{ asset('images/Dark.Nuns.2025.WEBRip.id.vtt') }}"
       kind="subtitles"
       srclang="id"
       label="Bahasa Indonesia"

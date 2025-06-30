@@ -40,7 +40,7 @@
   </section>
 
   <section class="light-stage relative bg-[#fff9f1] py-36 overflow-hidden">
-    <div class="absolute top-0 left-0 w-[600px] h-[600px] bg-[#a87c5f] opacity-10 rounded-full blur-[150px] -z-10"></div>
+    <div class="light-stage absolute top-0 left-0 w-[600px] h-[600px] bg-[#a87c5f] opacity-10 rounded-full blur-[150px] -z-10"></div>
     <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#f7efe1] opacity-20 rounded-full blur-[100px] -z-10"></div>
   
     <div class="max-w-7xl mx-auto px-6">
@@ -53,7 +53,7 @@
   </div>
 
   <!-- Dynamic Layout -->
-  <div class="grid md:grid-cols-2 gap-16 relative z-10">
+  <div class="light-stage grid md:grid-cols-2 gap-16 relative z-10">
     @foreach ([
       ['+5K', 'Instrument Rentals', 'We have rented out thousands of musical instruments across Indonesia.', 'music-note'],
       ['98%', 'Positive Feedback', 'Customer satisfaction is our top priority.', 'thumbs-up'],
