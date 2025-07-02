@@ -50,43 +50,113 @@ class PaymentController extends Controller
 
 
     // Step 1b: Proses dan Simpan Alamat
-    public function confirmAddress(Request $request, $code)
-    {
-        $payment = Payment::where('code', $code)->firstOrFail();
-        $order = $payment->order;
+public function confirmAddress(Request $request, $code)
+{
+    $payment = Payment::where('code', $code)->firstOrFail();
+    $order = $payment->order;
 
-        if ($order->user_id !== auth()->id()) {
-            abort(403);
-        }
-
-        if ($request->input('address_option') === 'user') {
-            $shippingAddress = 
-                               auth()->user()->address . ', ' .
-                               auth()->user()->city . ', ' .
-                               auth()->user()->province . ' ' .
-                               auth()->user()->postal_code ;
-
-            $order->update([
-                'shipping_address' => $shippingAddress,
-                'name' => auth()->user()->name,
-                'phone_number' => auth()->user()->phone_number,
-            ]);
-        } else {
-            $shippingAddress = 
-                               $request->new_address . ', ' .
-                               $request->new_city . ', ' .
-                               $request->new_province . ' ' .
-                               $request->new_postal ;
-
-            $order->update([
-                'shipping_address' => $shippingAddress,
-                'name' => $request->new_name,
-                'phone_number' => $request->new_phone,
-            ]);
-        }
-
-        return redirect()->route('payment.confirm', $code);
+    // ✅ Pastikan user adalah pemilik order
+    if ($order->user_id !== auth()->id()) {
+        abort(403, 'Unauthorized');
     }
+
+    // ✅ Simpan alamat dari user atau input baru
+    if ($request->input('address_option') === 'user') {
+        $shippingAddress = auth()->user()->address . ', ' .
+                           auth()->user()->city . ', ' .
+                           auth()->user()->province . ' ' .
+                           auth()->user()->postal_code;
+
+        $order->update([
+            'shipping_address' => $shippingAddress,
+            'name' => auth()->user()->name,
+            'phone_number' => auth()->user()->phone_number,
+        ]);
+    } else {
+        $shippingAddress = $request->new_address . ', ' .
+                           $request->new_city . ', ' .
+                           $request->new_province . ' ' .
+                           $request->new_postal;
+
+        $order->update([
+            'shipping_address' => $shippingAddress,
+            'name' => $request->new_name,
+            'phone_number' => $request->new_phone,
+        ]);
+    }
+
+    // ✅ Muat semua item dan produk terkait
+    $order->load('orderItems.product');
+
+    $stokTerkoreksi = false;
+    $pesanPerubahan = [];
+
+    // ✅ Validasi dan koreksi stok
+    foreach ($order->orderItems as $item) {
+        $product = $item->product;
+
+        if (!$product || $product->stock <= 0) {
+            $item->delete();
+            $stokTerkoreksi = true;
+            $pesanPerubahan[] = "Produk '{$product->name}' dihapus karena stok habis.";
+            continue;
+        }
+
+        if ($item->quantity > $product->stock) {
+            $oldQty = $item->quantity;
+            $item->quantity = $product->stock;
+
+            $days = Carbon::parse($item->start_date)->diffInDays(Carbon::parse($item->end_date)) + 1;
+            $item->total_price = $product->rental_price_per_day * $days * $item->quantity;
+            $item->save();
+
+            $stokTerkoreksi = true;
+            $pesanPerubahan[] = "Qty untuk '{$product->name}' dikurangi dari {$oldQty} ke {$product->stock} karena stok terbatas.";
+        }
+    }
+
+    // ✅ Hapus order jika semua item dihapus
+    if ($order->orderItems()->count() === 0) {
+        $order->delete();
+        $payment->delete();
+        return redirect()->route('catalog')->with('error', 'Semua produk dalam pesanan sudah tidak tersedia.');
+    }
+
+    // ✅ Perhitungan ulang ongkir & total harga
+    $order->load('orderItems');
+    $baseShippingPricePerKg = 30000;
+
+    $shippingCost = $order->orderItems->sum(function ($item) use ($baseShippingPricePerKg) {
+        return ceil($item->weight * $item->quantity) * $baseShippingPricePerKg;
+    });
+
+    $basePrice = $order->orderItems->sum('total_price');
+    $totalPrice = $basePrice + $shippingCost;
+
+    $order->update([
+        'base_price' => $basePrice,
+        'shipping_cost' => $shippingCost,
+        'total_price' => $totalPrice,
+    ]);
+
+    // ✅ Kurangi stok produk
+    foreach ($order->orderItems as $item) {
+        $product = $item->product;
+        if ($product->stock >= $item->quantity) {
+            $product->decrement('stock', $item->quantity);
+        }
+    }
+
+    // ✅ Jika ada koreksi, beri notifikasi
+    if ($stokTerkoreksi) {
+        return redirect()->route('payment.show', $payment->code)
+                         ->with('warning', implode(' ', $pesanPerubahan));
+    }
+
+    // ✅ Lanjut ke halaman konfirmasi pembayaran
+    return redirect()->route('payment.confirm', $payment->code);
+}
+
 
     // Step 2: Halaman Konfirmasi + Snap Token Midtrans
     public function confirm($code)
@@ -140,6 +210,15 @@ class PaymentController extends Controller
                 'quantity' => $item->quantity,
                 'name' => ($item->product->name ?? 'Product') . " ({$days} hari)",
             ];
+        }
+
+        if ($order->shipping_cost > 0) {
+    $itemDetails[] = [
+        'id' => 'SHIPPING',
+        'price' => (int) $order->shipping_cost,
+        'quantity' => 1,
+        'name' => 'Ongkos Kirim',
+    ];
         }
 
         $params = [
@@ -220,6 +299,18 @@ class PaymentController extends Controller
         'payment_status' => $paymentStatus,
         'gross_amount' => $notification->gross_amount ?? $payment->gross_amount,
     ]);
+
+    // Jika transaksi gagal/dibatalkan/ditolak/expired, kembalikan stok
+if (in_array($paymentStatus, ['failed'])) {
+    foreach ($order->orderItems as $item) {
+        if ($item->product) {
+            $item->product->increment('stock', $item->quantity);
+        }
+    }
+
+    $order->update(['status' => 'cancelled']);
+}
+
 
     if ($paymentStatus === 'paid') {
         $order->update(['status' => 'processing']);

@@ -67,7 +67,7 @@
 
                         <div class="mt-6 border-t border-[#eadbc3] pt-4 text-right">
                             <p class="text-sm text-[#7e6a57]">Subtotal (before tax & fees)</p>
-                            <p id="total-price" class="text-2xl font-bold text-[#3c2f24]">IDR {{ number_format($order->total_price, 0, ',', '.') }}</p>
+                            <p id="total-price" class="text-2xl font-bold text-[#3c2f24]">IDR {{ number_format($order->base_price, 0, ',', '.') }}</p>
                         </div>
                     </div>
                 </section>
@@ -119,20 +119,24 @@
                     <div class="text-sm text-[#7a6f63] space-y-3">
                         <div class="flex justify-between">
                             <span>Total Harga</span>
-                            <span>Rp. {{ number_format($order->total_price, 0, ',', '.') }}</span>
+                            <span>Rp. {{ number_format($order->base_price, 0, ',', '.') }}</span>
                         </div>
                         <div class="flex justify-between">
                             <span>Ongkos Kirim</span>
-                            <span>Rp. 24.000</span>
+<span>Rp. {{ number_format($order->shipping_cost, 0, ',', '.') }}</span>
+
                         </div>
-                        <div class="flex justify-between">
-                            <span>Biaya Aplikasi</span>
-                            <span>Rp. 1.000</span>
-                        </div>
+
                         <hr>
                         <div class="flex justify-between font-semibold text-[#3b2f28] pt-2">
                             <span>Total Tagihan</span>
-                            <span id="total-bill">Rp. {{ number_format($order->total_price + 24000 + 1000, 0, ',', '.') }}</span>
+                           @php
+
+    $grandTotal = $order->total_price;
+@endphp
+<span id="total-bill">Rp. {{ number_format($grandTotal, 0, ',', '.') }}</span>
+
+
                         </div>
                     </div>
 
@@ -147,26 +151,7 @@
 @endsection
 
 @section('scripts')
-<script>
-    const shippingCost = 24000;
-    const appFee = 1000;
 
-    function formatIDR(amount) {
-        return 'Rp. ' + amount.toLocaleString('id-ID');
-    }
-
-    function updateTotals() {
-        let totalPrice = 0;
-        document.querySelectorAll('.item').forEach(item => {
-            const pricePerUnit = parseInt(item.getAttribute('data-price'));
-            totalPrice += pricePerUnit;
-        });
-        document.getElementById('total-price').textContent = formatIDR(totalPrice);
-        document.getElementById('total-bill').textContent = formatIDR(totalPrice + shippingCost + appFee);
-    }
-
-    window.addEventListener('DOMContentLoaded', updateTotals);
-</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {

@@ -15,23 +15,33 @@
         <div class="max-w-8xl mx-auto px-6 relative z-10">
             
             <!-- Filter Buttons -->
-            <div class="flex flex-wrap justify-center gap-4 mb-14">
-                @foreach([
-                    ['icon' => 'keyboard', 'label' => 'Keyboards'],
-                    ['icon' => 'guitar', 'label' => 'Guitars'],
-                    ['icon' => 'music', 'label' => 'Aerophones'],
-                    ['icon' => 'drum', 'label' => 'Traditional'],
-                    ['icon' => 'heart', 'label' => 'Favorites']
-                ] as $filter)
-                    <button @click="category = '{{ $filter['label'] }}'"
-                        class="flex items-center gap-3 px-5 py-3 rounded-full border border-[#d6b896] bg-gradient-to-r from-[#f6e8d6] to-[#d6b896] text-[#5a4a3b] text-sm font-medium transition-all transform hover:scale-105 shadow-lg hover:shadow-2xl focus:outline-none"
-                        :class="{ 'ring-2 ring-[#b49875]': category === '{{ $filter['label'] }}' }">
-                        <i class="fas fa-{{ $filter['icon'] }} text-[#b49875]"></i>
-                        <span>{{ $filter['label'] }}</span>
-                    </button>
-                @endforeach
-                <button @click="category = 'All'" class="px-5 py-3 rounded-full bg-white border border-[#d6b896] text-sm hover:bg-[#f6e8d6] transition">Show All</button>
-            </div>
+@php
+  $currentCategory = request('category');
+@endphp
+
+<div class="flex flex-wrap justify-center gap-4 mb-14">
+  @foreach([
+      ['icon' => 'keyboard', 'label' => 'Keyboard'],
+      ['icon' => 'guitar', 'label' => 'Guitar'],
+      ['icon' => 'music', 'label' => 'Bass'],
+      ['icon' => 'drum', 'label' => 'Drum'],
+      ['icon' => 'heart', 'label' => 'Other']
+  ] as $filter)
+    <a href="{{ route('catalog', ['category' => $filter['label']]) }}"
+       class="flex items-center gap-3 px-5 py-3 rounded-full border border-[#d6b896] bg-gradient-to-r from-[#f6e8d6] to-[#d6b896] text-[#5a4a3b] text-sm font-medium transition-all transform hover:scale-105 shadow-lg hover:shadow-2xl
+       {{ $currentCategory === $filter['label'] ? 'ring-2 ring-[#b49875]' : '' }}">
+      <i class="fas fa-{{ $filter['icon'] }} text-[#b49875]"></i>
+      <span>{{ $filter['label'] }}</span>
+    </a>
+  @endforeach
+
+  <a href="{{ route('catalog') }}"
+     class="px-5 py-3 rounded-full bg-white border border-[#d6b896] text-sm hover:bg-[#f6e8d6] transition
+     {{ is_null($currentCategory) ? 'ring-2 ring-[#b49875]' : '' }}">
+    Show All
+  </a>
+</div>
+
 
 <x-card :products="$products" />
 {{ $products->onEachSide(1)->links('components.pagination-custom') }}

@@ -35,7 +35,7 @@ public static function form(Form $form): Form
     return $form->schema([
         TextInput::make('name')
             ->label('Product Name')
-            ->maxLength(18)
+            ->maxLength(30)
             ->required()
             ->afterStateUpdated(function (\Filament\Forms\Set $set, ?string $state) {
                 // Generate a slug from the name
@@ -69,6 +69,7 @@ Textarea::make('full_description')
     ->columnSpan('full'),
 
 
+
         Select::make('category')
             ->label('Category')
             ->options([
@@ -88,6 +89,20 @@ Textarea::make('full_description')
             ->rule(['numeric', 'min:0', 'max:9999999'])
 
 ,
+
+TextInput::make('weight')
+    ->label('Weight (kilogram)')
+    ->numeric()
+    ->minValue(0)
+    ->suffix('kg')
+    ->required(),
+
+TextInput::make('stock')
+    ->label('Stock Quantity')
+    ->numeric()
+    ->minValue(0)
+    ->required(),
+
 
         Textarea::make('description')
         ->required()

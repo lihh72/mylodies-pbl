@@ -181,13 +181,15 @@
 
     @php
         $subtotal = 0;
+        $shippingCost = $order->shipping_cost ?? 0;
         foreach ($order->orderItems as $item) {
             $days = \Carbon\Carbon::parse($item->start_date)->diffInDays(\Carbon\Carbon::parse($item->end_date)) + 1;
             $subtotal += $item->price * $item->quantity * $days;
         }
 
         $total = $order->payment->gross_amount ?? $order->total_price;
-        $diskon = $subtotal - $total;
+        $diskon = ($subtotal + $shippingCost) - $total;
+
     @endphp
 
     <div class="space-y-2 text-sm text-[#3e2d1f]">
@@ -196,19 +198,17 @@
             <span>IDR {{ number_format($subtotal, 0, ',', '.') }}</span>
         </div>
 
+        <div class="flex justify-between">
+    <span>Ongkos Kirim</span>
+    <span>IDR {{ number_format($shippingCost, 0, ',', '.') }}</span>
+</div>
+
         @if($diskon > 0)
         <div class="flex justify-between">
             <span class="text-[#816c59]">Diskon</span>
             <span class="text-[#a94442]">- IDR {{ number_format($diskon, 0, ',', '.') }}</span>
         </div>
         @endif
-
-        {{-- Tambahkan biaya tambahan lain jika ada --}}
-        {{-- Contoh biaya layanan tetap Rp0 --}}
-        <div class="flex justify-between">
-            <span class="text-[#816c59]">Biaya Layanan</span>
-            <span>IDR 0</span>
-        </div>
 
         <hr class="my-2 border-[#dbc8b2]">
 

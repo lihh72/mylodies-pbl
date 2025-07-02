@@ -29,7 +29,11 @@
                     <span class="quantity font-semibold">{{ $quantities[$item->id] ?? 1 }}</span>
 
                     <button wire:click="increment({{ $item->id }})"
-                            class="w-7 h-7 rounded-full bg-[#f3e5d7] hover:bg-[#e5d4c0]">+</button>
+        class="w-7 h-7 rounded-full bg-[#f3e5d7] hover:bg-[#e5d4c0] disabled:opacity-50 disabled:cursor-not-allowed"
+        @disabled($quantities[$item->id] >= $item->product->stock)>
+    +
+</button>
+
                 </div>
             </div>
 

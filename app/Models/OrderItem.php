@@ -17,6 +17,7 @@ class OrderItem extends Model
         'price',
         'start_date',
         'end_date',
+        'weight',
         'total_price',
     ];
 

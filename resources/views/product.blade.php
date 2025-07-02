@@ -165,6 +165,7 @@ function gallerySlideshow() {
     IDR {{ number_format($product->rental_price_per_day, 0, ',', '.') }}
     <span class="text-sm text-gray-500">/ day</span>
 </p>
+
 <p class="relative z-10 text-sm text-[#5e4b3b] italic">
     {{ $product->description }}
 </p>
@@ -172,7 +173,13 @@ function gallerySlideshow() {
 
 
                 <!-- Form -->
-<form id="rentalForm" method="POST" action="{{ route('order.store', $product->id) }}" class="space-y-3 text-sm relative z-10">
+@if ($product->stock <= 0)
+    <div class="p-4 bg-[#fff4ee] border border-red-300 text-red-600 rounded-lg font-semibold shadow-inner text-center">
+        Produk ini sedang <span class="uppercase">tidak tersedia</span> untuk disewa saat ini.
+    </div>
+@else
+    <form id="rentalForm" method="POST" action="{{ route('order.store', $product->id) }}" class="space-y-3 text-sm relative z-10">
+        
     @csrf
 
 
@@ -214,6 +221,9 @@ function gallerySlideshow() {
                         Total Estimate:
                         <span id="priceEstimation">—</span>
                     </div>
+<p class="text-sm text-[#7a6650] font-semibold">
+    Stok Tersedia: {{ $product->stock }}
+</p>
 
                    <div class="flex gap-3 mt-10 pt-10 border-t border-[#e4c7aa]">
 
@@ -230,7 +240,8 @@ function gallerySlideshow() {
 </div>
 
 </div>
-
+</form>
+@endif
     </section>
 </div>
 

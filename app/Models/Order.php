@@ -18,6 +18,8 @@ class Order extends Model
         'start_date',
         'end_date',
         'shipping_address',
+        'base_price',
+        'shipping_cost',
         'phone_number',
         'total_price',
         'status',

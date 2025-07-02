@@ -65,19 +65,16 @@
                 <div class="border-t pt-4 text-sm text-[#5f5042]">
                     <div class="flex justify-between">
                         <span>Subtotal</span>
-                        <span>IDR {{ number_format($order->total_price, 0, ',', '.') }}</span>
+                        <span>IDR {{ number_format($order->base_price, 0, ',', '.') }}</span>
                     </div>
                     <div class="flex justify-between">
                         <span>Ongkos Kirim</span>
-                        <span>IDR 24.000</span>
+                        <span>IDR {{ number_format($order->shipping_cost, 0, ',', '.') }}</span>
                     </div>
-                    <div class="flex justify-between">
-                        <span>Biaya Aplikasi</span>
-                        <span>IDR 1.000</span>
-                    </div>
+
                     <div class="flex justify-between font-bold text-[#3c2f24] pt-2 border-t mt-3">
                         <span>Total</span>
-                        <span>IDR {{ number_format($order->total_price + 24000 + 1000, 0, ',', '.') }}</span>
+                        <span>IDR {{ number_format($order->total_price, 0, ',', '.') }}</span>
                     </div>
                 </div>
 

@@ -34,7 +34,8 @@
   </h2>
 
   {{-- Include reusable component --}}
-  <x-filters />
+<x-filters />
+
 </aside>
 
   <script>
@@ -76,7 +77,7 @@
     </div>
 
     {{-- Reuse the same component --}}
-    <x-filters />
+ <x-filters  />
   </div>
 </div>
 

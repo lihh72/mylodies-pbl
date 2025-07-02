@@ -17,6 +17,8 @@ return new class extends Migration {
     $table->string('shipping_address')->nullable();
     $table->string('phone_number')->nullable();
     $table->decimal('total_price', 10, 2);
+    $table->decimal('base_price', 10, 2)->default(0); // harga dasar sebelum biaya pengiriman
+    $table->decimal('shipping_cost', 10, 2)->default(0); // biaya pengiriman
     $table->enum('status', ['pending', 'processing', 'shipped', 'arrive', 'cancelled', 'returned'])->default('pending');
     $table->timestamps();
 });
@@ -29,7 +31,9 @@ Schema::create('order_items', function (Blueprint $table) {
     $table->decimal('price', 10, 2); // harga satuan
     $table->date('start_date');
     $table->date('end_date');
+
     $table->decimal('total_price', 10, 2); // total untuk item ini
+    $table->integer('weight')->nullable(); // berat item, jika diperlukan
     $table->timestamps();
 });
 

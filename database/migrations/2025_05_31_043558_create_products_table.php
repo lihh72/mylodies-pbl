@@ -18,6 +18,10 @@ return new class extends Migration
             $table->string('category'); // Instrument category
             $table->decimal('rental_price_per_day', 10, 2);
             $table->text('description')->nullable();
+            $table->json('highlights')->nullable();
+            $table->integer('stock')->default(0); // ✅ Stock
+            $table->integer('weight')->nullable();
+            $table->json('included_items')->nullable();
             $table->longText('full_description')->nullable(); // ✅ Full description
             $table->string('images')->nullable(); // Product image
             $table->timestamps();

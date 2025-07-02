@@ -19,6 +19,8 @@ class Product extends Model
     'full_description',
     'images',
     'highlights',
+    'stock',
+    'weight',
     'included_items',
     'badge',
 ];
