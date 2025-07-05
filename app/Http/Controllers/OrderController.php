@@ -52,7 +52,8 @@ if ($quantity > $product->stock) {
         $pricePerDay = $product->rental_price_per_day;
         $itemTotal = $pricePerDay * $days * $quantity;
         if (empty(Auth::user()->phone_number)) {
-    return back()->with('error', 'Silakan lengkapi nomor telepon Anda terlebih dahulu di profil sebelum melakukan pemesanan.');
+    return redirect()->route('settings.index')
+            ->with('warning', 'Please complete your address details first before proceeding with payment.');
 }
 
 
@@ -171,7 +172,8 @@ if ($startDates->count() > 1 || $endDates->count() > 1) {
 }
 
 if (empty(Auth::user()->phone_number)) {
-    return back()->with('error', 'Silakan lengkapi nomor telepon Anda terlebih dahulu di profil sebelum melakukan pemesanan.');
+    return redirect()->route('settings.index')
+            ->with('warning', 'Please complete your address details first before proceeding with payment.');
 }
 
 
