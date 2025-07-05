@@ -10,6 +10,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Services\FonnteService;
 
 class OrderController extends Controller
 {
@@ -55,6 +56,7 @@ if ($quantity > $product->stock) {
             'user_id' => Auth::id(),
             'name' => Auth::user()->name, // Ambil nama dari user yang login
             'start_date' => $startDate,
+            'phone_number' => Auth::user()->phone_number,
             'end_date' => $endDate,
             'total_price' => $itemTotal,
             'status' => 'pending',
@@ -99,6 +101,34 @@ $order->update([
             'payment_status' => 'pending',
         ]);
 
+        $order->load('orderItems.product');
+
+$items = collect($order->orderItems)->map(function ($item) {
+    $days = Carbon::parse($item->start_date)->diffInDays(Carbon::parse($item->end_date)) + 1;
+    $subtotal = $item->total_price;
+    return "- {$item->product->name} ({$item->quantity} pcs × {$days} days): Rp" . number_format($subtotal, 0, ',', '.');
+})->implode("\n");
+
+$total = 'Rp' . number_format($order->total_price, 0, ',', '.');
+$link = route('payment.show', $payment->code);
+
+$message = <<<EOM
+📝 Hi {$order->name}, your rental order has been created!
+
+📦 Items:
+{$items}
+
+💰 Total: {$total}
+
+Please complete your payment here:
+🔗 {$link}
+
+Thank you for using Mylodies ✨
+EOM;
+
+$fonnte = new FonnteService();
+$fonnte->send($order->phone_number, $message);
+
         return redirect()->route('payment.show', $payment->code);
     }
 
@@ -129,9 +159,18 @@ $order->update([
         $startDate = $cart->items->min('start_date');
         $endDate = $cart->items->max('end_date');
 
+        $startDates = $cart->items->pluck('start_date')->unique();
+$endDates = $cart->items->pluck('end_date')->unique();
+
+if ($startDates->count() > 1 || $endDates->count() > 1) {
+    return back()->with('error', 'Tanggal sewa semua item di keranjang harus sama untuk checkout.');
+}
+
+
         $order = Order::create([
             'user_id' => $user->id,
             'name' => Auth::user()->name, // ✅
+            'phone_number' => Auth::user()->phone_number,
             'start_date' => $startDate,
             'end_date' => $endDate,
             'total_price' => $totalPrice,
@@ -176,6 +215,35 @@ $order->update([
             'order_id' => $order->id,
             'payment_status' => 'pending',
         ]);
+
+        $order->load('orderItems.product');
+
+$items = collect($order->orderItems)->map(function ($item) {
+    $days = Carbon::parse($item->start_date)->diffInDays(Carbon::parse($item->end_date)) + 1;
+    $subtotal = $item->total_price;
+    return "- {$item->product->name} ({$item->quantity} pcs × {$days} days): Rp" . number_format($subtotal, 0, ',', '.');
+})->implode("\n");
+
+$total = 'Rp' . number_format($order->total_price, 0, ',', '.');
+$link = route('payment.show', $payment->code);
+
+$message = <<<EOM
+📝 Hi {$order->name}, your rental order has been created!
+
+📦 Items:
+{$items}
+
+💰 Total: {$total}
+
+Please complete your payment here:
+🔗 {$link}
+
+Thank you for using Mylodies ✨
+EOM;
+
+$fonnte = new FonnteService();
+$fonnte->send($order->phone_number, $message);
+
 
         // Kosongkan keranjang
         $cart->items()->delete();

@@ -75,10 +75,10 @@ public function search(Request $request)
 })
 
         ->when($min, function ($q) use ($min) {
-            $q->where('price', '>=', $min);
+            $q->where('rental_price_per_day', '>=', $min);
         })
         ->when($max, function ($q) use ($max) {
-            $q->where('price', '<=', $max);
+            $q->where('rental_price_per_day', '<=', $max);
         })
         ->latest()
         ->paginate(15)
