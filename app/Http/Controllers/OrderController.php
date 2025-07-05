@@ -51,6 +51,10 @@ if ($quantity > $product->stock) {
 
         $pricePerDay = $product->rental_price_per_day;
         $itemTotal = $pricePerDay * $days * $quantity;
+        if (empty(Auth::user()->phone_number)) {
+    return back()->with('error', 'Silakan lengkapi nomor telepon Anda terlebih dahulu di profil sebelum melakukan pemesanan.');
+}
+
 
         $order = Order::create([
             'user_id' => Auth::id(),
@@ -165,6 +169,11 @@ $endDates = $cart->items->pluck('end_date')->unique();
 if ($startDates->count() > 1 || $endDates->count() > 1) {
     return back()->with('error', 'Tanggal sewa semua item di keranjang harus sama untuk checkout.');
 }
+
+if (empty(Auth::user()->phone_number)) {
+    return back()->with('error', 'Silakan lengkapi nomor telepon Anda terlebih dahulu di profil sebelum melakukan pemesanan.');
+}
+
 
 
         $order = Order::create([
