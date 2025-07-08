@@ -21,12 +21,14 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'gauth_id', // tambahkan ini
         'gauth_type', // tambahkan ini
         'address', // ganti 'shipping_address' dengan 'address'
+        'district', // tambahkan ini
         'phone_number',
         'province', // tambahkan ini
         'city', // tambahkan ini
         'postal_code', // tambahkan ini
         'profile_picture',
         'email_verified_at',
+        'phone_number_verified_at', // tambahkan ini
     ];
 
     protected $hidden = [

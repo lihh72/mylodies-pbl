@@ -26,6 +26,7 @@ class SettingsController extends Controller
         'province' => 'nullable|string|max:100', // Tambahkan validasi untuk provinsi
         'city' => 'nullable|string|max:100', // Tambahkan validasi untuk kota
         'postal_code' => 'nullable|string|max:20', // Tambahkan validasi untuk kode pos
+        'district' => 'nullable|string|max:100', // Tambahkan validasi untuk kecamatan
     ]);
 
     if ($request->hasFile('profile_picture')) {

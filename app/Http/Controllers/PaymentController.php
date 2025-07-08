@@ -26,6 +26,7 @@ class PaymentController extends Controller
         if (
         empty($user->address) ||
         empty($user->city) ||
+        empty($user->district) ||
         empty($user->province) ||
         empty($user->postal_code) ||
         empty($user->phone_number)
@@ -65,6 +66,7 @@ public function confirmAddress(Request $request, $code)
     // ✅ Simpan alamat dari user atau input baru
     if ($request->input('address_option') === 'user') {
         $shippingAddress = auth()->user()->address . ', ' .
+                            auth()->user()->district . ', ' .
                            auth()->user()->city . ', ' .
                            auth()->user()->province . ' ' .
                            auth()->user()->postal_code;
@@ -76,6 +78,7 @@ public function confirmAddress(Request $request, $code)
         ]);
     } else {
         $shippingAddress = $request->new_address . ', ' .
+                            $request->new_district . ', ' .
                            $request->new_city . ', ' .
                            $request->new_province . ' ' .
                            $request->new_postal;

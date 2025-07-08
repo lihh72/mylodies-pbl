@@ -86,16 +86,13 @@
                                 <input type="radio" name="address_option" value="user" checked class="accent-[#b49875]">
                                 Gunakan Alamat Saya
                             </label>
-                            <label class="flex items-center gap-2">
-                                <input type="radio" name="address_option" value="custom" class="accent-[#b49875]">
-                                Alamat Baru
-                            </label>
+
                         </div>
 
                         <div id="address-display" class="text-[13px] bg-white/60 border border-[#e8dbcc] p-3 rounded-md leading-snug space-y-0.5 text-[#443b33] mt-2">
                             <p id="disp-name" class="font-semibold">{{ Auth::user()->name }}</p>
                             <p id="disp-address">{{ Auth::user()->address }}</p>
-                            <p id="disp-city">{{ Auth::user()->city }}, {{ Auth::user()->province }} {{ Auth::user()->postal_code }}</p>
+                            <p id="disp-city">{{ Auth::user()->district }}, {{ Auth::user()->city }}, {{ Auth::user()->province }} {{ Auth::user()->postal_code }}</p>
                             <p id="disp-phone">No. Telp: {{ Auth::user()->phone_number }}</p>
                         </div>
 

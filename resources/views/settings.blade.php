@@ -88,19 +88,54 @@
                             Full Name
                         </label>
                     </div>
+<div class="relative">
+    <input type="email" name="email" id="email" required value="{{ old('email', $user->email) }}"
+           placeholder="Email Address"
+           class="peer w-full pr-28 px-4 pt-6 pb-2 bg-white/30 backdrop-blur-lg border border-[#d5c4b0] text-[#2c1a0f] placeholder-transparent rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bfa78d] transition-all" />
+    <label for="email"
+           class="absolute left-4 top-3 text-sm text-[#7a6654] font-medium transition-all 
+           peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
+           peer-placeholder-shown:text-[#a08c79] peer-focus:top-2 peer-focus:text-sm peer-focus:text-[#8f735c]">
+        Email Address
+    </label>
 
-                    <!-- Email -->
-                    <div class="relative">
-                        <input type="email" name="email" id="email" required value="{{ old('email', $user->email) }}"
-                               placeholder="Email Address"
-                               class="peer w-full px-4 pt-6 pb-2 bg-white/30 backdrop-blur-lg border border-[#d5c4b0] text-[#2c1a0f] placeholder-transparent rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bfa78d] transition-all" />
-                        <label for="email"
-                               class="absolute left-4 top-3 text-sm text-[#7a6654] font-medium transition-all 
-                               peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
-                               peer-placeholder-shown:text-[#a08c79] peer-focus:top-2 peer-focus:text-sm peer-focus:text-[#8f735c]">
-                            Email Address
-                        </label>
-                    </div>
+    {{-- Verifikasi status --}}
+    <div class="absolute right-3 top-[50%] translate-y-[-50%]">
+        @if($user->email_verified_at)
+            <i class="bx bx-check-circle text-green-500 text-xl" title="Email Verified"></i>
+        @else
+            <a href="https://mylodies-pbl.org/verify-email"
+               class="text-xs px-3 py-1 bg-[#e5d2c0] hover:bg-[#d2b49b] text-[#4c382c] font-semibold rounded-lg shadow transition">
+                Verifikasi
+            </a>
+        @endif
+    </div>
+</div>
+
+
+                    <div class="relative flex-1">
+    <input type="text" name="phone_number" id="phone_number" required value="{{ old('phone_number', $user->phone_number) }}"
+           placeholder="Nomor Telepon"
+           class="peer w-full pr-28 px-4 pt-6 pb-2 bg-transparent border border-[#d5c4b0] text-[#2c1a0f] placeholder-transparent rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bfa78d] transition-all" />
+    <label for="phone_number"
+           class="absolute left-4 top-3 text-sm text-[#7a6654] font-medium transition-all 
+           peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
+           peer-placeholder-shown:text-[#a08c79] peer-focus:top-2 peer-focus:text-sm peer-focus:text-[#8f735c]">
+        Nomor Telepon
+    </label>
+
+    <div class="absolute right-3 top-[50%] translate-y-[-50%]">
+        @if($user->phone_number_verified_at)
+            <i class="bx bx-check-circle text-green-500 text-xl" title="Phone Verified"></i>
+        @else
+            <a href="#"
+               class="text-xs px-3 py-1 bg-[#e5d2c0] hover:bg-[#d2b49b] text-[#4c382c] font-semibold rounded-lg shadow transition">
+                Verifikasi
+            </a>
+        @endif
+    </div>
+</div>
+
 
                     <!-- Profile Picture -->
                     <div class="flex flex-col gap-2">
@@ -167,17 +202,20 @@
             </label>
         </div>
 
-        <div class="relative flex-1">
-            <input type="text" name="phone_number" id="phone_number" required value="{{ old('phone_number', $user->phone_number) }}"
-                   placeholder="Nomor Telepon"
-                   class="peer w-full px-4 pt-6 pb-2 bg-transparent border border-[#d5c4b0] text-[#2c1a0f] placeholder-transparent rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bfa78d] transition-all" />
-            <label for="phone_number"
-                   class="absolute left-4 top-3 text-sm text-[#7a6654] font-medium transition-all 
-                   peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
-                   peer-placeholder-shown:text-[#a08c79] peer-focus:top-2 peer-focus:text-sm peer-focus:text-[#8f735c]">
-                Nomor Telepon
-            </label>
-        </div>
+            <div class="relative flex-1">
+        <input type="text" name="district" id="district" required value="{{ old('district', $user->district) }}"
+               placeholder="Kecamatan"
+               class="peer w-full px-4 pt-6 pb-2 bg-transparent border border-[#d5c4b0] text-[#2c1a0f] placeholder-transparent rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bfa78d] transition-all" />
+        <label for="district"
+               class="absolute left-4 top-3 text-sm text-[#7a6654] font-medium transition-all 
+               peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
+               peer-placeholder-shown:text-[#a08c79] peer-focus:top-2 peer-focus:text-sm peer-focus:text-[#8f735c]">
+            Kecamatan
+        </label>
+    </div>
+
+
+        
     </div>
 </div>
 

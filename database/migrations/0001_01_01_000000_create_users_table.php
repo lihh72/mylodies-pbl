@@ -16,12 +16,17 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('phone_number_verified_at')->nullable();
             $table->string('password');
+            $table->string('profile_picture')->nullable();
             $table->string('address')->nullable();
+            $table->string('district')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('province')->nullable();
             $table->string('city')->nullable();
             $table->string('postal_code')->nullable();
+            $table->string('gauth_id')->nullable();
+            $table->string('gauth_type')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
