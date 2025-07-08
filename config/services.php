@@ -47,9 +47,19 @@ return [
     'is_production' => env('MIDTRANS_IS_PRODUCTION', false),
 ],
 
-'fonnte' => [
-    'token' => env('FONNTE_TOKEN'),
+    'genai' => [
+        'url' => env('GENAI_AGENT_URL'),
+        'key' => env('GENAI_API_KEY'),
+    ],
+    'fonnte' => [
+        'token' => env('FONNTE_TOKEN'),
+    ],
+
+    'wa_bot' => [
+    'endpoint' => env('WA_BOT_ENDPOINT'),
+    'file_endpoint' => env('WA_BOT_FILE_ENDPOINT'),
 ],
+
 
 
 

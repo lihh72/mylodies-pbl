@@ -17,7 +17,10 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\OauthController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\ProductReviewController;
+use App\Http\Controllers\FonnteWebhookController;
 
+Route::post('/webhook/fonnte', [FonnteWebhookController::class, 'handle']);
+Route::get('/webhook/fonnte', [FonnteWebhookController::class, 'handle']);
 Route::get('/q', function () {
     return view('welcome');
 });

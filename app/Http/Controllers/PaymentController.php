@@ -14,8 +14,9 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Services\FonnteService;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Http;
+
 class PaymentController extends Controller
 {
     // Step 1: Form Pilih Alamat
@@ -319,7 +320,6 @@ if ($paymentStatus === 'paid') {
 // Kirim WhatsApp
 $order->load('orderItems.product');
 
-$fonnte = new FonnteService();
 
 // Informasi dasar
 $invoiceNumber = 'INV-' . now()->format('Ymd') . '-' . $order->id;
@@ -365,7 +365,21 @@ $message = <<<EOM
 Thank you for renting with *Mylodies*. We’ll process your order soon ✨
 EOM;
 
-$fonnte->send($order->phone_number, $message);
+$number = preg_replace('/\D/', '', $order->phone_number);
+if (!str_starts_with($number, '62')) {
+    $number = '62' . ltrim($number, '0');
+}
+
+try {
+    Http::timeout(10)->post(config('services.wa_bot.endpoint'), [
+        'number'  => $number,
+        'message' => $message,
+    ]);
+} catch (\Throwable $e) {
+    \Log::error('❌ Failed to send WhatsApp message via web.js', [
+        'error' => $e->getMessage(),
+    ]);
+}
 
 
          // 👇 Buat Invoice Lengkap
@@ -391,6 +405,28 @@ $fonnte->send($order->phone_number, $message);
 
     $pdfPath = "invoices/{$invoiceNumber}.pdf";
     Storage::disk('public')->put($pdfPath, $pdf->output());
+
+    // Kirim invoice sebagai file PDF ke WhatsApp
+try {
+    $number = preg_replace('/\D/', '', $order->phone_number);
+    if (!str_starts_with($number, '62')) {
+        $number = '62' . ltrim($number, '0');
+    }
+
+    $pdfAbsolutePath = storage_path('app/public/' . $pdfPath);
+    $base64File = base64_encode(file_get_contents($pdfAbsolutePath));
+    $fileName = $invoiceNumber . '.pdf';
+
+    Http::timeout(10)->post(config('services.wa_bot.file_endpoint'), [
+        'number' => $number,
+        'filename' => $fileName,
+        'filedata' => $base64File,
+        'caption' => "📄 Berikut invoice resmi pesanan kamu: *{$invoiceNumber}*.\n\nTerima kasih telah menggunakan Mylodies ✨",
+    ]);
+} catch (\Throwable $e) {
+    \Log::error('❌ Gagal kirim invoice PDF ke WhatsApp:', ['error' => $e->getMessage()]);
+}
+
 
     $order->update([
         'invoice_number' => $invoiceNumber,

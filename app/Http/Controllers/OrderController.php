@@ -10,7 +10,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-use App\Services\FonnteService;
+use Illuminate\Support\Facades\Http;
 
 class OrderController extends Controller
 {
@@ -131,8 +131,22 @@ Please complete your payment here:
 Thank you for using Mylodies ✨
 EOM;
 
-$fonnte = new FonnteService();
-$fonnte->send($order->phone_number, $message);
+$number = preg_replace('/\D/', '', $order->phone_number);
+if (!str_starts_with($number, '62')) {
+    $number = '62' . ltrim($number, '0');
+}
+
+try {
+    Http::timeout(10)->post(config('services.wa_bot.endpoint'), [
+        'number'  => $number,
+        'message' => $message,
+    ]);
+} catch (\Throwable $e) {
+    \Log::error('❌ Failed to send WhatsApp message via web.js', [
+        'error' => $e->getMessage(),
+    ]);
+}
+
 
         return redirect()->route('payment.show', $payment->code);
     }
@@ -252,8 +266,22 @@ Please complete your payment here:
 Thank you for using Mylodies ✨
 EOM;
 
-$fonnte = new FonnteService();
-$fonnte->send($order->phone_number, $message);
+$number = preg_replace('/\D/', '', $order->phone_number);
+if (!str_starts_with($number, '62')) {
+    $number = '62' . ltrim($number, '0');
+}
+
+try {
+    Http::timeout(10)->post(config('services.wa_bot.endpoint'), [
+        'number'  => $number,
+        'message' => $message,
+    ]);
+} catch (\Throwable $e) {
+    \Log::error('❌ Failed to send WhatsApp message via web.js', [
+        'error' => $e->getMessage(),
+    ]);
+}
+
 
 
         // Kosongkan keranjang

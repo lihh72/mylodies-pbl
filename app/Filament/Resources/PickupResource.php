@@ -8,7 +8,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Illuminate\Support\Carbon;
-use App\Services\FonnteService;
+use Illuminate\Support\Facades\Http;
 
 class PickupResource extends Resource
 {
@@ -98,7 +98,22 @@ Thank you for renting with *Mylodies*! ✨
 If you enjoyed our service, feel free to leave us a review!
 EOM;
 
-            (new FonnteService())->send($record->phone_number, $message);
+            $number = preg_replace('/\D/', '', $record->phone_number);
+if (!str_starts_with($number, '62')) {
+    $number = '62' . ltrim($number, '0');
+}
+
+try {
+    Http::timeout(10)->post(config('services.wa_bot.endpoint'), [
+        'number'  => $number,
+        'message' => $message,
+    ]);
+} catch (\Throwable $e) {
+    \Log::error('❌ Failed to send WhatsApp message via web.js', [
+        'error' => $e->getMessage(),
+    ]);
+}
+
         }
     }),
             ])

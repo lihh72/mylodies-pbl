@@ -12,7 +12,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->validateCsrfTokens(except: [
-            'payment/callback'  // exclude your midtrans callback route here
+            'payment/callback',  // exclude your midtrans callback route here
+            '/webhook/fonnte',
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
