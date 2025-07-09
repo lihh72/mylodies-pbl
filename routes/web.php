@@ -18,6 +18,13 @@ use App\Http\Controllers\OauthController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\FonnteWebhookController;
+use App\Http\Controllers\OtpController;
+
+Route::middleware('auth')->group(function () {
+    Route::post('/otp/send', [OtpController::class, 'send'])->name('otp.send');
+    Route::post('/otp/verify', [OtpController::class, 'verify'])->name('otp.verify');
+});
+
 
 Route::post('/webhook/fonnte', [FonnteWebhookController::class, 'handle']);
 Route::get('/webhook/fonnte', [FonnteWebhookController::class, 'handle']);

@@ -114,9 +114,11 @@
 
 
                     <div class="relative flex-1">
-    <input type="text" name="phone_number" id="phone_number" required value="{{ old('phone_number', $user->phone_number) }}"
+    <input type="text" name="phone_number" id="phone_number" required
+           value="{{ old('phone_number', $user->phone_number) }}"
            placeholder="Nomor Telepon"
-           class="peer w-full pr-28 px-4 pt-6 pb-2 bg-transparent border border-[#d5c4b0] text-[#2c1a0f] placeholder-transparent rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bfa78d] transition-all" />
+           class="peer w-full pr-28 px-4 pt-6 pb-2 bg-transparent border border-[#d5c4b0] text-[#2c1a0f] placeholder-transparent rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bfa78d] transition-all"
+           oninput="toggleVerifikasiButton()" />
     <label for="phone_number"
            class="absolute left-4 top-3 text-sm text-[#7a6654] font-medium transition-all 
            peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
@@ -124,17 +126,126 @@
         Nomor Telepon
     </label>
 
-    <div class="absolute right-3 top-[50%] translate-y-[-50%]">
-        @if($user->phone_number_verified_at)
-            <i class="bx bx-check-circle text-green-500 text-xl" title="Phone Verified"></i>
-        @else
-            <a href="#"
-               class="text-xs px-3 py-1 bg-[#e5d2c0] hover:bg-[#d2b49b] text-[#4c382c] font-semibold rounded-lg shadow transition">
-                Verifikasi
-            </a>
-        @endif
-    </div>
+    <div class="absolute right-3 top-[50%] translate-y-[-50%]" id="verifikasi-wrapper">
+    @if($user->phone_number_verified_at)
+        <i class="bx bx-check-circle text-green-500 text-xl" id="verified-icon" title="Phone Verified"></i>
+    @endif
+
+    <button type="button" id="verifikasi-btn"
+            onclick="sendOtp()"
+            class="hidden text-xs px-3 py-1 bg-[#e5d2c0] hover:bg-[#d2b49b] text-[#4c382c] font-semibold rounded-lg shadow transition">
+        Verifikasi
+    </button>
 </div>
+
+</div>
+
+<div id="otp-form" class="mt-4 hidden">
+    <label class="text-sm text-[#5b4937] block mb-1">Masukkan Kode OTP</label>
+    <div class="flex items-center gap-3">
+        <input type="text" id="otp-input"
+               class="w-40 px-3 py-2 rounded border border-[#b8a697] text-[#2c1a0f] text-sm shadow"
+               placeholder="6 digit OTP" />
+<button type="button" onclick="verifyOtp()"
+        class="text-xs px-4 py-2 bg-[#c4a48a] hover:bg-[#a9896f] text-[#4c382c] font-semibold rounded shadow transition">
+    Kirim OTP
+</button>
+
+    </div>
+    <div id="otp-status" class="text-xs text-[#4c382c] mt-1"></div>
+</div>
+
+<script>
+    let phoneVerified = {{ $user->phone_number_verified_at ? 'true' : 'false' }};
+function toggleVerifikasiButton() {
+    const phone = document.getElementById('phone_number').value.trim();
+    const btn = document.getElementById('verifikasi-btn');
+    const verifiedIcon = document.getElementById('verified-icon');
+    const submitBtn = document.getElementById('submit-button');
+    const defaultPhone = '{{ $user->phone_number }}';
+
+    if (phone.length >= 8 && phone !== defaultPhone) {
+        phoneVerified = false;
+        btn?.classList.remove('hidden');
+        verifiedIcon?.classList.add('hidden');
+        submitBtn.disabled = true;
+    } else if (phone === defaultPhone && {{ $user->phone_number_verified_at ? 'true' : 'false' }}) {
+        phoneVerified = true;
+        btn?.classList.add('hidden');
+        verifiedIcon?.classList.remove('hidden');
+        submitBtn.disabled = false;
+    } else {
+        btn?.classList.add('hidden');
+        verifiedIcon?.classList.add('hidden');
+        submitBtn.disabled = true;
+    }
+}
+
+
+
+function sendOtp() {
+    const phoneNumber = document.getElementById('phone_number').value;
+
+    fetch("{{ route('otp.send') }}", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify({ phone_number: phoneNumber })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'sent') {
+            document.getElementById('otp-form').classList.remove('hidden');
+            document.getElementById('otp-status').innerText = 'Kode OTP telah dikirim ke WhatsApp Anda.';
+        } else {
+            alert(data.error || 'Gagal kirim OTP.');
+        }
+    })
+    .catch(err => {
+        alert('Terjadi kesalahan saat mengirim OTP.');
+    });
+}
+
+function verifyOtp() {
+    const phoneNumber = document.getElementById('phone_number').value;
+    const otp = document.getElementById('otp-input').value;
+    const status = document.getElementById('otp-status');
+    const submitBtn = document.getElementById('submit-button');
+
+    fetch("{{ route('otp.verify') }}", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify({ phone_number: phoneNumber, otp: otp })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'verified') {
+            phoneVerified = true;
+            status.innerText = '✅ Nomor berhasil diverifikasi!';
+            submitBtn.disabled = false;
+        } else {
+            status.innerText = data.error || 'OTP salah atau sudah kedaluwarsa.';
+        }
+    })
+    .catch(() => {
+        status.innerText = 'Terjadi kesalahan.';
+    });
+}
+
+document.querySelector('form').addEventListener('submit', function (e) {
+    if (!phoneVerified) {
+        e.preventDefault();
+        alert('Nomor telepon Anda belum diverifikasi.');
+    }
+});
+
+</script>
+
 
 
                     <!-- Profile Picture -->
@@ -221,11 +332,14 @@
 
                     <!-- Submit -->
                     <div class="text-center pt-6">
-                        <button type="submit"
-                                class="group relative inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-sm text-white bg-gradient-to-r from-[#c4a48a] to-[#8c6b59] shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300 overflow-hidden">
-                            <span class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></span>
-                            <i class="bx bx-save text-lg"></i> Save Changes
-                        </button>
+<button type="submit"
+        id="submit-button"
+        @if(!$user->phone_number_verified_at) disabled @endif
+        class="group relative inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-sm text-white bg-gradient-to-r from-[#c4a48a] to-[#8c6b59] shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed">
+    <span class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></span>
+    <i class="bx bx-save text-lg"></i> Save Changes
+</button>
+
                     </div>
                 </form>
             </div>
