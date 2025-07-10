@@ -25,8 +25,7 @@
 
             <nav class="w-full space-y-2 mt-4">
                 @foreach([
-                    ['#', 'Rent History', 'bx-history'],
-                    ['#', 'Transaction', 'bx-credit-card'],
+                    ['history', 'Rent History', 'bx-history'],
                     ['#', 'Change Password', 'bx-lock'],
                     ['settings', 'Settings', 'bx-cog'],
                 ] as [$url, $label, $icon])
