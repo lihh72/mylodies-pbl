@@ -48,7 +48,7 @@ class PaymentController extends Controller
     }
 
     // Jika belum, tampilkan form pilih alamat
-    return view('payment', compact('order', 'payment'));
+    return view('pages.payment', compact('order', 'payment'));
 }
 
 
@@ -185,7 +185,7 @@ public function confirmAddress(Request $request, $code)
             $snapToken = $payment->snap_token;
         }
 
-        return view('payment_confirm', compact('order', 'snapToken'));
+        return view('pages.payment_confirm', compact('order', 'snapToken'));
     }
 
     // Midtrans Snap Token Generator

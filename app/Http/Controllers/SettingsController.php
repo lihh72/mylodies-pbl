@@ -10,7 +10,7 @@ class SettingsController extends Controller
     public function index()
     {
         $user = Auth::user(); // Ambil user yang sedang login
-    return view('settings', compact('user'));
+    return view('pages.settings', compact('user'));
     }
 
     public function update(Request $request)

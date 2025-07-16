@@ -14,7 +14,7 @@ class CartController extends Controller
 {
     $cart = Cart::with('items.product')->where('user_id', Auth::id())->first();
     $cartItems = $cart ? $cart->items : collect();
-    return view('cart', compact('cartItems'));
+    return view('pages.cart', compact('cartItems'));
 }
 
 

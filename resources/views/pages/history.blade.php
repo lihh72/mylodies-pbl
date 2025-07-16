@@ -58,7 +58,7 @@
 
                 <!-- Filter Status -->
                 <div class="flex flex-wrap justify-center gap-4 mb-6">
-                    @foreach (['All', 'Pending', 'Confirmed', 'Processing', 'Shipped', 'Completed', 'Cancelled'] as $label)
+                    @foreach (['All', 'Pending', 'Processing', 'Shipped', 'arrive', 'Cancelled', 'returned'] as $label)
                         <button @click="status = '{{ $label }}'"
                                 class="flex items-center gap-2 px-5 py-2 rounded-full border border-[#d6b896] text-sm font-medium transition transform hover:scale-105 shadow hover:shadow-md focus:outline-none"
                                 :class="{ 'bg-gradient-to-r from-[#f6e8d6] to-[#d6b896] text-[#5a4a3b] ring-2 ring-[#b49875]' : status === '{{ $label }}', 'bg-white text-[#6f5a48]' : status !== '{{ $label }}' }">

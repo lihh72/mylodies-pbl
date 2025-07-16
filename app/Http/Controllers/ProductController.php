@@ -12,7 +12,7 @@ class ProductController extends Controller
     public function index()
 {
     $products = Product::where('stock', '>', 0)->latest()->paginate(6);// atau ->paginate(9)
-    return view('landing', compact('products'));
+    return view('pages.landing', compact('products'));
 }
 
 public function show($slug)
@@ -25,7 +25,7 @@ public function show($slug)
     $averageRating = number_format($product->reviews()->avg('rating') ?? 0, 1);
     $totalReviews = $product->reviews()->count();
 
-    return view('product', compact('product', 'minDate', 'reviews', 'averageRating', 'totalReviews'));
+    return view('pages.product', compact('product', 'minDate', 'reviews', 'averageRating', 'totalReviews'));
 }
 
 
@@ -41,7 +41,7 @@ public function catalog(Request $request)
         ->paginate(12)
         ->appends(['category' => $category]);
 
-    return view('catalog', compact('products', 'category'));
+    return view('pages.catalog', compact('products', 'category'));
 }
 
 
@@ -84,7 +84,7 @@ public function search(Request $request)
         ->paginate(15)
         ->appends($request->only(['q', 'category', 'rating', 'min', 'max']));
 
-    return view('search', compact(
+    return view('pages.search', compact(
         'products',
         'query',
         'category',

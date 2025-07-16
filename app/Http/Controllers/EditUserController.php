@@ -10,7 +10,7 @@ class EditUserController extends Controller
     public function index()
     {
         $user = Auth::user(); // Ambil user yang sedang login
-    return view('edit-user', compact('user'));
+    return view('pages.edit-user', compact('user'));
     }
 
     public function updatePassword(Request $request)

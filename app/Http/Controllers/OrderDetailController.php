@@ -15,6 +15,6 @@ class OrderDetailController extends Controller
 
         $order->load(['orderItems.product', 'payment']);
 
-        return view('order-detail', compact('order'));
+        return view('pages.order-detail', compact('order'));
     }
 }
