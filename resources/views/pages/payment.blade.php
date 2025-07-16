@@ -74,11 +74,11 @@
 
                 <aside class="bg-white rounded-3xl shadow-xl border border-[#d9cbb8] p-8 sticky top-32 self-start space-y-6">
 
-                    {{-- Alamat Pengiriman --}}
+                    {{-- Alamat Shipping --}}
                     <div class="bg-[#fcf8f4]/70 border border-[#eadccd] rounded-xl p-4 text-xs text-[#5f5042] leading-snug space-y-3">
                         <div class="flex items-center gap-3 text-sm font-medium text-[#3c2f24]">
                             <i class="fa-solid fa-location-dot text-[#b49875]"></i>
-                            <span class="font-semibold">Alamat Pengiriman</span>
+                            <span class="font-semibold">Alamat Shipping</span>
                         </div>
 
                         <div class="flex gap-3 mt-2 text-sm">

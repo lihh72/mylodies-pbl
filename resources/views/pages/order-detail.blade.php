@@ -125,7 +125,7 @@
 
 
                         <div>
-                            <p class="text-sm text-[#7d6750] font-semibold uppercase mb-1">Alamat Pengiriman</p>
+                            <p class="text-sm text-[#7d6750] font-semibold uppercase mb-1">Alamat Shipping</p>
                             <p class="bg-white/70 px-4 py-3 border border-[#dac3a8] rounded-lg text-base leading-relaxed">
                                 {{ $order->shipping_address }}
                             </p>

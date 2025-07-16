@@ -23,7 +23,7 @@ class CartSummaryComponent extends Component
         $cart = Cart::with('items')->where('user_id', Auth::id())->first();
         $this->count = $cart ? $cart->items->sum('quantity') : 0;
         $subtotal = $cart ? $cart->items->sum('total_price') : 0;
-        $this->total = $subtotal + 3000;
+        $this->total = $subtotal;
     }
 
     public function render()

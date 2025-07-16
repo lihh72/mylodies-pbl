@@ -17,8 +17,8 @@ return new class extends Migration {
     $table->string('shipping_address')->nullable();
     $table->string('phone_number')->nullable();
     $table->decimal('total_price', 10, 2);
-    $table->decimal('base_price', 10, 2)->default(0); // harga dasar sebelum biaya pengiriman
-    $table->decimal('shipping_cost', 10, 2)->default(0); // biaya pengiriman
+    $table->decimal('base_price', 10, 2)->default(0); // harga dasar sebelum biaya Shipping
+    $table->decimal('shipping_cost', 10, 2)->default(0); // biaya Shipping
     $table->enum('status', ['pending', 'processing', 'shipped', 'arrive', 'cancelled', 'returned'])->default('pending');
     $table->timestamps();
 });

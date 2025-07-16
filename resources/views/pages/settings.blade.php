@@ -256,7 +256,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
 <!-- Address Section (Compact) -->
 <div class="bg-white/30 backdrop-blur-lg border border-[#d5c4b0] rounded-2xl px-6 py-5 space-y-4 shadow-sm">
 
-    <div class="text-sm font-semibold text-[#5b4937] mb-1">Alamat Pengiriman</div>
+    <div class="text-sm font-semibold text-[#5b4937] mb-1">Alamat Shipping</div>
 
     <!-- Alamat Lengkap -->
     <div class="relative">
