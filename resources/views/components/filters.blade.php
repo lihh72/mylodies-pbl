@@ -69,7 +69,7 @@
   {{-- Filter Harga --}}
   <details class="group" open>
     <summary class="cursor-pointer text-[#5c4633] hover:text-[#7d6651] flex justify-between items-center font-medium text-base transition-colors duration-200 pb-3 border-b border-[#f0e8e0]">
-      Harga
+      Price
       <svg class="h-5 w-5 text-[#b49875] group-open:rotate-180 transition-transform duration-300 ease-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
       </svg>
@@ -97,6 +97,6 @@
   {{-- Tombol Terapkan --}}
   <button type="submit"
     class="w-full mt-4 bg-[#b49875] text-white py-2 rounded-md hover:bg-[#a78c74] transition-colors">
-    Terapkan Filter
+    Apply Filter
   </button>
 </form>

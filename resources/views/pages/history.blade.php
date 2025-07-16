@@ -52,7 +52,7 @@
 
             <div class="relative z-10 space-y-12">
                 <div class="text-center">
-                    <h1 class="text-4xl font-extrabold text-[#3e2d1f] drop-shadow-sm tracking-tight">Rent Histoyr</h1>
+                    <h1 class="text-4xl font-extrabold text-[#3e2d1f] drop-shadow-sm tracking-tight">Rent History</h1>
                     <p class="text-sm text-[#6c5949] mt-2 italic">Review all your rental transactions based on their status.</p>
                 </div>
 
