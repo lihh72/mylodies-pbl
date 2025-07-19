@@ -222,7 +222,7 @@ function gallerySlideshow() {
                         <span id="priceEstimation">—</span>
                     </div>
 <p class="text-sm text-[#7a6650] font-semibold">
-    Stok Tersedia: {{ $product->stock }}
+    Available Stock: {{ $product->stock }}
 </p>
 
                    <div class="flex gap-3 mt-10 pt-10 border-t border-[#e4c7aa]">

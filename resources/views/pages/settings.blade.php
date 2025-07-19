@@ -29,6 +29,7 @@
                     ['history', 'Rent History', 'bx-history'],
                     ['edit', 'Change Password', 'bx-lock'],
                     ['#', 'Settings', 'bx-cog'],
+                    ['/address', 'Shipping Address', 'bx-map'],
                 ] as [$url, $label, $icon])
                     <a href="{{ $url }}"
                        class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium 
@@ -110,6 +111,8 @@
         @endif
     </div>
 </div>
+
+
 
 
                     <div class="relative flex-1">
@@ -245,7 +248,23 @@ document.querySelector('form').addEventListener('submit', function (e) {
 
 </script>
 
+<div class="flex flex-col gap-2">
+    <label for="identity_card" class="text-sm font-medium text-[#5b4937]">Upload KTP</label>
+    @if($user->identity_card)
+        <div class="mb-2">
+            <img src="{{ asset('storage/' . $user->identity_card) }}"
+                 class="w-48 rounded shadow border border-[#bfa78d]" alt="KTP Anda">
+            @if($user->identity_card_verified_at)
+                <div class="text-green-600 text-sm mt-1">✅ Sudah diverifikasi</div>
+            @else
+                <div class="text-yellow-600 text-sm mt-1">⏳ Menunggu verifikasi</div>
+            @endif
+        </div>
+    @endif
 
+    <input type="file" name="identity_card" id="identity_card"
+           class="file:px-4 file:py-2 file:rounded-full file:border-0 file:text-sm file:bg-[#d8c4b3] file:text-white hover:file:bg-[#b79988] transition cursor-pointer" />
+</div>
 
                     <!-- Profile Picture -->
                     <div class="flex flex-col gap-2">
@@ -253,81 +272,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
                         <input type="file" name="profile_picture" id="profile_picture"
                                class="file:px-4 file:py-2 file:rounded-full file:border-0 file:text-sm file:bg-[#d8c4b3] file:text-white hover:file:bg-[#b79988] transition cursor-pointer" />
                     </div>
-<!-- Address Section (Compact) -->
-<div class="bg-white/30 backdrop-blur-lg border border-[#d5c4b0] rounded-2xl px-6 py-5 space-y-4 shadow-sm">
 
-    <div class="text-sm font-semibold text-[#5b4937] mb-1">Shipping Address</div>
-
-    <!-- Alamat Lengkap -->
-    <div class="relative">
-        <textarea name="address" id="address" rows="3" required
-                  class="peer w-full px-4 pt-6 pb-2 bg-transparent border border-[#d5c4b0] text-[#2c1a0f] placeholder-transparent rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bfa78d] transition-all resize-none"
-                  placeholder="Alamat Lengkap">{{ old('address', $user->address) }}</textarea>
-        <label for="address"
-               class="absolute left-4 top-3 text-sm text-[#7a6654] font-medium transition-all 
-               peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
-               peer-placeholder-shown:text-[#a08c79] peer-focus:top-2 peer-focus:text-sm peer-focus:text-[#8f735c]">
-            Full Address
-        </label>
-    </div>
-
-    <!-- Baris Kota, Provinsi -->
-    <div class="flex flex-col md:flex-row gap-4">
-        <div class="relative flex-1">
-            <input type="text" name="city" id="city" required value="{{ old('city', $user->city) }}"
-                   placeholder="Kota"
-                   class="peer w-full px-4 pt-6 pb-2 bg-transparent border border-[#d5c4b0] text-[#2c1a0f] placeholder-transparent rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bfa78d] transition-all" />
-            <label for="city"
-                   class="absolute left-4 top-3 text-sm text-[#7a6654] font-medium transition-all 
-                   peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
-                   peer-placeholder-shown:text-[#a08c79] peer-focus:top-2 peer-focus:text-sm peer-focus:text-[#8f735c]">
-                City
-            </label>
-        </div>
-
-        <div class="relative flex-1">
-            <input type="text" name="province" id="province" required value="{{ old('province', $user->province) }}"
-                   placeholder="Provinsi"
-                   class="peer w-full px-4 pt-6 pb-2 bg-transparent border border-[#d5c4b0] text-[#2c1a0f] placeholder-transparent rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bfa78d] transition-all" />
-            <label for="province"
-                   class="absolute left-4 top-3 text-sm text-[#7a6654] font-medium transition-all 
-                   peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
-                   peer-placeholder-shown:text-[#a08c79] peer-focus:top-2 peer-focus:text-sm peer-focus:text-[#8f735c]">
-                Province
-            </label>
-        </div>
-    </div>
-
-    <!-- Baris Kode Pos dan No. Telp -->
-    <div class="flex flex-col md:flex-row gap-4">
-        <div class="relative flex-1">
-            <input type="text" name="postal_code" id="postal_code" required value="{{ old('postal_code', $user->postal_code) }}"
-                   placeholder="Kode Pos"
-                   class="peer w-full px-4 pt-6 pb-2 bg-transparent border border-[#d5c4b0] text-[#2c1a0f] placeholder-transparent rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bfa78d] transition-all" />
-            <label for="postal_code"
-                   class="absolute left-4 top-3 text-sm text-[#7a6654] font-medium transition-all 
-                   peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
-                   peer-placeholder-shown:text-[#a08c79] peer-focus:top-2 peer-focus:text-sm peer-focus:text-[#8f735c]">
-                Pos Code
-            </label>
-        </div>
-
-            <div class="relative flex-1">
-        <input type="text" name="district" id="district" required value="{{ old('district', $user->district) }}"
-               placeholder="Kecamatan"
-               class="peer w-full px-4 pt-6 pb-2 bg-transparent border border-[#d5c4b0] text-[#2c1a0f] placeholder-transparent rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bfa78d] transition-all" />
-        <label for="district"
-               class="absolute left-4 top-3 text-sm text-[#7a6654] font-medium transition-all 
-               peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
-               peer-placeholder-shown:text-[#a08c79] peer-focus:top-2 peer-focus:text-sm peer-focus:text-[#8f735c]">
-            District
-        </label>
-    </div>
-
-
-        
-    </div>
-</div>
 
                     <!-- Submit -->
                     <div class="text-center pt-6">

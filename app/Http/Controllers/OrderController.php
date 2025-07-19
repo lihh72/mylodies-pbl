@@ -41,7 +41,7 @@ class OrderController extends Controller
         $quantity = $request->input('quantity', 1);
 
         if ($product->stock <= 0) {
-    return back()->with('error', 'Produk ini sudah tidak tersedia.');
+    return back()->with('error', 'This product is not available.');
 }
 
 if ($quantity > $product->stock) {
@@ -51,7 +51,7 @@ if ($quantity > $product->stock) {
 
         $pricePerDay = $product->rental_price_per_day;
         $itemTotal = $pricePerDay * $days * $quantity;
-        if (empty(Auth::user()->phone_number)) {
+        if (!empty(Auth::user()->phone_number) && !empty(Auth::user()->identity_card_verified_at)) {
     return redirect()->route('settings.index')
             ->with('warning', 'Please complete your address details first before proceeding with payment.');
 }

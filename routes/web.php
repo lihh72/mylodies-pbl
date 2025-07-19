@@ -55,6 +55,8 @@ Route::get('/payment/{code}', [PaymentController::class, 'show'])->name('payment
 
 Route::get('/catalog', [ProductController::class, 'catalog'])->name('catalog');
 
+Route::get('/address', [SettingsController::class, 'editAddress'])->name('address.edit');
+Route::put('/address', [SettingsController::class, 'updateAddress'])->name('address.update');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/history', [HistoryController::class, 'index'])->name('history.index');

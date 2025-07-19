@@ -29,6 +29,7 @@
                     ['#', 'Rent History', 'bx-history'],
                     ['edit', 'Change Password', 'bx-lock'],
                     ['settings', 'Settings', 'bx-cog'],
+                    ['/address', 'Shipping Address', 'bx-map'],
                 ] as [$url, $label, $icon])
                     <a href="{{ $url }}"
                        class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium 
