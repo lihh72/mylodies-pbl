@@ -3,7 +3,18 @@
 **MyLodies** is a web-based rental platform for musical instruments built with Laravel. Designed as part of a Project-Based Learning (PBL) initiative, it provides an end-to-end solution for renting, managing, and browsing music equipment online.
 
 🌐 **Live Demo**: [https://mylodies.xyz](https://mylodies.xyz)
+---
 
+## 👥 Project Contributors – Mylodies
+
+| Name                      | NIM         | Role                                             | GitHub Username     |
+|---------------------------|-------------|--------------------------------------------------|---------------------|
+| M.Falih Hilmy             | 3312401040  | Lead Backend Developer & Database INtegration    | [`@lihh72`](https://github.com/lihh72)           |
+| -             | 33124010-  | -         | -         |
+| -    | 33124010-  | -             | -           |
+| -      | 33124010-  | -  | -   |
+
+> 📝 *Each team member contributed significantly to the success of the WUW project.*
 ---
 
 ## 🚀 Features
