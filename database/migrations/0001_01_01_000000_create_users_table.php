@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('phone_number')->nullable();
             $table->string('province')->nullable();
             $table->string('city')->nullable();
+            $table->string('identity_card')->nullable();
+            $table->timestamp('identity_card_verified_at')->nullable();
             $table->string('postal_code')->nullable();
             $table->string('gauth_id')->nullable();
             $table->string('gauth_type')->nullable();

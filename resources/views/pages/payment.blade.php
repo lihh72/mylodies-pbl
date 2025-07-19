@@ -101,10 +101,10 @@
                             <textarea name="new_address" id="new-address" class="w-full border rounded-md p-2" rows="2" placeholder="Alamat Lengkap"></textarea>
                             <div class="flex gap-2">
                                 <input type="text" name="new_city" id="new-city" class="w-1/2 border rounded-md p-2" placeholder="Kota">
-                                <input type="text" name="new_province" id="new-province" class="w-1/2 border rounded-md p-2" placeholder="Provinsi">
+                                <input type="text" name="new_province" id="new-province" class="w-1/2 border rounded-md p-2" placeholder="Province">
                             </div>
                             <div class="flex gap-2">
-                                <input type="text" name="new_postal" id="new-postal" class="w-1/2 border rounded-md p-2" placeholder="Kode Pos">
+                                <input type="text" name="new_postal" id="new-postal" class="w-1/2 border rounded-md p-2" placeholder="Postal Code">
                                 <input type="text" name="new_phone" id="new-phone" class="w-1/2 border rounded-md p-2" placeholder="No. Telp">
                             </div>
                         </div>

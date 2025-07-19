@@ -19,6 +19,8 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'email',
         'password',
         'gauth_id', // tambahkan ini
+        'identity_card',
+        'identity_card_verified_at', // tambahkan ini
         'gauth_type', // tambahkan ini
         'address', // ganti 'shipping_address' dengan 'address'
         'district', // tambahkan ini
@@ -36,13 +38,15 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'remember_token',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+protected function casts(): array
+{
+    return [
+        'email_verified_at' => 'datetime',
+        'identity_card_verified_at' => 'datetime', // ← tambahkan ini
+        'password' => 'hashed',
+    ];
+}
+
 
     public function canAccessPanel(Panel $panel): bool
     {
