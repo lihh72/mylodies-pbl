@@ -10,9 +10,9 @@
 | Name                      | NIM         | Role                                             | GitHub Username     |
 |---------------------------|-------------|--------------------------------------------------|---------------------|
 | M.Falih Hilmy             | 3312401040  | Lead Backend Developer & Database Integration    | [`@lihh72`](https://github.com/lihh72)           |
-| -             | 33124010-  | -         | -         |
-| -    | 33124010-  | -             | -           |
-| -      | 33124010-  | -  | -   |
+| Bunga Citra Lestari Situmorang             | 3312401034  | Designer & Frontend Developer         | [`@bbbunga`](https://github.com/bbbunga)         |
+| Birgita Anastasya Hutabarat    | 3312401045  | Designer & Frontend Developer             | [`@wayjuU`](https://github.com/wayjuU)           |
+| Lidya Nur Raudhatul Janah Putri Rial      | 3312401046  | Designer & Frontend Developer  | [`@lidya046`](https://github.com/lidya046)   |
 
 ---
 
