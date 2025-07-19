@@ -106,7 +106,7 @@
         @else
             <a href="https://mylodies-pbl.org/verify-email"
                class="text-xs px-3 py-1 bg-[#e5d2c0] hover:bg-[#d2b49b] text-[#4c382c] font-semibold rounded-lg shadow transition">
-                Verifikasi
+                Verify
             </a>
         @endif
     </div>
@@ -125,7 +125,7 @@
            class="absolute left-4 top-3 text-sm text-[#7a6654] font-medium transition-all 
            peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
            peer-placeholder-shown:text-[#a08c79] peer-focus:top-2 peer-focus:text-sm peer-focus:text-[#8f735c]">
-        Nomor Telepon
+        Phone Number
     </label>
 
     <div class="absolute right-3 top-[50%] translate-y-[-50%]" id="verifikasi-wrapper">
@@ -136,21 +136,21 @@
     <button type="button" id="verifikasi-btn"
             onclick="sendOtp()"
             class="hidden text-xs px-3 py-1 bg-[#e5d2c0] hover:bg-[#d2b49b] text-[#4c382c] font-semibold rounded-lg shadow transition">
-        Verifikasi
+        Verify
     </button>
 </div>
 
 </div>
 
 <div id="otp-form" class="mt-4 hidden">
-    <label class="text-sm text-[#5b4937] block mb-1">Masukkan Kode OTP</label>
+    <label class="text-sm text-[#5b4937] block mb-1">Enter OTP Code</label>
     <div class="flex items-center gap-3">
         <input type="text" id="otp-input"
                class="w-40 px-3 py-2 rounded border border-[#b8a697] text-[#2c1a0f] text-sm shadow"
                placeholder="6 digit OTP" />
 <button type="button" onclick="verifyOtp()"
         class="text-xs px-4 py-2 bg-[#c4a48a] hover:bg-[#a9896f] text-[#4c382c] font-semibold rounded shadow transition">
-    Kirim OTP
+    Send OTP
 </button>
 
     </div>
@@ -228,21 +228,21 @@ function verifyOtp() {
     .then(data => {
         if (data.status === 'verified') {
             phoneVerified = true;
-            status.innerText = '✅ Nomor berhasil diverifikasi!';
+            status.innerText = '✅ Phone Number Succesful Verified!';
             submitBtn.disabled = false;
         } else {
-            status.innerText = data.error || 'OTP salah atau sudah kedaluwarsa.';
+            status.innerText = data.error || 'OTP wrong or expired.';
         }
     })
     .catch(() => {
-        status.innerText = 'Terjadi kesalahan.';
+        status.innerText = 'An error occurred.';
     });
 }
 
 document.querySelector('form').addEventListener('submit', function (e) {
     if (!phoneVerified) {
         e.preventDefault();
-        alert('Nomor telepon Anda belum diverifikasi.');
+        alert('Phone Number Not Verify Yet.');
     }
 });
 

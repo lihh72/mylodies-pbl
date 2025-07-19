@@ -15,9 +15,9 @@ class DeliveryResource extends Resource
     protected static ?string $model = Order::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-truck';
-    protected static ?string $navigationLabel = 'Shipping';
-    protected static ?string $pluralModelLabel = 'Shipping';
-    protected static ?string $modelLabel = 'Shipping';
+    protected static ?string $navigationLabel = 'Pengiriman';
+    protected static ?string $pluralModelLabel = 'Pengiriman';
+    protected static ?string $modelLabel = 'Pengiriman';
     protected static ?string $navigationGroup = 'Manajemen Operasional';
 
     public static function table(Tables\Table $table): Tables\Table

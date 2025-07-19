@@ -140,7 +140,7 @@
             <h3>Informasi Pelanggan</h3>
             <p><strong>Nama:</strong> {{ $order->user->name }}</p>
             <p><strong>Email:</strong> {{ $order->user->email }}</p>
-            <p><strong>Alamat Shipping:</strong> {{ $order->shipping_address }}</p>
+            <p><strong>Alamat Pengiriman:</strong> {{ $order->shipping_address }}</p>
         </div>
 
                 <!-- Info Transaksi -->

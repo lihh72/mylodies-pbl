@@ -33,13 +33,13 @@
 
 
             <div class="text-center space-y-4">
-                <h2 class="text-4xl font-extrabold">Payment Confirmation</h2>
-                <p class="text-sm text-[#7e6a57] max-w-md mx-auto">Please review the rental details and press the button below to complete the payment.</p>
+                <h2 class="text-4xl font-extrabold">Konfirmasi Pembayaran</h2>
+                <p class="text-sm text-[#7e6a57] max-w-md mx-auto">Silakan cek kembali detail penyewaan dan tekan tombol di bawah untuk menyelesaikan pembayaran.</p>
             </div>
 
             <div class="bg-[#fcf8f4] border border-[#e6d7c2] rounded-2xl shadow-xl p-8 space-y-6">
                 <h3 class="text-xl font-bold flex items-center gap-2">
-                    <i class="fa-solid fa-box-open text-[#b49875]"></i> Order Details
+                    <i class="fa-solid fa-box-open text-[#b49875]"></i> Detail Pesanan
                 </h3>
 
 <div class="space-y-4">
@@ -52,7 +52,7 @@
             <p class="text-sm text-[#7e6a57] italic">
                 {{ \Carbon\Carbon::parse($item->start_date)->format('d M Y') }} – {{ \Carbon\Carbon::parse($item->end_date)->format('d M Y') }}
             </p>
-            <p class="text-xs text-[#8a7a6a]">Amount: <span class="font-semibold">{{ $item->quantity }}</span></p>
+            <p class="text-xs text-[#8a7a6a]">Jumlah: <span class="font-semibold">{{ $item->quantity }}</span></p>
         </div>
         <div class="text-right text-sm">
             <p>IDR {{ number_format($item->total_price, 0, ',', '.') }}</p>
@@ -68,7 +68,7 @@
                         <span>IDR {{ number_format($order->base_price, 0, ',', '.') }}</span>
                     </div>
                     <div class="flex justify-between">
-                        <span>Shipping Cost</span>
+                        <span>Ongkos Kirim</span>
                         <span>IDR {{ number_format($order->shipping_cost, 0, ',', '.') }}</span>
                     </div>
 
@@ -81,9 +81,9 @@
                 <div class="mt-8 text-center">
                     <button id="pay-button"
                             class="inline-block px-8 py-4 bg-gradient-to-r from-[#b49875] to-[#8a7a6a] text-white font-bold rounded-full shadow-lg hover:opacity-90 transition-all text-lg">
-                        Pay Now
+                        Bayar Sekarang
                     </button>
-                    <p class="text-xs text-[#7e6a57] mt-2">By pressing this button, you will be redirected to the Midtrans payment page.</p>
+                    <p class="text-xs text-[#7e6a57] mt-2">Dengan menekan tombol ini, Anda akan diarahkan ke halaman pembayaran Midtrans.</p>
                 </div>
             </div>
         </div>

@@ -53,8 +53,8 @@
 
             <div class="relative z-10 space-y-12">
                 <div class="text-center">
-                    <h1 class="text-4xl font-extrabold text-[#3e2d1f] drop-shadow-sm tracking-tight">Riwayat Peminjaman</h1>
-                    <p class="text-sm text-[#6c5949] mt-2 italic">Lihat kembali semua transaksi sewa kamu berdasarkan statusnya.</p>
+                    <h1 class="text-4xl font-extrabold text-[#3e2d1f] drop-shadow-sm tracking-tight">Rent History</h1>
+                    <p class="text-sm text-[#6c5949] mt-2 italic">Review all your rental transactions based on their status.</p>
                 </div>
 
                 <!-- Filter Status -->
@@ -87,9 +87,9 @@
 
                                     <div class="flex-1 space-y-1">
                                         <h3 class="text-xl font-semibold text-[#3e2d1f] tracking-tight">
-                                            Sewa {{ $firstItem->product->name ?? 'Produk' }}
+                                            Rent {{ $firstItem->product->name ?? 'Produk' }}
                                             @if($order->orderItems->count() > 1)
-                                                dan {{ $order->orderItems->count() - 1 }} lainnya
+                                                and {{ $order->orderItems->count() - 1 }} More
                                             @endif
                                         </h3>
                                         <p class="text-sm text-[#7b6957]">Produk: {{ $productNames }}</p>
@@ -108,7 +108,7 @@
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m0 0l3-3m-3 3l3 3" />
                                             </svg>
-                                            Lihat Detail
+                                           View Details
                                         </a>
                                     </div>
                                 </div>
@@ -118,7 +118,7 @@
                 </div>
 
                 @if ($groupedHistories->flatten(1)->isEmpty())
-                    <div class="text-center text-[#b09b85] italic pt-12">Belum ada riwayat peminjaman.</div>
+                    <div class="text-center text-[#b09b85] italic pt-12">There is no borrowing history yet.</div>
                 @endif
             </div>
         </section>

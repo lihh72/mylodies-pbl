@@ -15,9 +15,9 @@ class PickupResource extends Resource
     protected static ?string $model = Order::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-arrow-uturn-left';
-    protected static ?string $navigationLabel = 'Pickup';
-    protected static ?string $pluralModelLabel = 'Pickup';
-    protected static ?string $modelLabel = 'Pickup';
+    protected static ?string $navigationLabel = 'Penjemputan';
+    protected static ?string $pluralModelLabel = 'Penjemputan';
+    protected static ?string $modelLabel = 'Penjemputan';
     protected static ?string $navigationGroup = 'Manajemen Operasional';
 
     public static function table(Tables\Table $table): Tables\Table

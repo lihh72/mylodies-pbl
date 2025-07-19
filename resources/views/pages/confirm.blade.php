@@ -40,9 +40,9 @@
             </div>
         </div>
 
-        {{-- Alamat Shipping --}}
+        {{-- Alamat Pengiriman --}}
         <div class="mt-6 bg-[#fcf8f4] border border-[#eadccd] rounded-xl p-4 text-sm leading-snug space-y-1 text-[#443b33]">
-            <p class="font-semibold">Alamat Shipping</p>
+            <p class="font-semibold">Alamat Pengiriman</p>
             <p>{{ $order->shipping_address }}</p>
         </div>
 

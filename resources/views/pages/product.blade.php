@@ -175,7 +175,7 @@ function gallerySlideshow() {
                 <!-- Form -->
 @if ($product->stock <= 0)
     <div class="p-4 bg-[#fff4ee] border border-red-300 text-red-600 rounded-lg font-semibold shadow-inner text-center">
-        Produk ini sedang <span class="uppercase">tidak tersedia</span> untuk disewa saat ini.
+        This Product is<span class="uppercase">not available</span> to rent right now.
     </div>
 @else
     <form id="rentalForm" method="POST" action="{{ route('order.store', $product->id) }}" class="space-y-3 text-sm relative z-10">
@@ -439,7 +439,7 @@ function gallerySlideshow() {
 
     <!-- Comment -->
     <p class="text-sm text-[#5e4b3b] italic">
-      {{ $review->comment ?? 'Tidak ada komentar.' }}
+      {{ $review->comment ?? 'No Coment Yet.' }}
     </p>
   </div>
 </div>
