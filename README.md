@@ -14,7 +14,6 @@
 | -    | 33124010-  | -             | -           |
 | -      | 33124010-  | -  | -   |
 
-> 📝 *Each team member contributed significantly to the success of the WUW project.*
 ---
 
 ## 🚀 Features
