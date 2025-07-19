@@ -13,6 +13,7 @@
 - 🔐 User authentication (register/login)
 - 🎛️ Admin dashboard for managing instruments and rentals
 - 📬 Order tracking and rental history
+- 💬 Integrated chatbot for user assistance
 - 💡 Responsive UI built with Tailwind CSS & Blade
 
 ---
@@ -114,6 +115,7 @@ Contributions are welcome!
 | Admin dashboard          | ✅     |
 | Responsive frontend      | ✅     |
 | Deployment ready         | ✅     |
+| Chatbot integration      | ✅     |
 
 ---
 
