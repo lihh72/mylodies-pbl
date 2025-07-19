@@ -9,7 +9,7 @@
 
 | Name                      | NIM         | Role                                             | GitHub Username     |
 |---------------------------|-------------|--------------------------------------------------|---------------------|
-| M.Falih Hilmy             | 3312401040  | Lead Backend Developer & Database INtegration    | [`@lihh72`](https://github.com/lihh72)           |
+| M.Falih Hilmy             | 3312401040  | Lead Backend Developer & Database Integration    | [`@lihh72`](https://github.com/lihh72)           |
 | -             | 33124010-  | -         | -         |
 | -    | 33124010-  | -             | -           |
 | -      | 33124010-  | -  | -   |
