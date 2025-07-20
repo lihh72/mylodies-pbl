@@ -49,9 +49,10 @@ if ($quantity > $product->stock) {
 }
 
 
+$user = Auth::user(); // ✅ ini penting agar tidak undefined
         $pricePerDay = $product->rental_price_per_day;
         $itemTotal = $pricePerDay * $days * $quantity;
-        if (!empty(Auth::user()->phone_number) && !empty(Auth::user()->identity_card_verified_at)) {
+       if (empty($user->phone_number) || empty($user->identity_card_verified_at) || empty($user->address)) {
     return redirect()->route('settings.index')
             ->with('warning', 'Please complete your address details first before proceeding with payment.');
 }
@@ -185,7 +186,7 @@ if ($startDates->count() > 1 || $endDates->count() > 1) {
     return back()->with('error', 'Tanggal sewa semua item di keranjang harus sama untuk checkout.');
 }
 
-if (empty(Auth::user()->phone_number)) {
+if (empty($user->phone_number) || empty($user->identity_card_verified_at) || empty($user->address)) {
     return redirect()->route('settings.index')
             ->with('warning', 'Please complete your address details first before proceeding with payment.');
 }

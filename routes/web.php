@@ -1,117 +1,100 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LandingController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\CatalogController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\EditUserController;
-use App\Http\Controllers\HistoryController;
-use App\Http\Controllers\ProfileUserController;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\DashboardAdminController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\SettingsController;
-use App\Http\Controllers\OauthController;
-use App\Http\Controllers\OrderDetailController;
-use App\Http\Controllers\ProductReviewController;
-use App\Http\Controllers\FonnteWebhookController;
-use App\Http\Controllers\OtpController;
+use App\Http\Controllers\{
+    ProfileController,
+    LandingController,
+    PaymentController,
+    CatalogController,
+    CartController,
+    EditUserController,
+    HistoryController,
+    ProfileUserController,
+    SearchController,
+    ProductController,
+    DashboardAdminController,
+    OrderController,
+    SettingsController,
+    OauthController,
+    OrderDetailController,
+    ProductReviewController,
+    FonnteWebhookController,
+    OtpController
+};
 
-Route::middleware('auth')->group(function () {
-    Route::post('/otp/send', [OtpController::class, 'send'])->name('otp.send');
-    Route::post('/otp/verify', [OtpController::class, 'verify'])->name('otp.verify');
-});
+// === Webhooks ===
+Route::match(['get', 'post'], '/webhook/fonnte', [FonnteWebhookController::class, 'handle']);
 
-
-Route::post('/webhook/fonnte', [FonnteWebhookController::class, 'handle']);
-Route::get('/webhook/fonnte', [FonnteWebhookController::class, 'handle']);
-Route::get('/q', function () {
-    return view('backup.welcome');
-});
-
-//Route::get('/home', function () {
-//    return view('home');
-//});
-
-
-Route::middleware(['auth', 'verified'])->group(function () {
-
-    Route::get('/dashboard', function () {
-        return view('backup.dashboard');
-    })->name('dashboard');
-
-    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
-    Route::put('/settings', [SettingsController::class, 'update'])->name('settings.update');
-
-});
-
+// === Guest Routes ===
 Route::get('/', [ProductController::class, 'index'])->name('landing');
-Route::match(['get', 'post'], '/payment/process/{order}', [PaymentController::class, 'process'])->name('payment.process');
-
-Route::get('/payment/{code}', [PaymentController::class, 'show'])->name('payment.show')->middleware('auth');
-
 Route::get('/catalog', [ProductController::class, 'catalog'])->name('catalog');
-
-Route::get('/address', [SettingsController::class, 'editAddress'])->name('address.edit');
-Route::put('/address', [SettingsController::class, 'updateAddress'])->name('address.update');
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
-    Route::post('/history/repeat/{id}', [HistoryController::class, 'repeat'])->name('order.repeat');
-});
-
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    Route::post('/cart/add/{productId}', [CartController::class, 'store'])->name('cart.store');
-    Route::post('/cart/update/{id}', [CartController::class, 'updateQuantity'])->name('cart.update');
-    Route::delete('/cart/delete/{id}', [CartController::class, 'destroy'])->name('cart.delete');
-});
-Route::post('/payment/address/{code}', [PaymentController::class, 'confirmAddress'])->name('payment.address.confirm');
-Route::get('/payment/confirm/{code}', [PaymentController::class, 'confirm'])->name('payment.confirm');
-
-Route::get('/edit', [EditUserController::class, 'index'])->middleware('auth');
-Route::post('/edit/password', [EditUserController::class, 'updatePassword'])->name('edit.password')->middleware('auth');
-Route::post('/payment/callback', [PaymentController::class, 'callback'])->name('payment.callback');
-
-Route::get('/profileuser', [ProfileUserController::class, 'index']);
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product');
-Route::get('/dashboardadmin', [DashboardAdminController::class, 'index']);
+Route::get('/profileuser', [ProfileUserController::class, 'index']);
+Route::get('/about', fn() => view('pages.about'));
+Route::get('/nonton', fn() => view('backup.squidgame'));
+Route::get('/q', fn() => view('backup.welcome'));
+
+// === Payment Routes ===
+Route::match(['get', 'post'], '/payment/process/{order}', [PaymentController::class, 'process'])->name('payment.process');
+Route::get('/payment/{code}', [PaymentController::class, 'show'])->name('payment.show')->middleware('auth');
+Route::post('/payment/address/{code}', [PaymentController::class, 'confirmAddress'])->name('payment.address.confirm');
+Route::get('/payment/confirm/{code}', [PaymentController::class, 'confirm'])->name('payment.confirm');
+Route::post('/payment/callback', [PaymentController::class, 'callback'])->name('payment.callback');
+Route::get('/invoice/{order}', [PaymentController::class, 'showInvoice'])->name('invoice.show');
+
+// === Authenticated User Routes ===
 Route::middleware('auth')->group(function () {
-    Route::post('/products/{product}/order', [OrderController::class, 'storeSingle'])->name('order.store');
-    Route::post('/order/from-cart', [OrderController::class, 'storeFromCart'])->name('order.storeFromCart');
-});
 
+    // OTP
+    Route::post('/otp/send', [OtpController::class, 'send'])->name('otp.send');
+    Route::post('/otp/verify', [OtpController::class, 'verify'])->name('otp.verify');
 
+    // Dashboard & Settings
+    Route::get('/dashboard', fn() => view('backup.dashboard'))->name('dashboard');
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::put('/settings', [SettingsController::class, 'update'])->name('settings.update');
+    Route::get('/address', [SettingsController::class, 'editAddress'])->name('address.edit');
+    Route::put('/address', [SettingsController::class, 'updateAddress'])->name('address.update');
 
-Route::middleware(['auth'])->get('/order/{order}', [OrderDetailController::class, 'show'])->name('order.detail');
-
-Route::get('/about', function () {
-    return view('pages.about');
-});
-
-
-
-Route::middleware('auth')->group(function () {
+    // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Edit User
+    Route::get('/edit', [EditUserController::class, 'index']);
+    Route::post('/edit/password', [EditUserController::class, 'updatePassword'])->name('edit.password');
+
+    // Cart
+    Route::prefix('cart')->name('cart.')->group(function () {
+        Route::get('/', [CartController::class, 'index'])->name('index');
+        Route::post('/add/{productId}', [CartController::class, 'store'])->name('store');
+        Route::post('/update/{id}', [CartController::class, 'updateQuantity'])->name('update');
+        Route::delete('/delete/{id}', [CartController::class, 'destroy'])->name('delete');
+    });
+
+    // History & Orders
+    Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
+    Route::post('/history/repeat/{id}', [HistoryController::class, 'repeat'])->name('order.repeat');
+
+    Route::post('/products/{product}/order', [OrderController::class, 'storeSingle'])->name('order.store');
+    Route::post('/order/from-cart', [OrderController::class, 'storeFromCart'])->name('order.storeFromCart');
+    Route::get('/order/{order}', [OrderDetailController::class, 'show'])->name('order.detail');
+
+    // Reviews
+    Route::prefix('reviews')->name('reviews.')->group(function () {
+        Route::get('/create/{order_item}', [ProductReviewController::class, 'create'])->name('create');
+        Route::post('/store/{order_item}', [ProductReviewController::class, 'store'])->name('store');
+    });
 });
 
-Route::get('oauth/google', [OauthController::class, 'redirectToProvider'])->name('oauth.google');  
+// === Admin Dashboard ===
+Route::get('/dashboardadmin', [DashboardAdminController::class, 'index']);
+
+// === OAuth ===
+Route::get('oauth/google', [OauthController::class, 'redirectToProvider'])->name('oauth.google');
 Route::get('oauth/google/callback', [OauthController::class, 'handleProviderCallback'])->name('oauth.google.callback');
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/reviews/create/{order_item}', [\App\Http\Controllers\ProductReviewController::class, 'create'])->name('reviews.create');
-    Route::post('/reviews/store/{order_item}', [\App\Http\Controllers\ProductReviewController::class, 'store'])->name('reviews.store');
-});Route::get('/invoice/{order}', [PaymentController::class, 'showInvoice'])->name('invoice.show');
-Route::get('/nonton', function () {
-    return view('backup.squidgame');
-});
-//Route::get('/search', [SearchController::class, 'index'])->name('search');
-
-require __DIR__.'/auth.php';
+// === Auth Routes ===
+require __DIR__ . '/auth.php';
