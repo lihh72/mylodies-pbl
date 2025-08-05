@@ -16,7 +16,7 @@ Watch the following video to see our **Mylodies ATS Presentation**:
 
 Watch the following video to see our **Mylodies** AAS Presentation:
 
-📺 **(https://youtu.be/KHEu5I1_FMc?si=s7GAIEVC4Dnndmim)**
+📺 **(https://www.youtube.com/watch?si=EGRMdg3OpToR99I9&v=bhf8SkPGy7c&feature=youtu.be)**
 
 ---
 
@@ -24,7 +24,7 @@ Watch the following video to see our **Mylodies** AAS Presentation:
 
 Watch the following video to see how our **Mylodies** application works in action:
 
-📺 **(https://www.youtube.com/watch?si=EGRMdg3OpToR99I9&v=bhf8SkPGy7c&feature=youtu.be)**
+📺 **(https://youtu.be/KHEu5I1_FMc?si=s7GAIEVC4Dnndmim)**
 
 ---
 
