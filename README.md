@@ -4,6 +4,29 @@
 
 🌐 **Live Demo**: [https://mylodies.xyz](https://mylodies.xyz)
 ---
+### 🎥 Video Presentation ATS
+
+Watch the following video to see our **Mylodies ATS Presentation:
+
+📺 **(https://youtu.be/vmJ5tgw7KoM?si=GzlIusCsIgKYCPz2)**
+
+---
+
+### 🎥 Video Presentation AAS
+
+Watch the following video to see our **Wear You Want (WUW)** AAS Presentation:
+
+📺 **(https://youtu.be/KHEu5I1_FMc?si=s7GAIEVC4Dnndmim)**
+
+---
+
+### 🎥 Video Demonstration
+
+Watch the following video to see how our **WearYouWant (WUW)** application works in action:
+
+📺 **(https://www.youtube.com/watch?si=EGRMdg3OpToR99I9&v=bhf8SkPGy7c&feature=youtu.be)**
+
+---
 
 ## 👥 Project Contributors – Mylodies
 
